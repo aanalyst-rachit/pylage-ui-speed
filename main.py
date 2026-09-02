@@ -42,12 +42,14 @@ from app import (
     ui_kit_divider_manual,
     ui_kit_metric_manual,
     ui_kit_trend_manual,
-    ui_kit_table_manual
+    ui_kit_table_manual,
+    ui_kit_dataframe_manual,
+    
 )
 
 from pylage import run
 
-overview_app = ui_kit_table_manual.get_app()
+overview_app = ui_kit_dataframe_manual.get_app()
 
 
 

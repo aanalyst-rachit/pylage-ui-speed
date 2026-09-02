@@ -354,6 +354,27 @@ def Table(*children, data: Any = None, headers: Any = None, **props: Any) -> Com
     return component("Table", *children, **props)
 
 
+def DataFrame(
+    *children,
+    data: Any = None,
+    headers: Any = None,
+    **props: Any,
+) -> Component:
+    if data is None and len(children) == 1 and not isinstance(children[0], Component):
+        candidate = children[0]
+        if isinstance(candidate, (dict, list, tuple)) or hasattr(candidate, "columns"):
+            data = candidate
+            children = ()
+
+    if data is not None:
+        props["data"] = data
+
+    if headers is not None:
+        props["headers"] = headers
+
+    return component("DataFrame", *children, **props)
+
+
 def Dialog(*children, **props: Any) -> Component:
     return component("Dialog", *children, **props)
 

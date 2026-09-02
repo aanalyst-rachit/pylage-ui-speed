@@ -1,4 +1,4 @@
-from pylage.components.basic import Canvas, Icon, Audio, Video, Image, Grid, Carousel, Accordion, Avatar, Badge, Divider, Button, Card, Column, Row, Dialog, Form, Heading, Input, Navigation, RadioGroup, Select, Option, Slider, Switch, Table, Tabs, Text, Checkbox, DatePicker, Alert, Toast, Spinner, ProgressBar, Skeleton, Breadcrumbs, Pagination, Menu, Drawer, Tooltip, Popover
+from pylage.components.basic import Canvas, Icon, Audio, Video, Image, Grid, Carousel, Accordion, Avatar, Badge, Divider, Button, Card, Column, Row, Dialog, Form, Heading, Input, Navigation, RadioGroup, Select, Option, Slider, Switch, Table, DataFrame, Tabs, Text, Checkbox, DatePicker, Alert, Toast, Spinner, ProgressBar, Skeleton, Breadcrumbs, Pagination, Menu, Drawer, Tooltip, Popover
 
 __all__ = [
     "Column",
@@ -10,6 +10,7 @@ __all__ = [
     "Form",
     "Dialog",
     "Table",
+    "DataFrame",
     "Navigation",
     "RadioGroup",
     "Select",

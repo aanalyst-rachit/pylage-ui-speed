@@ -678,6 +678,35 @@ registry.register(
 )
 
 registry.register(
+    "DataFrame",
+    "div",
+    props={
+        "class_name": PropDefinition(
+            "class_name",
+            kind="attribute",
+            html_name="class",
+        ),
+        "title": PropDefinition(
+            "title",
+            kind="attribute",
+            html_name="title",
+        ),
+        "headers": PropDefinition(
+            "headers",
+            kind="attribute",
+        ),
+        "data": PropDefinition(
+            "data",
+            kind="attribute",
+        ),
+        "cell_border": PropDefinition(
+            "cell_border",
+            kind="attribute",
+        ),
+    },
+)
+
+registry.register(
     "Dialog",
     "dialog",
     props={

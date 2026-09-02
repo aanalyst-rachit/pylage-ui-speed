@@ -40,6 +40,8 @@ class HTMLRenderer:
 
             "Table": lambda renderer, component:
                 renderer._render_table(component),
+            "DataFrame": lambda renderer, component:
+                renderer._render_dataframe(component),
 
             "Form": lambda renderer, component:
                 renderer._render_form(component),
@@ -290,6 +292,228 @@ class HTMLRenderer:
             f"<form {attributes}>"
             f"{children}"
             f"</form>"
+        )
+
+    def _dataframe_css(self) -> str:
+        """Return built-in CSS for the DataFrame component."""
+        return """
+.pylage-dataframe {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.pylage-dataframe__viewport {
+    width: 100%;
+    max-width: 100%;
+    max-height: 480px;
+    overflow: auto;
+}
+
+.pylage-dataframe__grid {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.pylage-dataframe__grid th,
+.pylage-dataframe__grid td {
+    box-sizing: border-box;
+    padding: 8px 12px;
+    min-width: 100px;
+    max-width: 320px;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    background: #ffffff;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pylage-dataframe__grid tr > :first-child {
+    border-left: 1px solid #e2e8f0;
+}
+
+.pylage-dataframe__grid thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #f8fafc;
+    font-weight: 600;
+    text-align: left;
+}
+
+.pylage-dataframe__corner {
+    position: sticky !important;
+    left: 0;
+    z-index: 5 !important;
+    width: 48px;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    padding: 8px !important;
+    background: #f8fafc !important;
+}
+
+.pylage-dataframe__row-number {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    width: 48px;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    padding: 8px !important;
+    background: #f8fafc !important;
+    color: #64748b;
+    font-weight: 500;
+    text-align: center;
+}
+
+.pylage-dataframe__cell--numeric {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.pylage-dataframe__grid tbody tr:hover td,
+.pylage-dataframe__grid tbody tr:hover th {
+    background: #f8fafc;
+}
+
+.pylage-dataframe--no-cell-border .pylage-dataframe__grid th,
+.pylage-dataframe--no-cell-border .pylage-dataframe__grid td {
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.pylage-dataframe--no-cell-border .pylage-dataframe__grid tr > :first-child {
+    border-left: 0;
+}
+
+.pylage-dataframe__empty {
+    padding: 16px;
+    text-align: center;
+    color: #64748b;
+}
+"""
+
+    def _render_dataframe(self, component: Component) -> str:
+        common = self._render_common_attributes(component)
+        dataframe_css = self._dataframe_css()
+
+        headers = self._value(component.props.get("headers"))
+        data = self._value(component.props.get("data"))
+
+        class_name = self._value(component.props.get("class_name"))
+        title = self._value(component.props.get("title"))
+        cell_border = self._value(
+            component.props.get("cell_border", True)
+        )
+
+        classes = ["pylage-dataframe"]
+
+        if not cell_border:
+            classes.append("pylage-dataframe--no-cell-border")
+
+        if class_name:
+            custom_class = str(class_name)
+            if custom_class != "pylage-dataframe":
+                classes.append(custom_class)
+
+        attributes = (
+            common
+            + ' class="'
+            + escape(" ".join(classes), quote=True)
+            + '"'
+        )
+
+        if title is not None:
+            attributes += (
+                f' title="{escape(str(title), quote=True)}"'
+            )
+
+        parts = [
+            f"<div {attributes}>",
+            '<div class="pylage-dataframe__viewport">',
+            '<table class="pylage-dataframe__grid">',
+        ]
+
+        if data is not None:
+            headers, rows = self._normalize_table_data(data, headers)
+
+            parts.append("<thead><tr>")
+            parts.append(
+                '<th class="pylage-dataframe__corner" '
+                'aria-hidden="true"></th>'
+            )
+
+            for index, header in enumerate(headers):
+                parts.append(
+                    f'<th class="pylage-dataframe__header" '
+                    f'data-column-index="{index}">'
+                    f'{escape(str(header))}'
+                    "</th>"
+                )
+
+            parts.append("</tr></thead>")
+            parts.append("<tbody>")
+
+            for row_index, row in enumerate(rows, start=1):
+                parts.append(
+                    f'<tr class="pylage-dataframe__row" '
+                    f'data-row-index="{row_index}">'
+                )
+
+                parts.append(
+                    f'<th class="pylage-dataframe__row-number" '
+                    f'scope="row">{row_index}</th>'
+                )
+
+                for column_index, cell in enumerate(row):
+                    numeric = (
+                        isinstance(cell, (int, float))
+                        and not isinstance(cell, bool)
+                    )
+
+                    cell_class = (
+                        "pylage-dataframe__cell "
+                        "pylage-dataframe__cell--numeric"
+                        if numeric
+                        else "pylage-dataframe__cell"
+                    )
+
+                    parts.append(
+                        f'<td class="{cell_class}" '
+                        f'data-column-index="{column_index}">'
+                        f'{escape(self._table_cell_text(cell))}'
+                        "</td>"
+                    )
+
+                parts.append("</tr>")
+
+            parts.append("</tbody>")
+
+        else:
+            parts.append(
+                '<tbody><tr>'
+                '<td class="pylage-dataframe__empty">'
+                'No data'
+                '</td>'
+                '</tr></tbody>'
+            )
+
+        parts.extend([
+            "</table>",
+            "</div>",
+            "</div>",
+        ])
+
+        return (
+            f"<style>{dataframe_css}</style>"
+            + "".join(parts)
         )
 
     def _render_table(self, component: Component) -> str:
