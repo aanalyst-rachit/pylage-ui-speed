@@ -22,6 +22,7 @@ def test_ui_kit_public_api():
         "avatar",
         "button",
         "card",
+        "divider",
         "heading",
         "text",
     ]

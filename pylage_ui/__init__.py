@@ -3,6 +3,7 @@ from .badge import badge
 from .avatar import avatar
 from .button import button
 from .card import card
+from .divider import divider
 from .heading import heading
 from .text import text
 
@@ -16,6 +17,7 @@ __all__ = [
     "avatar",
     "button",
     "card",
+    "divider",
     "heading",
     "text",
 ]
