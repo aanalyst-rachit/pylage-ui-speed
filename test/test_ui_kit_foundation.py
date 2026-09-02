@@ -19,6 +19,7 @@ def test_ui_kit_public_api():
         "PACKAGE_NAME",
         "__version__",
         "badge",
+        "avatar",
         "button",
         "card",
         "heading",

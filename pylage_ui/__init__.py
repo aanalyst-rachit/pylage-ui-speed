@@ -1,5 +1,6 @@
 from ._meta import IMPORT_NAME, PACKAGE_NAME
 from .badge import badge
+from .avatar import avatar
 from .button import button
 from .card import card
 from .heading import heading
@@ -12,6 +13,7 @@ __all__ = [
     "PACKAGE_NAME",
     "__version__",
     "badge",
+    "avatar",
     "button",
     "card",
     "heading",
