@@ -139,9 +139,36 @@ CLIENT_RUNTIME = r"""
     }
 
     function handleEvent(event) {
-        const target = event.target.closest("[data-pylage-id]");
+        let target = event.target;
 
-        if (!target) {
+        while (target && target !== document) {
+            if (
+                target.getAttribute &&
+                target.getAttribute("data-pylage-id")
+            ) {
+                const eventNames = target.getAttribute(
+                    "data-pylage-events"
+                );
+
+                if (eventNames) {
+                    const supportedEvents = eventNames
+                        .split(",")
+                        .map(function (name) {
+                            return name.trim();
+                        });
+
+                    if (
+                        supportedEvents.indexOf(event.type) !== -1
+                    ) {
+                        break;
+                    }
+                }
+            }
+
+            target = target.parentElement;
+        }
+
+        if (!target || target === document) {
             return;
         }
 

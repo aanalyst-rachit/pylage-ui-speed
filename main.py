@@ -34,11 +34,13 @@ from app import (
     layout_primitives_manual,
     themes_tokens_manual,
     manual_overview,
+    ui_kit_button_manual,
+    ui_kit_card_manual
 )
 
 from pylage import run
 
-overview_app = manual_overview.get_app()
+overview_app = ui_kit_card_manual.get_app()
 
 
 

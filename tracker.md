@@ -213,12 +213,12 @@ Sizes:
 
 ## Card
 
-* [ ] `ps.card()`
-* [ ] Card header
-* [ ] Card body
-* [ ] Card footer
-* [ ] Card variants
-* [ ] Interactive card
+* [x] `ps.card()`
+* [x] Card header
+* [x] Card body
+* [x] Card footer
+* [x] Card variants
+* [x] Interactive card
 
 ## Text
 

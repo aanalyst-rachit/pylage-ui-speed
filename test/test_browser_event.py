@@ -80,3 +80,54 @@ def test_browser_event():
     finally:
         runtime.stop()
         print("Runtime stopped.")
+
+
+def test_browser_event_bubbles_to_parent_component():
+    print("=== NESTED PARENT BROWSER EVENT TEST ===")
+
+    calls = []
+
+    def clicked():
+        calls.append("clicked")
+
+    card = ps.Card(
+        ps.Text("Nested clickable content"),
+        on_click=clicked,
+    )
+
+    app = ps.Column(card)
+
+    runtime = Runtime(
+        app,
+        title="Nested Parent Browser Event Test",
+        output="test_output/nested_parent_browser_event_output/index.html",
+    )
+
+    try:
+        url = runtime.start()
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+
+            page.goto(url)
+
+            text_locator = page.locator(
+                f'[data-pylage-id="{card.children[0].id}"]'
+            )
+
+            expect(text_locator).to_have_text("Nested clickable content")
+
+            text_locator.click()
+
+            for _ in range(50):
+                if calls == ["clicked"]:
+                    break
+                page.wait_for_timeout(100)
+
+            assert calls == ["clicked"]
+
+            browser.close()
+
+    finally:
+        runtime.stop()
