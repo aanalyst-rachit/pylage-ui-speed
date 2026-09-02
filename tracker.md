@@ -240,26 +240,26 @@ Sizes:
 
 ## Metrics
 
-* [x] `ps.metric()`
-* [x] KPI
-* [x] Trend
-* [x] Stat card
+* [ ] `ps.metric()`
+* [ ] KPI
+* [ ] Trend
+* [ ] Stat card
 
 ## Data
 
-* [x] Table
-* [x] Data list
-* [x] Empty state
-* [x] Loading state
-* [x] Error state
+* [ ] Table
+* [ ] Data list
+* [ ] Empty state
+* [ ] Loading state
+* [ ] Error state
 
 ## Dashboard
 
-* [x] Dashboard header
-* [x] Metric grid
-* [x] Dashboard section
-* [x] Dashboard card
-* [x] Responsive dashboard composition
+* [ ] Dashboard header
+* [ ] Metric grid
+* [ ] Dashboard section
+* [ ] Dashboard card
+* [ ] Responsive dashboard composition
 
 ### Exit Condition
 
@@ -269,20 +269,20 @@ A useful dashboard can be created with minimal Python.
 
 # PHASE 08 — Forms
 
-* [x] Input
-* [x] Textarea
-* [x] Select
-* [x] Checkbox
-* [x] Radio
-* [x] Switch
-* [x] Slider
-* [x] Date picker
-* [x] Form field
-* [x] Form
-* [x] Validation presentation
-* [x] Error state
-* [x] Help text
-* [x] Disabled state
+* [ ] Input
+* [ ] Textarea
+* [ ] Select
+* [ ] Checkbox
+* [ ] Radio
+* [ ] Switch
+* [ ] Slider
+* [ ] Date picker
+* [ ] Form field
+* [ ] Form
+* [ ] Validation presentation
+* [ ] Error state
+* [ ] Help text
+* [ ] Disabled state
 
 Reuse existing PyLage components wherever possible.
 
@@ -290,28 +290,28 @@ Reuse existing PyLage components wherever possible.
 
 # PHASE 09 — Feedback & Overlays
 
-* [x] Alert
-* [x] Toast
-* [x] Dialog
-* [x] Modal recipe
-* [x] Drawer
-* [x] Tooltip
-* [x] Popover
-* [x] Confirmation dialog
-* [x] Loading overlay
+* [ ] Alert
+* [ ] Toast
+* [ ] Dialog
+* [ ] Modal recipe
+* [ ] Drawer
+* [ ] Tooltip
+* [ ] Popover
+* [ ] Confirmation dialog
+* [ ] Loading overlay
 
 ---
 
 # PHASE 10 — Navigation
 
-* [x] Navbar
-* [x] Sidebar
-* [x] Breadcrumbs
-* [x] Tabs
-* [x] Pagination
-* [x] Menu
-* [x] Navigation item
-* [x] Mobile navigation
+* [ ] Navbar
+* [ ] Sidebar
+* [ ] Breadcrumbs
+* [ ] Tabs
+* [ ] Pagination
+* [ ] Menu
+* [ ] Navigation item
+* [ ] Mobile navigation
 
 Reuse existing `pylage_layout` navigation primitives.
 
@@ -321,12 +321,12 @@ Reuse existing `pylage_layout` navigation primitives.
 
 Do NOT rebuild `pylage_layout`.
 
-* [x] Determine direct re-exports
-* [x] Determine simplified wrappers
-* [x] Responsive shorthand
-* [x] Spacing shorthand
-* [x] Dashboard layout helpers
-* [x] Verify no duplicate layout engine
+* [ ] Determine direct re-exports
+* [ ] Determine simplified wrappers
+* [ ] Responsive shorthand
+* [ ] Spacing shorthand
+* [ ] Dashboard layout helpers
+* [ ] Verify no duplicate layout engine
 
 Potential API:
 
@@ -343,18 +343,18 @@ ps.sidebar(...)
 
 # PHASE 12 — High-Level Recipes
 
-* [x] Login page
-* [x] Signup page
-* [x] Dashboard
-* [x] Admin panel
-* [x] Profile page
-* [x] Settings page
-* [x] Pricing section
-* [x] Empty page
-* [x] Error page
-* [x] Data management page
-* [x] CRUD page
-* [x] Analytics dashboard
+* [ ] Login page
+* [ ] Signup page
+* [ ] Dashboard
+* [ ] Admin panel
+* [ ] Profile page
+* [ ] Settings page
+* [ ] Pricing section
+* [ ] Empty page
+* [ ] Error page
+* [ ] Data management page
+* [ ] CRUD page
+* [ ] Analytics dashboard
 
 Potential API:
 
@@ -372,13 +372,13 @@ ps.dashboard(
 
 Reuse existing responsive infrastructure.
 
-* [x] Responsive defaults
-* [x] Mobile behavior
-* [x] Tablet behavior
-* [x] Desktop behavior
-* [x] Responsive components
-* [x] Responsive recipes
-* [x] Developer overrides
+* [ ] Responsive defaults
+* [ ] Mobile behavior
+* [ ] Tablet behavior
+* [ ] Desktop behavior
+* [ ] Responsive components
+* [ ] Responsive recipes
+* [ ] Developer overrides
 
 ### Goal
 
@@ -412,14 +412,14 @@ ps.card(
 )
 ```
 
-* [x] Variant system
-* [x] Size system
-* [x] Theme integration
-* [x] Style overrides
-* [x] Semantic colors
-* [x] Custom tokens
-* [x] Component-level overrides
-* [x] Global overrides
+* [ ] Variant system
+* [ ] Size system
+* [ ] Theme integration
+* [ ] Style overrides
+* [ ] Semantic colors
+* [ ] Custom tokens
+* [ ] Component-level overrides
+* [ ] Global overrides
 
 ### Principle
 
@@ -429,14 +429,14 @@ Customization must never destroy default simplicity.
 
 # PHASE 15 — Accessibility & Interaction
 
-* [x] Keyboard behavior
-* [x] Focus behavior
-* [x] Disabled behavior
-* [x] Semantic labels
-* [x] Interactive states
-* [x] Modal behavior
-* [x] Navigation behavior
-* [x] Form accessibility
+* [ ] Keyboard behavior
+* [ ] Focus behavior
+* [ ] Disabled behavior
+* [ ] Semantic labels
+* [ ] Interactive states
+* [ ] Modal behavior
+* [ ] Navigation behavior
+* [ ] Form accessibility
 
 ---
 
@@ -444,15 +444,15 @@ Customization must never destroy default simplicity.
 
 PyLage UI Kit must preserve PyLage's low-latency architecture.
 
-* [x] Component creation overhead
-* [x] Render overhead
-* [x] State update overhead
-* [x] WebSocket update behavior
-* [x] Unnecessary tree changes
-* [x] Large dashboard behavior
-* [x] Large table behavior
-* [x] Repeated component creation
-* [x] Client/bundle impact
+* [ ] Component creation overhead
+* [ ] Render overhead
+* [ ] State update overhead
+* [ ] WebSocket update behavior
+* [ ] Unnecessary tree changes
+* [ ] Large dashboard behavior
+* [ ] Large table behavior
+* [ ] Repeated component creation
+* [ ] Client/bundle impact
 
 ### Principle
 
@@ -480,13 +480,13 @@ RESPONSIVE
 MANUAL
 ```
 
-* [x] API tests
-* [x] Rendering tests
-* [x] State tests
-* [x] Interaction tests
-* [x] Regression tests
-* [x] Responsive tests
-* [x] Manual examples
+* [ ] API tests
+* [ ] Rendering tests
+* [ ] State tests
+* [ ] Interaction tests
+* [ ] Regression tests
+* [ ] Responsive tests
+* [ ] Manual examples
 
 ---
 
@@ -519,34 +519,34 @@ The majority of application code should use high-level `ps.*` APIs.
 
 # PHASE 19 — Documentation
 
-* [x] Installation
-* [x] First app
-* [x] Components
-* [x] Layout
-* [x] Forms
-* [x] Dashboard
-* [x] Data
-* [x] Navigation
-* [x] Theming
-* [x] Customization
-* [x] Responsive behavior
-* [x] State/events
-* [x] Recipes
-* [x] Migration from low-level PyLage API
+* [ ] Installation
+* [ ] First app
+* [ ] Components
+* [ ] Layout
+* [ ] Forms
+* [ ] Dashboard
+* [ ] Data
+* [ ] Navigation
+* [ ] Theming
+* [ ] Customization
+* [ ] Responsive behavior
+* [ ] State/events
+* [ ] Recipes
+* [ ] Migration from low-level PyLage API
 
 ---
 
 # PHASE 20 — API Stabilization
 
-* [x] Remove unnecessary APIs
-* [x] Fix inconsistent naming
-* [x] Reduce configuration surface
-* [x] Verify imports
-* [x] Verify documentation
-* [x] Verify examples
-* [x] Verify compatibility
-* [x] Verify performance
-* [x] Verify tests
+* [ ] Remove unnecessary APIs
+* [ ] Fix inconsistent naming
+* [ ] Reduce configuration surface
+* [ ] Verify imports
+* [ ] Verify documentation
+* [ ] Verify examples
+* [ ] Verify compatibility
+* [ ] Verify performance
+* [ ] Verify tests
 
 ### Principle
 
@@ -564,16 +564,16 @@ pylage-ui-kit 0.x
 
 Release checklist:
 
-* [x] Package metadata
-* [x] Dependencies
-* [x] README
-* [x] Examples
-* [x] Tests
-* [x] Changelog
-* [x] Version
-* [x] Git tag
-* [x] Release notes
-* [x] Clean-environment installation test
+* [ ] Package metadata
+* [ ] Dependencies
+* [ ] README
+* [ ] Examples
+* [ ] Tests
+* [ ] Changelog
+* [ ] Version
+* [ ] Git tag
+* [ ] Release notes
+* [ ] Clean-environment installation test
 
 ---
 
@@ -633,20 +633,3 @@ Before implementing anything new:
 5. Test.
 6. Update this tracker.
 7. Git checkpoint.
-
-# Current Phase
-
-**PHASE 00 — Scope Lock**
-
-Status: READY
-
-
-
-
-git status --short
-
-```bash
-git add UI_KIT_TRACKER.md
-git commit -m "docs: add pylage ui kit development tracker"
-git status
-```
