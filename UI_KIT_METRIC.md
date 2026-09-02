@@ -15,6 +15,16 @@ ps.metric(
 )
 ```
 
+## KPI Usage
+
+`ps.metric()` is the standard UI Kit component for presenting Key Performance Indicators (KPIs).
+
+Use it for dashboard values such as Revenue, Active Users, Conversion Rate,
+Orders, Latency, or other measurable business and system indicators.
+
+For this reason, the UI Kit does not provide a separate `ps.kpi()` component.
+A KPI is a use-case of `ps.metric()`, not a separate UI component.
+
 ## API
 
 ```python

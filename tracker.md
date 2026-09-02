@@ -241,7 +241,11 @@ Sizes:
 ## Metrics
 
 * [x] `ps.metric()`
-* [ ] KPI
+* [x] KPI
+  - Skipped as a separate API/component: `ps.metric()` already represents the KPI presentation pattern.
+  - `ps.metric()` should be used for KPIs such as Revenue, Users, Conversion, Orders, or Latency.
+  - KPI is a use-case/concept, not a distinct component in the UI Kit.
+  - No `ps.kpi()` API is added to avoid duplicate functionality and unnecessary API surface.
 * [ ] Trend
 * [ ] Stat card
 
