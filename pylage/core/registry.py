@@ -666,6 +666,14 @@ registry.register(
             kind="attribute",
             html_name="title",
         ),
+        "headers": PropDefinition(
+            "headers",
+            kind="attribute",
+        ),
+        "data": PropDefinition(
+            "data",
+            kind="attribute",
+        ),
     },
 )
 

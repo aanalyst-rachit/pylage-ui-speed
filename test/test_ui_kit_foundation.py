@@ -26,5 +26,6 @@ def test_ui_kit_public_api():
         "heading",
         "metric",
         "text",
+        "table",
         "trend",
     ]

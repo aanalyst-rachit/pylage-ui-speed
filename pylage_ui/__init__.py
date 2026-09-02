@@ -7,6 +7,7 @@ from .divider import divider
 from .heading import heading
 from .metric import metric
 from .text import text
+from .table import table
 from .trend import trend
 
 __version__ = "0.1.0"
@@ -23,5 +24,6 @@ __all__ = [
     "heading",
     "metric",
     "text",
+    "table",
     "trend",
 ]

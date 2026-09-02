@@ -294,17 +294,115 @@ class HTMLRenderer:
 
     def _render_table(self, component: Component) -> str:
         common = self._render_common_attributes(component)
-        attributes = common + self._render_prop_attributes(
-            component,
-            excluded={"children"},
-        )
-        children = self._render_children(component)
 
-        return (
-            f"<table {attributes}>"
-            f"{children}"
-            f"</table>"
-        )
+        headers = self._value(component.props.get("headers"))
+        data = self._value(component.props.get("data"))
+
+        table_attributes = common
+
+        title = self._value(component.props.get("title"))
+        if title is not None:
+            table_attributes += f' title="{escape(str(title), quote=True)}"'
+
+        class_name = self._value(component.props.get("class_name"))
+        if class_name is not None:
+            table_attributes += f' class="{escape(str(class_name), quote=True)}"'
+
+        parts = [f"<table {table_attributes}>"]
+
+        if data is not None:
+            headers, rows = self._normalize_table_data(data, headers)
+
+            if headers:
+                parts.append("<thead><tr>")
+                for header in headers:
+                    parts.append(f"<th>{escape(str(header))}</th>")
+                parts.append("</tr></thead>")
+
+            parts.append("<tbody>")
+            for row in rows:
+                parts.append("<tr>")
+                for cell in row:
+                    parts.append(f"<td>{escape(self._table_cell_text(cell))}</td>")
+                parts.append("</tr>")
+            parts.append("</tbody>")
+        else:
+            for child in component.children:
+                rendered = self._render_component(child)
+                if rendered:
+                    parts.append(rendered)
+
+        parts.append("</table>")
+        return "".join(parts)
+
+    def _normalize_table_data(
+        self,
+        data: Any,
+        headers: Any = None,
+    ) -> tuple[list[Any], list[list[Any]]]:
+        headers = list(headers) if headers is not None else None
+
+        # pandas DataFrame
+        if hasattr(data, "columns") and hasattr(data, "to_dict"):
+            try:
+                columns = list(data.columns)
+                records = data.to_dict(orient="records")
+                return (
+                    headers or columns,
+                    [[record.get(column) for column in columns] for record in records],
+                )
+            except (TypeError, ValueError):
+                pass
+
+        # polars DataFrame / LazyFrame-like objects
+        if hasattr(data, "columns") and hasattr(data, "rows"):
+            try:
+                columns = list(data.columns)
+                rows = [list(row) for row in data.rows()]
+                return headers or columns, rows
+            except (TypeError, ValueError):
+                pass
+
+        # Mapping of column -> values
+        if isinstance(data, dict):
+            columns = list(data.keys())
+            values = [list(data[column]) for column in columns]
+            row_count = max((len(values_for_column) for values_for_column in values), default=0)
+            rows = [
+                [
+                    values[index] if index < len(values) else None
+                    for values in values
+                ]
+                for index in range(row_count)
+            ]
+            return headers or columns, rows
+
+        # List of record dictionaries
+        if isinstance(data, (list, tuple)) and data and all(
+            isinstance(item, dict) for item in data
+        ):
+            columns = headers or list(dict.fromkeys(
+                key for item in data for key in item
+            ))
+            rows = [[item.get(column) for column in columns] for item in data]
+            return columns, rows
+
+        # Ordinary row-oriented sequences
+        if isinstance(data, (list, tuple)):
+            rows = [
+                list(row) if isinstance(row, (list, tuple)) else [row]
+                for row in data
+            ]
+            if headers is None and rows:
+                headers = []
+            return headers or [], rows
+
+        return headers or [], [[data]]
+
+    def _table_cell_text(self, value: Any) -> str:
+        if value is None:
+            return ""
+        return str(value)
 
     def _render_dialog(self, component: Component) -> str:
         common = self._render_common_attributes(component)
