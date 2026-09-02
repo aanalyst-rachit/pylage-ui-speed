@@ -84,7 +84,7 @@ def get_app() -> Column:
     cta_pattern = CTA(
         title="Ready to transform your Python workflow?",
         description="Deploy your first reactive PyLage application in under five minutes.",
-        action=Button("Deploy to Cloud"),
+        actions=[Button("Deploy to Cloud")],
     )
 
     return Column(

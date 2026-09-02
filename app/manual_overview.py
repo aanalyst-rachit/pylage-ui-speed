@@ -104,6 +104,42 @@ def get_app() -> Column:
         style=Style(padding="1.5rem", background="#ffffff", border="1px solid #e2e8f0", border_radius="0.75rem", margin_bottom="1.5rem"),
     )
 
+    # -----------------------------------------------------------------
+    # Content area — this is the piece that was missing.
+    # It's the actual consumer of `active_section` State: whenever the
+    # State changes, we swap its children to the selected manual's app.
+    # -----------------------------------------------------------------
+    content_area = Column(
+        Card(
+            Heading("👋 Pick a section above", level=4),
+            Text("Click any button in the catalog below to preview that component or pattern live."),
+            style=Style(padding="1.5rem", background="#ffffff", border="1px dashed #cbd5e1", border_radius="0.75rem"),
+        ),
+        style=Style(margin_top="1.5rem"),
+    )
+
+    def switch_section(name: str):
+        def handler(e=None):
+            active_section.set(name)
+
+            factory = MANUAL_REGISTRY.get(name)
+
+            if factory is None:
+                # "Overview" selected — reset to the placeholder card.
+                content_area.set_children(
+                    Card(
+                        Heading("👋 Pick a section above", level=4),
+                        Text("Click any button in the catalog below to preview that component or pattern live."),
+                        style=Style(padding="1.5rem", background="#ffffff", border="1px dashed #cbd5e1", border_radius="0.75rem"),
+                    )
+                )
+                return
+
+            # Build the selected manual's app fresh and mount it.
+            content_area.set_children(factory())
+
+        return handler
+
     # Component Catalog Grid
     catalog_items = []
     for section_name in MANUAL_REGISTRY.keys():
@@ -112,7 +148,7 @@ def get_app() -> Column:
         catalog_items.append(
             Button(
                 section_name,
-                on_click=lambda name=section_name: active_section.set(name),
+                on_click=switch_section(section_name),
                 style=Style(
                     padding="0.625rem 1rem",
                     text_align="left",
@@ -135,5 +171,6 @@ def get_app() -> Column:
         header,
         overview_summary,
         nav_grid,
+        content_area,
         style=Style(padding="2rem", max_width="1100px", margin="0 auto"),
     )

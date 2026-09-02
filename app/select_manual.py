@@ -28,12 +28,18 @@ def get_app():
     # Native PyLage Select Generator
     # -------------------------------------------------------------------------
     def build_select(options_list, current_state, on_change_fn):
-        # 1. Agar PyLage me native Select component hai
+        
         if hasattr(ps, "Select"):
             try:
+                option_children = []
+                for opt in options_list:
+                    val = opt.get("value") if isinstance(opt, dict) else opt
+                    lbl = opt.get("label") if isinstance(opt, dict) else opt
+                    option_children.append(ps.Option(lbl, value=val))
+
                 return ps.Select(
-                    options=options_list,
-                    value=current_state.value,
+                    *option_children,           # ✅ actual <option> children
+                    value=current_state,        # ✅ State object, not .value
                     on_change=on_change_fn,
                     style=Style(
                         width="100%",
@@ -48,7 +54,6 @@ def get_app():
                 )
             except Exception:
                 pass
-
         # 2. Native Component Builder with raw HTML props
         from pylage.core.component import Component
 
