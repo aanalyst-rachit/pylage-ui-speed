@@ -122,19 +122,19 @@ import pylage_ui as ps
 
 Reuse the existing PyLage design infrastructure.
 
-* [ ] Spacing behavior
-* [ ] Radius behavior
-* [ ] Typography
-* [ ] Surface behavior
-* [ ] Borders
-* [ ] Shadows
-* [ ] Semantic colors
-* [ ] Focus states
-* [ ] Hover states
-* [ ] Disabled states
-* [ ] Responsive defaults
-* [ ] Density
-* [ ] Component sizing
+* [x] Spacing behavior
+* [x] Radius behavior
+* [x] Typography
+* [x] Surface behavior
+* [x] Borders
+* [x] Shadows
+* [x] Semantic colors
+* [x] Focus states
+* [x] Hover states
+* [x] Disabled states
+* [x] Responsive defaults
+* [x] Density
+* [x] Component sizing
 
 ### Principle
 
@@ -588,10 +588,10 @@ Release checklist:
 # MASTER STATUS
 
 ```text
-PHASE 00  Scope Lock                [ ]
-PHASE 01  Existing API Audit        [ ]
-PHASE 02  Package Foundation        [ ]
-PHASE 03  Design Contract           [ ]
+PHASE 00  Scope Lock                [x]
+PHASE 01  Existing API Audit        [x]
+PHASE 02  Package Foundation        [x]
+PHASE 03  Design Contract           [x]
 PHASE 04  API Conventions           [ ]
 PHASE 05  First Component           [ ]
 PHASE 06  Surface Components        [ ]
