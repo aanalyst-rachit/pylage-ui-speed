@@ -18,4 +18,5 @@ def test_ui_kit_public_api():
         "IMPORT_NAME",
         "PACKAGE_NAME",
         "__version__",
+        "button",
     ]

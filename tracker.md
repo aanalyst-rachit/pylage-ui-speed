@@ -182,35 +182,26 @@ ps.button("Save")
 
 Variants:
 
-* [ ] primary
-* [ ] secondary
-* [ ] outline
-* [ ] ghost
-* [ ] danger
+* [x] primary
+* [x] secondary
+* [x] outline
+* [x] ghost
+* [x] danger
 
 Sizes:
 
-* [ ] sm
+* [x] sm
+* [x] md
+* [x] lg
 
-* [ ] md
-
-* [ ] lg
-
-* [ ] API
-
-* [ ] Implementation
-
-* [ ] Styling
-
-* [ ] Interaction
-
-* [ ] Disabled state
-
-* [ ] Tests
-
-* [ ] Manual demo
-
-* [ ] Documentation
+* [x] API
+* [x] Implementation
+* [x] Styling
+* [x] Interaction
+* [x] Disabled state
+* [x] Tests
+* [x] Manual demo
+* [x] Documentation
 
 ### Exit Condition
 
@@ -593,8 +584,8 @@ PHASE 00  Scope Lock                [x]
 PHASE 01  Existing API Audit        [x]
 PHASE 02  Package Foundation        [x]
 PHASE 03  Design Contract           [x]
-PHASE 04  API Conventions           [ ]
-PHASE 05  First Component           [ ]
+PHASE 04  API Conventions           [x]
+PHASE 05  First Component           [x]
 PHASE 06  Surface Components        [ ]
 PHASE 07  Data/Dashboard            [ ]
 PHASE 08  Forms                     [ ]

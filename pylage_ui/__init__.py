@@ -1,4 +1,11 @@
 from ._meta import IMPORT_NAME, PACKAGE_NAME
+from .button import button
+
 __version__ = "0.1.0"
 
-__all__ = ["IMPORT_NAME", "PACKAGE_NAME", "__version__"]
+__all__ = [
+    "IMPORT_NAME",
+    "PACKAGE_NAME",
+    "__version__",
+    "button",
+]
