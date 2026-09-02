@@ -246,7 +246,7 @@ Sizes:
   - `ps.metric()` should be used for KPIs such as Revenue, Users, Conversion, Orders, or Latency.
   - KPI is a use-case/concept, not a distinct component in the UI Kit.
   - No `ps.kpi()` API is added to avoid duplicate functionality and unnecessary API surface.
-* [ ] Trend
+* [x] `ps.trend()`
 * [ ] Stat card
 
 ## Data
