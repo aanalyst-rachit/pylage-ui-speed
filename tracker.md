@@ -103,14 +103,14 @@ Every relevant existing capability is classified as:
 
 # PHASE 02 — Package Foundation
 
-* [ ] Create `pylage-ui-kit`
-* [ ] Create `pylage_ui` package
-* [ ] Define public API
-* [ ] Define internal API
-* [ ] Define versioning
-* [ ] Define dependencies
-* [ ] Add basic tests
-* [ ] Verify:
+* [x] Create `pylage-ui-kit`
+* [x] Create `pylage_ui` package
+* [x] Define public API
+* [x] Define internal API
+* [x] Define versioning
+* [x] Define dependencies
+* [x] Add basic tests
+* [x] Verify:
 
 ```python
 import pylage_ui as ps
