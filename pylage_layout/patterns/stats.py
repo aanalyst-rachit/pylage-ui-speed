@@ -24,7 +24,7 @@ def Metric(
     if delta is not None:
         delta_str = str(getattr(delta, "value", delta))
         badge_variant = "success" if delta_str.startswith("+") else ("danger" if delta_str.startswith("-") else "secondary")
-        delta_comp = Badge(delta, variant=badge_variant, class_name="metric-delta")
+        delta_comp = Badge(Text(delta), variant=badge_variant, class_name="metric-delta")
         children.append(Row(val_comp, delta_comp, class_name="metric-value-row"))
     else:
         children.append(val_comp)

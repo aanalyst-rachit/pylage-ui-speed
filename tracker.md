@@ -240,7 +240,7 @@ Sizes:
 
 ## Metrics
 
-* [ ] `ps.metric()`
+* [x] `ps.metric()`
 * [ ] KPI
 * [ ] Trend
 * [ ] Stat card

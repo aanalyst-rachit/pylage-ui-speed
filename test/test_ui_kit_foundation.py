@@ -24,5 +24,6 @@ def test_ui_kit_public_api():
         "card",
         "divider",
         "heading",
+        "metric",
         "text",
     ]

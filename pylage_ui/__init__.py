@@ -5,6 +5,7 @@ from .button import button
 from .card import card
 from .divider import divider
 from .heading import heading
+from .metric import metric
 from .text import text
 
 __version__ = "0.1.0"
@@ -19,5 +20,6 @@ __all__ = [
     "card",
     "divider",
     "heading",
+    "metric",
     "text",
 ]
