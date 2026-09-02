@@ -38,11 +38,15 @@ from app import (
     ui_kit_card_manual,
     ui_kit_text_manual,
     ui_kit_badge_manual,
+    ui_kit_avatar_manual,
+    ui_kit_divider_manual,
+    ui_kit_metric_manual,
+    ui_kit_trend_manual,
 )
 
 from pylage import run
 
-overview_app = ui_kit_card_manual.get_app()
+overview_app = ui_kit_trend_manual.get_app()
 
 
 
