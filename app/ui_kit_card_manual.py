@@ -1,13 +1,6 @@
-import sys
-from pathlib import Path
-
-# Ensure local pylage import
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 import pylage as ps
 import pylage_ui as ui
-from pylage import Style
-
+from pylage import Column, Grid, Style
 
 def get_app():
     click_count = ps.State(0)
@@ -15,56 +8,43 @@ def get_app():
     def mark_clicked():
         click_count.set(click_count.value + 1)
 
-    return ps.Column(
-        ps.Heading(
-            "PyLage UI Kit — Card",
-            level=2,
-        ),
-        ps.Text(
-            "Semantic Card API using the existing PyLage engine."
-        ),
-
-        ps.Heading("Default", level=3),
-        ui.card(
-            heading="Revenue",
-            body="₹42,000",
-            footer="Monthly revenue",
-        ),
-
-        ps.Heading("Elevated", level=3),
-        ui.card(
-            heading="Active Users",
-            body="12,450",
-            footer="Growing steadily",
-            variant="elevated",
-        ),
-
-        ps.Heading("Outlined", level=3),
-        ui.card(
-            heading="Orders",
-            body="1,284 orders this month",
-            footer="Updated just now",
-            variant="outlined",
-        ),
-
-        ps.Heading("Interactive", level=3),
-        ui.card(
-            heading="Interactive Card — Click Me",
-            body="Click this card to test the UI Kit interaction.",
-            footer=click_count,
-            variant="interactive",
-            on_click=mark_clicked,
-        ),
-
-        ps.Heading("Advanced Composition", level=3),
-        ui.card(
-            ps.Column(
-                ps.Heading("Custom Header", level=4),
-                ps.Text("Custom body content"),
-                ps.Text("Custom footer content"),
+    return Column(
+        ps.Heading("PyLage UI Kit — Card", level=2),
+        ps.Text("Semantic Card API using the existing PyLage engine."),
+        
+        # Grid div par direct inline grid styles pass karein
+        Grid(
+            ui.card(
+                heading="Revenue",
+                body="₹42,000",
+                footer="Monthly revenue",
+            ),
+            ui.card(
+                heading="Active Users",
+                body="12,450",
+                footer="Growing steadily",
+                variant="elevated",
+            ),
+            ui.card(
+                heading="Orders",
+                body="1,284",
+                footer="Updated just now",
+                variant="outlined",
+            ),
+            ui.card(
+                heading="Interactive Card",
+                body="Click to test state update",
+                footer=click_count,
+                variant="interactive",
+                on_click=mark_clicked,
             ),
             style=Style(
-                background_color="#f8fafc",
-            ),
+                display="grid",
+                grid_template_columns="repeat(auto-fit, minmax(280px, 1fr))",
+                gap="1.5rem",
+                width="100%"
+            )
         ),
+        gap="1.5rem",
+        style=Style(max_width="1200px", margin="0 auto", padding="2rem")
     )
