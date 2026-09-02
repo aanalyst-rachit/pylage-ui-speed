@@ -230,7 +230,7 @@ Sizes:
 
 ## Other
 
-* [ ] `ps.badge()`
+* [x] `ps.badge()`
 * [ ] `ps.avatar()`
 * [ ] `ps.divider()`
 
