@@ -150,18 +150,19 @@ Advanced customization remains optional.
 
 # PHASE 04 — API Conventions
 
-Define common conventions before building many components.
-
-* [ ] `variant`
-* [ ] `size`
-* [ ] `disabled`
-* [ ] `visible`
-* [ ] `style`
-* [ ] Event/callback convention
-* [ ] State convention
-* [ ] Responsive convention
-* [ ] Naming convention
-* [ ] Return-value convention
+* [x] `variant`
+* [x] `size`
+* [x] `disabled`
+* [x] `visible`
+* [x] `style`
+* [x] Event/callback convention
+* [x] State convention
+* [x] Responsive convention
+* [x] Naming convention
+* [x] Return-value convention
+* [x] Children handling
+* [x] Props handling
+* [x] Accessibility defaults
 
 ### Principle
 
