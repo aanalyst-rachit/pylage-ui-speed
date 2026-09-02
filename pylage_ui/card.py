@@ -60,7 +60,7 @@ def card(
     semantic_children = []
 
     if heading is not None:
-        semantic_children.append(_Heading(heading, level=4))
+        semantic_children.append(_Heading(heading))
 
     if body is not None:
         semantic_children.append(_Text(body))

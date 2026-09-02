@@ -20,4 +20,6 @@ def test_ui_kit_public_api():
         "__version__",
         "button",
         "card",
+        "heading",
+        "text",
     ]

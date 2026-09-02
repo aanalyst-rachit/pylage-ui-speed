@@ -222,11 +222,11 @@ Sizes:
 
 ## Text
 
-* [ ] `ps.text()`
-* [ ] `ps.heading()`
-* [ ] Muted text
-* [ ] Label
-* [ ] Caption
+* [x] `ps.text()`
+* [x] `ps.heading()`
+* [x] Muted text
+* [x] Label
+* [x] Caption
 
 ## Other
 
