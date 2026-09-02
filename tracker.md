@@ -62,12 +62,12 @@ pylage-ui-kit = polished high-level developer API
 
 ## Component Audit
 
-* [ ] Audit existing `pylage` components
-* [ ] Audit existing `pylage_layout` components
-* [ ] Identify direct re-exports
-* [ ] Identify wrappers
-* [ ] Identify recipes
-* [ ] Identify genuinely missing capabilities
+* [x] Audit existing `pylage` components
+* [x] Audit existing `pylage_layout` components
+* [x] Identify direct re-exports
+* [x] Identify wrappers
+* [x] Identify recipes
+* [x] Identify genuinely missing capabilities
 
 ## Classification
 
@@ -91,7 +91,7 @@ implement only when genuinely necessary
 
 ## Deliverable
 
-* [ ] Create `UI_KIT_API_AUDIT.md`
+* [x] Create `UI_KIT_API_AUDIT.md`
 
 ### Exit Condition
 
