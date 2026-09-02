@@ -247,7 +247,10 @@ Sizes:
   - KPI is a use-case/concept, not a distinct component in the UI Kit.
   - No `ps.kpi()` API is added to avoid duplicate functionality and unnecessary API surface.
 * [x] `ps.trend()`
-* [ ] Stat card
+* [x] Stat card
+  - Skipped as a separate API/component: `ps.metric()` already provides the standard statistic/KPI presentation pattern.
+  - Use `ps.trend()` for directional context and `ps.card()` when a richer or custom statistic layout is needed.
+  - No `ps.stat_card()` API is added to avoid overlapping abstractions and unnecessary API surface.
 
 ## Data
 
