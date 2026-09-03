@@ -1,5 +1,5 @@
-from pylage import Spinner
-from pylage.core.renderer import render
+from pylage.ENGINE import Spinner
+from pylage.ENGINE.core.renderer import render
 
 
 def test_spinner_renders_as_div():

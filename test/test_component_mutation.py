@@ -1,4 +1,4 @@
-from pylage.core.component import Component
+from pylage.ENGINE.core.component import Component
 
 
 def test_add_appends_children_and_returns_parent():

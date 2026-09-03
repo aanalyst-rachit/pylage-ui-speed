@@ -1,6 +1,7 @@
 import pylage as ps
+from pylage.ENGINE import Button
 
-from pylage.core.renderer import render
+from pylage.ENGINE.core.renderer import render
 
 
 print("=== PYLAGE EVENT RENDER TEST ===")
@@ -10,7 +11,7 @@ def clicked():
     pass
 
 
-button = ps.Button(
+button = Button(
     "Click me",
     on_click=clicked,
 )
@@ -30,7 +31,7 @@ print("Event metadata: PASS")
 print("Callback isolation: PASS")
 
 
-plain_button = ps.Button("Plain")
+plain_button = Button("Plain")
 
 plain_html = render(plain_button)
 

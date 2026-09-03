@@ -1,7 +1,8 @@
 from playwright.sync_api import sync_playwright
 
 import pylage as ps
-from pylage.runtime import Runtime
+from pylage.ENGINE import Checkbox, Column, Input, Option, Select
+from pylage.ENGINE.runtime import Runtime
 
 
 def test_browser_event_payload_protocol():
@@ -24,31 +25,31 @@ def test_browser_event_payload_protocol():
     def on_multi(payload):
         received["multi"] = payload
 
-    input_box = ps.Input(
+    input_box = Input(
         "",
         on_input=on_input,
     )
 
-    checkbox = ps.Checkbox(
+    checkbox = Checkbox(
         on_change=on_checkbox,
     )
 
-    select = ps.Select(
-        ps.Option("India", value="india"),
-        ps.Option("Japan", value="japan"),
+    select = Select(
+        Option("India", value="india"),
+        Option("Japan", value="japan"),
         on_change=on_select,
     )
 
-    multi_select = ps.Select(
-        ps.Option(
+    multi_select = Select(
+        Option(
             "Python",
             value="python",
         ),
-        ps.Option(
+        Option(
             "Rust",
             value="rust",
         ),
-        ps.Option(
+        Option(
             "Go",
             value="go",
         ),
@@ -56,7 +57,7 @@ def test_browser_event_payload_protocol():
         on_change=on_multi,
     )
 
-    app = ps.Column(
+    app = Column(
         input_box,
         checkbox,
         select,

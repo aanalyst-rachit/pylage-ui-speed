@@ -1,4 +1,4 @@
-from pylage.runtime.client import get_client_runtime
+from pylage.ENGINE.runtime.client import get_client_runtime
 
 
 print("=== PYLAGE CLIENT RUNTIME TEST ===")

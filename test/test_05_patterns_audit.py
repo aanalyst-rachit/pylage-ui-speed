@@ -35,32 +35,32 @@ PATTERN_MODULES = [
 
 
 def test_patterns_package_imports():
-    patterns = importlib.import_module("pylage_layout.patterns")
+    patterns = importlib.import_module("pylage.UI.patterns")
     assert patterns is not None
 
 
 def test_pattern_modules_import():
     for module_name in PATTERN_MODULES:
         module = importlib.import_module(
-            f"pylage_layout.patterns.{module_name}"
+            f"pylage.UI.patterns.{module_name}"
         )
         assert module is not None
 
 
 def test_patterns_public_api_exists():
-    patterns = importlib.import_module("pylage_layout.patterns")
+    patterns = importlib.import_module("pylage.UI.patterns")
 
     assert hasattr(patterns, "__all__")
     assert patterns.__all__
 
     for name in patterns.__all__:
         assert hasattr(patterns, name), (
-            f"pylage_layout.patterns missing public export: {name}"
+            f"pylage.UI.patterns missing public export: {name}"
         )
 
 
 def test_patterns_public_exports_are_callable():
-    patterns = importlib.import_module("pylage_layout.patterns")
+    patterns = importlib.import_module("pylage.UI.patterns")
 
     for name in patterns.__all__:
         assert callable(getattr(patterns, name)), (
@@ -69,7 +69,7 @@ def test_patterns_public_exports_are_callable():
 
 
 def test_hero_public_api():
-    patterns = importlib.import_module("pylage_layout.patterns")
+    patterns = importlib.import_module("pylage.UI.patterns")
 
     assert hasattr(patterns, "Hero")
 
@@ -87,7 +87,7 @@ def test_hero_public_api():
 def test_pattern_modules_have_public_symbols():
     for module_name in PATTERN_MODULES:
         module = importlib.import_module(
-            f"pylage_layout.patterns.{module_name}"
+            f"pylage.UI.patterns.{module_name}"
         )
 
         public_names = [

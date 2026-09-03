@@ -1,8 +1,8 @@
 import asyncio
 import json
 
-from pylage.core.component import Component
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_tree_replace_is_broadcast_when_component_is_replaced():

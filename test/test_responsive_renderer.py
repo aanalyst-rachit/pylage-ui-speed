@@ -1,18 +1,19 @@
 import pylage as ps
+from pylage.ENGINE import ResponsiveStyle, Style, Text, Theme
 
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 def test_renderer_can_render_responsive_style():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             color="black",
             font_size="16px",
         ),
-        sm=ps.Style(
+        sm=Style(
             color="blue",
         ),
-        md=ps.Style(
+        md=Style(
             color="green",
             font_size="20px",
         ),
@@ -21,7 +22,7 @@ def test_renderer_can_render_responsive_style():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Text(
+        Text(
             "Hello",
             style=responsive,
         )
@@ -39,9 +40,9 @@ def test_renderer_without_responsive_style_remains_compatible():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Text(
+        Text(
             "Hello",
-            style=ps.Style(color="red"),
+            style=Style(color="red"),
         )
     )
 
@@ -50,18 +51,18 @@ def test_renderer_without_responsive_style_remains_compatible():
 
 
 def test_responsive_style_can_use_theme_variables_in_renderer():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
             "background": "#ffffff",
         },
     )
 
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             color="var(--color-primary)",
         ),
-        md=ps.Style(
+        md=Style(
             color="var(--color-background)",
         ),
     )
@@ -69,7 +70,7 @@ def test_responsive_style_can_use_theme_variables_in_renderer():
     renderer = HTMLRenderer(theme=theme)
 
     html = renderer.render(
-        ps.Text(
+        Text(
             "Hello",
             style=responsive,
         )

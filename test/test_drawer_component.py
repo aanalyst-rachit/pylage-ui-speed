@@ -1,5 +1,5 @@
-from pylage import Drawer, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Drawer, Text, Button, State
+from pylage.ENGINE.core.renderer import render
 
 
 def test_drawer_renders_as_aside():
@@ -50,7 +50,7 @@ def test_drawer_supports_open_boolean():
 
 def test_drawer_supports_reactive_open_state():
     import pylage as ps
-    open_state = ps.State(False)
+    open_state = State(False)
     drawer = Drawer(open=open_state)
 
     assert " open" not in render(drawer)

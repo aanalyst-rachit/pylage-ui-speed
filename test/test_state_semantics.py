@@ -1,4 +1,4 @@
-from pylage.core.state import State
+from pylage.ENGINE.core.state import State
 
 
 def test_same_value_does_not_notify():

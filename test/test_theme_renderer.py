@@ -1,10 +1,11 @@
 import pylage as ps
+from pylage.ENGINE import Column, Style, Text, Theme
 
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 def test_renderer_can_render_with_theme_css_variables():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
             "background": "#ffffff",
@@ -17,9 +18,9 @@ def test_renderer_can_render_with_theme_css_variables():
     renderer = HTMLRenderer(theme=theme)
 
     html = renderer.render(
-        ps.Text(
+        Text(
             "Hello",
-            style=ps.Style(
+            style=Style(
                 color="var(--color-primary)",
                 background_color="var(--color-background)",
                 padding="var(--spacing-md)",
@@ -40,9 +41,9 @@ def test_renderer_without_theme_remains_compatible():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Text(
+        Text(
             "Hello",
-            style=ps.Style(color="red"),
+            style=Style(color="red"),
         )
     )
 
@@ -50,7 +51,7 @@ def test_renderer_without_theme_remains_compatible():
 
 
 def test_theme_css_is_emitted_once():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
         },
@@ -59,9 +60,9 @@ def test_theme_css_is_emitted_once():
     renderer = HTMLRenderer(theme=theme)
 
     html = renderer.render(
-        ps.Column(
-            ps.Text("One"),
-            ps.Text("Two"),
+        Column(
+            Text("One"),
+            Text("Two"),
         )
     )
 

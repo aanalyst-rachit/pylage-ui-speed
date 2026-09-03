@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from pylage import Style
-from pylage.core.renderer import render
-from pylage_ui import dataframe
+from pylage.ENGINE import Style
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import dataframe
 
 
 class FakeDataFrame:

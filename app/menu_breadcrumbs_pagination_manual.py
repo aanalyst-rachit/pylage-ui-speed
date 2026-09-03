@@ -1,20 +1,6 @@
 """Manual demo for PyLage Navigation & Wayfinding components (Menu, Breadcrumbs, Pagination, Navigation)."""
 
-from pylage import (
-    Menu,
-    Breadcrumbs,
-    Pagination,
-    Navigation,
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Menu, Breadcrumbs, Pagination, Navigation, Column, Row, Card, Heading, Text, Button, Badge, State, Style
 
 
 def get_app() -> Column:

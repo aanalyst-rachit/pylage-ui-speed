@@ -1,5 +1,5 @@
-from pylage import Card, Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Card, Text
+from pylage.ENGINE.core.renderer import render
 
 
 def test_card_creates_card_component():

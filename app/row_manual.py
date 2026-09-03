@@ -2,14 +2,15 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Button, Column, Heading, Row, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # Dynamic State for Row Interactivity Demo
-    active_tab = ps.State("Home")
+    active_tab = State("Home")
 
     def select_home():
         active_tab.set("Home")
@@ -22,8 +23,8 @@ def get_app():
 
     # Helper function for dummy boxes
     def create_box(text, bg_color="#2563eb", width="80px", height="50px"):
-        return ps.Column(
-            ps.Text(text, style=Style(color="#ffffff", font_weight="700")),
+        return Column(
+            Text(text, style=Style(color="#ffffff", font_weight="700")),
             style=Style(
                 background_color=bg_color,
                 width=width,
@@ -38,7 +39,7 @@ def get_app():
     # ============================================================
     # 1. BASIC ROW WITH GAP
     # ============================================================
-    basic_row = ps.Row(
+    basic_row = Row(
         create_box("Box 1", "#2563eb"),
         create_box("Box 2", "#7c3aed"),
         create_box("Box 3", "#dc2626"),
@@ -55,7 +56,7 @@ def get_app():
     # ============================================================
     # 2. JUSTIFY CONTENT (Space Between)
     # ============================================================
-    justify_row = ps.Row(
+    justify_row = Row(
         create_box("Left", "#059669"),
         create_box("Center", "#d97706"),
         create_box("Right", "#2563eb"),
@@ -74,7 +75,7 @@ def get_app():
     # ============================================================
     # 3. ALIGN ITEMS (Vertical Alignment)
     # ============================================================
-    align_row = ps.Row(
+    align_row = Row(
         create_box("Tall", "#7c3aed", height="80px"),
         create_box("Short", "#2563eb", height="40px"),
         create_box("Medium", "#059669", height="60px"),
@@ -92,7 +93,7 @@ def get_app():
     # ============================================================
     # 4. FLEX WRAP DEMO
     # ============================================================
-    wrap_row = ps.Row(
+    wrap_row = Row(
         create_box("Item 1", "#2563eb", width="150px"),
         create_box("Item 2", "#7c3aed", width="150px"),
         create_box("Item 3", "#dc2626", width="150px"),
@@ -111,10 +112,10 @@ def get_app():
     # ============================================================
     # 5. INTERACTIVE NAVIGATION ROW (State Triggering)
     # ============================================================
-    nav_row = ps.Row(
-        ps.Button("Home", on_click=select_home, style=Style(padding="0.5rem 1rem", cursor="pointer")),
-        ps.Button("Profile", on_click=select_profile, style=Style(padding="0.5rem 1rem", cursor="pointer")),
-        ps.Button("Settings", on_click=select_settings, style=Style(padding="0.5rem 1rem", cursor="pointer")),
+    nav_row = Row(
+        Button("Home", on_click=select_home, style=Style(padding="0.5rem 1rem", cursor="pointer")),
+        Button("Profile", on_click=select_profile, style=Style(padding="0.5rem 1rem", cursor="pointer")),
+        Button("Settings", on_click=select_settings, style=Style(padding="0.5rem 1rem", cursor="pointer")),
         style=Style(
             gap="0.75rem",
             padding="1rem",
@@ -125,32 +126,32 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Row — Live Manual",
             style=Style(font_size="1.75rem", font_weight="700", color="#0f172a", margin_bottom="0.5rem"),
         ),
-        ps.Text(
+        Text(
             "Row layout component ke positional alignment aur responsive features test karein:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
 
-        ps.Text("1. Basic Horizontal Row (With Gap)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("1. Basic Horizontal Row (With Gap)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         basic_row,
 
-        ps.Text("2. Justify Content (Space Between)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("2. Justify Content (Space Between)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         justify_row,
 
-        ps.Text("3. Vertical Alignment (Center Aligned)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("3. Vertical Alignment (Center Aligned)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         align_row,
 
-        ps.Text("4. Flex Wrap Behavior", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("4. Flex Wrap Behavior", style=Style(font_weight="700", margin_bottom="0.5rem")),
         wrap_row,
 
-        ps.Text("5. Interactive Nav Row", style=Style(font_weight="700", margin_bottom="0.5rem")),
-        ps.Row(
-            ps.Text("Active Tab: ", style=Style(font_weight="600")),
-            ps.Heading(active_tab, style=Style(color="#2563eb", font_size="1rem")),
+        Text("5. Interactive Nav Row", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Row(
+            Text("Active Tab: ", style=Style(font_weight="600")),
+            Heading(active_tab, style=Style(color="#2563eb", font_size="1rem")),
             style=Style(gap="0.5rem", margin_bottom="0.5rem", align_items="center"),
         ),
         nav_row,

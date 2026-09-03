@@ -2,15 +2,16 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Button, Card, Column, Heading, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # Dynamic States for Interactivity
-    click_count = ps.State(0)
-    card_status = ps.State("Status: Idle")
+    click_count = State(0)
+    card_status = State("Status: Idle")
 
     def handle_card_click():
         new_count = click_count.value + 1
@@ -20,9 +21,9 @@ def get_app():
     # ============================================================
     # 1. BASIC CARD
     # ============================================================
-    basic_card = ps.Card(
-        ps.Text("Minimal Card", style=Style(font_weight="700")),
-        ps.Text("Ye simple content container card hai.", style=Style(color="#64748b")),
+    basic_card = Card(
+        Text("Minimal Card", style=Style(font_weight="700")),
+        Text("Ye simple content container card hai.", style=Style(color="#64748b")),
         style=Style(
             background_color="#ffffff",
             padding="1.25rem",
@@ -35,9 +36,9 @@ def get_app():
     # ============================================================
     # 2. ELEVATED CARD (Shadow & Custom Border)
     # ============================================================
-    elevated_card = ps.Card(
-        ps.Heading("Elevated Card", style=Style(font_size="1.25rem", color="#0f172a")),
-        ps.Text(
+    elevated_card = Card(
+        Heading("Elevated Card", style=Style(font_size="1.25rem", color="#0f172a")),
+        Text(
             "Box-shadow, custom border aur rounded corners prop customisation.",
             style=Style(color="#475569", margin_top="0.5rem"),
         ),
@@ -54,10 +55,10 @@ def get_app():
     # ============================================================
     # 3. INTERACTIVE / CLICKABLE CARD
     # ============================================================
-    interactive_card = ps.Card(
-        ps.Heading("Interactive Card (Click Me)", style=Style(font_size="1.25rem", color="#2563eb")),
-        ps.Text("Click handling & dynamic state update demo.", style=Style(color="#64748b", margin_top="0.25rem")),
-        ps.Heading(click_count, style=Style(color="#166534", margin_top="1rem")),
+    interactive_card = Card(
+        Heading("Interactive Card (Click Me)", style=Style(font_size="1.25rem", color="#2563eb")),
+        Text("Click handling & dynamic state update demo.", style=Style(color="#64748b", margin_top="0.25rem")),
+        Heading(click_count, style=Style(color="#166534", margin_top="1rem")),
         on_click=handle_card_click,
         style=Style(
             background_color="#eff6ff",
@@ -72,24 +73,24 @@ def get_app():
     # ============================================================
     # 4. FULL COMPOSED CARD (Header, Body, Footer)
     # ============================================================
-    composed_card = ps.Card(
+    composed_card = Card(
         # Card Header
-        ps.Column(
-            ps.Heading("Product Analytics", style=Style(font_size="1.25rem", color="#0f172a")),
-            ps.Text("Monthly subscription overview", style=Style(color="#64748b", font_size="0.875rem")),
+        Column(
+            Heading("Product Analytics", style=Style(font_size="1.25rem", color="#0f172a")),
+            Text("Monthly subscription overview", style=Style(color="#64748b", font_size="0.875rem")),
             style=Style(margin_bottom="1rem"),
         ),
         # Card Body (Fixed Style without border_top/border_bottom)
-        ps.Column(
-            ps.Text("Active Users: 1,240", style=Style(font_weight="600", color="#166534")),
-            ps.Text("Revenue: $4,500", style=Style(font_weight="600", color="#2563eb")),
+        Column(
+            Text("Active Users: 1,240", style=Style(font_weight="600", color="#166534")),
+            Text("Revenue: $4,500", style=Style(font_weight="600", color="#2563eb")),
             style=Style(
                 padding="1rem 0",
                 border="1px solid #e2e8f0"
             ),
         ),
         # Card Footer Action
-        ps.Button(
+        Button(
             "View Full Report",
             style=Style(
                 background_color="#0f172a",
@@ -110,28 +111,28 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Card — Live Manual",
             style=Style(font_size="1.75rem", font_weight="700", color="#0f172a", margin_bottom="0.5rem"),
         ),
-        ps.Text(
+        Text(
             "Card component ke alag-alag variations aur interactive event handling test karein:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
 
-        ps.Text(card_status, style=Style(color="#166534", font_weight="600", margin_bottom="1rem")),
+        Text(card_status, style=Style(color="#166534", font_weight="600", margin_bottom="1rem")),
 
-        ps.Text("1. Basic Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("1. Basic Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
         basic_card,
 
-        ps.Text("2. Elevated Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("2. Elevated Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
         elevated_card,
 
-        ps.Text("3. Interactive Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("3. Interactive Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
         interactive_card,
 
-        ps.Text("4. Composed Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("4. Composed Card", style=Style(font_weight="700", margin_bottom="0.5rem")),
         composed_card,
 
         style=Style(

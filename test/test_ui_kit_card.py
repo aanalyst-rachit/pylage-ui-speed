@@ -1,8 +1,8 @@
-from pylage import Card as EngineCard
-from pylage import Style, Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Card as EngineCard
+from pylage.ENGINE import Style, Text
+from pylage.ENGINE.core.renderer import render
 
-import pylage_ui as ui
+import pylage.UI as ui
 
 
 def test_card_returns_existing_card_component():

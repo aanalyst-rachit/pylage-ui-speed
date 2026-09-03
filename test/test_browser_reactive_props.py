@@ -3,16 +3,17 @@ import time
 import webbrowser
 
 import pylage as ps
-from pylage.core.component import Component
-from pylage.runtime import Runtime
+from pylage.ENGINE import Column, State
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.runtime import Runtime
 
 
 print("=== PYLAGE BROWSER GENERIC REACTIVE PROPS TEST ===")
 
-text = ps.State("Hello")
-value = ps.State("100")
-disabled = ps.State(False)
-title = ps.State("Initial title")
+text = State("Hello")
+value = State("100")
+disabled = State(False)
+title = State("Initial title")
 
 button = Component(
     type="Button",
@@ -24,7 +25,7 @@ button = Component(
     },
 )
 
-app = ps.Column(button)
+app = Column(button)
 
 runtime = Runtime(
     app,

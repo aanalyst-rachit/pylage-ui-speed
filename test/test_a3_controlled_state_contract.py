@@ -1,6 +1,6 @@
-from pylage.core.binding import StateBinding
-from pylage.core.component import Component
-from pylage.core.state import State
+from pylage.ENGINE.core.binding import StateBinding
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.state import State
 
 
 def test_same_value_state_update_does_not_broadcast():

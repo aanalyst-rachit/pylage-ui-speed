@@ -1,8 +1,9 @@
 from pathlib import Path
 from urllib.request import urlopen
 
-from pylage import Button, Column, Heading, run
-from pylage.runtime import LocalServer
+from pylage import run
+from pylage.ENGINE import Button, Column, Heading
+from pylage.ENGINE.runtime import LocalServer
 
 
 print("=== PYLAGE RUNTIME LIFECYCLE TEST ===")

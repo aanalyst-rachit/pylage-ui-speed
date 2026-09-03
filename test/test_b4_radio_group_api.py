@@ -1,9 +1,10 @@
 import pylage as ps
-from pylage.core.renderer import render
+from pylage.ENGINE import Input, RadioGroup, State
+from pylage.ENGINE.core.renderer import render
 
 
 def _radio(value, *, name="choice", **props):
-    return ps.Input(
+    return Input(
         input_type="radio",
         name=name,
         value=value,
@@ -12,7 +13,7 @@ def _radio(value, *, name="choice", **props):
 
 
 def test_radio_group_renders_radio_options():
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("a"),
         _radio("b"),
     )
@@ -26,7 +27,7 @@ def test_radio_group_renders_radio_options():
 
 
 def test_radio_group_preserves_option_order():
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("a"),
         _radio("b"),
         _radio("c"),
@@ -39,7 +40,7 @@ def test_radio_group_preserves_option_order():
 
 
 def test_radio_group_supports_props():
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("a"),
         class_name="choice-group",
         title="Choose one",
@@ -52,7 +53,7 @@ def test_radio_group_supports_props():
 
 
 def test_radio_group_value_selects_matching_radio():
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("male"),
         _radio("female"),
         value="female",
@@ -65,9 +66,9 @@ def test_radio_group_value_selects_matching_radio():
 
 
 def test_radio_group_value_supports_state():
-    selected = ps.State("male")
+    selected = State("male")
 
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("male"),
         _radio("female"),
         value=selected,
@@ -89,7 +90,7 @@ def test_radio_group_value_supports_state():
 def test_radio_group_change_event_is_registered():
     received = []
 
-    group = ps.RadioGroup(
+    group = RadioGroup(
         _radio("male"),
         _radio("female"),
         on_change=lambda payload: received.append(payload),
@@ -101,7 +102,7 @@ def test_radio_group_change_event_is_registered():
 
 
 def test_radio_group_registry_declares_value_as_reactive():
-    from pylage.core.registry import registry
+    from pylage.ENGINE.core.registry import registry
 
     definition = registry.get("RadioGroup")
 
@@ -112,7 +113,7 @@ def test_radio_group_registry_declares_value_as_reactive():
 
 
 def test_radio_group_existing_component_contract_is_preserved():
-    group = ps.RadioGroup()
+    group = RadioGroup()
 
     assert group.type == "RadioGroup"
     assert group.children == []

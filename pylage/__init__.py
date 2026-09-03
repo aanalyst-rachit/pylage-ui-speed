@@ -1,54 +1,32 @@
-from pylage.app import run
-from pylage.components import Canvas, Icon, Audio, Video, Image, Grid, Carousel, Accordion, Avatar, Badge, Divider, Button, Card, Column, Row, Dialog, Form, Heading, Input, Navigation, RadioGroup, Select, Option, Slider, Switch, Table, DataFrame, Tabs, Text, Checkbox, DatePicker, Alert, Toast, Spinner, ProgressBar, Skeleton, Breadcrumbs, Pagination, Menu, Drawer, Tooltip, Popover
-from pylage.core.state import State
-from pylage.styling import Style, Theme, ResponsiveStyle
+"""PyLage public API.
 
-__all__ = [
-    "Accordion",
-    "Carousel",
-    "Grid",
-    "Image",
-    "Video",
-    "Audio",
-    "Icon",
-    "Canvas",
-    "Avatar",
-    "Badge",
-    "Divider",
-    "Column",
-    "Row",
-    "Card",
-    "Heading",
-    "Button",
-    "Input",
-    "Form",
-    "Dialog",
-    "Table",
-    "DataFrame",
-    "Navigation",
-    "RadioGroup",
-    "Select",
-    "Option",
-    "Slider",
-    "Switch",
-    "Tabs",
-    "Text",
-    "Checkbox",
-    "DatePicker",
-    "Alert",
-    "Toast",
-    "Spinner",
-    "ProgressBar",
-    "Skeleton",
-    "Breadcrumbs",
-    "Pagination",
-    "Menu",
-    "Drawer",
-    "Tooltip",
-    "Popover",
-    "State",
-    "Style",
-    "ResponsiveStyle",
-    "Theme",
+Users interact with PyLage through this module.
+
+Public surface:
+    ps.*       -> UI components, layouts, patterns, recipes
+    style.*    -> individual style presets
+    theme.*    -> complete themes
+
+ENGINE is an internal implementation detail and is intentionally
+not exported from the root public API.
+"""
+
+from pylage.ENGINE.app import run
+from pylage.UI import *
+from pylage.UI import __all__ as _ui_all
+from pylage.UI import style
+from pylage.UI import themes as theme
+
+# Root public package metadata.
+# This is intentionally independent from the legacy pylage_ui facade.
+IMPORT_NAME = "pylage"
+PACKAGE_NAME = "pylage-ui-kit"
+
+__all__ = list(dict.fromkeys([
     "run",
-]
+    *_ui_all,
+    "style",
+    "theme",
+    "IMPORT_NAME",
+    "PACKAGE_NAME",
+]))

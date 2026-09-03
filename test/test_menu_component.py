@@ -1,5 +1,5 @@
-from pylage import Menu, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Menu, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_menu_renders_as_menu():

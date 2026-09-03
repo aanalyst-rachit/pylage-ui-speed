@@ -1,8 +1,9 @@
 import pylage as ps
+from pylage.ENGINE import Column, Style, Text, Theme
 
 
 def test_style_supports_layout_constraints():
-    style = ps.Style(
+    style = Style(
         width="100%",
         min_width="320px",
         max_width="1200px",
@@ -22,7 +23,7 @@ def test_style_supports_layout_constraints():
 
 
 def test_style_supports_flex_layout_constraints():
-    style = ps.Style(
+    style = Style(
         display="flex",
         flex_direction="column",
         flex_wrap="wrap",
@@ -48,7 +49,7 @@ def test_style_supports_flex_layout_constraints():
 
 
 def test_style_supports_grid_layout_constraints():
-    style = ps.Style(
+    style = Style(
         display="grid",
         grid_template_columns="repeat(3, 1fr)",
         grid_template_rows="auto",
@@ -66,16 +67,16 @@ def test_style_supports_grid_layout_constraints():
 
 
 def test_column_can_override_default_layout_style():
-    column = ps.Column(
-        ps.Text("Hello"),
-        style=ps.Style(
+    column = Column(
+        Text("Hello"),
+        style=Style(
             width="100%",
             max_width="600px",
             gap="16px",
         ),
     )
 
-    from pylage.core.renderer import render
+    from pylage.ENGINE.core.renderer import render
 
     html = render(column)
 
@@ -87,13 +88,13 @@ def test_column_can_override_default_layout_style():
 
 
 def test_layout_constraints_work_with_theme_variables():
-    theme = ps.Theme(
+    theme = Theme(
         spacing={
             "md": "16px",
         },
     )
 
-    style = ps.Style(
+    style = Style(
         width="100%",
         max_width="var(--spacing-md)",
         gap="var(--spacing-md)",

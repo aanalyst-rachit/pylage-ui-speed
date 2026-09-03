@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, DatePicker, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, DatePicker, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    selected_date = ps.State("2026-09-01")
-    date_display = ps.State("2026-09-01")
+    selected_date = State("2026-09-01")
+    date_display = State("2026-09-01")
 
     def handle_date_change(val=None):
         if isinstance(val, dict):

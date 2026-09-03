@@ -1,7 +1,7 @@
 
-from pylage.core.component import Component
-from pylage import State, Style
-from pylage.components import (
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE import State, Style
+from pylage.ENGINE.components import (
     Accordion,
     Alert,
     Badge,
@@ -25,13 +25,13 @@ def get_app() -> Component:
     progress_val = State(45)
 
     def close_toast():
-        toast_visible.value = False
+        toast_visible.set(False)
 
     def boost_progress():
         if progress_val.value >= 100:
-            progress_val.value = 10
+            progress_val.set(10)
         else:
-            progress_val.value += 15
+            progress_val.set(progress_val.value + 15)
 
     # --- UI Layout ---
     app = Column(style=Style(padding="24px", gap="24px", max_width="900px", margin="0 auto"))

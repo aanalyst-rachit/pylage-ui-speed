@@ -3,7 +3,7 @@ import importlib
 import inspect
 
 from playwright.sync_api import sync_playwright
-from pylage.runtime import Runtime
+from pylage.ENGINE.runtime import Runtime
 
 
 APP_DIR = Path("app")

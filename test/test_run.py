@@ -1,9 +1,10 @@
 import pylage as ps
+from pylage.ENGINE import Button, Column, Heading
 
 
-app = ps.Column(
-    ps.Heading("Hello PyLage"),
-    ps.Button("Click me", variant="primary"),
+app = Column(
+    Heading("Hello PyLage"),
+    Button("Click me", variant="primary"),
 )
 
 output = ps.run(

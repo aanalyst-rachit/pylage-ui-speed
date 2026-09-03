@@ -1,11 +1,12 @@
 import pylage as ps
-from pylage.core.renderer import render
+from pylage.ENGINE import Column, Grid, Row, State, Style, Text
+from pylage.ENGINE.core.renderer import render
 
 
 def test_row_registry_props_render():
     html = render(
-        ps.Row(
-            ps.Text("A"),
+        Row(
+            Text("A"),
             class_name="main-row",
             title="Row title",
         )
@@ -18,8 +19,8 @@ def test_row_registry_props_render():
 
 def test_column_registry_props_render():
     html = render(
-        ps.Column(
-            ps.Text("A"),
+        Column(
+            Text("A"),
             class_name="main-column",
             title="Column title",
         )
@@ -32,8 +33,8 @@ def test_column_registry_props_render():
 
 def test_grid_registry_props_render():
     html = render(
-        ps.Grid(
-            ps.Text("A"),
+        Grid(
+            Text("A"),
             class_name="main-grid",
             title="Grid title",
         )
@@ -46,13 +47,13 @@ def test_grid_registry_props_render():
 
 def test_nested_layout_props_are_isolated():
     html = render(
-        ps.Column(
-            ps.Row(
-                ps.Text("A"),
+        Column(
+            Row(
+                Text("A"),
                 class_name="inner-row",
             ),
-            ps.Grid(
-                ps.Text("B"),
+            Grid(
+                Text("B"),
                 class_name="inner-grid",
             ),
             class_name="outer-column",
@@ -66,13 +67,13 @@ def test_nested_layout_props_are_isolated():
 
 
 def test_layout_state_style_values_are_resolved():
-    width = ps.State("90%")
-    gap = ps.State("20px")
+    width = State("90%")
+    gap = State("20px")
 
     html = render(
-        ps.Row(
-            ps.Text("State"),
-            style=ps.Style(
+        Row(
+            Text("State"),
+            style=Style(
                 width=width,
                 gap=gap,
             ),

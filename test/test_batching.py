@@ -1,15 +1,16 @@
 import pylage as ps
+from pylage.ENGINE import Column, Heading, State
 
-from pylage.core.binding import StateBinding
-from pylage.core.dirty import DirtyNodes
-from pylage.core.graph import DependencyGraph
-from pylage.core.scheduler import Scheduler
+from pylage.ENGINE.core.binding import StateBinding
+from pylage.ENGINE.core.dirty import DirtyNodes
+from pylage.ENGINE.core.graph import DependencyGraph
+from pylage.ENGINE.core.scheduler import Scheduler
 
 
 def test_multiple_state_changes_are_coalesced_into_one_flush():
-    state = ps.State(0)
-    heading = ps.Heading(text=state)
-    app = ps.Column(heading)
+    state = State(0)
+    heading = Heading(text=state)
+    app = Column(heading)
 
     graph = DependencyGraph()
     dirty = DirtyNodes()

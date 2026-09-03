@@ -3,7 +3,7 @@ RULE 9 — Testing Audit
 
 Purpose:
 - Verify public PyLage Layout features have behavior-focused regression tests.
-- Test behavior introduced by pylage_layout only.
+- Test behavior provided by the canonical pylage.UI package.
 - Do not duplicate PyLage framework tests.
 
 Coverage:
@@ -17,15 +17,15 @@ Coverage:
 - regression cases
 """
 
-import pylage_layout
-import pylage_layout.layouts as layouts
-import pylage_layout.patterns as patterns
-import pylage_layout.themes as themes
-import pylage_layout.tokens as tokens
-import pylage_layout.templates as templates
+import pylage.UI
+import pylage.UI.layout as layouts
+import pylage.UI.patterns as patterns
+import pylage.UI.themes as themes
+import pylage.UI.tokens as tokens
+import pylage.UI.recipes as recipes
 
-from pylage import ResponsiveStyle, Style
-from pylage.components import Text
+from pylage.ENGINE import ResponsiveStyle, Style
+from pylage.ENGINE.components import Text
 
 
 # ================================================================
@@ -59,7 +59,7 @@ def test_public_pattern_construction():
 
 
 def test_public_template_construction():
-    landing = templates.LandingPage()
+    landing = recipes.LandingPage()
 
     assert landing is not None
     assert hasattr(landing, "type")
@@ -277,12 +277,17 @@ def test_three_column_custom_style_does_not_duplicate_style_keyword():
     assert component.props.get("style") is custom_style
 
 
-def test_public_package_does_not_require_internal_imports():
-    assert hasattr(pylage_layout, "layouts")
-    assert hasattr(pylage_layout, "patterns")
-    assert hasattr(pylage_layout, "themes")
-    assert hasattr(pylage_layout, "tokens")
-    assert hasattr(pylage_layout, "templates")
+def test_public_package_does_not_require_legacy_packages():
+    import importlib.util
+
+    assert importlib.util.find_spec("pylage_ui") is None
+    assert importlib.util.find_spec("pylage_layout") is None
+
+    assert hasattr(pylage.UI, "layout")
+    assert hasattr(pylage.UI, "patterns")
+    assert hasattr(pylage.UI, "themes")
+    assert hasattr(pylage.UI, "tokens")
+    assert hasattr(pylage.UI, "recipes")
 
 
 def test_token_validation_remains_available():

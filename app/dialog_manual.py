@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Dialog, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Dialog, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    dialog_open = ps.State(False)
-    action_log = ps.State("No dialog action taken yet.")
+    dialog_open = State(False)
+    action_log = State("No dialog action taken yet.")
 
     def open_dialog(e=None):
         dialog_open.set(True)

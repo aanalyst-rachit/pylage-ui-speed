@@ -1,4 +1,4 @@
-from pylage.core.registry import ComponentRegistry, PropDefinition
+from pylage.ENGINE.core.registry import ComponentRegistry, PropDefinition
 
 
 print("=== PYLAGE PROP KIND CONTRACT TEST ===")

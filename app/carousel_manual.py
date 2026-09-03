@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Carousel, Card, Column, Heading, Row, Text, Button, Image
+from pylage.ENGINE import Style, Carousel, Card, Column, Heading, Row, Text, Button, Image
 
 
 def get_app():
     # State Management
-    current_slide = ps.State(0)
-    slide_title = ps.State("Slide 1: Lightning Fast Diff")
+    current_slide = State(0)
+    slide_title = State("Slide 1: Lightning Fast Diff")
 
     slides_info = [
         "Slide 1: Lightning Fast Diff Engine",

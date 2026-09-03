@@ -1,7 +1,7 @@
 """Manual demonstration for the PyLage UI Kit trend component."""
 
-from pylage import Column, Heading, Row, Style, Text
-import pylage_ui as ps
+from pylage.ENGINE import Column, Heading, Row, Style, Text
+import pylage as ps
 
 # ==========================================
 # 1. STYLES DEFINITION (INCREASED TEXT SIZES)

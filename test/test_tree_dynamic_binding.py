@@ -2,8 +2,8 @@ import asyncio
 import json
 import pytest
 
-from pylage import Button, Column, Heading, State
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE import Button, Column, Heading, State
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_dynamic_component_added_after_server_init_has_event_dispatch():

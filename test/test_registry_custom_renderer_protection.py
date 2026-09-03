@@ -1,5 +1,5 @@
-from pylage.core.registry import ComponentRegistry
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.registry import ComponentRegistry
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE CUSTOM RENDERER PROTECTION TEST ===")

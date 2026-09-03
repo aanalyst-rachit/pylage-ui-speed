@@ -11,7 +11,7 @@ Purpose:
 
 import importlib
 
-import pylage_layout.patterns as patterns
+import pylage.UI.patterns as patterns
 
 
 PATTERN_MODULES = [
@@ -40,7 +40,7 @@ def test_patterns_package_imports():
 def test_all_pattern_modules_import():
     for module_name in PATTERN_MODULES:
         module = importlib.import_module(
-            f"pylage_layout.patterns.{module_name}"
+            f"pylage.UI.patterns.{module_name}"
         )
         assert module is not None
 

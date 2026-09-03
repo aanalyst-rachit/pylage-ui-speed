@@ -1,5 +1,5 @@
-from pylage import Select, Option
-from pylage.core.renderer import render
+from pylage.ENGINE import Select, Option
+from pylage.ENGINE.core.renderer import render
 
 
 def test_option_renders_value_and_text():

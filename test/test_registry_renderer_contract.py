@@ -1,7 +1,7 @@
 import inspect
 
-from pylage.core.registry import registry
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.registry import registry
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE REGISTRY → RENDERER CONTRACT TEST ===")

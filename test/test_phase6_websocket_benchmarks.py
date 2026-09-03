@@ -3,14 +3,15 @@ import json
 import time
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE import Column, Heading, State
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_phase6_websocket_state_update_latency():
     async def run():
-        count = ps.State(0)
-        heading = ps.Heading(text=count)
-        app = ps.Column(heading)
+        count = State(0)
+        heading = Heading(text=count)
+        app = Column(heading)
 
         server = WebSocketServer(app)
 
@@ -53,7 +54,7 @@ def test_phase6_websocket_state_update_latency():
 
 def test_phase6_websocket_tree_patch_latency():
     async def run():
-        root = ps.Column()
+        root = Column()
         server = WebSocketServer(root)
 
         try:
@@ -67,7 +68,7 @@ def test_phase6_websocket_tree_patch_latency():
                 start = time.perf_counter()
 
                 for index in range(samples):
-                    child = ps.Heading(text=f"item-{index}")
+                    child = Heading(text=f"item-{index}")
                     root.add(child)
 
                     raw = await asyncio.wait_for(
@@ -95,9 +96,9 @@ def test_phase6_websocket_tree_patch_latency():
 
 def test_phase6_websocket_multi_client_broadcast():
     async def run():
-        count = ps.State(0)
-        heading = ps.Heading(text=count)
-        app = ps.Column(heading)
+        count = State(0)
+        heading = Heading(text=count)
+        app = Column(heading)
 
         server = WebSocketServer(app)
 
@@ -156,9 +157,9 @@ def test_phase6_websocket_multi_client_broadcast():
 def test_phase6_websocket_client_scaling():
     async def run():
         for client_count in (10, 50, 100):
-            count = ps.State(0)
-            heading = ps.Heading(text=count)
-            app = ps.Column(heading)
+            count = State(0)
+            heading = Heading(text=count)
+            app = Column(heading)
 
             server = WebSocketServer(app)
 

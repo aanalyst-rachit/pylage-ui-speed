@@ -1,5 +1,5 @@
-from pylage import Breadcrumbs, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Breadcrumbs, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_breadcrumbs_renders_as_nav():

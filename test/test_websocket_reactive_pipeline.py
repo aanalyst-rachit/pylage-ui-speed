@@ -2,15 +2,16 @@ import asyncio
 import json
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE import Column, Heading, State
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_websocket_state_update_uses_reactive_pipeline():
     async def run():
-        count = ps.State(0)
+        count = State(0)
 
-        heading = ps.Heading(text=count)
-        app = ps.Column(heading)
+        heading = Heading(text=count)
+        app = Column(heading)
 
         server = WebSocketServer(app)
 
@@ -40,10 +41,10 @@ def test_websocket_state_update_uses_reactive_pipeline():
 
 def test_websocket_batches_multiple_state_changes_into_one_final_update():
     async def run():
-        count = ps.State(0)
+        count = State(0)
 
-        heading = ps.Heading(text=count)
-        app = ps.Column(heading)
+        heading = Heading(text=count)
+        app = Column(heading)
 
         server = WebSocketServer(app)
 

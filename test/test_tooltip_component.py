@@ -1,5 +1,5 @@
-from pylage import Tooltip, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Tooltip, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_tooltip_renders_as_span():

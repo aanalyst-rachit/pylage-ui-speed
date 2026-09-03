@@ -1,6 +1,6 @@
-from pylage.core.component import Component
-from pylage.core.registry import ComponentRegistry
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.registry import ComponentRegistry
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE REGISTRY OVERRIDE TEST ===")
@@ -19,7 +19,7 @@ registry.register(
     "h1",
     props={
         "text": __import__(
-            "pylage.core.registry",
+            "pylage.ENGINE.core.registry",
             fromlist=["PropDefinition"],
         ).PropDefinition(
             "text",

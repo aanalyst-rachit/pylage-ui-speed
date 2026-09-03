@@ -1,5 +1,5 @@
-from pylage import Tabs, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Tabs, Text, Button, State
+from pylage.ENGINE.core.renderer import render
 
 
 def test_tabs_renders():
@@ -29,7 +29,7 @@ def test_tabs_supports_props():
 
 def test_tabs_supports_value_and_reactivity():
     import pylage as ps
-    tab_state = ps.State("profile")
+    tab_state = State("profile")
     tabs = Tabs(value=tab_state)
 
     assert 'value="profile"' in render(tabs)

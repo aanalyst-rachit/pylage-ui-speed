@@ -1,4 +1,4 @@
-from pylage.core.protocol import TreeReplaceMessage
+from pylage.ENGINE.core.protocol import TreeReplaceMessage
 
 
 def test_tree_replace_message_round_trip():

@@ -1,14 +1,15 @@
 import pylage as ps
+from pylage.ENGINE import Style, Text, Theme
 
 
 def test_theme_token_can_be_used_as_style_value():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
         },
     )
 
-    style = ps.Style(
+    style = Style(
         color=theme.color("primary"),
     )
 
@@ -17,13 +18,13 @@ def test_theme_token_can_be_used_as_style_value():
 
 
 def test_theme_spacing_token_can_be_used_as_style_value():
-    theme = ps.Theme(
+    theme = Theme(
         spacing={
             "md": "16px",
         },
     )
 
-    style = ps.Style(
+    style = Style(
         padding=theme.spacing_value("md"),
         gap=theme.spacing_value("md"),
     )
@@ -32,7 +33,7 @@ def test_theme_spacing_token_can_be_used_as_style_value():
 
 
 def test_theme_tokens_can_build_component_style():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
             "background": "#ffffff",
@@ -45,19 +46,19 @@ def test_theme_tokens_can_build_component_style():
         },
     )
 
-    style = ps.Style(
+    style = Style(
         color=theme.color("primary"),
         background_color=theme.color("background"),
         padding=theme.spacing_value("md"),
         border_radius=theme.radius_value("md"),
     )
 
-    component = ps.Text(
+    component = Text(
         "Hello",
         style=style,
     )
 
-    from pylage.core.renderer import render
+    from pylage.ENGINE.core.renderer import render
 
     html = render(component)
 
@@ -68,13 +69,13 @@ def test_theme_tokens_can_build_component_style():
 
 
 def test_theme_does_not_mutate_style():
-    theme = ps.Theme(
+    theme = Theme(
         colors={"primary": "red"},
     )
 
-    style = ps.Style(color="blue")
+    style = Style(color="blue")
 
-    themed_style = ps.Style(
+    themed_style = Style(
         color=theme.color("primary"),
     )
 
@@ -83,11 +84,11 @@ def test_theme_does_not_mutate_style():
 
 
 def test_theme_and_style_remain_independent():
-    theme = ps.Theme(
+    theme = Theme(
         colors={"primary": "red"},
     )
 
-    style = ps.Style(color="blue")
+    style = Style(color="blue")
 
     assert theme.color("primary") == "red"
     assert style.color == "blue"

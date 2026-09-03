@@ -1,5 +1,5 @@
-from pylage import Image
-from pylage.core.renderer import render
+from pylage.ENGINE import Image
+from pylage.ENGINE.core.renderer import render
 
 
 def test_image_creates_image_component():

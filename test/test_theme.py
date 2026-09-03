@@ -1,6 +1,6 @@
 import pytest
 
-from pylage import Theme
+from pylage.ENGINE import Theme
 
 
 def test_theme_can_be_created():

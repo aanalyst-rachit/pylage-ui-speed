@@ -1,8 +1,8 @@
 import pylage as pl
-from pylage import Style
+from pylage.ENGINE import Style
 
-from pylage_layout.layouts import AppShell, Container, TwoColumn, Footer
-from pylage_layout.patterns import (
+from pylage.UI.layout import AppShell, Container, TwoColumn, Footer
+from pylage.UI.patterns import (
     Hero,
     FeatureSection,
     CTA,

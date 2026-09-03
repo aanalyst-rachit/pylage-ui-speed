@@ -1,9 +1,9 @@
 import pytest
 
-import pylage_ui as ps
-from pylage import Style
-from pylage.core.component import Component
-from pylage.core.renderer import render
+import pylage.UI as ps
+from pylage.ENGINE import Style
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
 
 
 def test_button_returns_existing_component():

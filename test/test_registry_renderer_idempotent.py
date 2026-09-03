@@ -1,5 +1,5 @@
-from pylage.core.registry import registry
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.registry import registry
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE REGISTRY RENDERER IDEMPOTENCY TEST ===")
@@ -49,7 +49,7 @@ print("Repeated initialization preserves callbacks: PASS")
 
 
 # Both renderer instances must still work.
-from pylage.components import Heading, Button
+from pylage.ENGINE.components import Heading, Button
 
 heading_html = renderer1.render(
     Heading("Hello")

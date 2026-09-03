@@ -2,7 +2,7 @@ import re
 
 from pathlib import Path
 
-from pylage.runtime.client import CLIENT_RUNTIME
+from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
 
 print("=== PYLAGE BROWSER GENERIC REACTIVE PROP TEST ===")
@@ -58,7 +58,7 @@ print("Generic DOM patching: PASS")
 # 4. Keep the client runtime source available for inspection.
 # ------------------------------------------------------------
 
-client_source = Path("pylage/runtime/client.py").read_text(
+client_source = Path("pylage/ENGINE/runtime/client.py").read_text(
     encoding="utf-8"
 )
 

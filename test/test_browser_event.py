@@ -1,7 +1,8 @@
 from playwright.sync_api import sync_playwright, expect
 
 import pylage as ps
-from pylage.runtime import Runtime
+from pylage.ENGINE import Button, Card, Column, Heading, Text
+from pylage.ENGINE.runtime import Runtime
 
 
 def test_browser_event():
@@ -15,14 +16,14 @@ def test_browser_event():
         print("Calls:", calls)
         return "clicked"
 
-    heading = ps.Heading("Browser Event Test")
+    heading = Heading("Browser Event Test")
 
-    button = ps.Button(
+    button = Button(
         "Click me",
         on_click=clicked,
     )
 
-    app = ps.Column(
+    app = Column(
         heading,
         button,
     )
@@ -90,12 +91,12 @@ def test_browser_event_bubbles_to_parent_component():
     def clicked():
         calls.append("clicked")
 
-    card = ps.Card(
-        ps.Text("Nested clickable content"),
+    card = Card(
+        Text("Nested clickable content"),
         on_click=clicked,
     )
 
-    app = ps.Column(card)
+    app = Column(card)
 
     runtime = Runtime(
         app,

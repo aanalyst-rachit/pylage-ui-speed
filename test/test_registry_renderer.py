@@ -1,15 +1,16 @@
 import pylage as ps
+from pylage.ENGINE import Heading
 
-from pylage.core.component import Component
-from pylage.core.registry import registry
-from pylage.core.renderer import render
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.registry import registry
+from pylage.ENGINE.core.renderer import render
 
 
 def test_registry_renderer():
     print("=== PYLAGE REGISTRY RENDERER TEST ===")
 
     # Built-in component
-    heading = ps.Heading("Hello")
+    heading = Heading("Hello")
 
     html = render(heading)
 

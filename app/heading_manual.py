@@ -1,16 +1,16 @@
 import pylage as pl
-from pylage import Style
+from pylage.ENGINE import Column, Heading, Style
 
 
 def get_app():
 
-    return pl.Column(
+    return Column(
 
-        pl.Heading(
+        Heading(
             "Heading — Default",
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Large",
             style=Style(
                 font_size="2.5rem",
@@ -19,7 +19,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Medium",
             style=Style(
                 font_size="2rem",
@@ -28,7 +28,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Small",
             style=Style(
                 font_size="1.5rem",
@@ -37,7 +37,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Custom Font",
             style=Style(
                 font_size="2rem",
@@ -47,7 +47,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Center",
             style=Style(
                 font_size="2rem",
@@ -59,7 +59,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — With Spacing",
             style=Style(
                 font_size="1.75rem",
@@ -73,7 +73,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Full Width",
             style=Style(
                 width="100%",
@@ -87,7 +87,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Line Height",
             style=Style(
                 font_size="2rem",
@@ -97,7 +97,7 @@ def get_app():
             ),
         ),
 
-        pl.Heading(
+        Heading(
             "Heading — Shadow",
             style=Style(
                 font_size="2rem",

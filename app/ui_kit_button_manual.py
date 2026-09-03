@@ -2,20 +2,21 @@ import sys
 from pathlib import Path
 
 # Ensure local pylage import
+from pylage.ENGINE import Column, Heading, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-import pylage_ui as ui
-from pylage import Style
+import pylage as ui
+from pylage.ENGINE import Style
 
 
 def get_app():
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage UI Kit — Button",
             level=2,
         ),
-        ps.Text(
+        Text(
             "Semantic Button API using the existing PyLage engine."
         ),
         ui.button("Primary"),

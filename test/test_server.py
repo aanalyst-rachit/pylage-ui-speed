@@ -1,7 +1,7 @@
 from pathlib import Path
 from urllib.request import urlopen
 
-from pylage.runtime import LocalServer
+from pylage.ENGINE.runtime import LocalServer
 
 
 output_dir = Path("test_output")

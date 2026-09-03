@@ -66,11 +66,11 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     token_modules = [
-        "pylage_layout.tokens.colors",
-        "pylage_layout.tokens.fonts",
-        "pylage_layout.tokens.radius",
-        "pylage_layout.tokens.spacing",
-        "pylage_layout.tokens.validate",
+        "pylage.UI.tokens.colors",
+        "pylage.UI.tokens.fonts",
+        "pylage.UI.tokens.radius",
+        "pylage.UI.tokens.spacing",
+        "pylage.UI.tokens.validate",
     ]
 
     for module_name in token_modules:
@@ -78,7 +78,7 @@ def test_phase_1_to_7_complete():
         assert module is not None
 
     # Token package itself must import.
-    tokens = _import("pylage_layout.tokens")
+    tokens = _import("pylage.UI.tokens")
     assert tokens is not None
 
     # ================================================================
@@ -86,11 +86,11 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     theme_modules = [
-        "pylage_layout.themes.api",
-        "pylage_layout.themes.dark",
-        "pylage_layout.themes.factory",
-        "pylage_layout.themes.light",
-        "pylage_layout.themes",
+        "pylage.UI.themes.api",
+        "pylage.UI.themes.dark",
+        "pylage.UI.themes.factory",
+        "pylage.UI.themes.light",
+        "pylage.UI.themes",
     ]
 
     for module_name in theme_modules:
@@ -105,21 +105,21 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     layout_modules = [
-        "pylage_layout.layouts.center",
-        "pylage_layout.layouts.container",
-        "pylage_layout.layouts.section",
-        "pylage_layout.layouts.stack",
-        "pylage_layout.layouts.split",
-        "pylage_layout.layouts.two_column",
-        "pylage_layout.layouts.three_column",
-        "pylage_layout.layouts.sidebar",
+        "pylage.UI.layout.center",
+        "pylage.UI.layout.container",
+        "pylage.UI.layout.section",
+        "pylage.UI.layout.stack",
+        "pylage.UI.layout.split",
+        "pylage.UI.layout.two_column",
+        "pylage.UI.layout.three_column",
+        "pylage.UI.layout.sidebar",
     ]
 
     for module_name in layout_modules:
         module = _import(module_name)
         assert module is not None
 
-    layouts = _import("pylage_layout.layouts")
+    layouts = _import("pylage.UI.layout")
 
     # Required high-level layout API.
     required_layout_exports = [
@@ -168,16 +168,16 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     phase4_modules = [
-        "pylage_layout.layouts.drawer",
-        "pylage_layout.layouts.footer",
-        "pylage_layout.layouts.header",
-        "pylage_layout.layouts.menu",
-        "pylage_layout.layouts.navbar",
-        "pylage_layout.layouts.navigation",
-        "pylage_layout.layouts.navigation_controls",
-        "pylage_layout.layouts.pagination",
-        "pylage_layout.layouts.tabs",
-        "pylage_layout.layouts.topbar",
+        "pylage.UI.layout.drawer",
+        "pylage.UI.layout.footer",
+        "pylage.UI.layout.header",
+        "pylage.UI.layout.menu",
+        "pylage.UI.layout.navbar",
+        "pylage.UI.layout.navigation",
+        "pylage.UI.layout.navigation_controls",
+        "pylage.UI.layout.pagination",
+        "pylage.UI.layout.tabs",
+        "pylage.UI.layout.topbar",
     ]
 
     for module_name in phase4_modules:
@@ -190,11 +190,11 @@ def test_phase_1_to_7_complete():
     assert hasattr(layouts, "Pagination")
 
     # Specific modules must expose their expected high-level APIs.
-    drawer = _import("pylage_layout.layouts.drawer")
-    header = _import("pylage_layout.layouts.header")
-    footer = _import("pylage_layout.layouts.footer")
-    navbar = _import("pylage_layout.layouts.navbar")
-    topbar = _import("pylage_layout.layouts.topbar")
+    drawer = _import("pylage.UI.layout.drawer")
+    header = _import("pylage.UI.layout.header")
+    footer = _import("pylage.UI.layout.footer")
+    navbar = _import("pylage.UI.layout.navbar")
+    topbar = _import("pylage.UI.layout.topbar")
 
     assert hasattr(drawer, "NavigationDrawer")
     assert hasattr(drawer, "MobileSidebar")
@@ -208,28 +208,28 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     pattern_modules = [
-        "pylage_layout.patterns.auth",
-        "pylage_layout.patterns.breadcrumbs",
-        "pylage_layout.patterns.contact",
-        "pylage_layout.patterns.content",
-        "pylage_layout.patterns.cta",
-        "pylage_layout.patterns.faq",
-        "pylage_layout.patterns.feature",
-        "pylage_layout.patterns.hero",
-        "pylage_layout.patterns.list",
-        "pylage_layout.patterns.newsletter",
-        "pylage_layout.patterns.pricing",
-        "pylage_layout.patterns.search",
-        "pylage_layout.patterns.states",
-        "pylage_layout.patterns.stats",
-        "pylage_layout.patterns.testimonial",
+        "pylage.UI.patterns.auth",
+        "pylage.UI.patterns.breadcrumbs",
+        "pylage.UI.patterns.contact",
+        "pylage.UI.patterns.content",
+        "pylage.UI.patterns.cta",
+        "pylage.UI.patterns.faq",
+        "pylage.UI.patterns.feature",
+        "pylage.UI.patterns.hero",
+        "pylage.UI.patterns.list",
+        "pylage.UI.patterns.newsletter",
+        "pylage.UI.patterns.pricing",
+        "pylage.UI.patterns.search",
+        "pylage.UI.patterns.states",
+        "pylage.UI.patterns.stats",
+        "pylage.UI.patterns.testimonial",
     ]
 
     for module_name in pattern_modules:
         module = _import(module_name)
         assert module is not None
 
-    patterns = _import("pylage_layout.patterns")
+    patterns = _import("pylage.UI.patterns")
     assert patterns is not None
 
     # ================================================================
@@ -237,39 +237,28 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     template_modules = [
-        "pylage_layout.templates.landing",
-        "pylage_layout.templates.dashboard",
-        "pylage_layout.templates.admin",
-        "pylage_layout.templates.admin_panel",
-        "pylage_layout.templates.authentication",
-        "pylage_layout.templates.profile",
-        "pylage_layout.templates.settings",
-        "pylage_layout.templates.documentation",
+        "pylage.UI.recipes.landing",
+        "pylage.UI.recipes.dashboard",
+        "pylage.UI.recipes.admin",
+        "pylage.UI.recipes.admin_panel",
+        "pylage.UI.recipes.authentication",
+        "pylage.UI.recipes.profile",
+        "pylage.UI.recipes.settings",
+        "pylage.UI.recipes.documentation",
     ]
 
     for module_name in template_modules:
         module = _import(module_name)
         assert module is not None
 
-    templates = _import("pylage_layout.templates")
+    templates = _import("pylage.UI.recipes")
     assert templates is not None
 
     # ================================================================
     # Phase 7 — Responsive Design
     # ================================================================
 
-    pylage = _import("pylage")
-
-    assert hasattr(pylage, "ResponsiveStyle"), (
-        "PyLage ResponsiveStyle is required by Phase 7"
-    )
-
-    assert hasattr(pylage, "Style"), (
-        "PyLage Style is required by Phase 7"
-    )
-
-    ResponsiveStyle = pylage.ResponsiveStyle
-    Style = pylage.Style
+    from pylage.ENGINE import ResponsiveStyle, Style
 
     # Verify the underlying responsive capability itself.
     responsive = ResponsiveStyle(
@@ -324,11 +313,11 @@ def test_phase_1_to_7_complete():
     # ================================================================
 
     expected_directories = [
-        ROOT / "pylage_layout" / "layouts",
-        ROOT / "pylage_layout" / "patterns",
-        ROOT / "pylage_layout" / "templates",
-        ROOT / "pylage_layout" / "themes",
-        ROOT / "pylage_layout" / "tokens",
+        ROOT / "pylage" / "UI" / "layout",
+        ROOT / "pylage" / "UI" / "patterns",
+        ROOT / "pylage" / "UI" / "recipes",
+        ROOT / "pylage" / "UI" / "themes",
+        ROOT / "pylage" / "UI" / "tokens",
         ROOT / "app",
     ]
 

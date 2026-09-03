@@ -1,5 +1,5 @@
-import pylage_ui as ps
-from pylage import Column, Row
+import pylage as ps
+from pylage.ENGINE import Column, Row
 
 def get_app():
     return Column(

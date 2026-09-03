@@ -1,6 +1,6 @@
-from pylage import Style
-from pylage.core.renderer import render
-from pylage_ui import table
+from pylage.ENGINE import Style
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import table
 
 
 class FakeDataFrame:

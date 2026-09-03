@@ -1,5 +1,5 @@
-from pylage import Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Text
+from pylage.ENGINE.core.renderer import render
 
 
 def test_text_creates_text_component():
@@ -28,7 +28,7 @@ def test_text_escapes_html():
 
 
 def test_text_supports_state():
-    from pylage import State
+    from pylage.ENGINE import State
 
     state = State("Initial")
     text = Text(state)

@@ -1,10 +1,10 @@
 from time import perf_counter
 
-from pylage.core.component import Component
-from pylage.core.dirty import DirtyNodes
-from pylage.core.scheduler import Scheduler
-from pylage.core.state import State
-from pylage.core.binding import StateBinding
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.dirty import DirtyNodes
+from pylage.ENGINE.core.scheduler import Scheduler
+from pylage.ENGINE.core.state import State
+from pylage.ENGINE.core.binding import StateBinding
 
 
 def _build_reactive_pipeline():

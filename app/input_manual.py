@@ -1,14 +1,15 @@
 import sys
 from pathlib import Path
 
+from pylage.ENGINE import Button, Column, Heading, Input, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
-    name_state = ps.State("Aapka Naam Here")
-    submitted_state = ps.State("Form abhi submit nahi hua hai.")
+    name_state = State("Aapka Naam Here")
+    submitted_state = State("Form abhi submit nahi hua hai.")
 
     # Fixed: Extract string value if payload is a dict
     def on_name_change(val):
@@ -27,7 +28,7 @@ def get_app():
 
         submitted_state.set(f"🎉 Submitted Name: {current}")
 
-    name_input = ps.Input(
+    name_input = Input(
         placeholder="Apna naam type karein...",
         on_change=on_name_change,
         style=Style(
@@ -41,7 +42,7 @@ def get_app():
         ),
     )
 
-    submit_btn = ps.Button(
+    submit_btn = Button(
         "Submit Form",
         on_click=handle_submit,
         style=Style(
@@ -55,8 +56,8 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Input — Live Manual",
             style=Style(
                 font_size="1.75rem",
@@ -65,15 +66,15 @@ def get_app():
                 margin_bottom="0.5rem",
             ),
         ),
-        ps.Text(
+        Text(
             "Niche diye gaye input field me type karke live reactivity test karein:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
 
         name_input,
 
-        ps.Text("Live Preview:", style=Style(font_weight="700", margin_top="1rem")),
-        ps.Heading(
+        Text("Live Preview:", style=Style(font_weight="700", margin_top="1rem")),
+        Heading(
             name_state,
             style=Style(
                 color="#2563eb",
@@ -83,7 +84,7 @@ def get_app():
         ),
 
         submit_btn,
-        ps.Text(
+        Text(
             submitted_state,
             style=Style(
                 color="#166534",

@@ -3,17 +3,17 @@ RULE 8 — Public API Audit
 
 Purpose:
 - Verify the public layouts API is simple and importable.
-- Verify AppShell is publicly available from pylage_layout.layouts.
+- Verify AppShell is publicly available from pylage.UI.layout.
 - Verify AppShell accepts header/sidebar/content composition.
 - Verify reusable Hero is publicly available.
 - Verify Hero supports title, description, and actions.
 - Prevent accidental removal of Phase 8 public API.
 """
 
-from pylage import Button, Text
+from pylage.ENGINE import Button, Text
 
-import pylage_layout.layouts as layouts
-import pylage_layout.patterns as patterns
+import pylage.UI.layout as layouts
+import pylage.UI.patterns as patterns
 
 
 def test_layouts_package_imports():
@@ -97,9 +97,9 @@ def test_public_api_does_not_require_internal_imports():
     # Public consumers should never need:
     # from layouts import ...
     # from patterns import ...
-    # They should use pylage_layout.layouts / pylage_layout.patterns.
-    from pylage_layout.layouts import AppShell
-    from pylage_layout.patterns import Hero
+    # They should use pylage.UI.layout / pylage.UI.patterns.
+    from pylage.UI.layout import AppShell
+    from pylage.UI.patterns import Hero
 
     assert callable(AppShell)
     assert callable(Hero)

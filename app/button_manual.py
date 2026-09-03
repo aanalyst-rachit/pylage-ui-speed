@@ -2,14 +2,15 @@ import sys
 from pathlib import Path
 
 # Ensure local pylage import
+from pylage.ENGINE import Button, Column, Heading, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # 1. Exact Working Pattern: Reactive State
-    count = ps.State(0)
+    count = State(0)
 
     # 2. Exact Working Pattern: Callback function
     def handle_click():
@@ -17,12 +18,12 @@ def get_app():
         return count.value
 
     # 3. Direct State object bound to Heading
-    status = ps.Heading(count)
+    status = Heading(count)
 
     # 4. Buttons initialization with exact test-case syntax (on_click=handle_click)
-    basic = ps.Button("Basic Button", on_click=handle_click)
+    basic = Button("Basic Button", on_click=handle_click)
 
-    primary = ps.Button(
+    primary = Button(
         "Primary Button",
         on_click=handle_click,
         style=Style(
@@ -35,7 +36,7 @@ def get_app():
         ),
     )
 
-    large = ps.Button(
+    large = Button(
         "Large Button",
         on_click=handle_click,
         style=Style(
@@ -49,7 +50,7 @@ def get_app():
         ),
     )
 
-    outline = ps.Button(
+    outline = Button(
         "Outline Button",
         on_click=handle_click,
         style=Style(
@@ -63,7 +64,7 @@ def get_app():
         ),
     )
 
-    danger = ps.Button(
+    danger = Button(
         "Delete",
         on_click=handle_click,
         style=Style(
@@ -76,7 +77,7 @@ def get_app():
         ),
     )
 
-    custom = ps.Button(
+    custom = Button(
         "Custom Button",
         on_click=handle_click,
         style=Style(
@@ -91,8 +92,8 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Text(
+    return Column(
+        Text(
             "PyLage Button — Live Manual",
             style=Style(
                 font_size="1.75rem",
@@ -101,7 +102,7 @@ def get_app():
                 margin_bottom="0.5rem",
             ),
         ),
-        ps.Text(
+        Text(
             "Button click count test karne ke liye niche buttons par click karo:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
@@ -109,22 +110,22 @@ def get_app():
         # State output component
         status,
 
-        ps.Text("Basic", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("Basic", style=Style(font_weight="700", margin_bottom="0.5rem")),
         basic,
 
-        ps.Text("Primary", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
+        Text("Primary", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
         primary,
 
-        ps.Text("Large", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
+        Text("Large", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
         large,
 
-        ps.Text("Outline", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
+        Text("Outline", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
         outline,
 
-        ps.Text("Danger", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
+        Text("Danger", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
         danger,
 
-        ps.Text("Custom", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
+        Text("Custom", style=Style(font_weight="700", margin_top="1.5rem", margin_bottom="0.5rem")),
         custom,
 
         style=Style(

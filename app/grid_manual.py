@@ -2,14 +2,15 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Button, Column, Grid, Heading, Row, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # Dynamic State for Grid Interactivity Demo
-    selected_card = ps.State("None")
+    selected_card = State("None")
 
     def select_card_1():
         selected_card.set("Card 1 Selected")
@@ -25,8 +26,8 @@ def get_app():
 
     # Helper function to generate grid items
     def create_grid_item(title, bg_color="#2563eb", height="80px"):
-        return ps.Column(
-            ps.Text(title, style=Style(color="#ffffff", font_weight="700")),
+        return Column(
+            Text(title, style=Style(color="#ffffff", font_weight="700")),
             style=Style(
                 background_color=bg_color,
                 height=height,
@@ -40,7 +41,7 @@ def get_app():
     # ============================================================
     # 1. EQUAL FIXED-COLUMN GRID (3 Columns)
     # ============================================================
-    fixed_grid = ps.Grid(
+    fixed_grid = Grid(
         create_grid_item("Item 1", "#2563eb"),
         create_grid_item("Item 2", "#7c3aed"),
         create_grid_item("Item 3", "#dc2626"),
@@ -61,7 +62,7 @@ def get_app():
     # ============================================================
     # 2. ASYMMETRIC / CUSTOM TEMPLATE COLUMNS (Sidebar + Content)
     # ============================================================
-    asymmetric_grid = ps.Grid(
+    asymmetric_grid = Grid(
         create_grid_item("Sidebar (1fr)", "#475569", height="100px"),
         create_grid_item("Main Content (3fr)", "#2563eb", height="100px"),
         style=Style(
@@ -78,7 +79,7 @@ def get_app():
     # ============================================================
     # 3. AUTO-FIT RESPONSIVE GRID
     # ============================================================
-    responsive_grid = ps.Grid(
+    responsive_grid = Grid(
         create_grid_item("Card A", "#059669"),
         create_grid_item("Card B", "#7c3aed"),
         create_grid_item("Card C", "#d97706"),
@@ -97,11 +98,11 @@ def get_app():
     # ============================================================
     # 4. INTERACTIVE GRID TILES (State Handling)
     # ============================================================
-    interactive_grid = ps.Grid(
-        ps.Button("Select 1", on_click=select_card_1, style=Style(padding="1rem", cursor="pointer")),
-        ps.Button("Select 2", on_click=select_card_2, style=Style(padding="1rem", cursor="pointer")),
-        ps.Button("Select 3", on_click=select_card_3, style=Style(padding="1rem", cursor="pointer")),
-        ps.Button("Select 4", on_click=select_card_4, style=Style(padding="1rem", cursor="pointer")),
+    interactive_grid = Grid(
+        Button("Select 1", on_click=select_card_1, style=Style(padding="1rem", cursor="pointer")),
+        Button("Select 2", on_click=select_card_2, style=Style(padding="1rem", cursor="pointer")),
+        Button("Select 3", on_click=select_card_3, style=Style(padding="1rem", cursor="pointer")),
+        Button("Select 4", on_click=select_card_4, style=Style(padding="1rem", cursor="pointer")),
         style=Style(
             grid_template_columns="repeat(2, 1fr)",
             gap="1rem",
@@ -113,29 +114,29 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Grid — Live Manual",
             style=Style(font_size="1.75rem", font_weight="700", color="#0f172a", margin_bottom="0.5rem"),
         ),
-        ps.Text(
+        Text(
             "Grid layout component ke multi-column, template ratio, aur responsive grid features test karein:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
 
-        ps.Text("1. Equal 3-Column Grid (`repeat(3, 1fr)`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("1. Equal 3-Column Grid (`repeat(3, 1fr)`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         fixed_grid,
 
-        ps.Text("2. Asymmetric Grid Layout (`1fr 3fr`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("2. Asymmetric Grid Layout (`1fr 3fr`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         asymmetric_grid,
 
-        ps.Text("3. Responsive Auto-Fit Grid (`minmax(140px, 1fr)`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("3. Responsive Auto-Fit Grid (`minmax(140px, 1fr)`)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         responsive_grid,
 
-        ps.Text("4. Interactive Grid Tile Selection", style=Style(font_weight="700", margin_bottom="0.5rem")),
-        ps.Row(
-            ps.Text("Active Selection: ", style=Style(font_weight="600")),
-            ps.Heading(selected_card, style=Style(color="#2563eb", font_size="1rem")),
+        Text("4. Interactive Grid Tile Selection", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Row(
+            Text("Active Selection: ", style=Style(font_weight="600")),
+            Heading(selected_card, style=Style(color="#2563eb", font_size="1rem")),
             style=Style(gap="0.5rem", margin_bottom="0.5rem", align_items="center"),
         ),
         interactive_grid,

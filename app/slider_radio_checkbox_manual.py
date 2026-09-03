@@ -1,22 +1,6 @@
 """Manual demo for PyLage Input Controls (Slider, RadioGroup, Checkbox, Switch, DatePicker)."""
 
-from pylage import (
-    Slider,
-    RadioGroup,
-    Checkbox,
-    Switch,
-    DatePicker,
-    Input,
-    Button,
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Slider, RadioGroup, Checkbox, Switch, DatePicker, Input, Button, Column, Row, Card, Heading, Text, Badge, State, Style
 
 
 def get_app() -> Column:

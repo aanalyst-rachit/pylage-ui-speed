@@ -1,5 +1,5 @@
-from pylage import Slider
-from pylage.core.renderer import render
+from pylage.ENGINE import Slider
+from pylage.ENGINE.core.renderer import render
 
 
 def test_slider_renders_as_range():
@@ -46,7 +46,7 @@ def test_slider_supports_min_max_step():
 
 
 def test_slider_state_renders_initial_value():
-    from pylage import State
+    from pylage.ENGINE import State
 
     selected = State(25)
     slider = Slider(value=selected)
@@ -57,8 +57,8 @@ def test_slider_state_renders_initial_value():
 
 
 def test_slider_state_updates_from_input_event():
-    from pylage import State
-    from pylage.core.events import EventDispatcher
+    from pylage.ENGINE import State
+    from pylage.ENGINE.core.events import EventDispatcher
 
     selected = State(25)
     slider = Slider(value=selected)
@@ -75,8 +75,8 @@ def test_slider_state_updates_from_input_event():
 
 
 def test_slider_state_updates_reactive_callback():
-    from pylage import State
-    from pylage.core.binding import StateBinding
+    from pylage.ENGINE import State
+    from pylage.ENGINE.core.binding import StateBinding
 
     selected = State(25)
     slider = Slider(value=selected)

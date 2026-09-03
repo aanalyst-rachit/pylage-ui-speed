@@ -1,6 +1,6 @@
 import inspect
 
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE REGISTRY RENDERER OWNERSHIP TEST ===")

@@ -1,15 +1,16 @@
 import time
 
 import pylage as ps
-from pylage.runtime import Runtime
+from pylage.ENGINE import Column, Heading, State
+from pylage.ENGINE.runtime import Runtime
 
 
 print("=== PYLAGE LIVE STATE DEBUG ===")
 
-count = ps.State(0)
+count = State(0)
 
-app = ps.Column(
-    ps.Heading(count),
+app = Column(
+    Heading(count),
 )
 
 runtime = Runtime(

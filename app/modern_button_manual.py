@@ -1,16 +1,6 @@
 from pathlib import Path
-from pylage import (
-    Card,
-    Column,
-    Heading,
-    RadioGroup,
-    Row,
-    Select,
-    State,
-    Switch,
-    Text,
-)
-from pylage.core.component import component
+from pylage.ENGINE import Card, Column, Heading, RadioGroup, Row, Select, State, Switch, Text
+from pylage.ENGINE.core.component import component
 
 
 def Option(label: str, value: str, **props):

@@ -1,6 +1,6 @@
 import pylage as ps
 
-from pylage.core.registry import (
+from pylage.ENGINE.core.registry import (
     ComponentRegistry,
     registry,
 )

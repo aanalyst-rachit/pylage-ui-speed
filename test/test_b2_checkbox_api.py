@@ -1,9 +1,10 @@
 import pylage as ps
-from pylage.core.renderer import render
+from pylage.ENGINE import Checkbox, State
+from pylage.ENGINE.core.renderer import render
 
 
 def test_checkbox_checked_false_does_not_render_checked():
-    checkbox = ps.Checkbox(checked=False)
+    checkbox = Checkbox(checked=False)
 
     html = render(checkbox)
 
@@ -12,7 +13,7 @@ def test_checkbox_checked_false_does_not_render_checked():
 
 
 def test_checkbox_checked_true_renders_checked():
-    checkbox = ps.Checkbox(checked=True)
+    checkbox = Checkbox(checked=True)
 
     html = render(checkbox)
 
@@ -23,7 +24,7 @@ def test_checkbox_checked_true_renders_checked():
 def test_checkbox_preserves_existing_props_and_event():
     received = []
 
-    checkbox = ps.Checkbox(
+    checkbox = Checkbox(
         class_name="agree",
         title="Accept terms",
         checked=True,
@@ -39,9 +40,9 @@ def test_checkbox_preserves_existing_props_and_event():
 
 
 def test_checkbox_checked_state_is_resolved_for_rendering():
-    checked = ps.State(False)
+    checked = State(False)
 
-    checkbox = ps.Checkbox(checked=checked)
+    checkbox = Checkbox(checked=checked)
 
     html = render(checkbox)
 
@@ -56,7 +57,7 @@ def test_checkbox_checked_state_is_resolved_for_rendering():
 
 
 def test_checkbox_registry_declares_checked_as_boolean():
-    from pylage.core.registry import registry
+    from pylage.ENGINE.core.registry import registry
 
     definition = registry.get("Checkbox")
 
@@ -69,10 +70,10 @@ def test_checkbox_registry_declares_checked_as_boolean():
 
 def test_checkbox_state_update_controls_browser_checked_property():
     from playwright.sync_api import sync_playwright, expect
-    from pylage.runtime import Runtime
+    from pylage.ENGINE.runtime import Runtime
 
-    checked = ps.State(False)
-    checkbox = ps.Checkbox(checked=checked)
+    checked = State(False)
+    checkbox = Checkbox(checked=checked)
 
     runtime = Runtime(
         checkbox,

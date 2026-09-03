@@ -1,4 +1,4 @@
-from pylage.core.diff import diff
+from pylage.ENGINE.core.diff import diff
 
 
 def snapshot(

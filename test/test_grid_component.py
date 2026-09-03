@@ -1,5 +1,5 @@
-from pylage import Grid, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Grid, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_grid_creates_grid_component():

@@ -1,15 +1,15 @@
 import pylage as pl
-from pylage import Style
+from pylage.ENGINE import Column, Style, Text
 
 
 def get_app():
 
-    return pl.Column(
+    return Column(
 
         # =========================================================
         # TEXT — BASIC
         # =========================================================
-        pl.Text(
+        Text(
             "TEXT — Basic",
             style=Style(
                 font_size="28px",
@@ -19,7 +19,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "This is a normal Text component.",
             style=Style(
                 color="#334155",
@@ -30,7 +30,7 @@ def get_app():
         # =========================================================
         # FONT SIZE
         # =========================================================
-        pl.Text(
+        Text(
             "Font Size: 12px",
             style=Style(
                 font_size="12px",
@@ -38,7 +38,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Size: 20px",
             style=Style(
                 font_size="20px",
@@ -46,7 +46,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Size: 32px",
             style=Style(
                 font_size="32px",
@@ -57,7 +57,7 @@ def get_app():
         # =========================================================
         # FONT WEIGHT
         # =========================================================
-        pl.Text(
+        Text(
             "Font Weight: 400 — Normal",
             style=Style(
                 font_weight="400",
@@ -65,7 +65,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Weight: 600 — Semi Bold",
             style=Style(
                 font_weight="600",
@@ -73,7 +73,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Weight: 700 — Bold",
             style=Style(
                 font_weight="700",
@@ -84,7 +84,7 @@ def get_app():
         # =========================================================
         # FONT FAMILY
         # =========================================================
-        pl.Text(
+        Text(
             "Font Family: Arial",
             style=Style(
                 font_family="Arial",
@@ -92,7 +92,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Family: Georgia",
             style=Style(
                 font_family="Georgia",
@@ -100,7 +100,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Font Family: monospace",
             style=Style(
                 font_family="monospace",
@@ -111,7 +111,7 @@ def get_app():
         # =========================================================
         # COLOR
         # =========================================================
-        pl.Text(
+        Text(
             "Text Color",
             style=Style(
                 color="#2563eb",
@@ -120,7 +120,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Different Text Color",
             style=Style(
                 color="#dc2626",
@@ -132,7 +132,7 @@ def get_app():
         # =========================================================
         # BACKGROUND
         # =========================================================
-        pl.Text(
+        Text(
             "Text with Background",
             style=Style(
                 background_color="#dbeafe",
@@ -145,7 +145,7 @@ def get_app():
         # =========================================================
         # TEXT ALIGN
         # =========================================================
-        pl.Text(
+        Text(
             "Left Aligned Text",
             style=Style(
                 width="100%",
@@ -154,7 +154,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Center Aligned Text",
             style=Style(
                 width="100%",
@@ -163,7 +163,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Right Aligned Text",
             style=Style(
                 width="100%",
@@ -175,7 +175,7 @@ def get_app():
         # =========================================================
         # LINE HEIGHT
         # =========================================================
-        pl.Text(
+        Text(
             "Line Height Demo — This is a longer piece of text "
             "so that we can visually inspect how line-height "
             "changes the spacing between lines.",
@@ -189,7 +189,7 @@ def get_app():
         # =========================================================
         # PADDING
         # =========================================================
-        pl.Text(
+        Text(
             "Text with Padding",
             style=Style(
                 background_color="#fef3c7",
@@ -202,7 +202,7 @@ def get_app():
         # =========================================================
         # MARGIN
         # =========================================================
-        pl.Text(
+        Text(
             "Text with Margin",
             style=Style(
                 background_color="#dcfce7",
@@ -216,7 +216,7 @@ def get_app():
         # =========================================================
         # BORDER
         # =========================================================
-        pl.Text(
+        Text(
             "Text with Border",
             style=Style(
                 border="1px solid #94a3b8",
@@ -229,7 +229,7 @@ def get_app():
         # =========================================================
         # BORDER RADIUS
         # =========================================================
-        pl.Text(
+        Text(
             "Rounded Text Box",
             style=Style(
                 background_color="#ede9fe",
@@ -243,7 +243,7 @@ def get_app():
         # =========================================================
         # BOX SHADOW
         # =========================================================
-        pl.Text(
+        Text(
             "Text Box with Shadow",
             style=Style(
                 background_color="#ffffff",
@@ -257,7 +257,7 @@ def get_app():
         # =========================================================
         # OPACITY
         # =========================================================
-        pl.Text(
+        Text(
             "Opacity 100%",
             style=Style(
                 opacity=1,
@@ -265,7 +265,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Opacity 50%",
             style=Style(
                 opacity=0.5,
@@ -276,7 +276,7 @@ def get_app():
         # =========================================================
         # WIDTH
         # =========================================================
-        pl.Text(
+        Text(
             "Fixed Width Text",
             style=Style(
                 width="300px",
@@ -288,7 +288,7 @@ def get_app():
         # =========================================================
         # OVERFLOW
         # =========================================================
-        pl.Text(
+        Text(
             "Overflow demonstration — this is intentionally a "
             "very long text string to inspect overflow behaviour.",
             style=Style(
@@ -302,7 +302,7 @@ def get_app():
         # =========================================================
         # CURSOR
         # =========================================================
-        pl.Text(
+        Text(
             "Cursor: pointer",
             style=Style(
                 cursor="pointer",
@@ -314,7 +314,7 @@ def get_app():
         # =========================================================
         # COMBINED REAL-WORLD TEXT
         # =========================================================
-        pl.Text(
+        Text(
             "Dashboard Title",
             style=Style(
                 font_size="30px",
@@ -325,7 +325,7 @@ def get_app():
             ),
         ),
 
-        pl.Text(
+        Text(
             "Manage your application, users and analytics "
             "from one place.",
             style=Style(

@@ -4,7 +4,8 @@ import json
 from websockets.asyncio.client import connect
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE import Button, Column
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 print("=== PYLAGE WEBSOCKET TEST ===")
@@ -18,12 +19,12 @@ def clicked():
     return "handler-ok"
 
 
-button = ps.Button(
+button = Button(
     "Click me",
     on_click=clicked,
 )
 
-app = ps.Column(button)
+app = Column(button)
 
 server = WebSocketServer(app)
 

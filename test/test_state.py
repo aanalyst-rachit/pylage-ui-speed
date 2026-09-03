@@ -1,4 +1,4 @@
-from pylage.core.state import State
+from pylage.ENGINE.core.state import State
 
 
 print("=== PYLAGE STATE TEST ===")

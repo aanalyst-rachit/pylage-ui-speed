@@ -1,8 +1,8 @@
-from pylage import Card as EngineCard
-from pylage import Style, State
-from pylage.core.renderer import render
+from pylage.ENGINE import Card as EngineCard
+from pylage.ENGINE import Style, State
+from pylage.ENGINE.core.renderer import render
 
-import pylage_ui as ui
+import pylage.UI as ui
 
 
 def test_metric_returns_existing_metric_card():

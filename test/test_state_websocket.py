@@ -2,15 +2,16 @@ import asyncio
 import json
 
 import pylage as ps
+from pylage.ENGINE import Column, Heading, State
 
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 async def main():
-    count = ps.State(0)
+    count = State(0)
 
-    app = ps.Column(
-        ps.Heading(text=count),
+    app = Column(
+        Heading(text=count),
     )
 
     server = WebSocketServer(app)

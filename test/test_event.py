@@ -1,4 +1,5 @@
 import pylage as ps
+from pylage.ENGINE import Button
 
 
 print("=== PYLAGE EVENT MODEL TEST ===")
@@ -11,7 +12,7 @@ def clicked():
     calls.append("clicked")
 
 
-button = ps.Button(
+button = Button(
     "Click me",
     on_click=clicked,
 )
