@@ -277,7 +277,7 @@ A useful dashboard can be created with minimal Python.
 
 # PHASE 08 — Forms
 
-* [ ] Input
+* [x] Input
 * [x] Textarea
 * [ ] Select
 * [ ] Checkbox
