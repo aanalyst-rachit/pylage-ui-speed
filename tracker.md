@@ -280,7 +280,7 @@ A useful dashboard can be created with minimal Python.
 * [x] Input
 * [x] Textarea
 * [x] Select
-* [ ] Checkbox
+* [x] Checkbox
 * [ ] Radio
 * [ ] Switch
 * [ ] Slider
