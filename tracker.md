@@ -278,7 +278,7 @@ A useful dashboard can be created with minimal Python.
 # PHASE 08 — Forms
 
 * [ ] Input
-* [ ] Textarea
+* [x] Textarea
 * [ ] Select
 * [ ] Checkbox
 * [ ] Radio
@@ -293,6 +293,8 @@ A useful dashboard can be created with minimal Python.
 * [ ] Disabled state
 
 Reuse existing PyLage components wherever possible.
+
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ---
 
@@ -309,6 +311,8 @@ Reuse existing PyLage components wherever possible.
 * [ ] Loading overlay
 
 ---
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+
 
 # PHASE 10 — Navigation
 
@@ -322,6 +326,7 @@ Reuse existing PyLage components wherever possible.
 * [ ] Mobile navigation
 
 Reuse existing `pylage_layout` navigation primitives.
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ---
 
@@ -346,6 +351,7 @@ ps.grid(...)
 ps.columns(...)
 ps.sidebar(...)
 ```
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ---
 
@@ -375,6 +381,8 @@ ps.dashboard(
 ```
 
 ---
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+
 
 # PHASE 13 — Responsive Intelligence
 
@@ -391,6 +399,7 @@ Reuse existing responsive infrastructure.
 ### Goal
 
 Components should adapt without requiring manual CSS/media queries.
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ---
 
@@ -428,6 +437,7 @@ ps.card(
 * [ ] Custom tokens
 * [ ] Component-level overrides
 * [ ] Global overrides
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ### Principle
 
@@ -447,6 +457,7 @@ Customization must never destroy default simplicity.
 * [ ] Form accessibility
 
 ---
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 # PHASE 16 — Performance
 
@@ -463,6 +474,7 @@ PyLage UI Kit must preserve PyLage's low-latency architecture.
 * [ ] Client/bundle impact
 
 ### Principle
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 High-level API → efficient existing PyLage primitives.
 
@@ -471,6 +483,7 @@ High-level API → efficient existing PyLage primitives.
 # PHASE 17 — Test Matrix
 
 Every component should eventually pass:
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 ```text
 UNIT
@@ -514,6 +527,7 @@ PyLage UI Kit Demo
 ├── Components
 └── Themes
 ```
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 Goal:
 
@@ -526,6 +540,7 @@ The majority of application code should use high-level `ps.*` APIs.
 ---
 
 # PHASE 19 — Documentation
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 * [ ] Installation
 * [ ] First app
@@ -545,6 +560,7 @@ The majority of application code should use high-level `ps.*` APIs.
 ---
 
 # PHASE 20 — API Stabilization
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 * [ ] Remove unnecessary APIs
 * [ ] Fix inconsistent naming
@@ -563,6 +579,7 @@ Small API surface + powerful composition.
 ---
 
 # PHASE 21 — Release
+work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 
 Target:
 

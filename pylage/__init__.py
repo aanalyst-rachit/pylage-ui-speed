@@ -29,4 +29,4 @@ __all__ = list(dict.fromkeys([
     "theme",
     "IMPORT_NAME",
     "PACKAGE_NAME",
-]))
+])) # type: ignore

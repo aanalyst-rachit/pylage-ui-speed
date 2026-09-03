@@ -35,6 +35,4 @@ __all__ = [
     *_layout_all,
     *_pattern_all,
     *_recipe_all,
-    "Topbar",
-    "topheader",
 ]

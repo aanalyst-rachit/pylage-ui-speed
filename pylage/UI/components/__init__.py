@@ -25,6 +25,14 @@ from .stat_group import *
 from .table import *
 from .text import *
 from .trend import *
+from .form import *
+from .datepicker import *
+from .slider import *
+from .switch import *
+from .checkbox import *
+from .select import *
+from .input import *
+from .textarea import *
 
 __all__ = [
     "avatar",
@@ -49,4 +57,12 @@ __all__ = [
     "table",
     "text",
     "trend",
+    "input",
+    "select",
+    "checkbox",
+    "switch",
+    "slider",
+    "datepicker",
+    "form",
+    "textarea",
 ]

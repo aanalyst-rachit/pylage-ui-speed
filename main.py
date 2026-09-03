@@ -99,7 +99,7 @@ def build_manual_cache(manuals: dict[str, object]) -> dict[str, object]:
 
     for name, module in manuals.items():
         try:
-            app = module.get_app()
+            app = module.get_app() # type: ignore
             apps[name] = app
             print(f"[CACHE OK] {name}")
         except Exception as exc:
@@ -129,7 +129,7 @@ def get_manual_apps() -> dict[str, object]:
     return MANUAL_APPS
 
 
-def manual_error_view(name: str, error: Exception) -> Column:
+def manual_error_view(name: str, error: Exception) -> Column: # type: ignore
     return Column(
         Heading(
             f"Failed to load: {name}",
@@ -147,7 +147,7 @@ def manual_error_view(name: str, error: Exception) -> Column:
     )
 
 
-def build_manual_browser() -> Column:
+def build_manual_browser() -> Column: # type: ignore
     manuals = get_manuals()
     manual_apps = get_manual_apps()
 
@@ -297,7 +297,7 @@ def build_manual_browser() -> Column:
     )
 
 
-def get_app() -> Column:
+def get_app() -> Column: # type: ignore
     return build_manual_browser()
 
 
