@@ -490,15 +490,21 @@ def Option(text: Any, value: Any = None, **props: Any) -> Component:
 
 def Slider(**props: Any) -> Component:
     value = props.get("value")
+    user_on_input = props.get("on_input")
 
-    if isinstance(value, State) and "on_input" not in props:
+    slider = component("Slider", **props)
+
+    if isinstance(value, State):
         def update_state(payload: Any) -> None:
             if isinstance(payload, dict) and "value" in payload:
                 value.set(payload["value"])
 
-        props["on_input"] = update_state
+            if user_on_input is not None:
+                user_on_input(payload)
 
-    return component("Slider", **props)
+        slider.events["input"] = update_state
+
+    return slider
 
 
 def DatePicker(**props: Any) -> Component:

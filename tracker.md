@@ -283,7 +283,7 @@ A useful dashboard can be created with minimal Python.
 * [x] Checkbox
 * [x] Radio
 * [x] Switch
-* [ ] Slider
+* [x] Slider
 * [ ] Date picker
 * [ ] Form field
 * [ ] Form
@@ -641,7 +641,7 @@ Theme / Tokens             [EXISTING]
 Responsive System          [EXISTING]
 Reactive Engine            [EXISTING]
 
-pylage-ui-kit              [PHASE 08 IN PROGRESS — Input, Textarea, Select, Checkbox, Radio, Switch COMPLETE]
+pylage-ui-kit              [PHASE 08 IN PROGRESS — Input, Textarea, Select, Checkbox, Radio, Switch, Slider COMPLETE]
 ```
 
 # Development Rule
