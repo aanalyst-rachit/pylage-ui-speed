@@ -509,15 +509,21 @@ def Slider(**props: Any) -> Component:
 
 def DatePicker(**props: Any) -> Component:
     value = props.get("value")
+    user_on_input = props.get("on_input")
 
-    if isinstance(value, State) and "on_input" not in props:
+    datepicker = component("DatePicker", **props)
+
+    if isinstance(value, State):
         def update_state(payload: Any) -> None:
             if isinstance(payload, dict) and "value" in payload:
                 value.set(payload["value"])
 
-        props["on_input"] = update_state
+            if user_on_input is not None:
+                user_on_input(payload)
 
-    return component("DatePicker", **props)
+        datepicker.events["input"] = update_state
+
+    return datepicker
 
 
 def Alert(*children, **props: Any) -> Component:
