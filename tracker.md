@@ -254,7 +254,8 @@ Sizes:
 
 ## Data
 
-* [ ] Table
+* [x] Table
+* [x] DataFrame
 * [ ] Data list
 * [ ] Empty state
 * [ ] Loading state
