@@ -138,3 +138,46 @@ def test_switch_change_event_reports_checked_state():
 
     finally:
         runtime.stop()
+
+
+def test_switch_browser_change_updates_bound_state():
+    enabled = State(False)
+    switch = Switch(checked=enabled)
+
+    app = Column(switch)
+
+    runtime = Runtime(
+        app,
+        title="B3 Switch State Change Binding",
+        output="test_output/b3_switch_state_change_binding/index.html",
+    )
+
+    try:
+        url = runtime.start()
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(url)
+
+            locator = page.locator(
+                f'[data-pylage-id="{switch.id}"]'
+            )
+
+            expect(locator).not_to_be_checked()
+            assert enabled.value is False
+
+            locator.check()
+
+            expect(locator).to_be_checked()
+            assert enabled.value is True
+
+            locator.uncheck()
+
+            expect(locator).not_to_be_checked()
+            assert enabled.value is False
+
+            browser.close()
+
+    finally:
+        runtime.stop()

@@ -455,7 +455,26 @@ def RadioGroup(*children, **props: Any) -> Component:
     return group
 
 def Switch(**props: Any) -> Component:
-    return component("Switch", **props)
+    checked = props.get("checked")
+    user_on_change = props.get("on_change")
+
+    switch = component("Switch", **props)
+
+    if isinstance(checked, State):
+        def update_state(payload: Any) -> None:
+            if isinstance(payload, dict) and "checked" in payload:
+                checked.set(bool(payload["checked"]))
+
+            if user_on_change is not None:
+                user_on_change(payload)
+
+        switch.events["change"] = update_state
+
+        checked.subscribe(
+            lambda _old, new: switch.props.__setitem__("checked", bool(new))
+        )
+
+    return switch
 
 
 def Select(*children, **props: Any) -> Component:
