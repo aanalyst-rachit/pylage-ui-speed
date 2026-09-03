@@ -285,7 +285,7 @@ A useful dashboard can be created with minimal Python.
 * [x] Switch
 * [x] Slider
 * [x] Date picker
-* [ ] Form field
+* [x] Form field
 * [ ] Form
 * [ ] Validation presentation
 * [ ] Error state

@@ -26,6 +26,7 @@ from .table import *
 from .text import *
 from .trend import *
 from .form import *
+from .form_field import *
 from .datepicker import *
 from .slider import *
 from .switch import *
@@ -66,5 +67,6 @@ __all__ = [
     "slider",
     "datepicker",
     "form",
+    "form_field",
     "textarea",
 ]
