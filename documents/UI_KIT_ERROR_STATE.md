@@ -1,25 +1,29 @@
 # UI Kit Error State
 
-`pylage_ui.error_state()` provides a semantic, high-level error boundary and feedback card for failure scenarios and system errors.
+## Overview
+
+`error_state()` provides a semantic, high-level error feedback component for page, section, operation, or system-level failures.
+
+It is separate from field-level validation feedback: `form_field(error=...)` is used for individual fields, while `error_state()` is intended for broader failure states.
 
 ## Basic Usage
 
 ```python
-import pylage_ui as ps
+import pylage as pl
 
-ps.error_state()
+pl.error_state()
 ```
 
-## With Custom Action and Details
+## Custom Error State
 
 ```python
-import pylage_ui as ps
+import pylage as pl
 
-ps.error_state(
+pl.error_state(
     title="Failed to load dashboard",
     description="The connection to the database timed out.",
     icon="⚠️",
-    action=ps.button("Retry", variant="danger"),
+    action=pl.button("Retry", variant="danger"),
 )
 ```
 
@@ -28,20 +32,22 @@ ps.error_state(
 | Parameter | Type | Default | Description |
 |---|---|---|---|
 | `title` | `Any` | `"Something went wrong"` | Primary error headline |
-| `description` | `Any` | `"An error occurred..."` | Explanation or recovery guidance |
-| `icon` | `Any` | `"⚠️"` | Warning icon or emoji |
-| `action` | `Any` | `None` | Retry or recovery action button |
+| `description` | `Any` | `"An error occurred while processing your request."` | Error explanation or recovery guidance |
+| `icon` | `Any` | `"⚠️"` | Warning icon, text, or component |
+| `action` | `Any` | `None` | Optional recovery/action component |
 | `style` | `Style` | `None` | Custom style overrides |
-| `**props` | `Any` | — | Forwarded to root component |
+| `**props` | `Any` | — | Forwarded root component properties |
 
-## Custom Styling
+## Architecture
 
-```python
-from pylage import Style
-import pylage_ui as ps
+`error_state()` reuses existing PyLage engine primitives and does not introduce a new renderer, runtime, or error-handling engine.
 
-ps.error_state(
-    title="Service Unavailable",
-    style=Style(border="2px solid #ef4444", background_color="#fef2f2"),
-)
-```
+## Verification
+
+- Automated UI Kit ErrorState tests pass.
+- Manual error-state verification exists.
+- Custom content, actions, styles, and forwarded properties are covered.
+
+## Status
+
+Error state is complete for Phase 08.

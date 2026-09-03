@@ -287,10 +287,10 @@ A useful dashboard can be created with minimal Python.
 * [x] Date picker
 * [x] Form field
 * [ ] Form
-* [ ] Validation presentation
-* [ ] Error state
-* [ ] Help text
-* [ ] Disabled state
+* [x] Validation presentation
+* [x] Error state
+* [x] Help text
+* [x] Disabled state
 
 Reuse existing PyLage components wherever possible.
 
