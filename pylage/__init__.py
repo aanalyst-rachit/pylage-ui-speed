@@ -25,7 +25,6 @@ PACKAGE_NAME = "pylage-ui-kit"
 
 __all__ = list(dict.fromkeys([
     "run",
-    "State",
     *_ui_all,
     "style",
     "theme",

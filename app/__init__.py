@@ -12,7 +12,7 @@ from . import (
     datepicker_manual,
     dialog_manual,
     drawer_manual,
-    form_manual,
+    ui_kit_form_manual,
     grid_manual,
     heading_manual,
     input_manual,

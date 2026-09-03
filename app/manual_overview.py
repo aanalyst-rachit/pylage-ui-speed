@@ -5,7 +5,7 @@ from pylage.ENGINE import Column, Row, Card, Heading, Text, Button, Badge, State
 from app import (
     button_manual,
     card_manual,
-    form_manual,
+    ui_kit_form_manual,
     grid_manual,
     input_manual,
     heading_manual,
@@ -48,7 +48,7 @@ MANUAL_REGISTRY = {
     "Layout Columns & Rows": column_manual.get_app,
     "CSS Grid Layouts": grid_manual.get_app,
     "Layout Primitives & AppShell": layout_primitives_manual.get_app,
-    "Interactive Forms & Validation": form_manual.get_app,
+    "Interactive Forms & Validation": ui_kit_form_manual.get_app,
     "Switches & Toggles": switch_manual.get_app,
     "Select Dropdowns": select_manual.get_app,
     "DatePickers": datepicker_manual.get_app,
