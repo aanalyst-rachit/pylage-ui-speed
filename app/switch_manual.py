@@ -2,18 +2,19 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Checkbox, Column, Heading, Row, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 
 def get_app():
     # -------------------------------------------------------------------------
     # State Management
     # -------------------------------------------------------------------------
-    dark_mode = ps.State(False)
-    notifications_enabled = ps.State(False)
+    dark_mode = State(False)
+    notifications_enabled = State(False)
 
     # State Inverter Handlers
     def toggle_dark_mode(val=None):
@@ -26,7 +27,7 @@ def get_app():
     def create_checkbox(checked_val, click_handler):
         # 1. Preferred Native PyLage Checkbox Component
         if hasattr(ps, "Checkbox"):
-            return ps.Checkbox(
+            return Checkbox(
                 value=checked_val,
                 on_change=click_handler,
                 style=Style(width="18px", height="18px", cursor="pointer")
@@ -44,9 +45,9 @@ def get_app():
     # -------------------------------------------------------------------------
     # UI Component Tree Return
     # -------------------------------------------------------------------------
-    return ps.Column(
+    return Column(
         # Page Title
-        ps.Heading(
+        Heading(
             "Switch Component Demo",
             style=Style(
                 font_size="1.75rem",
@@ -55,7 +56,7 @@ def get_app():
                 margin_bottom="0.25rem",
             ),
         ),
-        ps.Text(
+        Text(
             "Interactive demonstration of toggle states in PyLage.",
             style=Style(color="#64748b", font_size="0.9rem", margin_bottom="1.5rem"),
         ),
@@ -63,15 +64,15 @@ def get_app():
         # ---------------------------------------------------------------------
         # DEMO 1: Dark Mode Toggle
         # ---------------------------------------------------------------------
-        ps.Column(
-            ps.Row(
-                ps.Text("Dark Theme: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(dark_mode, style=Style(color="#2563eb", font_weight="700")),
+        Column(
+            Row(
+                Text("Dark Theme: ", style=Style(font_weight="500", color="#475569")),
+                Text(dark_mode, style=Style(color="#2563eb", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
-            ps.Row(
+            Row(
                 create_checkbox(dark_mode.value, toggle_dark_mode),
-                ps.Text("Enable Dark Theme", style=Style(color="#334155", font_size="0.95rem", cursor="pointer")),
+                Text("Enable Dark Theme", style=Style(color="#334155", font_size="0.95rem", cursor="pointer")),
                 style=Style(gap="0.75rem", align_items="center"),
             ),
             style=Style(
@@ -87,15 +88,15 @@ def get_app():
         # ---------------------------------------------------------------------
         # DEMO 2: Notifications Toggle
         # ---------------------------------------------------------------------
-        ps.Column(
-            ps.Row(
-                ps.Text("Notifications: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(notifications_enabled, style=Style(color="#059669", font_weight="700")),
+        Column(
+            Row(
+                Text("Notifications: ", style=Style(font_weight="500", color="#475569")),
+                Text(notifications_enabled, style=Style(color="#059669", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
-            ps.Row(
+            Row(
                 create_checkbox(notifications_enabled.value, toggle_notifications),
-                ps.Text("Allow Email Notifications", style=Style(color="#334155", font_size="0.95rem", cursor="pointer")),
+                Text("Allow Email Notifications", style=Style(color="#334155", font_size="0.95rem", cursor="pointer")),
                 style=Style(gap="0.75rem", align_items="center"),
             ),
             style=Style(

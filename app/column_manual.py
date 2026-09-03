@@ -2,14 +2,15 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Button, Column, Heading, Row, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # Dynamic State for Column Interactivity Demo
-    item_count = ps.State(2)
+    item_count = State(2)
 
     def add_item():
         item_count.set(item_count.value + 1)
@@ -19,8 +20,8 @@ def get_app():
 
     # Helper function for dynamic item blocks
     def create_block(text, bg_color="#2563eb", width="100%"):
-        return ps.Column(
-            ps.Text(text, style=Style(color="#ffffff", font_weight="700")),
+        return Column(
+            Text(text, style=Style(color="#ffffff", font_weight="700")),
             style=Style(
                 background_color=bg_color,
                 width=width,
@@ -32,7 +33,7 @@ def get_app():
     # ============================================================
     # 1. BASIC COLUMN WITH GAP
     # ============================================================
-    basic_column = ps.Column(
+    basic_column = Column(
         create_block("Stacked Block 1", "#2563eb"),
         create_block("Stacked Block 2", "#7c3aed"),
         create_block("Stacked Block 3", "#dc2626"),
@@ -49,7 +50,7 @@ def get_app():
     # ============================================================
     # 2. ALIGN ITEMS (Horizontal Alignment in Vertical Column)
     # ============================================================
-    align_column = ps.Column(
+    align_column = Column(
         create_block("Start Aligned", "#059669", width="40%"),
         create_block("Center Aligned", "#d97706", width="50%"),
         create_block("End Aligned", "#2563eb", width="40%"),
@@ -67,7 +68,7 @@ def get_app():
     # ============================================================
     # 3. JUSTIFY CONTENT (Vertical Distribution inside Fixed Height)
     # ============================================================
-    justify_column = ps.Column(
+    justify_column = Column(
         create_block("Top Block", "#7c3aed"),
         create_block("Bottom Block", "#059669"),
         style=Style(
@@ -84,7 +85,7 @@ def get_app():
     # ============================================================
     # 4. SCROLLABLE COLUMN CONTAINER
     # ============================================================
-    scroll_column = ps.Column(
+    scroll_column = Column(
         create_block("Scrollable Item 1", "#475569"),
         create_block("Scrollable Item 2", "#475569"),
         create_block("Scrollable Item 3", "#475569"),
@@ -105,15 +106,15 @@ def get_app():
     # ============================================================
     # 5. INTERACTIVE COLUMN (Dynamic Content Stacking)
     # ============================================================
-    interactive_column = ps.Column(
-        ps.Row(
-            ps.Button("Add Stack Item", on_click=add_item, style=Style(padding="0.5rem 1rem", cursor="pointer")),
-            ps.Button("Reset", on_click=reset_items, style=Style(padding="0.5rem 1rem", cursor="pointer")),
+    interactive_column = Column(
+        Row(
+            Button("Add Stack Item", on_click=add_item, style=Style(padding="0.5rem 1rem", cursor="pointer")),
+            Button("Reset", on_click=reset_items, style=Style(padding="0.5rem 1rem", cursor="pointer")),
             style=Style(gap="0.75rem", margin_bottom="1rem"),
         ),
-        ps.Row(
-            ps.Text("Current Items Stacked: ", style=Style(font_weight="600")),
-            ps.Heading(item_count, style=Style(color="#2563eb", font_size="1rem")),
+        Row(
+            Text("Current Items Stacked: ", style=Style(font_weight="600")),
+            Heading(item_count, style=Style(color="#2563eb", font_size="1rem")),
             style=Style(align_items="center", gap="0.5rem"),
         ),
         style=Style(
@@ -126,29 +127,29 @@ def get_app():
         ),
     )
 
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Column — Live Manual",
             style=Style(font_size="1.75rem", font_weight="700", color="#0f172a", margin_bottom="0.5rem"),
         ),
-        ps.Text(
+        Text(
             "Column layout component ke vertical stacking, alignment, aur scrollable features test karein:",
             style=Style(color="#64748b", margin_bottom="1.5rem"),
         ),
 
-        ps.Text("1. Basic Vertical Stacking (With Gap)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("1. Basic Vertical Stacking (With Gap)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         basic_column,
 
-        ps.Text("2. Horizontal Alignment (Align Items Center)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("2. Horizontal Alignment (Align Items Center)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         align_column,
 
-        ps.Text("3. Vertical Distribution (Justify Space-Between)", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("3. Vertical Distribution (Justify Space-Between)", style=Style(font_weight="700", margin_bottom="0.5rem")),
         justify_column,
 
-        ps.Text("4. Fixed Height Scrollable Column", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("4. Fixed Height Scrollable Column", style=Style(font_weight="700", margin_bottom="0.5rem")),
         scroll_column,
 
-        ps.Text("5. Interactive Column State Update", style=Style(font_weight="700", margin_bottom="0.5rem")),
+        Text("5. Interactive Column State Update", style=Style(font_weight="700", margin_bottom="0.5rem")),
         interactive_column,
 
         style=Style(

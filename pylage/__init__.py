@@ -22,71 +22,11 @@ from pylage.UI import themes as theme
 IMPORT_NAME = "pylage"
 PACKAGE_NAME = "pylage-ui-kit"
 
-__all__ = [
+__all__ = list(dict.fromkeys([
     "run",
     *_ui_all,
     "style",
     "theme",
     "IMPORT_NAME",
     "PACKAGE_NAME",
-]
-
-# ---------------------------------------------------------------------------
-# Legacy compatibility surface
-#
-# These names are retained so existing applications/tests continue to work.
-# New application code should prefer the semantic lowercase UI API:
-#     ps.button, ps.card, ps.topheader
-# and the namespaces:
-#     style.*, theme.*
-#
-# ENGINE remains an internal implementation detail.
-# ---------------------------------------------------------------------------
-
-from pylage.ENGINE.components.basic import (
-    Canvas,
-    Icon,
-    Audio,
-    Video,
-    Image,
-    Grid,
-    Carousel,
-    Accordion,
-    Avatar,
-    Badge,
-    Divider,
-    Button,
-    Card,
-    Column,
-    Row,
-    Dialog,
-    Form,
-    Heading,
-    Input,
-    Navigation,
-    RadioGroup,
-    Select,
-    Option,
-    Slider,
-    Switch,
-    Table,
-    DataFrame,
-    Tabs,
-    Text,
-    Checkbox,
-    DatePicker,
-    Alert,
-    Toast,
-    Spinner,
-    ProgressBar,
-    Skeleton,
-    Breadcrumbs,
-    Pagination,
-    Menu,
-    Drawer,
-    Tooltip,
-    Popover,
-)
-
-from pylage.ENGINE.core.state import State
-from pylage.ENGINE.styling import Style, Theme, ResponsiveStyle
+]))

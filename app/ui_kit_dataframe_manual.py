@@ -3,7 +3,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-from pylage import Column, Style, Text
+from pylage.ENGINE import Column, Style, Text
 from pylage import dataframe
 
 

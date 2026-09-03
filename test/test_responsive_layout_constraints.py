@@ -1,19 +1,20 @@
 import pylage as ps
+from pylage.ENGINE import Column, Grid, ResponsiveStyle, Style, Text
 
 from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 def test_responsive_layout_constraints():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             width="100%",
             padding="8px",
         ),
-        sm=ps.Style(
+        sm=Style(
             width="90%",
             padding="12px",
         ),
-        md=ps.Style(
+        md=Style(
             width="80%",
             max_width="1200px",
             padding="16px",
@@ -23,8 +24,8 @@ def test_responsive_layout_constraints():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Column(
-            ps.Text("Responsive"),
+        Column(
+            Text("Responsive"),
             style=responsive,
         )
     )
@@ -42,13 +43,13 @@ def test_responsive_layout_constraints():
 
 
 def test_responsive_flex_constraints():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             display="flex",
             flex_direction="column",
             gap="8px",
         ),
-        md=ps.Style(
+        md=Style(
             flex_direction="row",
             gap="16px",
         ),
@@ -57,9 +58,9 @@ def test_responsive_flex_constraints():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Column(
-            ps.Text("One"),
-            ps.Text("Two"),
+        Column(
+            Text("One"),
+            Text("Two"),
             style=responsive,
         )
     )
@@ -74,12 +75,12 @@ def test_responsive_flex_constraints():
 
 
 def test_responsive_grid_constraints():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             display="grid",
             grid_template_columns="1fr",
         ),
-        md=ps.Style(
+        md=Style(
             grid_template_columns="repeat(3, 1fr)",
         ),
     )
@@ -87,10 +88,10 @@ def test_responsive_grid_constraints():
     renderer = HTMLRenderer()
 
     html = renderer.render(
-        ps.Grid(
-            ps.Text("One"),
-            ps.Text("Two"),
-            ps.Text("Three"),
+        Grid(
+            Text("One"),
+            Text("Two"),
+            Text("Three"),
             style=responsive,
         )
     )

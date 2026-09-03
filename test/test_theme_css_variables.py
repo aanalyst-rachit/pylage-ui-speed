@@ -1,8 +1,9 @@
 import pylage as ps
+from pylage.ENGINE import Style, Theme
 
 
 def test_theme_css_variables_can_be_used_by_style():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
             "background": "#ffffff",
@@ -12,7 +13,7 @@ def test_theme_css_variables_can_be_used_by_style():
         },
     )
 
-    style = ps.Style(
+    style = Style(
         color="var(--color-primary)",
         background_color="var(--color-background)",
         padding="var(--spacing-md)",
@@ -32,7 +33,7 @@ def test_theme_css_variables_can_be_used_by_style():
 
 
 def test_theme_css_can_be_combined_with_component_style():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary": "#2563eb",
         },
@@ -41,7 +42,7 @@ def test_theme_css_can_be_combined_with_component_style():
         },
     )
 
-    style = ps.Style(
+    style = Style(
         color="var(--color-primary)",
         padding="var(--spacing-md)",
     )
@@ -64,7 +65,7 @@ def test_theme_css_can_be_combined_with_component_style():
 
 
 def test_theme_css_variable_names_are_stable():
-    theme = ps.Theme(
+    theme = Theme(
         colors={
             "primary_text": "#111827",
         },

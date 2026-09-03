@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Style
+from pylage.ENGINE import Column, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Dashboard Grid", level=2),
-        ps.Text("High-level responsive grid arrangements for multi-widget operational views."),
+        Heading("PyLage UI Kit — Dashboard Grid", level=2),
+        Text("High-level responsive grid arrangements for multi-widget operational views."),
         ui.stat_group(
             ui.metric(label="Total Visits", value="1.4M", delta="+12%"),
             ui.metric(label="Avg Duration", value="4m 12s", delta="+24s"),

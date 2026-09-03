@@ -1,6 +1,6 @@
 import pytest
 
-from pylage.ENGINE import Style
+from pylage.ENGINE import Style, Text
 
 
 def test_style_can_be_created():
@@ -51,9 +51,9 @@ def test_style_is_immutable():
 def test_style_renders_on_component():
     import pylage as ps
 
-    component = ps.Text(
+    component = Text(
         "Hello",
-        style=ps.Style(
+        style=Style(
             color="red",
             font_size="20px",
         ),

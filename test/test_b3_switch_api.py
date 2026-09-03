@@ -1,13 +1,14 @@
 from playwright.sync_api import expect, sync_playwright
 
 import pylage as ps
+from pylage.ENGINE import Column, State, Switch
 from pylage.ENGINE.core.registry import registry
 from pylage.ENGINE.core.renderer import render
 from pylage.ENGINE.runtime import Runtime
 
 
 def test_switch_checked_false_does_not_render_checked():
-    switch = ps.Switch(checked=False)
+    switch = Switch(checked=False)
 
     html = render(switch)
 
@@ -16,7 +17,7 @@ def test_switch_checked_false_does_not_render_checked():
 
 
 def test_switch_checked_true_renders_checked():
-    switch = ps.Switch(checked=True)
+    switch = Switch(checked=True)
 
     html = render(switch)
 
@@ -28,7 +29,7 @@ def test_switch_preserves_props_and_event():
     def changed(payload):
         return payload
 
-    switch = ps.Switch(
+    switch = Switch(
         class_name="theme-switch",
         title="Enable dark mode",
         on_change=changed,
@@ -42,8 +43,8 @@ def test_switch_preserves_props_and_event():
 
 
 def test_switch_checked_state_is_resolved_for_rendering():
-    state = ps.State(True)
-    switch = ps.Switch(checked=state)
+    state = State(True)
+    switch = Switch(checked=state)
 
     html = render(switch)
 
@@ -60,10 +61,10 @@ def test_switch_registry_declares_checked_as_boolean():
 
 
 def test_switch_state_update_controls_browser_checked_property():
-    enabled = ps.State(False)
-    switch = ps.Switch(checked=enabled)
+    enabled = State(False)
+    switch = Switch(checked=enabled)
 
-    app = ps.Column(switch)
+    app = Column(switch)
 
     runtime = Runtime(
         app,
@@ -101,12 +102,12 @@ def test_switch_change_event_reports_checked_state():
     def on_change(payload):
         received.append(payload)
 
-    switch = ps.Switch(
+    switch = Switch(
         checked=False,
         on_change=on_change,
     )
 
-    app = ps.Column(switch)
+    app = Column(switch)
 
     runtime = Runtime(
         app,

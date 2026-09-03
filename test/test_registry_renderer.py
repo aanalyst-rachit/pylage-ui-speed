@@ -1,4 +1,5 @@
 import pylage as ps
+from pylage.ENGINE import Heading
 
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.core.registry import registry
@@ -9,7 +10,7 @@ def test_registry_renderer():
     print("=== PYLAGE REGISTRY RENDERER TEST ===")
 
     # Built-in component
-    heading = ps.Heading("Hello")
+    heading = Heading("Hello")
 
     html = render(heading)
 

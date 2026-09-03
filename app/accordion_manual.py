@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Accordion, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Accordion, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    active_section = ps.State("Section 1")
-    expand_count = ps.State(0)
+    active_section = State("Section 1")
+    expand_count = State(0)
 
     def select_sec1(e=None):
         active_section.set("Section 1: Engine Architecture")

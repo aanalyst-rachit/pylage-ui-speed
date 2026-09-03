@@ -258,18 +258,7 @@ def test_phase_1_to_7_complete():
     # Phase 7 — Responsive Design
     # ================================================================
 
-    pylage = _import("pylage")
-
-    assert hasattr(pylage, "ResponsiveStyle"), (
-        "PyLage ResponsiveStyle is required by Phase 7"
-    )
-
-    assert hasattr(pylage, "Style"), (
-        "PyLage Style is required by Phase 7"
-    )
-
-    ResponsiveStyle = pylage.ResponsiveStyle
-    Style = pylage.Style
+    from pylage.ENGINE import ResponsiveStyle, Style
 
     # Verify the underlying responsive capability itself.
     responsive = ResponsiveStyle(

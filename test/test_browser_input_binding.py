@@ -1,21 +1,22 @@
 from playwright.sync_api import sync_playwright, expect
 
 import pylage as ps
+from pylage.ENGINE import Column, Heading, Input, State
 from pylage.ENGINE.runtime import Runtime
 
 
 def test_browser_input_binding():
     print("=== PYLAGE BROWSER INPUT BINDING TEST ===")
 
-    name = ps.State("Dollar")
+    name = State("Dollar")
 
-    heading = ps.Heading(name)
+    heading = Heading(name)
 
-    input_box = ps.Input(
+    input_box = Input(
         value=name,
     )
 
-    app = ps.Column(
+    app = Column(
         heading,
         input_box,
     )

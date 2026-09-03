@@ -1,16 +1,6 @@
 """Master Component & Pattern Manual Aggregator for PyLage and PyLage Layout."""
 
-from pylage import (
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Column, Row, Card, Heading, Text, Button, Badge, State, Style
 
 from app import (
     button_manual,

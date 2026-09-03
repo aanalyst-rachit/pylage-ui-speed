@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Avatar, Badge, Divider, Canvas, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Avatar, Badge, Divider, Canvas, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    user_status = ps.State("Online")
-    notif_count = ps.State(3)
+    user_status = State("Online")
+    notif_count = State(3)
 
     def toggle_status(e=None):
         if user_status.value == "Online":

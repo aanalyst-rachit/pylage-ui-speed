@@ -1,4 +1,5 @@
 import pylage as ps
+from pylage.ENGINE import Column, Heading, State
 
 from pylage.ENGINE.core.binding import StateBinding
 from pylage.ENGINE.core.dirty import DirtyNodes
@@ -7,9 +8,9 @@ from pylage.ENGINE.core.scheduler import Scheduler
 
 
 def test_state_change_flows_through_reactive_pipeline():
-    state = ps.State(0)
-    heading = ps.Heading(text=state)
-    app = ps.Column(heading)
+    state = State(0)
+    heading = Heading(text=state)
+    app = Column(heading)
 
     graph = DependencyGraph()
     dirty = DirtyNodes()

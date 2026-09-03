@@ -1,4 +1,4 @@
-from pylage import Column, Style, Text
+from pylage.ENGINE import Column, Style, Text
 from pylage import table
 
 

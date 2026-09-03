@@ -1,16 +1,16 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Grid, Style
+from pylage.ENGINE import Column, Grid, Heading, State, Style, Text
 
 def get_app():
-    click_count = ps.State(0)
+    click_count = State(0)
 
     def mark_clicked():
         click_count.set(click_count.value + 1)
 
     return Column(
-        ps.Heading("PyLage UI Kit — Card", level=2),
-        ps.Text("Semantic Card API using the existing PyLage engine."),
+        Heading("PyLage UI Kit — Card", level=2),
+        Text("Semantic Card API using the existing PyLage engine."),
         
         # Grid div par direct inline grid styles pass karein
         Grid(

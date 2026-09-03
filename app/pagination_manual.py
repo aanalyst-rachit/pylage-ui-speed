@@ -2,17 +2,18 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Pagination, Breadcrumbs, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Pagination, Breadcrumbs, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    current_page = ps.State(1)
+    current_page = State(1)
     total_pages = 5
-    page_data_msg = ps.State("Showing Records 1 - 10 of 50")
+    page_data_msg = State("Showing Records 1 - 10 of 50")
 
     def go_prev(e=None):
         if current_page.value > 1:

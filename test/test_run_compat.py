@@ -1,13 +1,14 @@
 from pathlib import Path
 
 import pylage as ps
+from pylage.ENGINE import Button, Column, Heading
 
 
 print("=== PYLAGE RUN COMPATIBILITY TEST ===")
 
-app = ps.Column(
-    ps.Heading("Compatibility Test"),
-    ps.Button("Click me"),
+app = Column(
+    Heading("Compatibility Test"),
+    Button("Click me"),
 )
 
 output = ps.run(

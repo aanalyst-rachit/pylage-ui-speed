@@ -1,4 +1,4 @@
-from pylage.ENGINE import Accordion, Text, Button
+from pylage.ENGINE import Accordion, Text, Button, State
 from pylage.ENGINE.core.renderer import render
 
 
@@ -34,7 +34,7 @@ def test_accordion_supports_props():
 
 def test_accordion_supports_value_and_reactivity():
     import pylage as ps
-    sec_state = ps.State("sec_1")
+    sec_state = State("sec_1")
     accordion = Accordion(value=sec_state)
 
     assert 'value="sec_1"' in render(accordion)

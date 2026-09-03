@@ -1,24 +1,6 @@
 # app/data_feedback_manual.py
 
-from pylage import (
-    Accordion,
-    Alert,
-    Badge,
-    Button,
-    Card,
-    Carousel,
-    Column,
-    Heading,
-    ProgressBar,
-    Row,
-    Skeleton,
-    Spinner,
-    State,
-    Style,
-    Table,
-    Text,
-    Toast,
-)
+from pylage.ENGINE import Accordion, Alert, Badge, Button, Card, Carousel, Column, Heading, ProgressBar, Row, Skeleton, Spinner, State, Style, Table, Text, Toast
 from pylage.ENGINE.core.component import Component, component
 
 

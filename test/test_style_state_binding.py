@@ -1,12 +1,13 @@
 import pylage as ps
+from pylage.ENGINE import State, Style, Text
 
 
 def test_style_state_updates_component_binding():
-    style_state = ps.State(
-        ps.Style(color="red")
+    style_state = State(
+        Style(color="red")
     )
 
-    component = ps.Text(
+    component = Text(
         "Hello",
         style=style_state,
     )
@@ -18,10 +19,10 @@ def test_style_state_updates_component_binding():
     )
 
     style_state.set(
-        ps.Style(color="blue")
+        Style(color="blue")
     )
 
-    assert style_state.value == ps.Style(color="blue")
+    assert style_state.value == Style(color="blue")
 
     # Style State changes must remain represented by the same
     # component prop binding.

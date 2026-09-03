@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Grid, Style
+from pylage.ENGINE import Column, Grid, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Data List", level=2),
-        ps.Text("Key-value summary lists for resource details, specs, and accounts."),
+        Heading("PyLage UI Kit — Data List", level=2),
+        Text("Key-value summary lists for resource details, specs, and accounts."),
         Grid(
             ui.data_list({
                 "Account": "Enterprise Cloud",

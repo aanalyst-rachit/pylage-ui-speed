@@ -1,14 +1,6 @@
 from pathlib import Path
-from pylage import (
-    Button,
-    Card,
-    Column,
-    Heading,
-    Row,
-    State,
-    Text,
-    run,
-)
+from pylage import run
+from pylage.ENGINE import Button, Card, Column, Heading, Row, State, Text
 from pylage.ENGINE.core.component import component
 
 

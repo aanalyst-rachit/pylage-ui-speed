@@ -1,5 +1,5 @@
 import pylage as pl
-from pylage import Style
+from pylage.ENGINE import Style
 
 from pylage.UI.layout import AppShell, Container, TwoColumn, Footer
 from pylage.UI.patterns import (

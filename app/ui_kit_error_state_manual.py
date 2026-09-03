@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Grid, Style
+from pylage.ENGINE import Column, Grid, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Error State", level=2),
-        ps.Text("High-level error boundary and failure feedback cards."),
+        Heading("PyLage UI Kit — Error State", level=2),
+        Text("High-level error boundary and failure feedback cards."),
         Grid(
             ui.error_state(
                 title="Failed to fetch data",

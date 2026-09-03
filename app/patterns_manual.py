@@ -1,16 +1,6 @@
 """Manual demo for PyLage Layout Patterns (Hero, Features, Pricing, FAQ, Stats, Auth, CTA)."""
 
-from pylage import (
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Column, Row, Card, Heading, Text, Button, Badge, State, Style
 from pylage.UI.patterns import (
     Hero,
     FeatureSection,

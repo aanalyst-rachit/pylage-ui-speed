@@ -2,13 +2,14 @@ import asyncio
 import json
 
 import pylage as ps
+from pylage.ENGINE import Button, Column, Heading, State
 from websockets.asyncio.client import connect
 from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 print("=== PYLAGE REACTIVE COUNTER TEST ===")
 
-count = ps.State(0)
+count = State(0)
 
 
 def increment():
@@ -16,14 +17,14 @@ def increment():
     return count.value
 
 
-button = ps.Button(
+button = Button(
     "Increment",
     on_click=increment,
 )
 
-heading = ps.Heading(count)
+heading = Heading(count)
 
-app = ps.Column(
+app = Column(
     heading,
     button,
 )

@@ -1,6 +1,6 @@
 
 from pylage.ENGINE.core.component import Component
-from pylage import State, Style
+from pylage.ENGINE import State, Style
 from pylage.ENGINE.components import (
     Accordion,
     Alert,

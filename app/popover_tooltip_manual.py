@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Popover, Tooltip, Menu, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Popover, Tooltip, Menu, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    menu_selection = ps.State("None")
-    tooltip_hits = ps.State(0)
+    menu_selection = State("None")
+    tooltip_hits = State(0)
 
     def select_item(name):
         def handler(e=None):

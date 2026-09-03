@@ -2,18 +2,19 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Column, Heading, Option, Row, Select, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 
 def get_app():
     # -------------------------------------------------------------------------
     # State Management
     # -------------------------------------------------------------------------
-    selected_language = ps.State("Python")
-    selected_database = ps.State("postgresql")
+    selected_language = State("Python")
+    selected_database = State("postgresql")
 
     # State Handlers
     def handle_language_change(val):
@@ -35,9 +36,9 @@ def get_app():
                 for opt in options_list:
                     val = opt.get("value") if isinstance(opt, dict) else opt
                     lbl = opt.get("label") if isinstance(opt, dict) else opt
-                    option_children.append(ps.Option(lbl, value=val))
+                    option_children.append(Option(lbl, value=val))
 
-                return ps.Select(
+                return Select(
                     *option_children,           # ✅ actual <option> children
                     value=current_state,        # ✅ State object, not .value
                     on_change=on_change_fn,
@@ -92,8 +93,8 @@ def get_app():
     # -------------------------------------------------------------------------
     # UI Layout
     # -------------------------------------------------------------------------
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "Select (Dropdown) Component Demo",
             style=Style(
                 font_size="1.75rem",
@@ -102,16 +103,16 @@ def get_app():
                 margin_bottom="0.25rem",
             ),
         ),
-        ps.Text(
+        Text(
             "Interactive demonstration of single-select dropdown state in PyLage.",
             style=Style(color="#64748b", font_size="0.9rem", margin_bottom="1.5rem"),
         ),
 
         # DEMO 1: Simple Options
-        ps.Column(
-            ps.Row(
-                ps.Text("Selected Language: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(selected_language, style=Style(color="#2563eb", font_weight="700")),
+        Column(
+            Row(
+                Text("Selected Language: ", style=Style(font_weight="500", color="#475569")),
+                Text(selected_language, style=Style(color="#2563eb", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
             build_select(
@@ -130,10 +131,10 @@ def get_app():
         ),
 
         # DEMO 2: Key-Value Options
-        ps.Column(
-            ps.Row(
-                ps.Text("Selected Database: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(selected_database, style=Style(color="#059669", font_weight="700")),
+        Column(
+            Row(
+                Text("Selected Database: ", style=Style(font_weight="500", color="#475569")),
+                Text(selected_database, style=Style(color="#059669", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
             build_select(

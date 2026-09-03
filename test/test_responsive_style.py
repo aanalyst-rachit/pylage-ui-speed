@@ -1,11 +1,12 @@
 import pylage as ps
+from pylage.ENGINE import ResponsiveStyle, Style
 
 
 def test_responsive_style_can_be_created():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(color="black"),
-        sm=ps.Style(color="blue"),
-        md=ps.Style(color="green"),
+    responsive = ResponsiveStyle(
+        base=Style(color="black"),
+        sm=Style(color="blue"),
+        md=Style(color="green"),
     )
 
     assert responsive.base.color == "black"
@@ -14,10 +15,10 @@ def test_responsive_style_can_be_created():
 
 
 def test_responsive_style_generates_media_queries():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(font_size="16px"),
-        sm=ps.Style(font_size="18px"),
-        md=ps.Style(font_size="20px"),
+    responsive = ResponsiveStyle(
+        base=Style(font_size="16px"),
+        sm=Style(font_size="18px"),
+        md=Style(font_size="20px"),
     )
 
     css = responsive.to_css()
@@ -29,11 +30,11 @@ def test_responsive_style_generates_media_queries():
 
 
 def test_responsive_style_can_use_theme_variables():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(
+    responsive = ResponsiveStyle(
+        base=Style(
             color="var(--color-primary)",
         ),
-        md=ps.Style(
+        md=Style(
             color="var(--color-background)",
         ),
     )
@@ -45,12 +46,12 @@ def test_responsive_style_can_use_theme_variables():
 
 
 def test_responsive_style_is_immutable():
-    responsive = ps.ResponsiveStyle(
-        base=ps.Style(color="black"),
+    responsive = ResponsiveStyle(
+        base=Style(color="black"),
     )
 
     try:
-        responsive.base = ps.Style(color="red")
+        responsive.base = Style(color="red")
     except Exception:
         pass
     else:
@@ -60,6 +61,6 @@ def test_responsive_style_is_immutable():
 
 
 def test_empty_responsive_style_generates_empty_css():
-    responsive = ps.ResponsiveStyle()
+    responsive = ResponsiveStyle()
 
     assert responsive.to_css() == ""

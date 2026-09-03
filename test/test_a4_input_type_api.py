@@ -1,6 +1,7 @@
 import pytest
 
 import pylage as ps
+from pylage.ENGINE import Input
 from pylage.ENGINE.core.renderer import render
 
 
@@ -15,7 +16,7 @@ from pylage.ENGINE.core.renderer import render
     ],
 )
 def test_input_supports_input_type(input_type, expected):
-    html = render(ps.Input(input_type=input_type))
+    html = render(Input(input_type=input_type))
 
     assert "<input" in html
     assert expected in html
@@ -23,14 +24,14 @@ def test_input_supports_input_type(input_type, expected):
 
 
 def test_input_defaults_without_input_type():
-    html = render(ps.Input())
+    html = render(Input())
 
     assert "<input" in html
     assert 'type="' not in html
 
 
 def test_input_type_does_not_collide_with_component_type():
-    input_box = ps.Input(input_type="checkbox")
+    input_box = Input(input_type="checkbox")
 
     assert input_box.type == "Input"
     assert input_box.props["_html_type"] == "checkbox"
@@ -38,7 +39,7 @@ def test_input_type_does_not_collide_with_component_type():
 
 def test_input_preserves_existing_props():
     html = render(
-        ps.Input(
+        Input(
             value="Dollar",
             input_type="text",
             disabled=True,
@@ -53,7 +54,7 @@ def test_input_preserves_existing_props():
 
 
 def test_input_type_is_not_forwarded_as_raw_html_attribute():
-    html = render(ps.Input(input_type="date"))
+    html = render(Input(input_type="date"))
 
     assert "input_type=" not in html
     assert 'type="date"' in html

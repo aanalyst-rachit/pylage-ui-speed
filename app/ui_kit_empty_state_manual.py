@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Grid, Style
+from pylage.ENGINE import Column, Grid, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Empty State", level=2),
-        ps.Text("High-level empty state placeholders for dashboards, tables, and lists."),
+        Heading("PyLage UI Kit — Empty State", level=2),
+        Text("High-level empty state placeholders for dashboards, tables, and lists."),
         Grid(
             ui.empty_state(
                 title="No notifications",

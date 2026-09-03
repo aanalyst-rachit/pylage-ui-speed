@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Style
+from pylage.ENGINE import Column, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Dashboard Card", level=2),
-        ps.Text("High-level dashboard cards with action and footer slots."),
+        Heading("PyLage UI Kit — Dashboard Card", level=2),
+        Text("High-level dashboard cards with action and footer slots."),
         ui.dashboard_grid(
             ui.dashboard_card(
                 title="Active Users",

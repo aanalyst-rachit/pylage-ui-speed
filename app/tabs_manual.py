@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Tabs, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Tabs, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    active_tab = ps.State("tab_analytics")
-    tab_title = ps.State("Analytics & Metrics")
+    active_tab = State("tab_analytics")
+    tab_title = State("Analytics & Metrics")
 
     def switch_to_analytics(e=None):
         active_tab.set("tab_analytics")

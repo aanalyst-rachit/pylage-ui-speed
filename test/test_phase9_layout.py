@@ -1,19 +1,20 @@
 import pylage as ps
+from pylage.ENGINE import Column, Grid, Row, State, Style, Text
 from pylage.ENGINE.core.renderer import render
 
 
 def test_layout_exports():
-    assert callable(ps.Row)
-    assert callable(ps.Column)
-    assert callable(ps.Grid)
+    assert callable(Row)
+    assert callable(Column)
+    assert callable(Grid)
 
 
 def test_row_default_and_override():
     html = render(
-        ps.Row(
-            ps.Text("A"),
-            ps.Text("B"),
-            style=ps.Style(
+        Row(
+            Text("A"),
+            Text("B"),
+            style=Style(
                 gap="10px",
                 justify_content="center",
             ),
@@ -29,10 +30,10 @@ def test_row_default_and_override():
 
 def test_column_default_and_override():
     html = render(
-        ps.Column(
-            ps.Text("A"),
-            ps.Text("B"),
-            style=ps.Style(
+        Column(
+            Text("A"),
+            Text("B"),
+            style=Style(
                 gap="10px",
                 align_items="center",
             ),
@@ -48,10 +49,10 @@ def test_column_default_and_override():
 
 def test_grid_style_is_preserved():
     html = render(
-        ps.Grid(
-            ps.Text("A"),
-            ps.Text("B"),
-            style=ps.Style(
+        Grid(
+            Text("A"),
+            Text("B"),
+            style=Style(
                 display="grid",
                 grid_template_columns="repeat(2, 1fr)",
                 gap="12px",
@@ -67,15 +68,15 @@ def test_grid_style_is_preserved():
 
 def test_nested_layouts_render_correctly():
     html = render(
-        ps.Column(
-            ps.Row(
-                ps.Text("A"),
-                ps.Text("B"),
+        Column(
+            Row(
+                Text("A"),
+                Text("B"),
             ),
-            ps.Grid(
-                ps.Text("C"),
-                ps.Text("D"),
-                style=ps.Style(
+            Grid(
+                Text("C"),
+                Text("D"),
+                style=Style(
                     display="grid",
                     grid_template_columns="repeat(2, 1fr)",
                 ),
@@ -91,13 +92,13 @@ def test_nested_layouts_render_correctly():
 
 
 def test_state_layout_values_render():
-    width = ps.State("80%")
-    gap = ps.State("16px")
+    width = State("80%")
+    gap = State("16px")
 
     html = render(
-        ps.Row(
-            ps.Text("State"),
-            style=ps.Style(
+        Row(
+            Text("State"),
+            style=Style(
                 width=width,
                 gap=gap,
             ),

@@ -8,7 +8,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import pylage as ps
-from pylage import Column
+from pylage.ENGINE import Column
 
 
 def get_app():

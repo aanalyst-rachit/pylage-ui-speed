@@ -1,16 +1,17 @@
 from playwright.sync_api import sync_playwright, expect
 
 import pylage as ps
+from pylage.ENGINE import Column, Heading, Input, State
 from pylage.ENGINE.runtime import Runtime
 
 
 def test_controlled_input_survives_bidirectional_updates():
-    name = ps.State("Dollar")
+    name = State("Dollar")
 
-    heading = ps.Heading(name)
-    input_box = ps.Input(value=name)
+    heading = Heading(name)
+    input_box = Input(value=name)
 
-    app = ps.Column(
+    app = Column(
         heading,
         input_box,
     )

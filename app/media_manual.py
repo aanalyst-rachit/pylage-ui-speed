@@ -2,14 +2,15 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Audio, Avatar, Canvas, Column, Divider, Heading, Icon, Image, Row, State, Text, Video
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 def get_app():
     # State tracking for interactive canvas/media status
-    media_status = ps.State("Status: Media components ready")
+    media_status = State("Status: Media components ready")
 
     def handle_media_click():
         media_status.set("⚡ Media component clicked!")
@@ -17,9 +18,9 @@ def get_app():
     # ============================================================
     # 1. IMAGE COMPONENT
     # ============================================================
-    image_section = ps.Column(
-        ps.Text("1. Image Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
-        ps.Image(
+    image_section = Column(
+        Text("1. Image Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
+        Image(
             src="https://picsum.photos/600/200",
             alt="Sample Placeholder Image",
             style=Style(
@@ -34,9 +35,9 @@ def get_app():
     # ============================================================
     # 2. VIDEO COMPONENT
     # ============================================================
-    video_section = ps.Column(
-        ps.Text("2. Video Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
-        ps.Video(
+    video_section = Column(
+        Text("2. Video Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
+        Video(
             src="https://www.w3schools.com/html/mov_bbb.mp4",
             controls=True,
             style=Style(
@@ -51,9 +52,9 @@ def get_app():
     # ============================================================
     # 3. AUDIO COMPONENT
     # ============================================================
-    audio_section = ps.Column(
-        ps.Text("3. Audio Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
-        ps.Audio(
+    audio_section = Column(
+        Text("3. Audio Component", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
+        Audio(
             src="https://www.w3schools.com/html/horse.mp3",
             controls=True,
             style=Style(width="100%"),
@@ -63,36 +64,36 @@ def get_app():
     # ============================================================
     # 4. ICON & AVATAR (HORIZONTAL DIVIDER DEMO)
     # ============================================================
-    icon_avatar_section = ps.Column(
-        ps.Text("4. Icon & Avatar (Side-by-Side with Vertical Divider)", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
-        ps.Row(
+    icon_avatar_section = Column(
+        Text("4. Icon & Avatar (Side-by-Side with Vertical Divider)", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
+        Row(
             # Icon Demo (Fixed: Using name="...")
-            ps.Column(
-                ps.Text("Icons", style=Style(font_weight="600", font_size="0.9rem", margin_bottom="0.25rem")),
-                ps.Row(
-                    ps.Icon(name="check", style=Style(color="#166534", font_size="1.5rem")),
-                    ps.Icon(name="star", style=Style(color="#d97706", font_size="1.5rem")),
-                    ps.Icon(name="user", style=Style(color="#2563eb", font_size="1.5rem")),
+            Column(
+                Text("Icons", style=Style(font_weight="600", font_size="0.9rem", margin_bottom="0.25rem")),
+                Row(
+                    Icon(name="check", style=Style(color="#166534", font_size="1.5rem")),
+                    Icon(name="star", style=Style(color="#d97706", font_size="1.5rem")),
+                    Icon(name="user", style=Style(color="#2563eb", font_size="1.5rem")),
                     style=Style(gap="0.75rem", align_items="center"),
                 ),
             ),
 
             # VERTICAL DIVIDER
-            ps.Divider(
+            Divider(
                 orientation="vertical",
                 style=Style(height="50px", border="1px solid #cbd5e1", margin="0 1rem"),
             ),
 
             # Avatar Demo
-            ps.Column(
-                ps.Text("Avatars", style=Style(font_weight="600", font_size="0.9rem", margin_bottom="0.25rem")),
-                ps.Row(
-                    ps.Avatar(
+            Column(
+                Text("Avatars", style=Style(font_weight="600", font_size="0.9rem", margin_bottom="0.25rem")),
+                Row(
+                    Avatar(
                         src="https://i.pravatar.cc/100?img=33",
                         name="Rachit Kumar",
                         style=Style(width="40px", height="40px", border_radius="999px"),
                     ),
-                    ps.Avatar(
+                    Avatar(
                         name="User Fallback",
                         style=Style(width="40px", height="40px", border_radius="999px", background_color="#2563eb", color="#ffffff"),
                     ),
@@ -106,9 +107,9 @@ def get_app():
     # ============================================================
     # 5. CANVAS COMPONENT
     # ============================================================
-    canvas_section = ps.Column(
-        ps.Text("5. Canvas Component (Interactive Render)", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
-        ps.Canvas(
+    canvas_section = Column(
+        Text("5. Canvas Component (Interactive Render)", style=Style(font_weight="700", font_size="1.1rem", margin_bottom="0.5rem")),
+        Canvas(
             width=500,
             height=120,
             on_click=handle_media_click,
@@ -125,7 +126,7 @@ def get_app():
 
     # Horizontal Divider Helper
     def create_horizontal_divider():
-        return ps.Divider(
+        return Divider(
             orientation="horizontal",
             style=Style(
                 width="100%",
@@ -137,17 +138,17 @@ def get_app():
     # ============================================================
     # MAIN APP STRUCTURE
     # ============================================================
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "PyLage Media — Live Manual",
             style=Style(font_size="1.75rem", font_weight="700", color="#0f172a", margin_bottom="0.5rem"),
         ),
-        ps.Text(
+        Text(
             "Media components (Image, Video, Audio, Icon, Canvas, Avatar) with Horizontal & Vertical Dividers:",
             style=Style(color="#64748b", margin_bottom="1rem"),
         ),
 
-        ps.Text(media_status, style=Style(color="#166534", font_weight="600", margin_bottom="1rem")),
+        Text(media_status, style=Style(color="#166534", font_weight="600", margin_bottom="1rem")),
 
         image_section,
         create_horizontal_divider(),

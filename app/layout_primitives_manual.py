@@ -1,16 +1,6 @@
 """Manual demo for PyLage Layout Primitives (AppShell, Center, Stack, Split, TwoColumn, ThreeColumn, SidebarLayout)."""
 
-from pylage import (
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Column, Row, Card, Heading, Text, Button, Badge, State, Style
 from pylage.UI.layout import (
     AppShell,
     Center,

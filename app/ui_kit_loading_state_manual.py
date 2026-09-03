@@ -1,11 +1,11 @@
 import pylage as ps
 import pylage as ui
-from pylage import Column, Grid, Style
+from pylage.ENGINE import Column, Grid, Heading, Style, Text
 
 def get_app():
     return Column(
-        ps.Heading("PyLage UI Kit — Loading State", level=2),
-        ps.Text("High-level feedback spinners and loaders for async workflows."),
+        Heading("PyLage UI Kit — Loading State", level=2),
+        Text("High-level feedback spinners and loaders for async workflows."),
         Grid(
             ui.loading_state(
                 text="Loading dashboard...",

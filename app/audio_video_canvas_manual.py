@@ -1,20 +1,6 @@
 """Manual demo for PyLage Media & Graphic components (Audio, Video, Canvas, Image, Icon)."""
 
-from pylage import (
-    Audio,
-    Video,
-    Canvas,
-    Image,
-    Icon,
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    State,
-    Style,
-)
+from pylage.ENGINE import Audio, Video, Canvas, Image, Icon, Column, Row, Card, Heading, Text, Button, State, Style
 
 
 def get_app() -> Column:

@@ -2,20 +2,21 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import Button, Checkbox, Column, DatePicker, Heading, Row, Slider, State, Text
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style
+from pylage.ENGINE import Style
 
 
 def get_app():
     # -------------------------------------------------------------------------
     # State Management
     # -------------------------------------------------------------------------
-    is_subscribed = ps.State(True)
-    volume_level = ps.State(50)
-    selected_date = ps.State("2026-09-01")
-    submitted_summary = ps.State("Form submit nahi hua abhi.")
+    is_subscribed = State(True)
+    volume_level = State(50)
+    selected_date = State("2026-09-01")
+    submitted_summary = State("Form submit nahi hua abhi.")
 
     # State Handlers
     def handle_check(val=None):
@@ -43,14 +44,14 @@ def get_app():
     # -------------------------------------------------------------------------
 
     # 1. Checkbox Component
-    chk_node = ps.Checkbox(
+    chk_node = Checkbox(
         checked=is_subscribed,
         on_change=handle_check,
         style=Style(width="18px", height="18px", cursor="pointer"),
     )
 
     # 2. Slider Component
-    slider_node = ps.Slider(
+    slider_node = Slider(
         value=volume_level,
         min=0,
         max=100,
@@ -59,7 +60,7 @@ def get_app():
     )
 
     # 3. DatePicker Component
-    date_node = ps.DatePicker(
+    date_node = DatePicker(
         value=selected_date,
         on_change=handle_date,
         style=Style(
@@ -75,8 +76,8 @@ def get_app():
     # -------------------------------------------------------------------------
     # UI Layout Assembly
     # -------------------------------------------------------------------------
-    return ps.Column(
-        ps.Heading(
+    return Column(
+        Heading(
             "Form Components Test Suite",
             style=Style(
                 font_size="1.75rem",
@@ -85,22 +86,22 @@ def get_app():
                 margin_bottom="0.25rem",
             ),
         ),
-        ps.Text(
+        Text(
             "Testing Checkbox, Slider, DatePicker, and Form Container interactions.",
             style=Style(color="#64748b", font_size="0.9rem", margin_bottom="1.5rem"),
         ),
 
         # 1. Checkbox Section
-        ps.Column(
-            ps.Heading("1. Checkbox Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
-            ps.Row(
-                ps.Text("Checkbox State: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(is_subscribed, style=Style(color="#2563eb", font_weight="700")),
+        Column(
+            Heading("1. Checkbox Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
+            Row(
+                Text("Checkbox State: ", style=Style(font_weight="500", color="#475569")),
+                Text(is_subscribed, style=Style(color="#2563eb", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
-            ps.Row(
+            Row(
                 chk_node,
-                ps.Text("Subscribe to email notifications", style=Style(color="#334155", font_size="0.95rem")),
+                Text("Subscribe to email notifications", style=Style(color="#334155", font_size="0.95rem")),
                 style=Style(gap="0.75rem", align_items="center"),
             ),
             style=Style(
@@ -114,11 +115,11 @@ def get_app():
         ),
 
         # 2. Slider Section
-        ps.Column(
-            ps.Heading("2. Slider (Range) Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
-            ps.Row(
-                ps.Text("Volume Value: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(volume_level, style=Style(color="#059669", font_weight="700")),
+        Column(
+            Heading("2. Slider (Range) Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
+            Row(
+                Text("Volume Value: ", style=Style(font_weight="500", color="#475569")),
+                Text(volume_level, style=Style(color="#059669", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
             slider_node,
@@ -133,11 +134,11 @@ def get_app():
         ),
 
         # 3. DatePicker Section
-        ps.Column(
-            ps.Heading("3. DatePicker Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
-            ps.Row(
-                ps.Text("Selected Date: ", style=Style(font_weight="500", color="#475569")),
-                ps.Text(selected_date, style=Style(color="#d97706", font_weight="700")),
+        Column(
+            Heading("3. DatePicker Test", style=Style(font_size="1.1rem", font_weight="700", color="#334155")),
+            Row(
+                Text("Selected Date: ", style=Style(font_weight="500", color="#475569")),
+                Text(selected_date, style=Style(color="#d97706", font_weight="700")),
                 style=Style(gap="0.5rem", align_items="center", margin_bottom="0.75rem"),
             ),
             date_node,
@@ -152,9 +153,9 @@ def get_app():
         ),
 
         # 4. Form Submit Section
-        ps.Column(
-            ps.Heading("4. Form Submission Test", style=Style(font_weight="700", color="#334155", font_size="1.1rem")),
-            ps.Button(
+        Column(
+            Heading("4. Form Submission Test", style=Style(font_weight="700", color="#334155", font_size="1.1rem")),
+            Button(
                 "Submit Form",
                 on_click=handle_form_submit,
                 style=Style(
@@ -167,9 +168,9 @@ def get_app():
                     margin_bottom="1rem",
                 ),
             ),
-            ps.Row(
-                ps.Text("Result: ", style=Style(font_weight="600", color="#475569")),
-                ps.Text(submitted_summary, style=Style(color="#0f172a", font_weight="500")),
+            Row(
+                Text("Result: ", style=Style(font_weight="600", color="#475569")),
+                Text(submitted_summary, style=Style(color="#0f172a", font_weight="500")),
                 style=Style(gap="0.5rem", align_items="center"),
             ),
             style=Style(

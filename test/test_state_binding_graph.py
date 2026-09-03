@@ -1,12 +1,13 @@
 import pylage as ps
+from pylage.ENGINE import Column, Heading, State
 from pylage.ENGINE.core.binding import StateBinding
 from pylage.ENGINE.core.graph import DependencyGraph
 
 
 def test_state_binding_builds_dependency_graph():
-    state = ps.State(0)
-    heading = ps.Heading(text=state)
-    app = ps.Column(heading)
+    state = State(0)
+    heading = Heading(text=state)
+    app = Column(heading)
 
     graph = DependencyGraph()
 

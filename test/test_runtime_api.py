@@ -1,14 +1,15 @@
 from urllib.request import urlopen
 
 import pylage as ps
+from pylage.ENGINE import Button, Column, Heading
 from pylage.ENGINE.runtime import Runtime
 
 
 print("=== PYLAGE RUNTIME API TEST ===")
 
-app = ps.Column(
-    ps.Heading("Hello Runtime"),
-    ps.Button("Click me"),
+app = Column(
+    Heading("Hello Runtime"),
+    Button("Click me"),
 )
 
 runtime = Runtime(

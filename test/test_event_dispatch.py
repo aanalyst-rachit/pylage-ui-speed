@@ -1,4 +1,5 @@
 import pylage as ps
+from pylage.ENGINE import Button, Column
 from pylage.ENGINE.core.events import EventDispatcher
 
 
@@ -15,13 +16,13 @@ def changed(value):
     calls.append(value)
 
 
-button = ps.Button(
+button = Button(
     "Click me",
     on_click=clicked,
     on_change=changed,
 )
 
-app = ps.Column(button)
+app = Column(button)
 
 dispatcher = EventDispatcher(app)
 

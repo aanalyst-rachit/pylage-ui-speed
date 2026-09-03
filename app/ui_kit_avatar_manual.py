@@ -1,4 +1,4 @@
-from pylage import Column, Image, Row, Style
+from pylage.ENGINE import Column, Image, Row, Style
 import pylage as ps
 
 

@@ -1,13 +1,14 @@
 import pylage as ps
+from pylage.ENGINE import Column, Grid, State, Style, Text
 
 from pylage.ENGINE.core.renderer import render
 
 
 def test_column_is_flex_column_by_default():
     html = render(
-        ps.Column(
-            ps.Text("One"),
-            ps.Text("Two"),
+        Column(
+            Text("One"),
+            Text("Two"),
         )
     )
 
@@ -19,10 +20,10 @@ def test_column_is_flex_column_by_default():
 
 def test_column_layout_can_be_customized():
     html = render(
-        ps.Column(
-            ps.Text("One"),
-            ps.Text("Two"),
-            style=ps.Style(
+        Column(
+            Text("One"),
+            Text("Two"),
+            style=Style(
                 flex_direction="row",
                 flex_wrap="wrap",
                 gap="16px",
@@ -42,11 +43,11 @@ def test_column_layout_can_be_customized():
 
 def test_grid_can_render_grid_layout():
     html = render(
-        ps.Grid(
-            ps.Text("One"),
-            ps.Text("Two"),
-            ps.Text("Three"),
-            style=ps.Style(
+        Grid(
+            Text("One"),
+            Text("Two"),
+            Text("Three"),
+            style=Style(
                 display="grid",
                 grid_template_columns="repeat(3, 1fr)",
                 gap="16px",
@@ -64,9 +65,9 @@ def test_grid_can_render_grid_layout():
 
 def test_layout_constraints_can_be_combined():
     html = render(
-        ps.Grid(
-            ps.Text("Content"),
-            style=ps.Style(
+        Grid(
+            Text("Content"),
+            style=Style(
                 width="100%",
                 min_width="320px",
                 max_width="1200px",
@@ -86,13 +87,13 @@ def test_layout_constraints_can_be_combined():
 
 
 def test_layout_state_values_are_rendered():
-    width = ps.State("80%")
-    gap = ps.State("12px")
+    width = State("80%")
+    gap = State("12px")
 
     html = render(
-        ps.Grid(
-            ps.Text("State layout"),
-            style=ps.Style(
+        Grid(
+            Text("State layout"),
+            style=Style(
                 width=width,
                 gap=gap,
             ),

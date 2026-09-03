@@ -2,12 +2,13 @@ import asyncio
 import json
 
 import pylage as ps
+from pylage.ENGINE import Column, Heading, Input, State
 from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 print("=== PYLAGE INPUT TWO-WAY BINDING TEST ===")
 
-name = ps.State("Dollar")
+name = State("Dollar")
 
 
 def on_input(payload):
@@ -15,14 +16,14 @@ def on_input(payload):
     name.set(payload["value"])
 
 
-heading = ps.Heading(name)
+heading = Heading(name)
 
-input_box = ps.Input(
+input_box = Input(
     value=name,
     on_input=on_input,
 )
 
-app = ps.Column(
+app = Column(
     heading,
     input_box,
 )

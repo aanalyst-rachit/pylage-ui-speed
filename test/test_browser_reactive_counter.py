@@ -2,26 +2,27 @@ import pytest
 from playwright.sync_api import sync_playwright, expect
 
 import pylage as ps
+from pylage.ENGINE import Button, Column, Heading, State
 from pylage.ENGINE.runtime import Runtime
 
 
 def test_browser_reactive_counter():
     print("=== PYLAGE BROWSER REACTIVE COUNTER TEST ===")
 
-    count = ps.State(0)
+    count = State(0)
 
     def increment():
         count.set(count.value + 1)
         return count.value
 
-    heading = ps.Heading(count)
+    heading = Heading(count)
 
-    button = ps.Button(
+    button = Button(
         "Increment",
         on_click=increment,
     )
 
-    app = ps.Column(
+    app = Column(
         heading,
         button,
     )

@@ -3,14 +3,15 @@ import asyncio
 import json
 
 import pylage as ps
+from pylage.ENGINE import Column, State
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 print("=== PYLAGE REGISTRY PROP MAPPING TEST ===")
 
-class_name = ps.State("primary")
-disabled = ps.State(False)
-title = ps.State("Initial")
+class_name = State("primary")
+disabled = State(False)
+title = State("Initial")
 
 component = Component(
     type="Button",
@@ -22,7 +23,7 @@ component = Component(
     },
 )
 
-app = ps.Column(component)
+app = Column(component)
 
 server = WebSocketServer(app)
 url = server.start()

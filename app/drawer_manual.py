@@ -2,16 +2,17 @@ import sys
 from pathlib import Path
 
 # Project root setup
+from pylage.ENGINE import State
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-from pylage import Style, Drawer, Card, Column, Heading, Row, Text, Button
+from pylage.ENGINE import Style, Drawer, Card, Column, Heading, Row, Text, Button
 
 
 def get_app():
     # State Management
-    drawer_open = ps.State(False)
-    status_msg = ps.State("Drawer is currently closed.")
+    drawer_open = State(False)
+    status_msg = State("Drawer is currently closed.")
 
     def open_drawer(e=None):
         drawer_open.set(True)

@@ -1,16 +1,6 @@
 """Manual demo for PyLage Application Templates (Dashboard, Admin, Profile, Settings, Landing, Docs)."""
 
-from pylage import (
-    Column,
-    Row,
-    Card,
-    Heading,
-    Text,
-    Button,
-    Badge,
-    State,
-    Style,
-)
+from pylage.ENGINE import Column, Row, Card, Heading, Text, Button, Badge, State, Style
 from pylage.UI.recipes import (
     Dashboard,
     Admin,
