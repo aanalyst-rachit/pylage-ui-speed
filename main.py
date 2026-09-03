@@ -17,7 +17,7 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from pylage import run
-from pylage.ENGINE import Card, Column, Heading, Row, State, Text
+from pylage.ENGINE import Button, Card, Column, Heading, Row, State, Text
 from pylage.ENGINE.styling.style import Style
 
 
@@ -42,7 +42,10 @@ def discover_manuals() -> dict[str, object]:
         module_name = f"app.{path.stem}"
 
         try:
-            module = importlib.import_module(module_name)
+            if module_name in sys.modules:
+                module = importlib.reload(sys.modules[module_name])
+            else:
+                module = importlib.import_module(module_name)
         except Exception as exc:
             print(f"[DISCOVERY ERROR] {path.name}: {exc}")
             continue
@@ -268,6 +271,13 @@ def build_manual_browser() -> Column: # type: ignore
         ),
     )
 
+    def on_refresh_click(payload=None):
+        print("[REFRESH] Reloading window and re-discovering manuals...")
+        get_manuals()
+        get_manual_apps()
+        if window_instance:
+            window_instance.load_url("http://127.0.0.1:8080")
+
     header = Row(
         Heading(
             "⚡ PyLage Manual Browser",
@@ -276,11 +286,23 @@ def build_manual_browser() -> Column: # type: ignore
                 margin="0",
             ),
         ),
+        Button(
+            "🔄 Refresh",
+            on_click=on_refresh_click,
+            style=Style(
+                padding="0.4rem 0.8rem",
+                cursor="pointer",
+                border_radius="0.375rem",
+                border="1px solid #cbd5e1",
+                background_color="#ffffff",
+            ),
+        ),
         style=Style(
             width="100%",
             height="50px",
             padding="0 1rem",
             align_items="center",
+            justify_content="space-between",
             border_bottom="1px solid #e2e8f0",
             flex_shrink="0",
         ),
@@ -313,6 +335,8 @@ def start_pylage():
     )
 
 
+window_instance = None
+
 if __name__ == "__main__":
     server_thread = threading.Thread(
         target=start_pylage,
@@ -323,11 +347,12 @@ if __name__ == "__main__":
 
     time.sleep(1)
 
-    webview.create_window(
+    window_instance = webview.create_window(
         "PyLage Manual",
         "http://127.0.0.1:8080",
         width=1200,
         height=800,
     )
 
-    webview.start(gui="qt")
+    # debug=False se Web Inspector band ho jaayega
+    webview.start(gui="qt", debug=False)

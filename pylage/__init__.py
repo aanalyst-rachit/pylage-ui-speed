@@ -12,6 +12,7 @@ not exported from the root public API.
 """
 
 from pylage.ENGINE.app import run
+from pylage.ENGINE.core.state import State
 from pylage.UI import *
 from pylage.UI import __all__ as _ui_all
 from pylage.UI import style
@@ -24,6 +25,7 @@ PACKAGE_NAME = "pylage-ui-kit"
 
 __all__ = list(dict.fromkeys([
     "run",
+    "State",
     *_ui_all,
     "style",
     "theme",
