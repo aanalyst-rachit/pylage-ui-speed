@@ -393,27 +393,36 @@ def Checkbox(**props: Any) -> Component:
 
 def RadioGroup(*children, **props: Any) -> Component:
     value = props.pop("value", None)
+    user_on_change = props.pop("on_change", None)
 
     group = component("RadioGroup", *children, **props)
 
+    checked_states: list[tuple[Component, State]] = []
+
+    for child in group.children:
+        if not isinstance(child, Component):
+            continue
+
+        if child.type != "Input":
+            continue
+
+        if child.props.get("_html_type") != "radio":
+            continue
+
+        initial_checked = bool(child.props.get("checked", False))
+
+        checked_state = State(initial_checked)
+
+        child.props["checked"] = checked_state
+        checked_states.append((child, checked_state))
+
+    def sync_selected(selected: Any) -> None:
+        for child, checked_state in checked_states:
+            checked_state.set(
+                child.props.get("value") == selected
+            )
+
     if value is not None:
-        group.props["value"] = value
-
-        def sync_selected(selected):
-            for child in group.children:
-                if not isinstance(child, Component):
-                    continue
-
-                if child.type != "Input":
-                    continue
-
-                if child.props.get("_html_type") != "radio":
-                    continue
-
-                child.props["checked"] = (
-                    child.props.get("value") == selected
-                )
-
         selected = (
             value.value
             if isinstance(value, State)
@@ -422,13 +431,28 @@ def RadioGroup(*children, **props: Any) -> Component:
 
         sync_selected(selected)
 
-        if isinstance(value, State):
-            value.subscribe(
-                lambda _old, new: sync_selected(new)
-            )
+    def update_state(payload: Any) -> None:
+        if isinstance(payload, dict):
+            selected = payload.get("value")
+
+            if selected is not None:
+                if isinstance(value, State):
+                    value.set(selected)
+
+                sync_selected(selected)
+
+        if user_on_change is not None:
+            user_on_change(payload)
+
+    if value is not None or user_on_change is not None:
+        group.events["change"] = update_state
+
+    if isinstance(value, State):
+        value.subscribe(
+            lambda _old, new: sync_selected(new)
+        )
 
     return group
-
 
 def Switch(**props: Any) -> Component:
     return component("Switch", **props)

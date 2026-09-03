@@ -202,24 +202,26 @@ CLIENT_RUNTIME = r"""
         } else if (event.type === "input" || event.type === "change") {
             payload = {};
 
-            if ("value" in target) {
-                payload.value = target.value;
+            const payloadTarget = event.target;
+
+            if ("value" in payloadTarget) {
+                payload.value = payloadTarget.value;
             }
 
-            if ("checked" in target) {
-                payload.checked = Boolean(target.checked);
+            if ("checked" in payloadTarget) {
+                payload.checked = Boolean(payloadTarget.checked);
             }
 
-            if ("selectedIndex" in target) {
-                payload.selectedIndex = target.selectedIndex;
+            if ("selectedIndex" in payloadTarget) {
+                payload.selectedIndex = payloadTarget.selectedIndex;
             }
 
             if (
-                target instanceof HTMLSelectElement &&
-                target.multiple
+                payloadTarget instanceof HTMLSelectElement &&
+                payloadTarget.multiple
             ) {
                 payload.selectedOptions = Array.from(
-                    target.selectedOptions
+                    payloadTarget.selectedOptions
                 ).map(function (option) {
                     return {
                         value: option.value,
@@ -748,11 +750,26 @@ CLIENT_RUNTIME = r"""
               }
 
               if (kind === "boolean") {
-                  if (value) {
+                  const booleanValue = Boolean(value);
+
+                  if (htmlName in component) {
+                      try {
+                          component[htmlName] = booleanValue;
+                      } catch (error) {
+                          console.warn(
+                              "[PyLage] Boolean DOM property update failed:",
+                              htmlName,
+                              error
+                          );
+                      }
+                  }
+
+                  if (booleanValue) {
                       component.setAttribute(htmlName, "");
                   } else {
                       component.removeAttribute(htmlName);
                   }
+
                   return;
               }
 
