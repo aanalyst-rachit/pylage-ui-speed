@@ -31,13 +31,13 @@ def get_app() -> Component:
 
     def increase_progress():
         val = progress.value + 15
-        progress.value = 100 if val > 100 else val
+        progress.set(100 if val > 100 else val)
 
     def reset_progress():
-        progress.value = 0
+        progress.set(0)
 
     def toggle_toast():
-        toast_visible.value = not toast_visible.value
+        toast_visible.set(not toast_visible.value)
 
     return component(
         "div",

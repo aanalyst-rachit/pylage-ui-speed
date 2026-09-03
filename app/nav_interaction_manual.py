@@ -31,19 +31,19 @@ def get_nav_interaction_app():
 
     def change_page(delta):
         def handler(payload=None):
-            new_pg = max(1, current_page.get() + delta)
+            new_pg = max(1, current_page.value + delta)
             current_page.set(new_pg)
 
         return handler
 
     def toggle_drawer(payload=None):
-        drawer_open.set(not drawer_open.get())
+        drawer_open.set(not drawer_open.value)
 
     def toggle_dialog(payload=None):
-        dialog_open.set(not dialog_open.get())
+        dialog_open.set(not dialog_open.value)
 
     def toggle_popover(payload=None):
-        popover_open.set(not popover_open.get())
+        popover_open.set(not popover_open.value)
 
     def select_menu_item(item):
         return lambda payload=None: menu_selected.set(item)

@@ -283,92 +283,260 @@ CLIENT_RUNTIME = r"""
             return;
         }
 
-        if (message.type === "tree_add") {
-            const parent = document.querySelector(
-                '[data-pylage-id="' + CSS.escape(message.parent_id) + '"]'
+        /*
+         * Build DOM from renderer-produced HTML when available.
+         *
+         * The initial page is rendered by HTMLRenderer on the server.
+         * Dynamic tree mutations must use the same renderer contract,
+         * otherwise custom components such as Table/DataFrame/Form/Dialog
+         * degrade into their raw registry tag.
+         *
+         * ``item.html`` may contain multiple top-level nodes. DataFrame,
+         * for example, emits a <style> node followed by its component root.
+         */
+        function createRenderedNodes(item) {
+            if (
+                !item ||
+                !item.id ||
+                typeof item.html !== "string"
+            ) {
+                return null;
+            }
+
+            const template = document.createElement("template");
+
+            template.innerHTML = item.html.trim();
+
+            const nodes = Array.from(
+                template.content.childNodes
             );
 
-            if (!parent || !Array.isArray(message.components)) {
-                return;
+            if (!nodes.length) {
+                return null;
             }
 
-            function createTreeNode(item) {
-                if (!item || !item.id) {
-                    return null;
+            let rootElement = null;
+
+            for (let i = 0; i < nodes.length; i++) {
+                const node = nodes[i];
+
+                if (
+                    node.nodeType === 1 &&
+                    node.getAttribute &&
+                    node.getAttribute("data-pylage-id") === item.id
+                ) {
+                    rootElement = node;
+                    break;
                 }
+            }
 
-                const element = document.createElement(
-                    item.tag || "div"
-                );
+            if (!rootElement) {
+                return null;
+            }
 
+            /*
+             * Renderer output must contain the component's real root.
+             * Keep all top-level nodes because custom renderers may emit
+             * support nodes such as <style> before that root.
+             */
+            return nodes;
+        }
+
+        function createTreeNode(item) {
+            if (!item || !item.id) {
+                return null;
+            }
+
+            /*
+             * Preferred path: exact HTMLRenderer output.
+             */
+            const renderedNodes = createRenderedNodes(item);
+
+            if (renderedNodes) {
+                return renderedNodes;
+            }
+
+            /*
+             * Compatibility path for older payloads that do not contain
+             * renderer HTML.
+             */
+            const element = document.createElement(
+                item.tag || "div"
+            );
+
+            element.setAttribute(
+                "data-pylage-id",
+                item.id
+            );
+
+            if (item.events) {
                 element.setAttribute(
-                    "data-pylage-id",
-                    item.id
+                    "data-pylage-events",
+                    item.events
                 );
-
-                if (item.events) {
-                    element.setAttribute(
-                        "data-pylage-events",
-                        item.events
-                    );
-                }
-
-                const props = item.props || {};
-
-                Object.keys(props).forEach(function (name) {
-                    const value = props[name];
-
-                    if (name === "text") {
-                        element.textContent =
-                            value === null || value === undefined
-                                ? ""
-                                : String(value);
-                        return;
-                    }
-
-                    if (value !== null && value !== undefined) {
-                        element.setAttribute(
-                            name,
-                            String(value)
-                        );
-                    }
-                });
-
-                const children = item.children || [];
-
-                if (Array.isArray(children)) {
-                    children.forEach(function (child) {
-                        const childElement = createTreeNode(child);
-
-                        if (childElement) {
-                            element.appendChild(childElement);
-                        }
-                    });
-                }
-
-                return element;
             }
 
-            message.components.forEach(function (item) {
-                const element = createTreeNode(item);
+            const props = item.props || {};
 
-                if (!element) {
+            Object.keys(props).forEach(function (name) {
+                const value = props[name];
+
+                if (name === "text") {
+                    element.textContent =
+                        value === null || value === undefined
+                            ? ""
+                            : String(value);
                     return;
                 }
 
+                if (name === "style") {
+                    return;
+                }
+
+                if (value !== null && value !== undefined) {
+                    element.setAttribute(
+                        name,
+                        String(value)
+                    );
+                }
+            });
+
+            const attrs = item.attrs || {};
+
+            Object.keys(attrs).forEach(function (name) {
+                const value = attrs[name];
+
                 if (
+                    value === null ||
+                    value === undefined
+                ) {
+                    return;
+                }
+
+                if (value === true) {
+                    element.setAttribute(
+                        name,
+                        ""
+                    );
+                    return;
+                }
+
+                element.setAttribute(
+                    name,
+                    String(value)
+                );
+            });
+
+            if (item.style) {
+                element.setAttribute(
+                    "style",
+                    String(item.style)
+                );
+            }
+
+            const children = item.children || [];
+
+            if (Array.isArray(children)) {
+                children.forEach(function (child) {
+                    const childNodes = createTreeNode(child);
+
+                    if (!childNodes) {
+                        return;
+                    }
+
+                    /*
+                     * A normal fallback component produces one node.
+                     * Renderer HTML may produce multiple top-level nodes.
+                     */
+                    if (Array.isArray(childNodes)) {
+                        childNodes.forEach(function (childNode) {
+                            element.appendChild(childNode);
+                        });
+                    } else {
+                        element.appendChild(childNodes);
+                    }
+                });
+            }
+
+            return element;
+        }
+
+        function insertTreeNodes(parent, item, beforeNode) {
+            const nodes = createTreeNode(item);
+
+            if (!nodes) {
+                return false;
+            }
+
+            if (Array.isArray(nodes)) {
+                nodes.forEach(function (node) {
+                    if (beforeNode) {
+                        parent.insertBefore(
+                            node,
+                            beforeNode
+                        );
+                    } else {
+                        parent.appendChild(node);
+                    }
+                });
+
+                return true;
+            }
+
+            if (beforeNode) {
+                parent.insertBefore(
+                    nodes,
+                    beforeNode
+                );
+            } else {
+                parent.appendChild(nodes);
+            }
+
+            return true;
+        }
+
+        if (message.type === "tree_add") {
+            const parent = document.querySelector(
+                '[data-pylage-id="' +
+                CSS.escape(message.parent_id) +
+                '"]'
+            );
+
+            if (
+                !parent ||
+                !Array.isArray(message.components)
+            ) {
+                return;
+            }
+
+            /*
+             * Preserve the protocol's insertion index.
+             *
+             * The index is evaluated before each insertion, matching the
+             * existing behavior where multiple components are inserted
+             * in protocol order at the requested position.
+             */
+            message.components.forEach(function (item) {
+                const beforeNode =
                     typeof message.index === "number" &&
                     message.index >= 0 &&
                     message.index < parent.children.length
-                ) {
-                    parent.insertBefore(
-                        element,
-                        parent.children[message.index]
-                    );
-                } else {
-                    parent.appendChild(element);
-                }
+                        ? parent.children[message.index]
+                        : null;
+
+                insertTreeNodes(
+                    parent,
+                    item,
+                    beforeNode
+                );
             });
+
+            /*
+             * Renderer-produced nodes already carry their event metadata
+             * in the rendered HTML. Event handling is delegated from
+             * document, so no per-node listener registration is required.
+             */
+            scanAndBindEvents(parent);
 
             return;
         }
@@ -384,7 +552,9 @@ CLIENT_RUNTIME = r"""
                 }
 
                 const component = document.querySelector(
-                    '[data-pylage-id="' + CSS.escape(componentId) + '"]'
+                    '[data-pylage-id="' +
+                    CSS.escape(componentId) +
+                    '"]'
                 );
 
                 if (component) {
@@ -402,7 +572,10 @@ CLIENT_RUNTIME = r"""
                 '"]'
             );
 
-            if (!parent || !Array.isArray(message.component_ids)) {
+            if (
+                !parent ||
+                !Array.isArray(message.component_ids)
+            ) {
                 return;
             }
 
@@ -430,78 +603,28 @@ CLIENT_RUNTIME = r"""
                 '"]'
             );
 
-            if (!parent || !Array.isArray(message.children)) {
+            if (
+                !parent ||
+                !Array.isArray(message.children)
+            ) {
                 return;
             }
 
-            function createTreeNode(item) {
-                if (!item || !item.id) {
-                    return null;
-                }
-
-                const element = document.createElement(
-                    item.tag || "div"
-                );
-
-                element.setAttribute(
-                    "data-pylage-id",
-                    item.id
-                );
-
-                if (item.events) {
-                    element.setAttribute(
-                        "data-pylage-events",
-                        item.events
-                    );
-                }
-
-                const props = item.props || {};
-
-                Object.keys(props).forEach(function (name) {
-                    const value = props[name];
-
-                    if (name === "text") {
-                        element.textContent =
-                            value === null || value === undefined
-                                ? ""
-                                : String(value);
-                        return;
-                    }
-
-                    if (value !== null && value !== undefined) {
-                        element.setAttribute(
-                            name,
-                            String(value)
-                        );
-                    }
-                });
-
-                const children = item.children || [];
-
-                if (Array.isArray(children)) {
-                    children.forEach(function (child) {
-                        const childElement = createTreeNode(child);
-
-                        if (childElement) {
-                            element.appendChild(childElement);
-                        }
-                    });
-                }
-
-                return element;
-            }
-
             while (parent.firstChild) {
-                parent.removeChild(parent.firstChild);
+                parent.removeChild(
+                    parent.firstChild
+                );
             }
 
             message.children.forEach(function (item) {
-                const element = createTreeNode(item);
-
-                if (element) {
-                    parent.appendChild(element);
-                }
+                insertTreeNodes(
+                    parent,
+                    item,
+                    null
+                );
             });
+
+            scanAndBindEvents(parent);
 
             return;
         }
@@ -513,7 +636,10 @@ CLIENT_RUNTIME = r"""
                 '"]'
             );
 
-            if (!oldComponent || !message.new_component) {
+            if (
+                !oldComponent ||
+                !message.new_component
+            ) {
                 return;
             }
 
@@ -523,70 +649,35 @@ CLIENT_RUNTIME = r"""
                 return;
             }
 
-            const createTreeNode = function (item) {
-                if (!item || !item.id) {
-                    return null;
-                }
+            const parent = oldComponent.parentNode;
 
-                const element = document.createElement(
-                    item.tag || "div"
-                );
-
-                element.setAttribute(
-                    "data-pylage-id",
-                    item.id
-                );
-
-                if (item.events) {
-                    element.setAttribute(
-                        "data-pylage-events",
-                        item.events
-                    );
-                }
-
-                const props = item.props || {};
-
-                Object.keys(props).forEach(function (name) {
-                    const value = props[name];
-
-                    if (name === "text") {
-                        element.textContent =
-                            value === null || value === undefined
-                                ? ""
-                                : String(value);
-                        return;
-                    }
-
-                    if (value !== null && value !== undefined) {
-                        element.setAttribute(
-                            name,
-                            String(value)
-                        );
-                    }
-                });
-
-                const children = item.children || [];
-
-                if (Array.isArray(children)) {
-                    children.forEach(function (child) {
-                        const childElement = createTreeNode(child);
-
-                        if (childElement) {
-                            element.appendChild(childElement);
-                        }
-                    });
-                }
-
-                return element;
-            };
-
-            const newComponent = createTreeNode(item);
-
-            if (!newComponent) {
+            if (!parent) {
                 return;
             }
 
-            oldComponent.replaceWith(newComponent);
+            const replacementNodes = createTreeNode(item);
+
+            if (!replacementNodes) {
+                return;
+            }
+
+            if (Array.isArray(replacementNodes)) {
+                replacementNodes.forEach(function (node) {
+                    parent.insertBefore(
+                        node,
+                        oldComponent
+                    );
+                });
+            } else {
+                parent.insertBefore(
+                    replacementNodes,
+                    oldComponent
+                );
+            }
+
+            oldComponent.remove();
+
+            scanAndBindEvents(parent);
 
             return;
         }

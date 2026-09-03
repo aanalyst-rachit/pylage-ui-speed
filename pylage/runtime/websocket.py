@@ -13,6 +13,7 @@ except ImportError:
 
 from pylage.core.binding import StateBinding
 from pylage.core.component import Component
+from pylage.core.renderer import HTMLRenderer
 from pylage.core.events import EventDispatcher
 from pylage.core.graph import DependencyGraph
 from pylage.core.dirty import DirtyNodes
@@ -51,6 +52,11 @@ class WebSocketServer:
         self.root = root
         self.host = host
         self.port = port
+
+        # Dynamic tree mutations must use the same renderer contract
+        # as the initial static HTML render.  Keep one renderer instance
+        # on the server so registered/custom renderers are reused.
+        self._renderer = HTMLRenderer()
 
         self._dispatcher = EventDispatcher(root)
 
@@ -486,8 +492,73 @@ class WebSocketServer:
         )
 
     def _serialize_component_tree(self, component: Component) -> dict[str, Any]:
-        """Serialize a component and its children with json-safe props."""
+        """Serialize a component for browser-side dynamic tree insertion.
+
+        The initial HTML renderer applies registry HTML-name mappings and
+        renderer default styles. Dynamic tree mutations must carry the same
+        browser-facing metadata so that a component inserted with
+        ``set_children``/``add``/``replace`` renders equivalently.
+        """
         definition = self._get_component_definition(component)
+
+        attrs: dict[str, Any] = {}
+
+        if definition is not None and definition.props:
+            for prop_name, prop_definition in definition.props.items():
+                if prop_name not in component.props:
+                    continue
+
+                value = component.props.get(prop_name)
+
+                if isinstance(value, State):
+                    value = value.value
+
+                if value is None:
+                    continue
+
+                html_name = prop_definition.html_name or prop_name
+
+                if prop_definition.kind == "boolean":
+                    if bool(value):
+                        attrs[html_name] = True
+                    continue
+
+                if prop_definition.kind == "attribute":
+                    attrs[html_name] = self._json_safe(value)
+
+        # ``class_name`` is a normal registry attribute in PyLage. The
+        # renderer maps it to HTML ``class``; preserve that mapping even
+        # when a component definition predates explicit prop metadata.
+        if "class_name" in component.props:
+            class_name = component.props.get("class_name")
+            if isinstance(class_name, State):
+                class_name = class_name.value
+            if class_name is not None:
+                attrs["class"] = self._json_safe(class_name)
+
+        style = component.props.get("style")
+
+        if isinstance(style, State):
+            style = style.value
+
+        default_style = self._dynamic_default_style(component)
+
+        if default_style is not None:
+            if style is None:
+                style = default_style
+            elif isinstance(style, Style):
+                style = default_style.merge(style)
+
+        style_css = None
+
+        if isinstance(style, Style):
+            style_css = style.to_css() or None
+
+        # ``html`` is the authoritative DOM representation for
+        # dynamically inserted components.  It is produced by the same
+        # HTMLRenderer used by the initial page render, so custom
+        # renderers such as Table/DataFrame/Form/Dialog are preserved.
+        rendered_html = self._renderer._render_component(component)
 
         return {
             "id": component.id,
@@ -498,16 +569,48 @@ class WebSocketServer:
                 else "div"
             ),
             "events": ",".join(component.events.keys()),
+            "html": rendered_html,
             "props": {
                 k: self._json_safe(v)
                 for k, v in component.props.items()
             },
+            "attrs": attrs,
+            "style": style_css,
             "children": [
                 self._serialize_component_tree(child)
                 for child in component.children
                 if isinstance(child, Component)
             ],
         }
+
+    def _dynamic_default_style(self, component: Component) -> Style | None:
+        """Return renderer defaults required by dynamic DOM insertion.
+
+        These are the defaults currently applied by HTMLRenderer for the
+        built-in layout/card components. Keeping them here makes the dynamic
+        tree protocol match the existing renderer without changing the
+        component tree or the public component API.
+        """
+        if component.type == "Column":
+            return Style(
+                display="flex",
+                flex_direction="column",
+            )
+
+        if component.type == "Row":
+            return Style(
+                display="flex",
+                flex_direction="row",
+            )
+
+        if component.type == "Card":
+            return Style(
+                display="block",
+                width="100%",
+                box_sizing="border-box",
+            )
+
+        return None
 
     def flush(self) -> None:
         """Explicit batching boundary for scheduled state updates."""
