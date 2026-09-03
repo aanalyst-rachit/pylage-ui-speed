@@ -11,7 +11,7 @@ from pylage import (
     State,
     Style,
 )
-from pylage_layout.patterns import (
+from pylage.UI.patterns import (
     Hero,
     FeatureSection,
     PricingSection,

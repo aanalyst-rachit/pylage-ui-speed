@@ -1,6 +1,6 @@
 import pylage as ps
 
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 def test_renderer_can_render_responsive_style():

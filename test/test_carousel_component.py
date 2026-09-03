@@ -1,5 +1,5 @@
-from pylage import Carousel, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Carousel, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_carousel_creates_carousel_component():

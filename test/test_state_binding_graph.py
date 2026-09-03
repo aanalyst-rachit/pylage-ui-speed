@@ -1,6 +1,6 @@
 import pylage as ps
-from pylage.core.binding import StateBinding
-from pylage.core.graph import DependencyGraph
+from pylage.ENGINE.core.binding import StateBinding
+from pylage.ENGINE.core.graph import DependencyGraph
 
 
 def test_state_binding_builds_dependency_graph():

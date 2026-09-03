@@ -1,5 +1,5 @@
-from pylage import Divider
-from pylage.core.renderer import render
+from pylage.ENGINE import Divider
+from pylage.ENGINE.core.renderer import render
 
 
 def test_divider_creates_divider_component():

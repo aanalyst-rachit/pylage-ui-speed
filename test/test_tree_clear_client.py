@@ -1,4 +1,4 @@
-from pylage.runtime.client import CLIENT_RUNTIME
+from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
 
 def test_tree_clear_client_removes_listed_children():

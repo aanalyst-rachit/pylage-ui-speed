@@ -1,5 +1,5 @@
-from pylage import Skeleton
-from pylage.core.renderer import render
+from pylage.ENGINE import Skeleton
+from pylage.ENGINE.core.renderer import render
 
 
 def test_skeleton_renders_as_div():

@@ -75,7 +75,7 @@ def test_column_can_override_default_layout_style():
         ),
     )
 
-    from pylage.core.renderer import render
+    from pylage.ENGINE.core.renderer import render
 
     html = render(column)
 

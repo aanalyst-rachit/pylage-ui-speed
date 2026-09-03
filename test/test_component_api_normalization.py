@@ -1,6 +1,6 @@
 import pytest
 
-from pylage.core.component import Component
+from pylage.ENGINE.core.component import Component
 
 
 def test_component_preserves_canonical_props_api():

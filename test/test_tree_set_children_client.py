@@ -1,4 +1,4 @@
-from pylage.runtime.client import CLIENT_RUNTIME
+from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
 
 def test_tree_set_children_client_replaces_existing_children():

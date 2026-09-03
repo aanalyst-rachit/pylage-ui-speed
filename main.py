@@ -17,7 +17,7 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from pylage import Card, Column, Heading, Row, State, Text, run
-from pylage.styling.style import Style
+from pylage.ENGINE.styling.style import Style
 
 
 APP_DIR = BASE_DIR / "app"

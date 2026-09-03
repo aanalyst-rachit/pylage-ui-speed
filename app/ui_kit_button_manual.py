@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pylage as ps
-import pylage_ui as ui
+import pylage as ui
 from pylage import Style
 
 

@@ -1,6 +1,6 @@
 import pytest
 
-from pylage import Style
+from pylage.ENGINE import Style
 
 
 def test_style_can_be_created():
@@ -62,7 +62,7 @@ def test_style_renders_on_component():
     html = ps.core.renderer.render(component) if hasattr(ps, "core") else None
 
     # Use the public renderer directly.
-    from pylage.core.renderer import render
+    from pylage.ENGINE.core.renderer import render
 
     html = render(component)
 
@@ -70,8 +70,8 @@ def test_style_renders_on_component():
 
 
 def test_style_renders_with_html_escaping():
-    from pylage import Text, Style
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Text, Style
+    from pylage.ENGINE.core.renderer import render
 
     component = Text(
         "Hello",
@@ -86,8 +86,8 @@ def test_style_renders_with_html_escaping():
 
 
 def test_component_without_style_has_no_style_attribute():
-    from pylage import Text
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Text
+    from pylage.ENGINE.core.renderer import render
 
     html = render(Text("Hello"))
 
@@ -95,7 +95,7 @@ def test_component_without_style_has_no_style_attribute():
 
 
 def test_style_merge_user_values_override_defaults():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     default = Style(
         display="flex",
@@ -116,7 +116,7 @@ def test_style_merge_user_values_override_defaults():
 
 
 def test_style_merge_does_not_mutate_original():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     default = Style(display="flex")
     override = Style(display="grid")
@@ -129,8 +129,8 @@ def test_style_merge_does_not_mutate_original():
 
 
 def test_column_uses_default_style():
-    from pylage import Column, Text
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Column, Text
+    from pylage.ENGINE.core.renderer import render
 
     html = render(
         Column(Text("Hello"))
@@ -140,8 +140,8 @@ def test_column_uses_default_style():
 
 
 def test_column_user_style_overrides_default():
-    from pylage import Column, Style, Text
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Column, Style, Text
+    from pylage.ENGINE.core.renderer import render
 
     html = render(
         Column(
@@ -158,7 +158,7 @@ def test_column_user_style_overrides_default():
 
 
 def test_style_supports_custom_css_properties():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     style = Style(
         color="var(--primary-color)",
@@ -174,7 +174,7 @@ def test_style_supports_custom_css_properties():
 
 
 def test_custom_css_properties_merge():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     default = Style(
         custom={
@@ -200,7 +200,7 @@ def test_custom_css_properties_merge():
 
 
 def test_invalid_custom_css_property_name_is_rejected():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     style = Style(
         custom={
@@ -219,7 +219,7 @@ def test_invalid_custom_css_property_name_is_rejected():
 
 
 def test_none_custom_css_values_are_ignored():
-    from pylage import Style
+    from pylage.ENGINE import Style
 
     style = Style(
         custom={
@@ -234,8 +234,8 @@ def test_none_custom_css_values_are_ignored():
 
 
 def test_style_custom_properties_render_to_html():
-    from pylage import Text, Style
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Text, Style
+    from pylage.ENGINE.core.renderer import render
 
     html = render(
         Text(

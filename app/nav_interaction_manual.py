@@ -9,7 +9,7 @@ from pylage import (
     Text,
     run,
 )
-from pylage.core.component import component
+from pylage.ENGINE.core.component import component
 
 
 def get_nav_interaction_app():

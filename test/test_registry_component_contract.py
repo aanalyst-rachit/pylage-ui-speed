@@ -1,5 +1,5 @@
-from pylage.core.component import component
-from pylage.core.registry import PropDefinition, registry
+from pylage.ENGINE.core.component import component
+from pylage.ENGINE.core.registry import PropDefinition, registry
 
 
 print("=== PYLAGE COMPONENT REGISTRY CONTRACT TEST ===")

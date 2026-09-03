@@ -1,5 +1,5 @@
-from pylage import Badge, Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Badge, Text
+from pylage.ENGINE.core.renderer import render
 
 
 def test_badge_creates_badge_component():

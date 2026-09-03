@@ -1,6 +1,6 @@
-from pylage import Grid, Style
-from pylage.core.renderer import render
-import pylage_ui as ui
+from pylage.ENGINE import Grid, Style
+from pylage.ENGINE.core.renderer import render
+import pylage.UI as ui
 
 def test_stat_group_returns_grid():
     sg = ui.stat_group(

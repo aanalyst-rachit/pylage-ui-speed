@@ -4,7 +4,7 @@ import csv
 from pathlib import Path
 
 from pylage import Column, Style, Text
-from pylage_ui import dataframe
+from pylage import dataframe
 
 
 def _load_test_csv():

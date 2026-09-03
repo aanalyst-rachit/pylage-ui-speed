@@ -1,6 +1,6 @@
-from pylage import Column, Style, Text, Button
-from pylage.core.renderer import render
-import pylage_ui as ui
+from pylage.ENGINE import Column, Style, Text, Button
+from pylage.ENGINE.core.renderer import render
+import pylage.UI as ui
 
 def test_empty_state_returns_column():
     es = ui.empty_state()

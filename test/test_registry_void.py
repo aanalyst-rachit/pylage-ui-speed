@@ -1,6 +1,6 @@
-from pylage.core.component import Component
-from pylage.core.registry import registry
-from pylage.core.renderer import render
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.registry import registry
+from pylage.ENGINE.core.renderer import render
 
 
 print("=== PYLAGE REGISTRY VOID TEST ===")

@@ -1,4 +1,4 @@
-from pylage.runtime.client import CLIENT_RUNTIME
+from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
 
 def test_tree_replace_client_uses_renderer_html_when_available():

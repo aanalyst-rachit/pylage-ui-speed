@@ -13,8 +13,8 @@ Purpose:
 
 import importlib
 
-import pylage_layout.layouts as layouts
-from pylage import ResponsiveStyle, Style
+import pylage.UI.layout as layouts
+from pylage.ENGINE import ResponsiveStyle, Style
 
 
 REQUIRED_MODULES = [
@@ -62,7 +62,7 @@ def test_layouts_package_imports():
 def test_required_layout_modules_import():
     for module_name in REQUIRED_MODULES:
         module = importlib.import_module(
-            f"pylage_layout.layouts.{module_name}"
+            f"pylage.UI.layout.{module_name}"
         )
         assert module is not None
 

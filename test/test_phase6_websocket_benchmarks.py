@@ -3,7 +3,7 @@ import json
 import time
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_phase6_websocket_state_update_latency():

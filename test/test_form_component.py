@@ -1,5 +1,5 @@
-from pylage import Form, Input, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Form, Input, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_form_renders_as_form():
@@ -48,21 +48,21 @@ def test_form_supports_submit_event():
 
 
 def test_form_submit_event_is_in_client_runtime():
-    from pylage.runtime.client import CLIENT_RUNTIME
+    from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
     assert 'document.addEventListener("submit", handleEvent)' in CLIENT_RUNTIME
     assert "event.preventDefault()" in CLIENT_RUNTIME
 
 
 def test_form_submit_runtime_builds_payload():
-    from pylage.runtime.client import CLIENT_RUNTIME
+    from pylage.ENGINE.runtime.client import CLIENT_RUNTIME
 
     assert "FormData" in CLIENT_RUNTIME
     assert "sendEvent(componentId, event.type, payload)" in CLIENT_RUNTIME
 
 
 def test_form_submit_dispatches_payload():
-    from pylage.core.events import EventDispatcher
+    from pylage.ENGINE.core.events import EventDispatcher
 
     received = []
 

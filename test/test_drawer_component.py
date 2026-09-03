@@ -1,5 +1,5 @@
-from pylage import Drawer, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Drawer, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_drawer_renders_as_aside():

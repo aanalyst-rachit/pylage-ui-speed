@@ -1,13 +1,10 @@
 """
-RULE 7 — Page Templates Audit
+RULE 6 — Page Recipes Audit
 
-Purpose:
-- Verify templates package imports.
-- Verify every required template module exists.
-- Verify public template exports.
-- Verify __all__ is accurate.
-- Verify every template is callable.
-- Verify every template returns a PyLage component.
+Historical "templates" are now canonical UI recipes.
+
+Canonical package:
+    pylage.UI.recipes
 """
 
 import importlib
@@ -15,7 +12,7 @@ import importlib
 import pytest
 
 
-TEMPLATE_MODULES = [
+RECIPE_MODULES = [
     "landing",
     "dashboard",
     "admin",
@@ -26,7 +23,7 @@ TEMPLATE_MODULES = [
     "documentation",
 ]
 
-PUBLIC_TEMPLATES = [
+PUBLIC_RECIPES = [
     "LandingPage",
     "Dashboard",
     "AdminPanel",
@@ -35,51 +32,52 @@ PUBLIC_TEMPLATES = [
 ]
 
 
-def test_templates_package_imports():
-    templates = importlib.import_module("pylage_layout.templates")
-    assert templates is not None
+def test_recipes_package_imports():
+    recipes = importlib.import_module("pylage.UI.recipes")
+    assert recipes is not None
 
 
-@pytest.mark.parametrize("module_name", TEMPLATE_MODULES)
-def test_template_module_imports(module_name):
+@pytest.mark.parametrize("module_name", RECIPE_MODULES)
+def test_recipe_module_imports(module_name):
     module = importlib.import_module(
-        f"pylage_layout.templates.{module_name}"
+        f"pylage.UI.recipes.{module_name}"
     )
     assert module is not None
 
 
-def test_templates_public_exports_exist():
-    templates = importlib.import_module("pylage_layout.templates")
+def test_recipes_public_exports_exist():
+    recipes = importlib.import_module("pylage.UI.recipes")
 
-    for name in PUBLIC_TEMPLATES:
+    for name in PUBLIC_RECIPES:
         assert hasattr(
-            templates, name
-        ), f"templates missing public export: {name}"
+            recipes,
+            name,
+        ), f"recipes missing public export: {name}"
 
 
-def test_templates_all_matches_public_api():
-    templates = importlib.import_module("pylage_layout.templates")
+def test_recipes_all_matches_public_api():
+    recipes = importlib.import_module("pylage.UI.recipes")
 
-    assert set(templates.__all__) == set(PUBLIC_TEMPLATES)
+    assert set(recipes.__all__) == set(PUBLIC_RECIPES)
 
 
-def test_templates_are_callable():
-    templates = importlib.import_module("pylage_layout.templates")
+def test_recipes_are_callable():
+    recipes = importlib.import_module("pylage.UI.recipes")
 
-    for name in PUBLIC_TEMPLATES:
-        template = getattr(templates, name)
+    for name in PUBLIC_RECIPES:
+        recipe = getattr(recipes, name)
 
-        assert callable(template), (
-            f"templates.{name} must be callable"
+        assert callable(recipe), (
+            f"recipes.{name} must be callable"
         )
 
 
-def test_templates_return_pylage_components():
-    templates = importlib.import_module("pylage_layout.templates")
+def test_recipes_return_pylage_components():
+    recipes = importlib.import_module("pylage.UI.recipes")
 
-    for name in PUBLIC_TEMPLATES:
-        template = getattr(templates, name)
-        component = template()
+    for name in PUBLIC_RECIPES:
+        recipe = getattr(recipes, name)
+        component = recipe()
 
         assert component is not None, (
             f"{name} returned None"

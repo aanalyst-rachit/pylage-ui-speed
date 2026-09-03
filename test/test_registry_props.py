@@ -1,4 +1,4 @@
-from pylage.core.registry import (
+from pylage.ENGINE.core.registry import (
     ComponentRegistry,
     PropDefinition,
 )

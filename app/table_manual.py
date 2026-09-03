@@ -19,7 +19,7 @@ from pylage import (
     Text,
     Toast,
 )
-from pylage.core.component import Component, component
+from pylage.ENGINE.core.component import Component, component
 
 
 def get_app() -> Component:

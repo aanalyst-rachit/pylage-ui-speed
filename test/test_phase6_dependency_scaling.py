@@ -1,8 +1,8 @@
 from time import perf_counter
 
-from pylage.core.component import Component
-from pylage.core.graph import DependencyGraph
-from pylage.core.state import State
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.graph import DependencyGraph
+from pylage.ENGINE.core.state import State
 
 
 SIZES = (10, 100, 1_000, 10_000)

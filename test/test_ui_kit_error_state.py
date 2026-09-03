@@ -1,6 +1,6 @@
-from pylage import Column, Style, Button
-from pylage.core.renderer import render
-import pylage_ui as ui
+from pylage.ENGINE import Column, Style, Button
+from pylage.ENGINE.core.renderer import render
+import pylage.UI as ui
 
 def test_error_state_returns_column():
     es = ui.error_state()

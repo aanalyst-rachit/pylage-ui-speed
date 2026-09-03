@@ -1,5 +1,5 @@
-from pylage import Checkbox
-from pylage.core.renderer import render
+from pylage.ENGINE import Checkbox
+from pylage.ENGINE.core.renderer import render
 
 
 def test_checkbox_renders_as_checkbox():

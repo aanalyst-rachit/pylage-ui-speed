@@ -2,7 +2,7 @@ import asyncio
 import json
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 def test_websocket_state_update_uses_reactive_pipeline():

@@ -1,5 +1,5 @@
-from pylage import DatePicker
-from pylage.core.renderer import render
+from pylage.ENGINE import DatePicker
+from pylage.ENGINE.core.renderer import render
 
 
 def test_datepicker_renders_as_date_input():
@@ -38,7 +38,7 @@ def test_datepicker_supports_min_max():
 
 
 def test_datepicker_state_renders_initial_value():
-    from pylage import State
+    from pylage.ENGINE import State
 
     selected = State("2026-08-30")
     datepicker = DatePicker(value=selected)
@@ -49,8 +49,8 @@ def test_datepicker_state_renders_initial_value():
 
 
 def test_datepicker_state_updates_from_input_event():
-    from pylage import State
-    from pylage.core.events import EventDispatcher
+    from pylage.ENGINE import State
+    from pylage.ENGINE.core.events import EventDispatcher
 
     selected = State("2026-08-30")
     datepicker = DatePicker(value=selected)
@@ -67,8 +67,8 @@ def test_datepicker_state_updates_from_input_event():
 
 
 def test_datepicker_state_updates_from_change_event():
-    from pylage import State
-    from pylage.core.events import EventDispatcher
+    from pylage.ENGINE import State
+    from pylage.ENGINE.core.events import EventDispatcher
 
     selected = State("2026-08-30")
     datepicker = DatePicker(

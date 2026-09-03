@@ -1,5 +1,5 @@
-from pylage import Video
-from pylage.core.renderer import render
+from pylage.ENGINE import Video
+from pylage.ENGINE.core.renderer import render
 
 
 def test_video_creates_video_component():

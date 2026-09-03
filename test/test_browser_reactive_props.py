@@ -3,8 +3,8 @@ import time
 import webbrowser
 
 import pylage as ps
-from pylage.core.component import Component
-from pylage.runtime import Runtime
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.runtime import Runtime
 
 
 print("=== PYLAGE BROWSER GENERIC REACTIVE PROPS TEST ===")

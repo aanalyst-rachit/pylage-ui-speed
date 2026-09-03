@@ -1,4 +1,4 @@
-import pylage_ui as ps
+import pylage as ps
 from pylage import Column, Row
 
 def get_app():

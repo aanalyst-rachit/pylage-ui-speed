@@ -1,4 +1,4 @@
-import pylage_ui as ui
+import pylage as ui
 
 def get_app():
     return ui.dashboard(

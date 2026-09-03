@@ -1,7 +1,7 @@
-from pylage.core.component import Component
-from pylage.core.registry import ComponentRegistry, PropDefinition
-from pylage.core.renderer import HTMLRenderer
-from pylage.core.state import State
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.registry import ComponentRegistry, PropDefinition
+from pylage.ENGINE.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.state import State
 
 print("=== PYLAGE REGISTRY DOM METADATA TEST ===")
 

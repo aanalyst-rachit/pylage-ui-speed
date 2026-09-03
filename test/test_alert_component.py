@@ -1,5 +1,5 @@
-from pylage import Alert, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Alert, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_alert_renders_as_div():

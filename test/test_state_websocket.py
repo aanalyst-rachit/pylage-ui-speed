@@ -3,7 +3,7 @@ import json
 
 import pylage as ps
 
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 async def main():

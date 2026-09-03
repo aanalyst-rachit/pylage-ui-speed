@@ -46,8 +46,8 @@ def test_theme_css_can_be_combined_with_component_style():
         padding="var(--spacing-md)",
     )
 
-    from pylage import Text
-    from pylage.core.renderer import render
+    from pylage.ENGINE import Text
+    from pylage.ENGINE.core.renderer import render
 
     html = render(
         Text(

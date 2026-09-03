@@ -1,7 +1,7 @@
 
-from pylage.core.component import Component
+from pylage.ENGINE.core.component import Component
 from pylage import State, Style
-from pylage.components import (
+from pylage.ENGINE.components import (
     Accordion,
     Alert,
     Badge,

@@ -10,7 +10,7 @@ from pylage import (
     Switch,
     Text,
 )
-from pylage.core.component import component
+from pylage.ENGINE.core.component import component
 
 
 def Option(label: str, value: str, **props):

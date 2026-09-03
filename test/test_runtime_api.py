@@ -1,7 +1,7 @@
 from urllib.request import urlopen
 
 import pylage as ps
-from pylage.runtime import Runtime
+from pylage.ENGINE.runtime import Runtime
 
 
 print("=== PYLAGE RUNTIME API TEST ===")

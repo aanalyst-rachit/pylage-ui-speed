@@ -12,9 +12,9 @@ from pylage import (
     Style,
     Theme,
 )
-from pylage_layout.tokens import COLORS, FONTS, RADIUS, SPACING, validate_tokens
-from pylage_layout.themes.light import LIGHT_THEME
-from pylage_layout.themes.dark import DARK_THEME
+from pylage.UI.tokens import COLORS, FONTS, RADIUS, SPACING, validate_tokens
+from pylage.UI.themes.light import LIGHT_THEME
+from pylage.UI.themes.dark import DARK_THEME
 
 
 def get_app() -> Column:

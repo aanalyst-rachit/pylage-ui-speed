@@ -1,6 +1,6 @@
-from pylage import State, Style
-from pylage.core.renderer import render
-from pylage_ui import text
+from pylage.ENGINE import State, Style
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import text
 
 
 def test_text_wraps_existing_text_component():

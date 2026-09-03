@@ -1,5 +1,5 @@
-from pylage import Avatar, Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Avatar, Text
+from pylage.ENGINE.core.renderer import render
 
 
 def test_avatar_creates_avatar_component():

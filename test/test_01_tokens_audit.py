@@ -11,7 +11,7 @@ Purpose:
 This is a dedicated regression test for Phase 1.
 """
 
-import pylage_layout.tokens as tokens
+import pylage.UI.tokens as tokens
 
 
 def test_tokens_package_imports():
@@ -29,7 +29,7 @@ def test_tokens_public_api_exists():
 
     for name in expected:
         assert hasattr(tokens, name), (
-            f"pylage_layout.tokens missing public export: {name}"
+            f"pylage.UI.tokens missing public export: {name}"
         )
 
 

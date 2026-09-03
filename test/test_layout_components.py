@@ -1,6 +1,6 @@
 import pylage as ps
 
-from pylage.core.renderer import render
+from pylage.ENGINE.core.renderer import render
 
 
 def test_column_is_flex_column_by_default():

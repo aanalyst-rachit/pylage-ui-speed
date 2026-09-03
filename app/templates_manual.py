@@ -11,7 +11,7 @@ from pylage import (
     State,
     Style,
 )
-from pylage_layout.templates import (
+from pylage.UI.recipes import (
     Dashboard,
     Admin,
     Profile,

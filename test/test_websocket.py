@@ -4,7 +4,7 @@ import json
 from websockets.asyncio.client import connect
 
 import pylage as ps
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 
 print("=== PYLAGE WEBSOCKET TEST ===")

@@ -1,5 +1,5 @@
-from pylage import ProgressBar
-from pylage.core.renderer import render
+from pylage.ENGINE import ProgressBar
+from pylage.ENGINE.core.renderer import render
 
 
 def test_progress_bar_renders_as_progress():

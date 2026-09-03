@@ -1,5 +1,5 @@
-from pylage import Dialog, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Dialog, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_dialog_renders_as_dialog():

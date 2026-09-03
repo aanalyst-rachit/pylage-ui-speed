@@ -1,6 +1,6 @@
-from pylage import State, Style
-from pylage.core.renderer import render
-from pylage_ui import heading
+from pylage.ENGINE import State, Style
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import heading
 
 
 def test_heading_wraps_existing_heading_component():

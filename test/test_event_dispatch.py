@@ -1,5 +1,5 @@
 import pylage as ps
-from pylage.core.events import EventDispatcher
+from pylage.ENGINE.core.events import EventDispatcher
 
 
 print("=== PYLAGE EVENT DISPATCH TEST ===")

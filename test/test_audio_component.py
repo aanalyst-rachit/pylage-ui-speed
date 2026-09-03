@@ -1,5 +1,5 @@
-from pylage import Audio
-from pylage.core.renderer import render
+from pylage.ENGINE import Audio
+from pylage.ENGINE.core.renderer import render
 
 
 def test_audio_creates_audio_component():

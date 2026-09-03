@@ -1,5 +1,5 @@
-from pylage import Switch
-from pylage.core.renderer import render
+from pylage.ENGINE import Switch
+from pylage.ENGINE.core.renderer import render
 
 
 def test_switch_renders_as_checkbox():

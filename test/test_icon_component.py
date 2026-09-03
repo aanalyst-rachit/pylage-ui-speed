@@ -1,5 +1,5 @@
-from pylage import Icon
-from pylage.core.renderer import render
+from pylage.ENGINE import Icon
+from pylage.ENGINE.core.renderer import render
 
 
 def test_icon_creates_icon_component():

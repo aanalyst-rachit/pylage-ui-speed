@@ -1,5 +1,5 @@
-from pylage import Tabs, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Tabs, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_tabs_renders():

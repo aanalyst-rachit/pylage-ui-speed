@@ -1,8 +1,8 @@
-import pylage_ui as ps
+import pylage as ps
 
 
 def test_ui_kit_import():
-    assert ps.IMPORT_NAME == "pylage_ui"
+    assert ps.IMPORT_NAME == "pylage"
 
 
 def test_ui_kit_package_name():
@@ -14,10 +14,13 @@ def test_ui_kit_version():
 
 
 def test_ui_kit_public_api():
-    assert ps.__all__ == [
-        "IMPORT_NAME",
-        "PACKAGE_NAME",
-        "__version__",
+    # Root pylage is the public facade. It exposes the complete
+    # UI surface plus the public run/style/theme namespaces.
+    assert hasattr(ps, "run")
+    assert hasattr(ps, "style")
+    assert hasattr(ps, "theme")
+
+    required_public_ui = [
         "avatar",
         "badge",
         "button",
@@ -41,3 +44,21 @@ def test_ui_kit_public_api():
         "text",
         "trend",
     ]
+
+    for name in required_public_ui:
+        assert hasattr(ps, name), f"pylage missing public UI export: {name}"
+
+    # Public facade must not expose ENGINE as part of __all__.
+    forbidden_internal = {
+        "ENGINE",
+        "State",
+        "Style",
+        "Theme",
+        "ResponsiveStyle",
+        "Component",
+        "Runtime",
+        "Renderer",
+    }
+
+    assert forbidden_internal.isdisjoint(set(ps.__all__))
+

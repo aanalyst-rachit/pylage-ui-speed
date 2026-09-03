@@ -1,4 +1,4 @@
-from pylage.core.protocol import TreeRemoveMessage
+from pylage.ENGINE.core.protocol import TreeRemoveMessage
 
 
 def test_tree_remove_message_round_trip():

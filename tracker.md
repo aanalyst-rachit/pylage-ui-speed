@@ -8,7 +8,7 @@ Build an opinionated, modern, Python-first UI kit on top of the existing
 Target API:
 
 ```python
-import pylage_ui as ps
+import pylage.UI as ps
 
 ps.card("Revenue", value="₹42,000")
 ps.button("Save")
@@ -113,7 +113,7 @@ Every relevant existing capability is classified as:
 * [x] Verify:
 
 ```python
-import pylage_ui as ps
+import pylage.UI as ps
 ```
 
 ---
@@ -518,7 +518,7 @@ PyLage UI Kit Demo
 Goal:
 
 ```python
-import pylage_ui as ps
+import pylage.UI as ps
 ```
 
 The majority of application code should use high-level `ps.*` APIs.

@@ -1,5 +1,5 @@
-from pylage import Table, Text
-from pylage.core.renderer import render
+from pylage.ENGINE import Table, Text
+from pylage.ENGINE.core.renderer import render
 
 
 class FakeDataFrame:

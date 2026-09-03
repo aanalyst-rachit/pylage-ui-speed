@@ -1,5 +1,5 @@
 import pylage as ps
-from pylage.core.registry import registry
+from pylage.ENGINE.core.registry import registry
 
 
 DYNAMIC_COMPONENTS = [

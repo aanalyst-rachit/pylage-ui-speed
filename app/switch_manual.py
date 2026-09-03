@@ -33,7 +33,7 @@ def get_app():
             )
 
         # 2. Safe Fallback using generic PyLage Component engine
-        from pylage.core.component import Component
+        from pylage.ENGINE.core.component import Component
         chk = Component("input")
         chk.props["type"] = "checkbox"
         chk.props["checked"] = checked_val

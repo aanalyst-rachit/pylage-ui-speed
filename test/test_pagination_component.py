@@ -1,5 +1,5 @@
-from pylage import Pagination, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Pagination, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_pagination_renders_as_nav():

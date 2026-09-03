@@ -1,5 +1,5 @@
 import pylage as ps
-import pylage_ui as ui
+import pylage as ui
 from pylage import Column, Style
 
 def get_app():

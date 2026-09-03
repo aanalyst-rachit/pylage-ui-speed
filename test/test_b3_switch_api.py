@@ -1,9 +1,9 @@
 from playwright.sync_api import expect, sync_playwright
 
 import pylage as ps
-from pylage.core.registry import registry
-from pylage.core.renderer import render
-from pylage.runtime import Runtime
+from pylage.ENGINE.core.registry import registry
+from pylage.ENGINE.core.renderer import render
+from pylage.ENGINE.runtime import Runtime
 
 
 def test_switch_checked_false_does_not_render_checked():

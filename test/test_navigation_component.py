@@ -1,5 +1,5 @@
-from pylage import Navigation, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Navigation, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_navigation_renders():

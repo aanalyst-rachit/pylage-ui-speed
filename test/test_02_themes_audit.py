@@ -14,8 +14,8 @@ Purpose:
 
 import pytest
 
-import pylage_layout.themes as themes
-from pylage_layout.themes.factory import create_theme
+import pylage.UI.themes as themes
+from pylage.UI.themes.factory import create_theme
 
 
 def test_themes_package_imports():
@@ -30,11 +30,13 @@ def test_themes_public_api_exists():
         "LIGHT_THEME",
         "available_themes",
         "get_theme",
+        "light",
+        "dark",
     }
 
     for name in expected:
         assert hasattr(themes, name), (
-            f"pylage_layout.themes missing public export: {name}"
+            f"pylage.UI.themes missing public export: {name}"
         )
 
 
@@ -46,6 +48,8 @@ def test_themes_all_matches_public_api():
         "LIGHT_THEME",
         "available_themes",
         "get_theme",
+        "light",
+        "dark",
     }
 
     assert set(themes.__all__) == expected

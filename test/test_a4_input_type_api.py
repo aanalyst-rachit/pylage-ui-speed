@@ -1,7 +1,7 @@
 import pytest
 
 import pylage as ps
-from pylage.core.renderer import render
+from pylage.ENGINE.core.renderer import render
 
 
 @pytest.mark.parametrize(

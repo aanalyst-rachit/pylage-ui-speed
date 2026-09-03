@@ -1,6 +1,6 @@
-from pylage import Row, Style, Button
-from pylage.core.renderer import render
-import pylage_ui as ui
+from pylage.ENGINE import Row, Style, Button
+from pylage.ENGINE.core.renderer import render
+import pylage.UI as ui
 
 def test_dashboard_header_returns_row():
     dh = ui.dashboard_header("Overview")

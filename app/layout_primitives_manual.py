@@ -11,7 +11,7 @@ from pylage import (
     State,
     Style,
 )
-from pylage_layout.layouts import (
+from pylage.UI.layout import (
     AppShell,
     Center,
     Container,

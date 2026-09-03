@@ -1,6 +1,6 @@
-from pylage.core.component import Component
-from pylage.core.registry import PropDefinition, registry
-from pylage.core.renderer import HTMLRenderer
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.registry import PropDefinition, registry
+from pylage.ENGINE.core.renderer import HTMLRenderer
 
 
 print("=== PYLAGE CUSTOM REGISTRY PROP RENDERING TEST ===")

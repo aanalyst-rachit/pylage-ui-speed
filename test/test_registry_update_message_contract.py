@@ -1,6 +1,6 @@
 import json
 
-from pylage.core.protocol import UpdateMessage
+from pylage.ENGINE.core.protocol import UpdateMessage
 
 
 print("=== PYLAGE REGISTRY UPDATE MESSAGE CONTRACT TEST ===")

@@ -2,8 +2,8 @@ import asyncio
 import json
 
 import pylage as ps
-from pylage.core.component import Component
-from pylage.runtime.websocket import WebSocketServer
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.runtime.websocket import WebSocketServer
 
 print("=== PYLAGE GENERIC REACTIVE PROPS TEST ===")
 

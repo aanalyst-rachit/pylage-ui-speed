@@ -1,9 +1,9 @@
 import pylage as ps
 
-from pylage.core.binding import StateBinding
-from pylage.core.dirty import DirtyNodes
-from pylage.core.graph import DependencyGraph
-from pylage.core.scheduler import Scheduler
+from pylage.ENGINE.core.binding import StateBinding
+from pylage.ENGINE.core.dirty import DirtyNodes
+from pylage.ENGINE.core.graph import DependencyGraph
+from pylage.ENGINE.core.scheduler import Scheduler
 
 
 def test_state_change_flows_through_reactive_pipeline():

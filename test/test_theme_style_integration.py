@@ -57,7 +57,7 @@ def test_theme_tokens_can_build_component_style():
         style=style,
     )
 
-    from pylage.core.renderer import render
+    from pylage.ENGINE.core.renderer import render
 
     html = render(component)
 

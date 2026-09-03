@@ -1,5 +1,5 @@
 import pylage as ps
-from pylage.core.renderer import render
+from pylage.ENGINE.core.renderer import render
 
 
 def _radio(value, *, name="choice", **props):
@@ -101,7 +101,7 @@ def test_radio_group_change_event_is_registered():
 
 
 def test_radio_group_registry_declares_value_as_reactive():
-    from pylage.core.registry import registry
+    from pylage.ENGINE.core.registry import registry
 
     definition = registry.get("RadioGroup")
 

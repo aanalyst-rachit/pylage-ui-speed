@@ -55,7 +55,7 @@ def get_app():
             except Exception:
                 pass
         # 2. Native Component Builder with raw HTML props
-        from pylage.core.component import Component
+        from pylage.ENGINE.core.component import Component
 
         select_node = Component("select")
         select_node.props["value"] = current_state.value

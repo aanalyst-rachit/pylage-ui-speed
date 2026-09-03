@@ -1,5 +1,5 @@
-from pylage import Accordion, Text, Button
-from pylage.core.renderer import render
+from pylage.ENGINE import Accordion, Text, Button
+from pylage.ENGINE.core.renderer import render
 
 
 def test_accordion_creates_accordion_component():
