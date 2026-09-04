@@ -64,6 +64,7 @@ def test_layout_public_api_exists():
         "ThreeColumn",
         "topheader",
         "Topbar",
+            "row",
     }
 
     assert set(layouts.__all__) == expected

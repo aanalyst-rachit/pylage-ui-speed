@@ -35,6 +35,7 @@ PUBLIC_RECIPES = [
     "mobile_sidebar",
     "tooltip",
     "popover",
+    "confirmation_dialog",
 ]
 
 
@@ -83,7 +84,10 @@ def test_recipes_return_pylage_components():
 
     for name in PUBLIC_RECIPES:
         recipe = getattr(recipes, name)
-        component = recipe()
+        if name == "confirmation_dialog":
+            component = recipe("Confirm action")
+        else:
+            component = recipe()
 
         assert component is not None, (
             f"{name} returned None"

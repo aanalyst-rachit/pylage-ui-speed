@@ -11,6 +11,7 @@ from .modal import modal
 from .drawer import drawer, navigation_drawer, mobile_sidebar
 from .tooltip import tooltip
 from .popover import popover
+from .confirmation_dialog import confirmation_dialog
 
 Admin = AdminPanel
 Landing = LandingPage
@@ -27,4 +28,5 @@ __all__ = [
     "mobile_sidebar",
     "tooltip",
     "popover",
+    "confirmation_dialog",
 ]
