@@ -15,6 +15,7 @@ class PropDefinition:
     kind: str = "attribute"
     reactive: bool = True
     html_name: str | None = None
+    boolean_mode: str = "normal"
 
 
 @dataclass(frozen=True)
@@ -315,6 +316,12 @@ registry.register(
         "text": PropDefinition(
             "text",
             kind="text",
+        ),
+        "visible": PropDefinition(
+            "visible",
+            kind="boolean",
+            html_name="hidden",
+            boolean_mode="inverse",
         ),
     },
 )

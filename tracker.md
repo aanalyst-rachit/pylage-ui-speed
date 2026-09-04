@@ -301,7 +301,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 # PHASE 09 — Feedback & Overlays
 
 * [x] Alert
-* [ ] Toast
+* [ ] Toast — 🔴 BUG — unresolved, resolution pending
 * [ ] Dialog
 * [ ] Modal recipe
 * [ ] Drawer

@@ -26,6 +26,7 @@ from .stat_group import *
 from .table import *
 from .text import *
 from .trend import *
+from .toast import *
 from .form import *
 from .form_field import *
 from .datepicker import *
@@ -61,6 +62,7 @@ __all__ = [
     "table",
     "text",
     "trend",
+    "toast",
     "input",
     "select",
     "checkbox",

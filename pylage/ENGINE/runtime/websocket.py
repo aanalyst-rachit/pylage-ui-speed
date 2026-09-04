@@ -230,6 +230,16 @@ class WebSocketServer:
         props: dict[str, Any] = {}
 
         for prop_name, value in component.props.items():
+            if prop_name == "style":
+                style_value = value
+
+                if isinstance(style_value, State):
+                    style_value = style_value.value
+
+                if isinstance(style_value, Style):
+                    props[prop_name] = style_value.to_css()
+                    continue
+
             props[prop_name] = self._json_safe(value)
 
         self._on_state_change(component, props)
@@ -250,10 +260,15 @@ class WebSocketServer:
                 if prop_definition is None:
                     continue
 
-                prop_meta[prop_name] = {
+                meta = {
                     "kind": prop_definition.kind,
                     "html_name": prop_definition.html_name,
                 }
+
+                if prop_definition.boolean_mode != "normal":
+                    meta["boolean_mode"] = prop_definition.boolean_mode
+
+                prop_meta[prop_name] = meta
 
         message = UpdateMessage(
             component_id=component.id,

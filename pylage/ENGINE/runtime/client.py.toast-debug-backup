@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyLage Toast Manual</title>
-</head>
-<body>
-<div data-pylage-id="bf59794a78" style="padding:1.5rem;width:100%;display:flex;flex-direction:column;gap:1.5rem;box-sizing:border-box" gap="1.5rem"><h1 data-pylage-id="c8f26b9b72">PyLage UI Kit — Toast</h1><div data-pylage-id="7ff7bc0003">Semantic feedback toasts using the existing PyLage Toast component.</div><div data-pylage-id="2dbe0b56f8" style="width:100%;display:grid;gap:1rem;grid-template-columns:repeat(2, minmax(0, 1fr))"><div data-pylage-id="7cb6621a99" style="color:#0f172a;background-color:#f1f5f9;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #e2e8f0;border-radius:0.375rem"><div data-pylage-id="71f1339511">Default notification.</div></div><div data-pylage-id="b1ebc395a9" style="color:#ffffff;background-color:#06b6d4;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #06b6d4;border-radius:0.375rem"><div data-pylage-id="2d114da1d0">Information notification.</div></div><div data-pylage-id="7609d946b6" style="color:#ffffff;background-color:#22c55e;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #22c55e;border-radius:0.375rem"><div data-pylage-id="cc252cf630">Changes saved successfully.</div></div><div data-pylage-id="f7e7df97ec" style="color:#0f172a;background-color:#f59e0b;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #f59e0b;border-radius:0.375rem"><div data-pylage-id="bf9ac384a0">Please review this warning.</div></div><div data-pylage-id="fb1c5de728" style="color:#ffffff;background-color:#ef4444;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #ef4444;border-radius:0.375rem"><div data-pylage-id="70d95c1e7c">Something went wrong.</div></div><div data-pylage-id="108a341389" style="color:#ffffff;background-color:#ef4444;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #ef4444;border-radius:0.375rem"><div data-pylage-id="6b22d76ec6">An error occurred.</div></div></div><div data-pylage-id="7db0fcad68" style="width:100%;display:block;box-sizing:border-box"><h1 data-pylage-id="72601a1063">Interactive Toast</h1><div data-pylage-id="86f74ac932">Toggle the toast visibility using the button below.</div><button data-pylage-id="0c5570cd95" data-pylage-events="click">Toggle Toast</button><div data-pylage-id="7fb3e0a1ac" style="color:#ffffff;background-color:#22c55e;padding:1rem;display:flex;flex-direction:column;gap:0.25rem;border:1px solid #22c55e;border-radius:0.375rem" title="State-driven Toast"><div data-pylage-id="af50f56e2b">This toast is controlled by State.</div></div></div></div>
-<script>
-window.PyLage = window.PyLage || {};
-window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
-</script>
-<script>
+from __future__ import annotations
+
+
+CLIENT_RUNTIME = r"""
 (function () {
     "use strict";
 
@@ -707,8 +697,6 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
         }
 
           const propMeta = message.prop_meta || {};
-          console.log('[PyLage Client] propMeta received:', propMeta);
-          console.log('[PyLage Client] Full message:', message);
 
           // Remove props that disappeared from the component snapshot.
           const removeProps = Array.isArray(message.remove_props)
@@ -717,7 +705,6 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
 
           removeProps.forEach(function (propName) {
               const meta = propMeta[propName] || {};
-              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const htmlName = meta.html_name || propName;
 
               component.removeAttribute(htmlName);
@@ -751,7 +738,6 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
           Object.keys(message.props).forEach(function (propName) {
               const value = message.props[propName];
               const meta = propMeta[propName] || {};
-              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const kind = meta.kind || "attribute";
               const htmlName = meta.html_name || propName;
 
@@ -764,11 +750,7 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
               }
 
               if (kind === "boolean") {
-                  const logicalValue = Boolean(value);
-                  const booleanValue =
-                      meta.boolean_mode === "inverse"
-                          ? !logicalValue
-                          : logicalValue;
+                  const booleanValue = Boolean(value);
 
                   if (htmlName in component) {
                       try {
@@ -788,15 +770,6 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
                       component.removeAttribute(htmlName);
                   }
 
-                  return;
-              }
-
-              if (htmlName === 'style') {
-                  if (value !== null && value !== undefined) {
-                      component.style.cssText = String(value);
-                  } else {
-                      component.removeAttribute('style');
-                  }
                   return;
               }
 
@@ -857,6 +830,19 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:36505/';
         window.PyLage.websocketUrl
     );
 })();
-</script>
-</body>
-</html>
+"""
+
+
+def get_client_runtime(websocket_url: str | None = None) -> str:
+    """Return the embedded PyLage browser runtime."""
+
+    url = websocket_url or ""
+
+    bootstrap = (
+        "<script>\n"
+        "window.PyLage = window.PyLage || {};\n"
+        f"window.PyLage.websocketUrl = {url!r};\n"
+        "</script>\n"
+    )
+
+    return bootstrap + CLIENT_RUNTIME

@@ -229,7 +229,18 @@ class HTMLRenderer:
                 continue
 
             if kind == "boolean":
-                if value:
+                boolean_mode = (
+                    prop_definition.boolean_mode
+                    if prop_definition is not None
+                    else "normal"
+                )
+
+                dom_value = bool(value)
+
+                if boolean_mode == "inverse":
+                    dom_value = not dom_value
+
+                if dom_value:
                     attributes.append(
                         escape(html_name, quote=True)
                     )

@@ -697,6 +697,8 @@ CLIENT_RUNTIME = r"""
         }
 
           const propMeta = message.prop_meta || {};
+          console.log('[PyLage Client] propMeta received:', propMeta);
+          console.log('[PyLage Client] Full message:', message);
 
           // Remove props that disappeared from the component snapshot.
           const removeProps = Array.isArray(message.remove_props)
@@ -705,6 +707,7 @@ CLIENT_RUNTIME = r"""
 
           removeProps.forEach(function (propName) {
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const htmlName = meta.html_name || propName;
 
               component.removeAttribute(htmlName);
@@ -738,6 +741,7 @@ CLIENT_RUNTIME = r"""
           Object.keys(message.props).forEach(function (propName) {
               const value = message.props[propName];
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const kind = meta.kind || "attribute";
               const htmlName = meta.html_name || propName;
 
@@ -750,7 +754,11 @@ CLIENT_RUNTIME = r"""
               }
 
               if (kind === "boolean") {
-                  const booleanValue = Boolean(value);
+                  const logicalValue = Boolean(value);
+                  const booleanValue =
+                      meta.boolean_mode === "inverse"
+                          ? !logicalValue
+                          : logicalValue;
 
                   if (htmlName in component) {
                       try {
@@ -770,6 +778,15 @@ CLIENT_RUNTIME = r"""
                       component.removeAttribute(htmlName);
                   }
 
+                  return;
+              }
+
+              if (htmlName === 'style') {
+                  if (value !== null && value !== undefined) {
+                      component.style.cssText = String(value);
+                  } else {
+                      component.removeAttribute('style');
+                  }
                   return;
               }
 
