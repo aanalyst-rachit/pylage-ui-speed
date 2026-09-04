@@ -21,6 +21,7 @@ RECIPE_MODULES = [
     "profile",
     "settings",
     "documentation",
+    "drawer",
 ]
 
 PUBLIC_RECIPES = [
@@ -29,6 +30,9 @@ PUBLIC_RECIPES = [
     "AdminPanel",
     "Authentication",
     "ProfilePage",
+    "drawer",
+    "navigation_drawer",
+    "mobile_sidebar",
 ]
 
 

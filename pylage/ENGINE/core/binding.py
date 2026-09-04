@@ -152,7 +152,7 @@ class StateBinding:
         # The scheduler is flushed explicitly at the batching boundary.
         if self.scheduler is not None:
             if self.dirty is not None:
-                self.dirty.mark(component)
+                self.dirty.mark(component, prop_name)
 
             self.scheduler.request()
             return
@@ -167,7 +167,7 @@ class StateBinding:
         )
 
         if self.dirty is not None:
-            self.dirty.mark(component)
+            self.dirty.mark(component, prop_name)
 
     def stop(self) -> None:
         """Remove all State subscriptions."""

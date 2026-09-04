@@ -40,15 +40,17 @@ class Scheduler:
         with self._lock:
             self._flush_requested = False
 
-        nodes = self.dirty.nodes()
-        self.dirty.clear()
+        nodes = self.dirty.begin_flush()
 
         errors = []
-        for node in nodes:
-            try:
-                self.callback(node)
-            except Exception as exc:
-                errors.append((node, exc))
+        try:
+            for node in nodes:
+                try:
+                    self.callback(node)
+                except Exception as exc:
+                    errors.append((node, exc))
+        finally:
+            self.dirty.end_flush()
 
         if errors:
             first_node, first_exc = errors[0]

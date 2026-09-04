@@ -102,7 +102,16 @@ class WebSocketServer:
         if self._server is None:
             raise RuntimeError("WebSocket server is not running.")
 
-        return f"ws://{self.host}:{self.port}/"
+        # Wildcard bind addresses are valid for the server listener but are
+        # not valid browser connection targets. Use loopback for local
+        # browser clients while keeping the server bound to the wildcard.
+        host = self.host
+        if host == "0.0.0.0":
+            host = "127.0.0.1"
+        elif host == "::":
+            host = "[::1]"
+
+        return f"ws://{host}:{self.port}/"
 
     def _schedule_scheduler_flush(self) -> None:
         """Schedule one coalesced scheduler flush on the WebSocket loop."""
@@ -224,12 +233,25 @@ class WebSocketServer:
     def _scheduled_update(
         self,
         component: Component,
+        changed_props: set[str] | None = None,
     ) -> None:
-        """Flush a dirty component using resolved State values."""
+        """Flush a dirty component using only its changed props."""
 
         props: dict[str, Any] = {}
 
-        for prop_name, value in component.props.items():
+        if changed_props is None:
+            changed_props = self._dirty.changed_props(component)
+
+        if changed_props is None:
+            prop_items = component.props.items()
+        else:
+            prop_items = (
+                (prop_name, component.props[prop_name])
+                for prop_name in changed_props
+                if prop_name in component.props
+            )
+
+        for prop_name, value in prop_items:
             if prop_name == "style":
                 style_value = value
 
@@ -254,8 +276,10 @@ class WebSocketServer:
         definition = self._get_component_definition(component)
 
         prop_meta = {}
+        remove_props = []
+
         if definition is not None and definition.props:
-            for prop_name in props:
+            for prop_name in list(props):
                 prop_definition = definition.props.get(prop_name)
                 if prop_definition is None:
                     continue
@@ -270,9 +294,11 @@ class WebSocketServer:
 
                 prop_meta[prop_name] = meta
 
+
         message = UpdateMessage(
             component_id=component.id,
             props=props,
+            remove_props=remove_props,
             prop_meta=prop_meta,
         )
 

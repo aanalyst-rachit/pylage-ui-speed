@@ -304,7 +304,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 * [ ] Toast — 🔴 BUG — unresolved, resolution pending
 * [x] Dialog
 * [x] Modal recipe
-* [ ] Drawer
+* [x] Drawer
 * [ ] Tooltip
 * [ ] Popover
 * [ ] Confirmation dialog

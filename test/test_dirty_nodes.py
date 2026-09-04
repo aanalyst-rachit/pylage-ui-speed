@@ -52,3 +52,21 @@ def test_clear_removes_all_dirty_nodes():
     assert len(dirty) == 0
     assert not dirty.contains(component1)
     assert not dirty.contains(component2)
+
+
+def test_dirty_nodes_track_changed_props_per_component():
+    from pylage.ENGINE import Text
+
+    component = Text("Test")
+    dirty = DirtyNodes()
+
+    dirty.mark(component, "text")
+    dirty.mark(component, "class_name")
+    dirty.mark(component, "text")
+
+    assert dirty.contains(component)
+    assert dirty.changed_props(component) == {"text", "class_name"}
+
+    dirty.clear()
+
+    assert dirty.changed_props(component) is None

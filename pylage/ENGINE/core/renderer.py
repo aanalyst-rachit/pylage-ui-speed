@@ -38,6 +38,9 @@ class HTMLRenderer:
             "Dialog": lambda renderer, component:
                 renderer._render_dialog(component),
 
+            "Drawer": lambda renderer, component:
+                renderer._render_drawer(component),
+
             "Table": lambda renderer, component:
                 renderer._render_table(component),
             "DataFrame": lambda renderer, component:
@@ -290,6 +293,75 @@ class HTMLRenderer:
             return ""
 
         return " " + " ".join(attributes)
+
+    def _drawer_css(self) -> str:
+        """Return built-in CSS for the Drawer component."""
+        return """
+.pylage-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        transform 180ms ease,
+        visibility 180ms ease;
+    z-index: 1000;
+}
+
+.pylage-drawer[open] {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+"""
+
+    def _render_drawer(self, component: Component) -> str:
+        common = self._render_common_attributes(component)
+        drawer_css = self._drawer_css()
+
+        class_name = self._value(component.props.get("class_name"))
+        title = self._value(component.props.get("title"))
+
+        classes = ["pylage-drawer"]
+
+        if class_name:
+            custom_class = str(class_name)
+            if custom_class != "pylage-drawer":
+                classes.append(custom_class)
+
+        attributes = (
+            common
+            + ' class="'
+            + escape(" ".join(classes), quote=True)
+            + '"'
+        )
+
+        if title is not None:
+            attributes += (
+                f' title="{escape(str(title), quote=True)}"'
+            )
+
+        attributes += self._render_prop_attributes(
+            component,
+            excluded={"children", "class_name", "title"},
+        )
+
+        children = self._render_children(component)
+
+        return (
+            f"<style>{drawer_css}</style>"
+            f"<aside {attributes}>"
+            f"{children}"
+            f"</aside>"
+        )
 
     def _render_form(self, component: Component) -> str:
         common = self._render_common_attributes(component)

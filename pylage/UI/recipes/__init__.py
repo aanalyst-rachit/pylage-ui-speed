@@ -8,6 +8,7 @@ from .profile import ProfilePage
 from .settings import Settings, SettingsPage
 from .documentation import Documentation
 from .modal import modal
+from .drawer import drawer, navigation_drawer, mobile_sidebar
 
 Admin = AdminPanel
 Landing = LandingPage
@@ -19,4 +20,7 @@ __all__ = [
     "AdminPanel",
     "Authentication",
     "ProfilePage",
+    "drawer",
+    "navigation_drawer",
+    "mobile_sidebar",
 ]
