@@ -9,6 +9,7 @@ from .badge import *
 from .button import *
 from .card import *
 from .dashboard import *
+from .dialog import *
 from .dashboard_card import *
 from .dashboard_grid import *
 from .dashboard_header import *
@@ -45,6 +46,7 @@ __all__ = [
     "button",
     "card",
     "dashboard",
+    "dialog",
     "dashboard_card",
     "dashboard_grid",
     "dashboard_header",
