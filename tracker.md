@@ -295,6 +295,7 @@ A useful dashboard can be created with minimal Python.
 Reuse existing PyLage components wherever possible.
 
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
@@ -312,6 +313,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 
 ---
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 
 # PHASE 10 — Navigation
@@ -327,6 +329,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 
 Reuse existing `pylage_layout` navigation primitives.
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
@@ -352,6 +355,7 @@ ps.columns(...)
 ps.sidebar(...)
 ```
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
@@ -382,6 +386,7 @@ ps.dashboard(
 
 ---
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 
 # PHASE 13 — Responsive Intelligence
@@ -400,6 +405,7 @@ Reuse existing responsive infrastructure.
 
 Components should adapt without requiring manual CSS/media queries.
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
@@ -438,6 +444,7 @@ ps.card(
 * [ ] Component-level overrides
 * [ ] Global overrides
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ### Principle
 
@@ -458,6 +465,7 @@ Customization must never destroy default simplicity.
 
 ---
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 # PHASE 16 — Performance
 
@@ -475,6 +483,7 @@ PyLage UI Kit must preserve PyLage's low-latency architecture.
 
 ### Principle
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 High-level API → efficient existing PyLage primitives.
 
@@ -484,6 +493,7 @@ High-level API → efficient existing PyLage primitives.
 
 Every component should eventually pass:
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ```text
 UNIT
@@ -528,6 +538,7 @@ PyLage UI Kit Demo
 └── Themes
 ```
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 Goal:
 
@@ -541,6 +552,7 @@ The majority of application code should use high-level `ps.*` APIs.
 
 # PHASE 19 — Documentation
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 * [ ] Installation
 * [ ] First app
@@ -561,6 +573,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 
 # PHASE 20 — API Stabilization
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 * [ ] Remove unnecessary APIs
 * [ ] Fix inconsistent naming
@@ -580,6 +593,7 @@ Small API surface + powerful composition.
 
 # PHASE 21 — Release
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 Target:
 
@@ -658,3 +672,27 @@ Before implementing anything new:
 5. Test.
 6. Update this tracker.
 7. Git checkpoint.
+
+## file making rule
+rules - PYTHON TERMINAL RULE + MD FILE RULE
+
+PYTHON TERMINAL COMMAND RULE
+Jab Python code/command terminal mein execute karne ke liye deni ho:
+1. Command copy-paste safe honi chahiye.
+2. Multiline heredoc (`python - <<'PY'`) avoid karo.
+3. `>`, `|` jaise terminal prompt characters content ka part nahi banne chahiye.
+4. Quotes, backticks, braces aur multiline strings safely preserve hone chahiye.
+5. File generate/update karne ke liye terminal-safe method use karo.
+6. Unnecessary `nano`/`vim` avoid karo jab direct command possible ho.
+7. Command dene se pehle shell/Python syntax corruption check karo.
+
+MARKDOWN FILE RULE — ESCAPED NEWLINE FORMAT
+Jab `.md` file create/update karni ho:
+1. `cat <<'EOF'` / heredoc use nahi karna.
+2. `python - <<'PY'` ke andar multiline Markdown use nahi karna.
+3. Markdown terminal-safe escaped-newline format mein dena.
+4. Paragraph/section separation ke liye `\n\n` preserve karna.
+5. Markdown code fences exactly preserve hone chahiye.
+6. `>`, `$`, backticks, quotes aur special characters safely preserve hone chahiye.
+7. Command directly copy-paste karke `.md` file create/update ho sake.
+8. File create/update ke baad `git diff --check` se verify karna.
