@@ -7,6 +7,7 @@ from .authentication import Authentication
 from .profile import ProfilePage
 from .settings import Settings, SettingsPage
 from .documentation import Documentation
+from .modal import modal
 
 Admin = AdminPanel
 Landing = LandingPage

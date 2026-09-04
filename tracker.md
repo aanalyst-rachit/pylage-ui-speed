@@ -303,7 +303,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 * [x] Alert
 * [ ] Toast — 🔴 BUG — unresolved, resolution pending
 * [x] Dialog
-* [ ] Modal recipe
+* [x] Modal recipe
 * [ ] Drawer
 * [ ] Tooltip
 * [ ] Popover
