@@ -1,5 +1,6 @@
 """Canonical PyLage UI layout primitives and containers."""
 
+from .row import row
 from .factories import (
     AppShell,
     Center,
@@ -42,6 +43,7 @@ __all__ = [
     "Stack",
     "TwoColumn",
     "ThreeColumn",
+    "row",
     "Topbar",
     "topheader",
 ]

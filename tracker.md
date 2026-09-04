@@ -333,32 +333,6 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
-# PHASE 11 — Layout API
-
-Do NOT rebuild `pylage_layout`.
-
-* [ ] Determine direct re-exports
-* [ ] Determine simplified wrappers
-* [ ] Responsive shorthand
-* [ ] Spacing shorthand
-* [ ] Dashboard layout helpers
-* [ ] Verify no duplicate layout engine
-
-Potential API:
-
-```python
-ps.container(...)
-ps.stack(...)
-ps.row(...)
-ps.grid(...)
-ps.columns(...)
-ps.sidebar(...)
-```
-work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
-rules - PYTHON TERMINAL RULE + MD FILE RULE
-
----
-
 # PHASE 12 — High-Level Recipes
 
 * [ ] Login page
@@ -696,3 +670,31 @@ Jab `.md` file create/update karni ho:
 6. `>`, `$`, backticks, quotes aur special characters safely preserve hone chahiye.
 7. Command directly copy-paste karke `.md` file create/update ho sake.
 8. File create/update ke baad `git diff --check` se verify karna.
+# PHASE 11 — Layout API
+
+Do NOT rebuild `pylage_layout`.
+
+* [ ] Determine direct re-exports
+* [x] Determine simplified wrappers
+  - Row wrapper added around the existing PyLage `Row` component.
+  - Uses the existing UI Kit responsive style resolution.
+  - Publicly exported through `pylage.UI.layout` and `pylage.UI`.
+  - Does not duplicate the layout engine.
+* [ ] Responsive shorthand
+* [ ] Spacing shorthand
+* [ ] Dashboard layout helpers
+* [ ] Verify no duplicate layout engine
+
+Potential API:
+
+```python
+ps.container(...)
+ps.stack(...)
+ps.row(...)
+ps.grid(...)
+ps.columns(...)
+ps.sidebar(...)
+```
+
+work flow - reuse/create/------>manual create-------> manual verify---->documentation-----> tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
