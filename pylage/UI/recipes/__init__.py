@@ -9,6 +9,7 @@ from .settings import Settings, SettingsPage
 from .documentation import Documentation
 from .modal import modal
 from .drawer import drawer, navigation_drawer, mobile_sidebar
+from .tooltip import tooltip
 
 Admin = AdminPanel
 Landing = LandingPage
@@ -23,4 +24,5 @@ __all__ = [
     "drawer",
     "navigation_drawer",
     "mobile_sidebar",
+    "tooltip",
 ]
