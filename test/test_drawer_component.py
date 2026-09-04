@@ -96,4 +96,3 @@ def test_drawer_preserves_custom_class_and_title():
 
     assert 'class="pylage-drawer my-drawer"' in html
     assert 'title="Navigation"' in html
-
