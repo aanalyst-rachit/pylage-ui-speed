@@ -10,6 +10,7 @@ from .documentation import Documentation
 from .modal import modal
 from .drawer import drawer, navigation_drawer, mobile_sidebar
 from .tooltip import tooltip
+from .popover import popover
 
 Admin = AdminPanel
 Landing = LandingPage
@@ -25,4 +26,5 @@ __all__ = [
     "navigation_drawer",
     "mobile_sidebar",
     "tooltip",
+    "popover",
 ]

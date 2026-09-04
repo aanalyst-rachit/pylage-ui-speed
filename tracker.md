@@ -307,7 +307,7 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 * [x] Modal recipe
 * [x] Drawer
 * [x] Tooltip
-* [ ] Popover
+* [x] Popover
 * [ ] Confirmation dialog
 * [ ] Loading overlay
 

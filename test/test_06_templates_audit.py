@@ -34,6 +34,7 @@ PUBLIC_RECIPES = [
     "navigation_drawer",
     "mobile_sidebar",
     "tooltip",
+    "popover",
 ]
 
 
