@@ -676,10 +676,11 @@ Do NOT rebuild `pylage_layout`.
 
 * [ ] Determine direct re-exports
 * [x] Determine simplified wrappers
-  - Row wrapper added around the existing PyLage `Row` component.
-  - Uses the existing UI Kit responsive style resolution.
-  - Publicly exported through `pylage.UI.layout` and `pylage.UI`.
-  - Does not duplicate the layout engine.
+  - Row wrapper added around the existing PyLage Row component.
+  - Column wrapper added around the existing PyLage Column component.
+  - Both use the existing UI Kit responsive style resolution.
+  - Both are publicly exported through pylage.UI.layout and pylage.UI.
+  - Neither duplicates the layout engine.
 * [ ] Responsive shorthand
 * [ ] Spacing shorthand
 * [ ] Dashboard layout helpers

@@ -8,6 +8,7 @@ from pylage.ENGINE.core.state import State
 from pylage.ENGINE.core.graph import DependencyGraph
 from pylage.ENGINE.core.dirty import DirtyNodes
 from pylage.ENGINE.core.scheduler import Scheduler
+from pylage.ENGINE.styling.style import Style
 
 
 UpdateCallback = Callable[[Component, dict[str, Any]], None]
@@ -66,6 +67,21 @@ class StateBinding:
 
         return prop_definition.reactive
 
+    def _iter_states(self, value: Any):
+        """Yield reactive State objects nested inside supported values."""
+        if isinstance(value, State):
+            yield value
+            return
+
+        if isinstance(value, Style):
+            for field_name in value.__dataclass_fields__:
+                field_value = getattr(value, field_name)
+                if isinstance(field_value, State):
+                    yield field_value
+            for field_value in (value.custom or {}).values():
+                if isinstance(field_value, State):
+                    yield field_value
+
     def _bind_single_node(self, node: Component) -> None:
         if node.id in self._node_bindings:
             # Already bound; unbind first to avoid duplicate subscriptions
@@ -74,31 +90,29 @@ class StateBinding:
         node_records: list[tuple[State, Component, str, Callable[[], None]]] = []
 
         for prop_name, value in node.props.items():
-            if not isinstance(value, State):
-                continue
-
             if not self._is_reactive(node, prop_name):
                 continue
 
-            unsubscribe = value.subscribe(
-                lambda old, new,
-                component=node,
-                name=prop_name: self._changed(
-                    component,
-                    name,
-                    new,
+            for state in self._iter_states(value):
+                unsubscribe = state.subscribe(
+                    lambda old, new,
+                    component=node,
+                    name=prop_name: self._changed(
+                        component,
+                        name,
+                        new,
+                    )
                 )
-            )
 
-            node_records.append((value, node, prop_name, unsubscribe))
-            self._subscriptions.append(unsubscribe)
+                node_records.append((state, node, prop_name, unsubscribe))
+                self._subscriptions.append(unsubscribe)
 
-            if self.graph is not None:
-                self.graph.add_dependency(
-                    value,
-                    node,
-                    prop_name,
-                )
+                if self.graph is not None:
+                    self.graph.add_dependency(
+                        state,
+                        node,
+                        prop_name,
+                    )
 
         self._node_bindings[node.id] = node_records
 

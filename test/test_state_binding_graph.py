@@ -18,3 +18,20 @@ def test_state_binding_builds_dependency_graph():
     )
 
     assert (heading, "text") in graph.get_dependents(state)
+
+def test_state_binding_builds_dependency_graph_for_state_inside_style():
+    from pylage.ENGINE import Style
+
+    gap = State("1rem")
+    column = Column(style=Style(gap=gap))
+    app = Column(column)
+
+    graph = DependencyGraph()
+
+    StateBinding(
+        app,
+        lambda component, props: None,
+        graph=graph,
+    )
+
+    assert (column, "style") in graph.get_dependents(gap)
