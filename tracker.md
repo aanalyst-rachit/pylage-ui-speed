@@ -300,7 +300,7 @@ work flow - reuse/create/------>manual create-------> manual verify---->document
 
 # PHASE 09 — Feedback & Overlays
 
-* [ ] Alert
+* [x] Alert
 * [ ] Toast
 * [ ] Dialog
 * [ ] Modal recipe

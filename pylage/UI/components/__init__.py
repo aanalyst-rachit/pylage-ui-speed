@@ -4,6 +4,7 @@ Canonical home for reusable UI components.
 """
 
 from .avatar import *
+from .alert import *
 from .badge import *
 from .button import *
 from .card import *
@@ -37,6 +38,7 @@ from .input import *
 from .textarea import *
 
 __all__ = [
+    "alert",
     "avatar",
     "badge",
     "button",
