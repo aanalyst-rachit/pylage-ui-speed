@@ -2,17 +2,16 @@
 
 ## Project Goal
 
-Build an opinionated, modern, Python-first UI kit on top of the existing
-`pylage` + `pylage_layout` ecosystem.
+Build an opinionated, modern, Python-first UI kit on top of the existing PyLage engine and semantic `pylage.UI` layer.
 
 Target API:
 
 ```python
-import pylage.UI as ps
+import pylage as pl
 
-ps.card("Revenue", value="₹42,000")
-ps.button("Save")
-ps.metric("Users", 12450)
+pl.card("Revenue", value="₹42,000")
+pl.button("Save")
+pl.metric("Users", 12450)
 ````
 
 The UI Kit must NOT duplicate the existing PyLage renderer, reactive engine,
@@ -29,22 +28,22 @@ User Application
 pylage-ui-kit
        │
        ▼
-pylage_layout
-       │
-       ▼
 pylage
-```
+       │
+       ├── pylage.ENGINE  (internal engine)
+       │
+       └── pylage.UI      (public semantic UI layer)
 
 ---
 
 # PHASE 00 — Scope Lock
 
 * [x] Define `pylage-ui-kit`
-* [x] Define Python import: `pylage_ui`
-* [x] Define `ps.*` API philosophy
+* [x] Define Python import: `pylage`
+* [x] Define `pl.*` API philosophy
 * [x] Confirm UI Kit is a high-level recipe/wrapper layer
 * [x] Confirm `pylage` remains the engine
-* [x] Confirm `pylage_layout` remains the layout/pattern layer
+* [x] Confirm layout capabilities are part of the `pylage.UI` architecture
 * [x] No duplicate renderer
 * [x] No duplicate reactive/state system
 * [x] No duplicate CSS engine
@@ -52,9 +51,9 @@ pylage
 
 ### Exit Condition
 
-PyLage = engine
-pylage_layout = layout/pattern layer
-pylage-ui-kit = polished high-level developer API
+PyLage = engine + public package
+pylage.ENGINE = internal implementation
+pylage.UI = public semantic UI layer
 
 ---
 
@@ -63,7 +62,7 @@ pylage-ui-kit = polished high-level developer API
 ## Component Audit
 
 * [x] Audit existing `pylage` components
-* [x] Audit existing `pylage_layout` components
+* [x] Audit existing PyLage UI/layout capabilities
 * [x] Identify direct re-exports
 * [x] Identify wrappers
 * [x] Identify recipes
@@ -113,7 +112,7 @@ Every relevant existing capability is classified as:
 * [x] Verify:
 
 ```python
-import pylage.UI as ps
+import pylage as pl
 ```
 
 ---
@@ -141,7 +140,7 @@ Reuse the existing PyLage design infrastructure.
 Default API should already look modern:
 
 ```python
-ps.card(...)
+pl.card(...)
 ```
 
 Advanced customization remains optional.
@@ -172,12 +171,12 @@ Components should share predictable API vocabulary.
 
 # PHASE 05 — First Component
 
-## `ps.button()`
+## `pl.button()`
 
 Target:
 
 ```python
-ps.button("Save")
+pl.button("Save")
 ```
 
 Variants:
@@ -205,7 +204,7 @@ Sizes:
 
 ### Exit Condition
 
-`ps.button()` is production-quality.
+`pl.button()` is production-quality.
 
 ---
 
@@ -213,7 +212,7 @@ Sizes:
 
 ## Card
 
-* [x] `ps.card()`
+* [x] `pl.card()`
 * [x] Card header
 * [x] Card body
 * [x] Card footer
@@ -240,16 +239,16 @@ Sizes:
 
 ## Metrics
 
-* [x] `ps.metric()`
+* [x] `pl.metric()`
 * [x] KPI
-  - Skipped as a separate API/component: `ps.metric()` already represents the KPI presentation pattern.
-  - `ps.metric()` should be used for KPIs such as Revenue, Users, Conversion, Orders, or Latency.
+  - Skipped as a separate API/component: `pl.metric()` already represents the KPI presentation pattern.
+  - `pl.metric()` should be used for KPIs such as Revenue, Users, Conversion, Orders, or Latency.
   - KPI is a use-case/concept, not a distinct component in the UI Kit.
   - No `ps.kpi()` API is added to avoid duplicate functionality and unnecessary API surface.
 * [x] `ps.trend()`
 * [x] Stat card
-  - Skipped as a separate API/component: `ps.metric()` already provides the standard statistic/KPI presentation pattern.
-  - Use `ps.trend()` for directional context and `ps.card()` when a richer or custom statistic layout is needed.
+  - Skipped as a separate API/component: `pl.metric()` already provides the standard statistic/KPI presentation pattern.
+  - Use `ps.trend()` for directional context and `pl.card()` when a richer or custom statistic layout is needed.
   - No `ps.stat_card()` API is added to avoid overlapping abstractions and unnecessary API surface.
 
 ## Data
@@ -318,16 +317,16 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 # PHASE 10 — Navigation
 
-* [ ] Navbar
-* [ ] Sidebar
-* [ ] Breadcrumbs
-* [ ] Tabs
-* [ ] Pagination
-* [ ] Menu
-* [ ] Navigation item
-* [ ] Mobile navigation
+* [x] Navbar
+* [x] Sidebar
+* [x] Breadcrumbs
+* [x] Tabs
+* [x] Pagination
+* [x] Menu
+* [x] Navigation item
+* [x] Mobile navigation
 
-Reuse existing `pylage_layout` navigation primitives.
+Phase 10 is complete. Existing navigation capabilities were aligned through reuse, wrapping, and composition. Navigation Item was created only because no equivalent existing capability was found.
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 rules - PYTHON TERMINAL RULE + MD FILE RULE
 
@@ -335,10 +334,9 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 # PHASE 11 — Layout API
 
-Do NOT rebuild `pylage_layout`.
+Do NOT create a separate layout engine. Layout capabilities belong to the existing `pylage.UI` architecture.
 
 * [ ] Determine direct re-exports
-* [x] Determine simplified wrappers
   - Row wrapper added around the existing PyLage Row component.
   - Column wrapper added around the existing PyLage Column component.
   - Both use the existing UI Kit responsive style resolution.
@@ -420,13 +418,13 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 Default:
 
 ```python
-ps.card(...)
+pl.card(...)
 ```
 
 Advanced:
 
 ```python
-ps.card(
+pl.card(
     ...,
     variant="dark",
 )
@@ -435,7 +433,7 @@ ps.card(
 More advanced:
 
 ```python
-ps.card(
+pl.card(
     ...,
     style=...
 )
@@ -550,10 +548,10 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 Goal:
 
 ```python
-import pylage.UI as ps
+import pylage as pl
 ```
 
-The majority of application code should use high-level `ps.*` APIs.
+The majority of application code should use high-level `pl.*` APIs.
 
 ---
 
@@ -636,7 +634,7 @@ PHASE 06  Surface Components        [x]
 PHASE 07  Data/Dashboard            [x]
 PHASE 08  Forms                     [x]
 PHASE 09  Feedback/Overlays         [x]
-PHASE 10  Navigation                [ ]
+PHASE 10  Navigation                [x]
 PHASE 11  Layout API                [ ]
 PHASE 12  High-Level Recipes        [ ]
 PHASE 13  Responsive Intelligence   [ ]
@@ -656,27 +654,27 @@ PHASE 21  Release                   [ ]
 
 ```text
 PyLage Core                [EXISTING]
-pylage_layout              [EXISTING]
 Components                 [EXISTING]
 Theme / Tokens             [EXISTING]
-Responsive System          [EXISTING]
+pylage.UI                  [EXISTING]
 Reactive Engine            [EXISTING]
 
-pylage-ui-kit              [PHASE 08 COMPLETE — Forms, validation presentation, error state, help text, disabled state COMPLETE]
+pylage-ui-kit              [PHASE 10 COMPLETE — Navigation aligned and Navigation Item added]
 
-Latest Spinner checkpoint:
-- Spinner rendering fixed in the existing PyLage renderer.
-- Spinner  prop is registered and rendered as an HTML attribute.
-- Spinner text rendering is supported and escaped.
-- Dedicated Spinner regression tests pass.
-- Full test suite: 962 passed.
-- Spinner manual and documentation updated.
+Latest Navigation checkpoint:
+- Existing navigation capabilities reuse, wrap, or compose existing PyLage primitives.
+- Navigation Item was implemented as a semantic wrapper over the existing Button primitive.
+- Navigation Item reactive active state is verified.
+- Navigation Item manual verification is complete.
+- Phase 10 documentation is complete.
+- Focused Phase 10 navigation regression: 35 passed.
+- Full test suite: 973 passed.
 ```
 
 # Development Rule
 
-DO NOT rebuild functionality that already exists in `pylage` or
-`pylage_layout`.
+DO NOT rebuild functionality that already exists in `pylage` or its internal
+`pylage.ENGINE`. Use the public semantic `pylage.UI` layer for user-facing APIs.
 
 Before implementing anything new:
 

@@ -7,6 +7,7 @@ recipe, theme, and token surface of PyLage.
 from ._meta import IMPORT_NAME, PACKAGE_NAME
 from .components import *
 from .components import __all__ as _component_all
+from .components.navigation_item import navigation_item
 
 from .layout import *
 from .layout import __all__ as _layout_all

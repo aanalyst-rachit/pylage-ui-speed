@@ -8,38 +8,33 @@ from .factories import (
     Container,
     Footer,
     Header,
-    Navigation,
-    Pagination,
-    Menu,
     Section,
-    SidebarLayout,
     Split,
     Stack,
     TwoColumn,
     ThreeColumn,
 )
-from .navbar import Navbar
+
+from .navbar import navbar, Navbar
+from .navigation import navigation, Navigation
+from .sidebar import sidebar_layout, SidebarLayout
+from .tabs import tabs, Tabs
+from .pagination import pagination, Pagination
+from .menu import menu, Menu
 from .topbar import Topbar
+from .navigation_controls import navigation_controls, NavigationControls
 
 # Public semantic alias for the top navigation/header.
 topheader = Topbar
-from .drawer import Drawer, NavigationDrawer, MobileSidebar
-from .navigation_controls import NavigationControls
 
-# The following additional primitives remain importable explicitly,
-# but the established public API contract intentionally keeps __all__
-# limited to the original layout surface.
+# Lowercase names are the canonical public UI API.
 __all__ = [
     "AppShell",
     "Center",
     "Container",
     "Footer",
     "Header",
-    "Navigation",
-    "Pagination",
-    "Menu",
     "Section",
-    "SidebarLayout",
     "Split",
     "Stack",
     "TwoColumn",
@@ -48,4 +43,11 @@ __all__ = [
     "column",
     "Topbar",
     "topheader",
+    "navbar",
+    "navigation",
+    "sidebar_layout",
+    "tabs",
+    "pagination",
+    "menu",
+    "navigation_controls",
 ]

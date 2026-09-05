@@ -1,10 +1,11 @@
 from typing import Any
+
 from pylage.ENGINE.components.basic import Row, Button
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.styling.style import Style
 
 
-def NavigationControls(
+def navigation_controls(
     on_prev: Any = None,
     on_next: Any = None,
     style: Style | None = None,
@@ -16,4 +17,8 @@ def NavigationControls(
     return Row(prev_btn, next_btn, style=style or base_style, **props)
 
 
-__all__ = ["NavigationControls"]
+# Backward-compatible CamelCase alias.
+NavigationControls = navigation_controls
+
+
+__all__ = ["navigation_controls", "NavigationControls"]

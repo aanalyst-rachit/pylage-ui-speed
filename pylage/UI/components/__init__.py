@@ -67,6 +67,7 @@ __all__ = [
     "text",
     "trend",
     "toast",
+    "navigation_item",
     "input",
     "select",
     "checkbox",

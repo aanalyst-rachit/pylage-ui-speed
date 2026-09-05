@@ -12,6 +12,7 @@ pylage-ui-speed/
 │   ├── carousel_manual.py
 │   ├── column_manual.py
 │   ├── data_feedback_manual.py
+│   ├── data_feedback_manual.py.bak
 │   ├── datepicker_manual.py
 │   ├── dialog_manual.py
 │   ├── drawer_manual.py
@@ -43,6 +44,8 @@ pylage-ui-speed/
 │   ├── ui_kit_button_manual.py
 │   ├── ui_kit_card_manual.py
 │   ├── ui_kit_checkbox_manual.py
+│   ├── ui_kit_column_manual.py
+│   ├── ui_kit_confirmation_dialog_manual.py
 │   ├── ui_kit_dashboard_card_manual.py
 │   ├── ui_kit_dashboard_grid_manual.py
 │   ├── ui_kit_dashboard_header_manual.py
@@ -52,14 +55,19 @@ pylage-ui-speed/
 │   ├── ui_kit_dataframe_manual.py
 │   ├── ui_kit_datepicker_manual.py
 │   ├── ui_kit_divider_manual.py
+│   ├── ui_kit_drawer_manual.py
 │   ├── ui_kit_empty_state_manual.py
 │   ├── ui_kit_error_state_manual.py
 │   ├── ui_kit_form_field_manual.py
 │   ├── ui_kit_form_manual.py
 │   ├── ui_kit_input_manual.py
+│   ├── ui_kit_loading_overlay_manual.py
 │   ├── ui_kit_loading_state_manual.py
 │   ├── ui_kit_metric_grid_manual.py
 │   ├── ui_kit_metric_manual.py
+│   ├── ui_kit_modal_manual.py
+│   ├── ui_kit_navigation_item_manual.py
+│   ├── ui_kit_popover_manual.py
 │   ├── ui_kit_radio_manual.py
 │   ├── ui_kit_select_manual.py
 │   ├── ui_kit_slider_manual.py
@@ -69,6 +77,7 @@ pylage-ui-speed/
 │   ├── ui_kit_text_manual.py
 │   ├── ui_kit_textarea_manual.py
 │   ├── ui_kit_toast_manual.py
+│   ├── ui_kit_tooltip_manual.py
 │   └── ui_kit_trend_manual.py
 ├── documents
 │   ├── BUG_FIX_REPORT.md
@@ -80,6 +89,8 @@ pylage-ui-speed/
 │   ├── UI_KIT_BUTTON.md
 │   ├── UI_KIT_CARD.md
 │   ├── UI_KIT_CHECKBOX.md
+│   ├── UI_KIT_COLUMN.md
+│   ├── UI_KIT_CONFIRMATION_DIALOG.md
 │   ├── UI_KIT_DASHBOARD.md
 │   ├── UI_KIT_DASHBOARD_CARD.md
 │   ├── UI_KIT_DASHBOARD_GRID.md
@@ -89,8 +100,10 @@ pylage-ui-speed/
 │   ├── UI_KIT_DATAFRAME.md
 │   ├── UI_KIT_DATEPICKER.md
 │   ├── UI_KIT_DESIGN_CONTRACT.md
+│   ├── UI_KIT_DIALOG.md
 │   ├── UI_KIT_DISABLED_STATE.md
 │   ├── UI_KIT_DIVIDER.md
+│   ├── UI_KIT_DRAWER.md
 │   ├── UI_KIT_EMPTY_STATE.md
 │   ├── UI_KIT_ERROR_STATE.md
 │   ├── UI_KIT_FORM.md
@@ -100,13 +113,18 @@ pylage-ui-speed/
 │   ├── UI_KIT_LOADING_STATE.md
 │   ├── UI_KIT_METRIC.md
 │   ├── UI_KIT_METRIC_GRID.md
+│   ├── UI_KIT_MODAL.md
+│   ├── UI_KIT_POPOVER.md
 │   ├── UI_KIT_RADIO.md
+│   ├── UI_KIT_ROW.md
 │   ├── UI_KIT_SELECT.md
 │   ├── UI_KIT_SLIDER.md
 │   ├── UI_KIT_STAT_GROUP.md
 │   ├── UI_KIT_SWITCH.md
 │   ├── UI_KIT_TABLE.md
 │   ├── UI_KIT_TEXTAREA.md
+│   ├── UI_KIT_TOAST.md
+│   ├── UI_KIT_TOOLTIP.md
 │   ├── UI_KIT_TREND.md
 │   └── UI_KIT_VALIDATION_PRESENTATION.md
 ├── pylage
@@ -165,6 +183,7 @@ pylage-ui-speed/
 │   │   │   ├── data_list.py
 │   │   │   ├── dataframe.py
 │   │   │   ├── datepicker.py
+│   │   │   ├── dialog.py
 │   │   │   ├── divider.py
 │   │   │   ├── empty_state.py
 │   │   │   ├── error_state.py
@@ -172,9 +191,11 @@ pylage-ui-speed/
 │   │   │   ├── form_field.py
 │   │   │   ├── heading.py
 │   │   │   ├── input.py
+│   │   │   ├── loading_overlay.py
 │   │   │   ├── loading_state.py
 │   │   │   ├── metric.py
 │   │   │   ├── metric_grid.py
+│   │   │   ├── navigation_item.py
 │   │   │   ├── radio.py
 │   │   │   ├── select.py
 │   │   │   ├── slider.py
@@ -189,6 +210,7 @@ pylage-ui-speed/
 │   │   │   ├── __init__.py
 │   │   │   ├── _common.py
 │   │   │   ├── center.py
+│   │   │   ├── column.py
 │   │   │   ├── container.py
 │   │   │   ├── drawer.py
 │   │   │   ├── factories.py
@@ -199,6 +221,7 @@ pylage-ui-speed/
 │   │   │   ├── navigation.py
 │   │   │   ├── navigation_controls.py
 │   │   │   ├── pagination.py
+│   │   │   ├── row.py
 │   │   │   ├── section.py
 │   │   │   ├── sidebar.py
 │   │   │   ├── split.py
@@ -229,11 +252,16 @@ pylage-ui-speed/
 │   │   │   ├── admin.py
 │   │   │   ├── admin_panel.py
 │   │   │   ├── authentication.py
+│   │   │   ├── confirmation_dialog.py
 │   │   │   ├── dashboard.py
 │   │   │   ├── documentation.py
+│   │   │   ├── drawer.py
 │   │   │   ├── landing.py
+│   │   │   ├── modal.py
+│   │   │   ├── popover.py
 │   │   │   ├── profile.py
-│   │   │   └── settings.py
+│   │   │   ├── settings.py
+│   │   │   └── tooltip.py
 │   │   ├── themes
 │   │   │   ├── __init__.py
 │   │   │   ├── api.py
@@ -262,7 +290,6 @@ pylage-ui-speed/
 │   ├── test_06_templates_audit.py
 │   ├── test_08_public_api_audit.py
 │   ├── test_09_testing_audit.py
-│   ├── test_7E_Navigation Responsiveness.py
 │   ├── test_a3_controlled_state_binding.py
 │   ├── test_a3_controlled_state_contract.py
 │   ├── test_a3_controlled_state_e2e.py
@@ -281,7 +308,6 @@ pylage-ui-speed/
 │   ├── test_badge_component.py
 │   ├── test_batching.py
 │   ├── test_batching_benchmark.py
-│   ├── test_breadcrumbs_component.py
 │   ├── test_browser_event.py
 │   ├── test_browser_event_payload_protocol.py
 │   ├── test_browser_generic_reactive_props.py
@@ -306,7 +332,6 @@ pylage-ui-speed/
 │   ├── test_diff.py
 │   ├── test_dirty_nodes.py
 │   ├── test_divider_component.py
-│   ├── test_drawer_component.py
 │   ├── test_event.py
 │   ├── test_event_dispatch.py
 │   ├── test_event_render.py
@@ -323,9 +348,6 @@ pylage-ui-speed/
 │   ├── test_layout_components.py
 │   ├── test_layout_constraints.py
 │   ├── test_live_state_debug.py
-│   ├── test_menu_component.py
-│   ├── test_navigation_component.py
-│   ├── test_pagination_component.py
 │   ├── test_phase10_registry_consistency.py
 │   ├── test_phase6_benchmarks.py
 │   ├── test_phase6_dependency_scaling.py
@@ -373,6 +395,7 @@ pylage-ui-speed/
 │   ├── test_run_serve.py
 │   ├── test_runtime.py
 │   ├── test_runtime_api.py
+│   ├── test_runtime_websocket_url.py
 │   ├── test_scheduler.py
 │   ├── test_select_component.py
 │   ├── test_server.py
@@ -391,7 +414,6 @@ pylage-ui-speed/
 │   ├── test_style_state_binding.py
 │   ├── test_switch_component.py
 │   ├── test_table_component.py
-│   ├── test_tabs_component.py
 │   ├── test_text_component.py
 │   ├── test_textarea_component.py
 │   ├── test_theme.py
@@ -421,8 +443,11 @@ pylage-ui-speed/
 │   ├── test_ui_kit_alert.py
 │   ├── test_ui_kit_avatar.py
 │   ├── test_ui_kit_badge.py
+│   ├── test_ui_kit_breadcrumbs.py
 │   ├── test_ui_kit_button.py
 │   ├── test_ui_kit_card.py
+│   ├── test_ui_kit_column.py
+│   ├── test_ui_kit_confirmation_dialog.py
 │   ├── test_ui_kit_dashboard.py
 │   ├── test_ui_kit_dashboard_card.py
 │   ├── test_ui_kit_dashboard_grid.py
@@ -430,18 +455,33 @@ pylage-ui-speed/
 │   ├── test_ui_kit_dashboard_section.py
 │   ├── test_ui_kit_data_list.py
 │   ├── test_ui_kit_dataframe.py
+│   ├── test_ui_kit_dialog.py
 │   ├── test_ui_kit_divider.py
+│   ├── test_ui_kit_drawer.py
+│   ├── test_ui_kit_drawer_component.py
+│   ├── test_ui_kit_drawer_reactive_close.py
 │   ├── test_ui_kit_empty_state.py
 │   ├── test_ui_kit_error_state.py
 │   ├── test_ui_kit_foundation.py
 │   ├── test_ui_kit_heading.py
+│   ├── test_ui_kit_loading_overlay.py
 │   ├── test_ui_kit_loading_state.py
+│   ├── test_ui_kit_menu.py
 │   ├── test_ui_kit_metric.py
 │   ├── test_ui_kit_metric_grid.py
+│   ├── test_ui_kit_modal.py
+│   ├── test_ui_kit_navigation.py
+│   ├── test_ui_kit_navigation_item.py
+│   ├── test_ui_kit_navigation_responsiveness.py
+│   ├── test_ui_kit_pagination.py
+│   ├── test_ui_kit_popover.py
+│   ├── test_ui_kit_row.py
 │   ├── test_ui_kit_stat_group.py
 │   ├── test_ui_kit_table.py
+│   ├── test_ui_kit_tabs.py
 │   ├── test_ui_kit_text.py
 │   ├── test_ui_kit_toast.py
+│   ├── test_ui_kit_tooltip.py
 │   ├── test_ui_kit_trend.py
 │   ├── test_video_component.py
 │   ├── test_websocket.py
@@ -469,13 +509,13 @@ FILE: index.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyLage Manual</title>
+    <title>PyLage UI Kit Navigation Item Manual</title>
 </head>
 <body>
-<div data-pylage-id="4660f8d7de" style="width:100%;height:100vh;display:flex;flex-direction:column;overflow:hidden"><div data-pylage-id="ae63ea03d1" style="padding:0 1rem;width:100%;height:50px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;flex-shrink:0;border-bottom:1px solid #e2e8f0"><h1 data-pylage-id="b197f78f4a" style="margin:0">⚡ PyLage Manual Browser</h1><button data-pylage-id="e26565f9f3" data-pylage-events="click" style="background-color:#ffffff;padding:0.4rem 0.8rem;border:1px solid #cbd5e1;border-radius:0.375rem;cursor:pointer">🔄 Refresh</button></div><div data-pylage-id="7cc0f75240" style="width:100%;min-height:0;display:flex;flex-direction:row;flex:1;overflow:hidden"><div data-pylage-id="f9add958a7" style="background-color:#f8fafc;padding:1rem;width:280px;height:100%;display:flex;flex-direction:column;flex-shrink:0;overflow:auto;border-right:1px solid #e2e8f0"><h1 data-pylage-id="edbb0d4d24">Manuals</h1><div data-pylage-id="32fb8119d2" style="display:flex;flex-direction:column"><div data-pylage-id="21b7d4dfd5" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0a950b1dda" style="font-weight:600">Accordion</div></div><div data-pylage-id="932f6096b6" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c91d1f149b" style="font-weight:600">Audio Video Canvas</div></div><div data-pylage-id="d88ab1bb6e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="fd2313b054" style="font-weight:600">Avatar Badge Divider</div></div><div data-pylage-id="53b02540e3" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="49e6efe390" style="font-weight:600">Button</div></div><div data-pylage-id="b407ccd084" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="cb996cdf64" style="font-weight:600">Card</div></div><div data-pylage-id="04327d59dc" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0f13d3a449" style="font-weight:600">Carousel</div></div><div data-pylage-id="2d1786ac2e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="a1dd5d0f74" style="font-weight:600">Column</div></div><div data-pylage-id="1c283c46db" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="2f122dd609" style="font-weight:600">Data Feedback</div></div><div data-pylage-id="d80275ccd8" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="a56e800bb6" style="font-weight:600">Datepicker</div></div><div data-pylage-id="bc36841330" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="9f5051e106" style="font-weight:600">Dialog</div></div><div data-pylage-id="9f1b028530" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="01aa1af1d2" style="font-weight:600">Drawer</div></div><div data-pylage-id="6a3f4ea0c8" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="ccf116f1cf" style="font-weight:600">Grid</div></div><div data-pylage-id="c34a1e768b" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="52b3e814d5" style="font-weight:600">Heading</div></div><div data-pylage-id="0183cac3a9" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="4b657269ee" style="font-weight:600">Input</div></div><div data-pylage-id="58750a9be7" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0be552849c" style="font-weight:600">Layout Primitives</div></div><div data-pylage-id="9f344687e5" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="5fb3eb2e93" style="font-weight:600">Media</div></div><div data-pylage-id="07fc549569" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c5d092b2e5" style="font-weight:600">Menu Breadcrumbs Pagination</div></div><div data-pylage-id="216ef1b858" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="8b18d93e16" style="font-weight:600">Modern Button</div></div><div data-pylage-id="21218f304d" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0db9b3e079" style="font-weight:600">Nav Interaction</div></div><div data-pylage-id="c18a14439e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="a248c4c6be" style="font-weight:600">Pagination</div></div><div data-pylage-id="679afca8e1" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c8bda17443" style="font-weight:600">Patterns</div></div><div data-pylage-id="7f1d234617" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="3e916d3575" style="font-weight:600">Popover Tooltip</div></div><div data-pylage-id="0af1c29be1" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="2001310998" style="font-weight:600">Row</div></div><div data-pylage-id="cb77961668" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0cb44781f3" style="font-weight:600">Select</div></div><div data-pylage-id="8eadc127e6" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="f5fb12a5a8" style="font-weight:600">Slider Radio Checkbox</div></div><div data-pylage-id="3f3fca452e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c2aac2bfca" style="font-weight:600">Switch</div></div><div data-pylage-id="11eaae2adc" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="ac7d28ccb7" style="font-weight:600">Table</div></div><div data-pylage-id="103955cfe5" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="0c15c4b707" style="font-weight:600">Tabs</div></div><div data-pylage-id="69fd4448ca" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="acf5c214c0" style="font-weight:600">Templates</div></div><div data-pylage-id="2c76e14de9" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="08b6cf1104" style="font-weight:600">Text</div></div><div data-pylage-id="f3bfd07eaa" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="325ac3cff0" style="font-weight:600">Themes Tokens</div></div><div data-pylage-id="48a179ab45" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="ef7a6835d7" style="font-weight:600">Ui Kit Alert</div></div><div data-pylage-id="30e574c623" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="47a9763d85" style="font-weight:600">Ui Kit Avatar</div></div><div data-pylage-id="d64661e204" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="b60fd98003" style="font-weight:600">Ui Kit Badge</div></div><div data-pylage-id="01f65e2288" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="5d015ec136" style="font-weight:600">Ui Kit Button</div></div><div data-pylage-id="6d884069d1" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="811c073cf7" style="font-weight:600">Ui Kit Card</div></div><div data-pylage-id="de48d9f000" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="9246e925d9" style="font-weight:600">Ui Kit Checkbox</div></div><div data-pylage-id="16a3bb83cd" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="1d62463e3b" style="font-weight:600">Ui Kit Dashboard</div></div><div data-pylage-id="be343f76dd" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="be7d8c1b2b" style="font-weight:600">Ui Kit Dashboard Card</div></div><div data-pylage-id="bac86f3868" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="dd13d7bd32" style="font-weight:600">Ui Kit Dashboard Grid</div></div><div data-pylage-id="44225f914a" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="e47f58c65f" style="font-weight:600">Ui Kit Dashboard Header</div></div><div data-pylage-id="35688e8319" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="527ac96321" style="font-weight:600">Ui Kit Dashboard Section</div></div><div data-pylage-id="d07064600c" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="6690f9ddf3" style="font-weight:600">Ui Kit Data List</div></div><div data-pylage-id="5145cee10b" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="92514c5598" style="font-weight:600">Ui Kit Dataframe</div></div><div data-pylage-id="24a02dc7bd" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="5d31d9c489" style="font-weight:600">Ui Kit Datepicker</div></div><div data-pylage-id="f03f25d321" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="b7acef0017" style="font-weight:600">Ui Kit Divider</div></div><div data-pylage-id="83ef0b8ddd" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="9af495b4ab" style="font-weight:600">Ui Kit Empty State</div></div><div data-pylage-id="372692131c" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c1da8d6eea" style="font-weight:600">Ui Kit Error State</div></div><div data-pylage-id="0141ed883e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="67d2f56dea" style="font-weight:600">Ui Kit Form</div></div><div data-pylage-id="cc5f1bcfb4" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="e1ac477dbc" style="font-weight:600">Ui Kit Form Field</div></div><div data-pylage-id="f27bce625c" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="83b8f7c8ae" style="font-weight:600">Ui Kit Input</div></div><div data-pylage-id="73a13f9b8e" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="e34fddb8e1" style="font-weight:600">Ui Kit Loading State</div></div><div data-pylage-id="66220b1039" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="510f5f28b7" style="font-weight:600">Ui Kit Metric</div></div><div data-pylage-id="ca9c0d4ee8" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="b9a5930003" style="font-weight:600">Ui Kit Metric Grid</div></div><div data-pylage-id="7bab622616" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="2a6327d535" style="font-weight:600">Ui Kit Radio</div></div><div data-pylage-id="1500def9e3" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="75e3728008" style="font-weight:600">Ui Kit Select</div></div><div data-pylage-id="1af74f2013" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="7336f18f9a" style="font-weight:600">Ui Kit Slider</div></div><div data-pylage-id="98c5032ac5" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="339cb594bb" style="font-weight:600">Ui Kit Stat Group</div></div><div data-pylage-id="3169a4cf7c" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="13991be70f" style="font-weight:600">Ui Kit Switch</div></div><div data-pylage-id="1e34550a24" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="c7ff617a75" style="font-weight:600">Ui Kit Table</div></div><div data-pylage-id="9e10b47e50" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="72d4fc6522" style="font-weight:600">Ui Kit Text</div></div><div data-pylage-id="a9894e6812" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="b1ba91d8f6" style="font-weight:600">Ui Kit Textarea</div></div><div data-pylage-id="b5f1d54486" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="b27d59dbce" style="font-weight:600">Ui Kit Toast</div></div><div data-pylage-id="6b1d9e8e78" data-pylage-events="click" style="margin-bottom:0.5rem;padding:0.75rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:0.5rem;box-sizing:border-box;cursor:pointer"><div data-pylage-id="2e72253ffb" style="font-weight:600">Ui Kit Trend</div></div></div></div><div data-pylage-id="8146369d90" style="padding:1.5rem;width:100%;height:100%;display:flex;flex-direction:column;overflow:auto;box-sizing:border-box"><div data-pylage-id="c909e9494d" style="font-family:system-ui, sans-serif;padding:2rem;display:flex;flex-direction:column;gap:1.5rem"><h1 data-pylage-id="d481c6c985">Accordion Component — Live Manual Test Suite</h1><div data-pylage-id="700630dd71">Test collapsible sections, live selection events, and state-bound title rendering.</div><div data-pylage-id="15ef52cb06" style="background:#f8fafc;margin-bottom:1.5rem;padding:1rem;width:100%;display:block;border-radius:8px;box-sizing:border-box"><div data-pylage-id="819af18a63" style="display:flex;flex-direction:row;align-items:center;gap:0.5rem"><div data-pylage-id="bb9c463ec9" style="font-weight:bold">Currently Active Section: </div><h1 data-pylage-id="2eb776b1c2" style="color:#2563eb;margin:0">Section 1</h1></div><div data-pylage-id="b8c867fcb9" style="display:flex;flex-direction:row;align-items:center;gap:0.5rem"><div data-pylage-id="6c6da6016e" style="font-weight:bold">Total Toggle Interactions: </div><div data-pylage-id="102c4e84df" style="color:#10b981;font-weight:bold">0</div></div></div><div data-pylage-id="7c58287379" style="width:100%;max-width:700px" class="pylage-accordion-group" title="PyLage Interactive Accordion Manual Test"><div data-pylage-id="37fc7f18fd" style="margin-bottom:0.5rem;padding:1rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:8px;box-sizing:border-box"><div data-pylage-id="572869b9f5" style="display:flex;flex-direction:row;justify-content:space-between;align-items:center"><h1 data-pylage-id="0a2c4d318e">1. Engine Architecture</h1><button data-pylage-id="ad9b6e0661" data-pylage-events="click" variant="secondary">Toggle / View</button></div><div data-pylage-id="0c373a1683">PyLage compiles pure Python component trees into optimized HTML and client-side reactive bindings.</div></div><div data-pylage-id="287dd2a956" style="margin-bottom:0.5rem;padding:1rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:8px;box-sizing:border-box"><div data-pylage-id="7af915d7f0" style="display:flex;flex-direction:row;justify-content:space-between;align-items:center"><h1 data-pylage-id="12773f4284">2. Reactive State Binding</h1><button data-pylage-id="ea6da5ac61" data-pylage-events="click" variant="secondary">Toggle / View</button></div><div data-pylage-id="f28b560bde">State(val) tracks all bound components and triggers minimal microtask-coalesced diff patches.</div></div><div data-pylage-id="810bcb00c5" style="margin-bottom:0.5rem;padding:1rem;width:100%;display:block;border:1px solid #e2e8f0;border-radius:8px;box-sizing:border-box"><div data-pylage-id="99704d0f3e" style="display:flex;flex-direction:row;justify-content:space-between;align-items:center"><h1 data-pylage-id="253c2b3a0d">3. WebSocket Wire Protocol</h1><button data-pylage-id="dac2c72cc4" data-pylage-events="click" variant="secondary">Toggle / View</button></div><div data-pylage-id="b0dcf87376">Sub-millisecond binary &amp; JSON UpdateMessages over full-duplex persistent WebSocket connections.</div></div></div></div></div></div></div>
+<div data-pylage-id="92cf571c9e" style="width:100%;flex-direction:column@media (min-width:768px){flex-direction:row}@media (min-width:1024px){gap:2rem}"><h1 data-pylage-id="b6eb2b33e1">UI Kit Navigation Item — Manual Verification</h1><div data-pylage-id="27ec0905ba">Click an item. The selected item should become active and blue.</div><div data-pylage-id="f69d22d6e5">Selected: Home</div><div data-pylage-id="b4c5344d6a" style="width:100%;flex-direction:column@media (min-width:768px){flex-direction:row}@media (min-width:1024px){gap:2rem}"><button data-pylage-id="08135d00aa" data-pylage-events="click" style="color:#ffffff;background-color:#3b82f6;padding:0.5rem 0.75rem;border:1px solid #3b82f6;border-radius:0.375rem;cursor:pointer">Home</button><button data-pylage-id="55016bb8c5" data-pylage-events="click" style="color:#0f172a;background-color:transparent;padding:0.5rem 0.75rem;border:1px solid transparent;border-radius:0.375rem;cursor:pointer">Products</button><button data-pylage-id="673e9b8bf2" data-pylage-events="click" style="color:#0f172a;background-color:transparent;padding:0.5rem 0.75rem;border:1px solid transparent;border-radius:0.375rem;cursor:pointer">Settings</button><button data-pylage-id="41b7ca7549" data-pylage-events="click" style="color:#0f172a;background-color:transparent;padding:0.5rem 0.75rem;border:1px solid transparent;border-radius:0.375rem;cursor:pointer">Profile</button></div></div><style>[hidden] { display: none !important; }</style>
 <script>
 window.PyLage = window.PyLage || {};
-window.PyLage.websocketUrl = 'ws://127.0.0.1:40641/';
+window.PyLage.websocketUrl = 'ws://127.0.0.1:42055/';
 </script>
 <script>
 (function () {
@@ -1183,6 +1223,7 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:40641/';
 
           removeProps.forEach(function (propName) {
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const htmlName = meta.html_name || propName;
 
               component.removeAttribute(htmlName);
@@ -1216,6 +1257,7 @@ window.PyLage.websocketUrl = 'ws://127.0.0.1:40641/';
           Object.keys(message.props).forEach(function (propName) {
               const value = message.props[propName];
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const kind = meta.kind || "attribute";
               const htmlName = meta.html_name || propName;
 
@@ -2736,6 +2778,7 @@ CLIENT_RUNTIME = r"""
 
           removeProps.forEach(function (propName) {
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const htmlName = meta.html_name || propName;
 
               component.removeAttribute(htmlName);
@@ -2769,6 +2812,7 @@ CLIENT_RUNTIME = r"""
           Object.keys(message.props).forEach(function (propName) {
               const value = message.props[propName];
               const meta = propMeta[propName] || {};
+              console.log('[PyLage Debug] prop:', propName, 'value:', value, 'meta:', meta);
               const kind = meta.kind || "attribute";
               const htmlName = meta.html_name || propName;
 
@@ -3269,7 +3313,16 @@ class WebSocketServer:
         if self._server is None:
             raise RuntimeError("WebSocket server is not running.")
 
-        return f"ws://{self.host}:{self.port}/"
+        # Wildcard bind addresses are valid for the server listener but are
+        # not valid browser connection targets. Use loopback for local
+        # browser clients while keeping the server bound to the wildcard.
+        host = self.host
+        if host == "0.0.0.0":
+            host = "127.0.0.1"
+        elif host == "::":
+            host = "[::1]"
+
+        return f"ws://{host}:{self.port}/"
 
     def _schedule_scheduler_flush(self) -> None:
         """Schedule one coalesced scheduler flush on the WebSocket loop."""
@@ -3391,12 +3444,25 @@ class WebSocketServer:
     def _scheduled_update(
         self,
         component: Component,
+        changed_props: set[str] | None = None,
     ) -> None:
-        """Flush a dirty component using resolved State values."""
+        """Flush a dirty component using only its changed props."""
 
         props: dict[str, Any] = {}
 
-        for prop_name, value in component.props.items():
+        if changed_props is None:
+            changed_props = self._dirty.changed_props(component)
+
+        if changed_props is None:
+            prop_items = component.props.items()
+        else:
+            prop_items = (
+                (prop_name, component.props[prop_name])
+                for prop_name in changed_props
+                if prop_name in component.props
+            )
+
+        for prop_name, value in prop_items:
             if prop_name == "style":
                 style_value = value
 
@@ -3421,8 +3487,10 @@ class WebSocketServer:
         definition = self._get_component_definition(component)
 
         prop_meta = {}
+        remove_props = []
+
         if definition is not None and definition.props:
-            for prop_name in props:
+            for prop_name in list(props):
                 prop_definition = definition.props.get(prop_name)
                 if prop_definition is None:
                     continue
@@ -3437,9 +3505,11 @@ class WebSocketServer:
 
                 prop_meta[prop_name] = meta
 
+
         message = UpdateMessage(
             component_id=component.id,
             props=props,
+            remove_props=remove_props,
             prop_meta=prop_meta,
         )
 
@@ -4328,6 +4398,7 @@ from pylage.ENGINE.core.state import State
 from pylage.ENGINE.core.graph import DependencyGraph
 from pylage.ENGINE.core.dirty import DirtyNodes
 from pylage.ENGINE.core.scheduler import Scheduler
+from pylage.ENGINE.styling.style import Style
 
 
 UpdateCallback = Callable[[Component, dict[str, Any]], None]
@@ -4386,6 +4457,21 @@ class StateBinding:
 
         return prop_definition.reactive
 
+    def _iter_states(self, value: Any):
+        """Yield reactive State objects nested inside supported values."""
+        if isinstance(value, State):
+            yield value
+            return
+
+        if isinstance(value, Style):
+            for field_name in value.__dataclass_fields__:
+                field_value = getattr(value, field_name)
+                if isinstance(field_value, State):
+                    yield field_value
+            for field_value in (value.custom or {}).values():
+                if isinstance(field_value, State):
+                    yield field_value
+
     def _bind_single_node(self, node: Component) -> None:
         if node.id in self._node_bindings:
             # Already bound; unbind first to avoid duplicate subscriptions
@@ -4394,31 +4480,29 @@ class StateBinding:
         node_records: list[tuple[State, Component, str, Callable[[], None]]] = []
 
         for prop_name, value in node.props.items():
-            if not isinstance(value, State):
-                continue
-
             if not self._is_reactive(node, prop_name):
                 continue
 
-            unsubscribe = value.subscribe(
-                lambda old, new,
-                component=node,
-                name=prop_name: self._changed(
-                    component,
-                    name,
-                    new,
+            for state in self._iter_states(value):
+                unsubscribe = state.subscribe(
+                    lambda old, new,
+                    component=node,
+                    name=prop_name: self._changed(
+                        component,
+                        name,
+                        new,
+                    )
                 )
-            )
 
-            node_records.append((value, node, prop_name, unsubscribe))
-            self._subscriptions.append(unsubscribe)
+                node_records.append((state, node, prop_name, unsubscribe))
+                self._subscriptions.append(unsubscribe)
 
-            if self.graph is not None:
-                self.graph.add_dependency(
-                    value,
-                    node,
-                    prop_name,
-                )
+                if self.graph is not None:
+                    self.graph.add_dependency(
+                        state,
+                        node,
+                        prop_name,
+                    )
 
         self._node_bindings[node.id] = node_records
 
@@ -4472,7 +4556,7 @@ class StateBinding:
         # The scheduler is flushed explicitly at the batching boundary.
         if self.scheduler is not None:
             if self.dirty is not None:
-                self.dirty.mark(component)
+                self.dirty.mark(component, prop_name)
 
             self.scheduler.request()
             return
@@ -4487,7 +4571,7 @@ class StateBinding:
         )
 
         if self.dirty is not None:
-            self.dirty.mark(component)
+            self.dirty.mark(component, prop_name)
 
     def stop(self) -> None:
         """Remove all State subscriptions."""
@@ -5219,28 +5303,103 @@ class DirtyNodes:
     def __init__(self) -> None:
         self._nodes: set[Component] = set()
         self._ordered_nodes: list[Component] = []
+        self._changed_props: dict[Component, set[str]] = {}
+        self._flushing_props: dict[Component, set[str]] = {}
         self._lock = threading.Lock()
 
-    def mark(self, component: Component) -> None:
+    def mark(
+        self,
+        component: Component,
+        prop_name: str | None = None,
+    ) -> None:
         with self._lock:
-            if component in self._nodes:
-                return
+            if component not in self._nodes:
+                self._nodes.add(component)
+                self._ordered_nodes.append(component)
 
-            self._nodes.add(component)
-            self._ordered_nodes.append(component)
+            if prop_name is not None:
+                self._changed_props.setdefault(component, set()).add(
+                    prop_name
+                )
+
+    def changed_props(self, component: Component) -> set[str] | None:
+        """Return changed prop names for a dirty component."""
+        with self._lock:
+            props = self._flushing_props.get(component)
+
+            if props is not None:
+                return set(props)
+
+            props = self._changed_props.get(component)
+
+            if props is None:
+                return None
+
+            return set(props)
 
     def nodes(self) -> list[Component]:
         """Return dirty components in deterministic insertion order."""
         with self._lock:
             return list(self._ordered_nodes)
 
+    def begin_flush(self) -> list[Component]:
+        """Snapshot changed props and clear the active dirty batch.
+
+        The snapshot remains available through ``changed_props()`` while
+        scheduler callbacks are executing. New reactive changes are tracked
+        independently for the next batch.
+        """
+        with self._lock:
+            self._flushing_props = {
+                component: set(props)
+                for component, props in self._changed_props.items()
+            }
+
+            nodes = list(self._ordered_nodes)
+
+            self._nodes.clear()
+            self._ordered_nodes.clear()
+            self._changed_props.clear()
+
+            return nodes
+
+    def end_flush(self) -> None:
+        """Discard the completed flush snapshot."""
+        with self._lock:
+            self._flushing_props.clear()
+
+    def drain(self) -> list[tuple[Component, set[str] | None]]:
+        """Atomically take the current dirty batch and clear it.
+
+        The returned prop metadata belongs to this exact batch and therefore
+        remains available while callbacks execute.
+        """
+        with self._lock:
+            batch = [
+                (
+                    component,
+                    (
+                        set(self._changed_props[component])
+                        if component in self._changed_props
+                        else None
+                    ),
+                )
+                for component in self._ordered_nodes
+            ]
+
+            self._nodes.clear()
+            self._ordered_nodes.clear()
+            self._changed_props.clear()
+
+            return batch
+
     def mark_from_state(
         self,
         state: State,
         graph: DependencyGraph,
     ) -> None:
-        for component, _prop_name in graph.get_dependents(state):
-            self.mark(component)
+        for component, prop_name in graph.get_dependents(state):
+            self.mark(component, prop_name)
 
     def contains(self, component: Component) -> bool:
         with self._lock:
@@ -5250,6 +5409,7 @@ class DirtyNodes:
         with self._lock:
             self._nodes.clear()
             self._ordered_nodes.clear()
+            self._changed_props.clear()
 
     def __len__(self) -> int:
         with self._lock:
@@ -6900,6 +7060,10 @@ registry.register(
             "text",
             kind="text",
         ),
+        "size": PropDefinition(
+            "size",
+            kind="attribute",
+        ),
     },
 )
 
@@ -7047,6 +7211,10 @@ registry.register(
         "text": PropDefinition(
             "text",
             kind="text",
+        ),
+        "size": PropDefinition(
+            "size",
+            kind="attribute",
         ),
     },
 )
@@ -7873,6 +8041,9 @@ class HTMLRenderer:
             "Dialog": lambda renderer, component:
                 renderer._render_dialog(component),
 
+            "Drawer": lambda renderer, component:
+                renderer._render_drawer(component),
+
             "Table": lambda renderer, component:
                 renderer._render_table(component),
             "DataFrame": lambda renderer, component:
@@ -7898,6 +8069,9 @@ class HTMLRenderer:
 
             "Input": lambda renderer, component:
                 renderer._render_input(component),
+
+            "Spinner": lambda renderer, component:
+                renderer._render_spinner(component),
         }
 
         for component_type, renderer_callback in builtins.items():
@@ -7923,6 +8097,10 @@ class HTMLRenderer:
     def render(self, component: Component) -> str:
         html = self._render_component(component)
 
+        built_in_css = self._built_in_css()
+        if built_in_css:
+            html = html + f"<style>{built_in_css}</style>"
+
         if self._theme is not None:
             theme_css = self._theme.to_css()
 
@@ -7933,6 +8111,10 @@ class HTMLRenderer:
                 )
 
         return html
+
+    def _built_in_css(self) -> str:
+        """Return framework-level CSS for native HTML semantics."""
+        return "[hidden] { display: none " + chr(33) + "important; }"
 
     def _event_attributes(self, component: Component) -> str:
         if not component.events:
@@ -8125,6 +8307,148 @@ class HTMLRenderer:
             return ""
 
         return " " + " ".join(attributes)
+
+    def _spinner_css(self) -> str:
+        """Return built-in CSS for the Spinner component."""
+        return """
+.pylage-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    box-sizing: border-box;
+    border: 0.2rem solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: pylage-spinner-spin 0.75s linear infinite;
+}
+
+.pylage-spinner[data-size="small"] {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15rem;
+}
+
+.pylage-spinner[data-size="large"] {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.25rem;
+}
+
+@keyframes pylage-spinner-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+"""
+
+    def _render_spinner(self, component: Component) -> str:
+        common = self._render_common_attributes(component)
+        class_name = self._value(component.props.get("class_name"))
+        title = self._value(component.props.get("title"))
+        size = self._value(component.props.get("size"))
+        text = self._value(component.props.get("text"))
+        children = self._render_children(component)
+
+        classes = ["pylage-spinner"]
+        if class_name:
+            custom_class = str(class_name)
+            if custom_class != "pylage-spinner":
+                classes.append(custom_class)
+
+        attributes = (
+            common
+            + ' class="'
+            + escape(" ".join(classes), quote=True)
+            + '"'
+        )
+
+        if title is not None:
+            attributes += f' title="{escape(str(title), quote=True)}"'
+
+        if size is not None:
+            attributes += f' data-size="{escape(str(size), quote=True)}"'
+
+        attributes += self._render_prop_attributes(
+            component,
+            excluded={"children", "class_name", "title", "size", "text"},
+        )
+
+        content = "" if text is None else escape(str(text))
+        spinner_css = self._spinner_css()
+
+        return (
+            f"<style>{spinner_css}</style>"
+            f"<span {attributes}>{content}{children}</span>"
+        )
+
+    def _drawer_css(self) -> str:
+        """Return built-in CSS for the Drawer component."""
+        return """
+.pylage-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        transform 180ms ease,
+        visibility 180ms ease;
+    z-index: 1000;
+}
+
+.pylage-drawer[open] {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+"""
+
+    def _render_drawer(self, component: Component) -> str:
+        common = self._render_common_attributes(component)
+        drawer_css = self._drawer_css()
+
+        class_name = self._value(component.props.get("class_name"))
+        title = self._value(component.props.get("title"))
+
+        classes = ["pylage-drawer"]
+
+        if class_name:
+            custom_class = str(class_name)
+            if custom_class != "pylage-drawer":
+                classes.append(custom_class)
+
+        attributes = (
+            common
+            + ' class="'
+            + escape(" ".join(classes), quote=True)
+            + '"'
+        )
+
+        if title is not None:
+            attributes += (
+                f' title="{escape(str(title), quote=True)}"'
+            )
+
+        attributes += self._render_prop_attributes(
+            component,
+            excluded={"children", "class_name", "title"},
+        )
+
+        children = self._render_children(component)
+
+        return (
+            f"<style>{drawer_css}</style>"
+            f"<aside {attributes}>"
+            f"{children}"
+            f"</aside>"
+        )
 
     def _render_form(self, component: Component) -> str:
         common = self._render_common_attributes(component)
@@ -8794,15 +9118,17 @@ class Scheduler:
         with self._lock:
             self._flush_requested = False
 
-        nodes = self.dirty.nodes()
-        self.dirty.clear()
+        nodes = self.dirty.begin_flush()
 
         errors = []
-        for node in nodes:
-            try:
-                self.callback(node)
-            except Exception as exc:
-                errors.append((node, exc))
+        try:
+            for node in nodes:
+                try:
+                    self.callback(node)
+                except Exception as exc:
+                    errors.append((node, exc))
+        finally:
+            self.dirty.end_flush()
 
         if errors:
             first_node, first_exc = errors[0]
@@ -9862,6 +10188,7 @@ recipe, theme, and token surface of PyLage.
 from ._meta import IMPORT_NAME, PACKAGE_NAME
 from .components import *
 from .components import __all__ as _component_all
+from .components.navigation_item import navigation_item
 
 from .layout import *
 from .layout import __all__ as _layout_all
@@ -9977,7 +10304,11 @@ from .testimonial import Testimonial
 
 __all__ = [
     "Hero",
+    "breadcrumb_trail",
 ]
+
+# Lowercase public UI API alias.
+breadcrumb_trail = BreadcrumbTrail
 
 
 ================================================================================
@@ -10048,25 +10379,30 @@ def SignupForm(
 FILE: pylage/UI/patterns/breadcrumbs.py
 ================================================================================
 
-"""Breadcrumb pattern for PyLage Layout."""
+"""Breadcrumb pattern for PyLage UI."""
 
 from typing import Any
 
-from pylage.ENGINE.components import Breadcrumbs
+from pylage.ENGINE.components import Breadcrumbs as _Breadcrumbs
+from pylage.ENGINE.core.component import Component
 
 
-def BreadcrumbTrail(
+def breadcrumb_trail(
     *children: Any,
     class_name: str | None = None,
     **props: Any,
-):
+) -> Component:
     if class_name is not None:
         props["class_name"] = class_name
 
-    return Breadcrumbs(*children, **props)
+    return _Breadcrumbs(*children, **props)
 
 
-__all__ = ["BreadcrumbTrail"]
+# Backward-compatible CamelCase alias.
+BreadcrumbTrail = breadcrumb_trail
+
+
+__all__ = ["breadcrumb_trail", "BreadcrumbTrail"]
 
 
 ================================================================================
@@ -10718,6 +11054,11 @@ from .authentication import Authentication
 from .profile import ProfilePage
 from .settings import Settings, SettingsPage
 from .documentation import Documentation
+from .modal import modal
+from .drawer import drawer, navigation_drawer, mobile_sidebar
+from .tooltip import tooltip
+from .popover import popover
+from .confirmation_dialog import confirmation_dialog
 
 Admin = AdminPanel
 Landing = LandingPage
@@ -10729,6 +11070,12 @@ __all__ = [
     "AdminPanel",
     "Authentication",
     "ProfilePage",
+    "drawer",
+    "navigation_drawer",
+    "mobile_sidebar",
+    "tooltip",
+    "popover",
+    "confirmation_dialog",
 ]
 
 
@@ -10897,6 +11244,79 @@ def Authentication(
 
 
 ================================================================================
+FILE: pylage/UI/recipes/confirmation_dialog.py
+================================================================================
+
+"""Reusable UI Kit confirmation dialog recipe."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Style
+from pylage.UI.components.dialog import dialog
+from pylage.UI.components.button import button
+from pylage.UI.layout.row import row
+from pylage.UI.tokens import SPACING
+
+__all__ = ["confirmation_dialog"]
+
+
+_ACTIONS_STYLE = Style(
+    display="flex",
+    justify_content="flex-end",
+    gap=SPACING["sm"],
+    margin_top=SPACING["lg"],
+)
+
+
+def confirmation_dialog(
+    message: Any,
+    *,
+    title: Any = None,
+    open: Any = False,
+    on_confirm: Any = None,
+    on_cancel: Any = None,
+    confirm_text: Any = "Confirm",
+    cancel_text: Any = "Cancel",
+    confirm_variant: str = "primary",
+    style: Style | None = None,
+    **props: Any,
+):
+    """Compose a reusable confirmation flow from existing UI Kit primitives."""
+    content = []
+
+    if title is not None:
+        content.append(title)
+
+    if message is not None:
+        content.append(message)
+
+    cancel_props = {}
+    if on_cancel is not None:
+        cancel_props["on_click"] = on_cancel
+
+    confirm_props = {}
+    if on_confirm is not None:
+        confirm_props["on_click"] = on_confirm
+
+    actions = row(
+        button(cancel_text, variant="secondary", **cancel_props),
+        button(confirm_text, variant=confirm_variant, **confirm_props),
+        style=_ACTIONS_STYLE,
+    )
+
+    content.append(actions)
+
+    return dialog(
+        *content,
+        open=open,
+        style=style,
+        **props,
+    )
+
+
+================================================================================
 FILE: pylage/UI/recipes/dashboard.py
 ================================================================================
 
@@ -11048,6 +11468,55 @@ def Documentation(
 
 
 ================================================================================
+FILE: pylage/UI/recipes/drawer.py
+================================================================================
+
+"""Reusable UI Kit drawer recipes."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.UI.layout.drawer import (
+    Drawer as _Drawer,
+    NavigationDrawer as _NavigationDrawer,
+    MobileSidebar as _MobileSidebar,
+)
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.styling.style import Style
+from pylage.ENGINE.styling.responsive import ResponsiveStyle
+
+__all__ = ["drawer", "navigation_drawer", "mobile_sidebar"]
+
+
+def drawer(
+    *children: Any,
+    style: Style | ResponsiveStyle | None = None,
+    **props: Any,
+) -> Component:
+    """Return the existing PyLage Drawer through the UI Kit recipe API."""
+    return _Drawer(*children, style=style, **props)
+
+
+def navigation_drawer(
+    *children: Any,
+    style: Style | ResponsiveStyle | None = None,
+    **props: Any,
+) -> Component:
+    """Return the existing navigation drawer through the UI Kit API."""
+    return _NavigationDrawer(*children, style=style, **props)
+
+
+def mobile_sidebar(
+    *children: Any,
+    style: Style | ResponsiveStyle | None = None,
+    **props: Any,
+) -> Component:
+    """Return the existing mobile sidebar through the UI Kit API."""
+    return _MobileSidebar(*children, style=style, **props)
+
+
+================================================================================
 FILE: pylage/UI/recipes/landing.py
 ================================================================================
 
@@ -11094,6 +11563,79 @@ def LandingPage(
     return Container(
         Stack(*children, **props)
     )
+
+
+================================================================================
+FILE: pylage/UI/recipes/modal.py
+================================================================================
+
+"""Reusable UI Kit modal recipe."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.UI.components.card import card
+from pylage.UI.components.dialog import dialog
+from pylage.ENGINE import Style
+from pylage.UI.tokens import SPACING
+
+__all__ = ["modal"]
+
+
+_BASE_STYLE = Style(
+    padding=SPACING["lg"],
+)
+
+
+def modal(
+    content: Any,
+    *,
+    open: Any = False,
+    title: Any = None,
+    style: Style | None = None,
+    **props: Any,
+):
+    """Compose a reusable modal from the existing UI Kit dialog and card."""
+
+    children = []
+
+    if title is not None:
+        children.append(title)
+
+    children.append(content)
+
+    content_card = card(
+        *children,
+        style=_BASE_STYLE.merge(style),
+    )
+
+    return dialog(
+        content_card,
+        open=open,
+        **props,
+    )
+
+
+================================================================================
+FILE: pylage/UI/recipes/popover.py
+================================================================================
+
+"""Reusable UI Kit popover recipe."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Popover as _Popover
+from pylage.ENGINE.core.component import Component
+
+__all__ = ["popover"]
+
+
+def popover(*children: Any, **props: Any) -> Component:
+    """Return the existing PyLage Popover through the UI Kit recipe API."""
+    return _Popover(*children, **props)
 
 
 ================================================================================
@@ -11319,6 +11861,27 @@ Settings = SettingsPage
 
 
 ================================================================================
+FILE: pylage/UI/recipes/tooltip.py
+================================================================================
+
+"""Reusable UI Kit tooltip recipe."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Tooltip as _Tooltip
+from pylage.ENGINE.core.component import Component
+
+__all__ = ["tooltip"]
+
+
+def tooltip(*children: Any, **props: Any) -> Component:
+    """Return the existing PyLage Tooltip through the UI Kit recipe API."""
+    return _Tooltip(*children, **props)
+
+
+================================================================================
 FILE: pylage/UI/themes/__init__.py
 ================================================================================
 
@@ -11475,50 +12038,56 @@ FILE: pylage/UI/layout/__init__.py
 
 """Canonical PyLage UI layout primitives and containers."""
 
+from .row import row
+from .column import column
 from .factories import (
     AppShell,
     Center,
     Container,
     Footer,
     Header,
-    Navigation,
-    Pagination,
-    Menu,
     Section,
-    SidebarLayout,
     Split,
     Stack,
     TwoColumn,
     ThreeColumn,
 )
-from .navbar import Navbar
+
+from .navbar import navbar, Navbar
+from .navigation import navigation, Navigation
+from .sidebar import sidebar_layout, SidebarLayout
+from .tabs import tabs, Tabs
+from .pagination import pagination, Pagination
+from .menu import menu, Menu
 from .topbar import Topbar
+from .navigation_controls import navigation_controls, NavigationControls
 
 # Public semantic alias for the top navigation/header.
 topheader = Topbar
-from .drawer import Drawer, NavigationDrawer, MobileSidebar
-from .navigation_controls import NavigationControls
 
-# The following additional primitives remain importable explicitly,
-# but the established public API contract intentionally keeps __all__
-# limited to the original layout surface.
+# Lowercase names are the canonical public UI API.
 __all__ = [
     "AppShell",
     "Center",
     "Container",
     "Footer",
     "Header",
-    "Navigation",
-    "Pagination",
-    "Menu",
     "Section",
-    "SidebarLayout",
     "Split",
     "Stack",
     "TwoColumn",
     "ThreeColumn",
+    "row",
+    "column",
     "Topbar",
     "topheader",
+    "navbar",
+    "navigation",
+    "sidebar_layout",
+    "tabs",
+    "pagination",
+    "menu",
+    "navigation_controls",
 ]
 
 
@@ -11559,6 +12128,26 @@ FILE: pylage/UI/layout/center.py
 
 from .factories import Center
 __all__ = ["Center"]
+
+
+================================================================================
+FILE: pylage/UI/layout/column.py
+================================================================================
+
+from typing import Any
+from pylage.ENGINE.components.basic import Column as _Column
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.styling.style import Style
+from pylage.ENGINE.styling.responsive import ResponsiveStyle
+from ._common import resolve_style
+
+__all__ = ["column"]
+
+
+def column(*children: Any, style: Style | ResponsiveStyle | None = None, **props: Any) -> Component:
+    """Create a UI Kit column using the existing PyLage Column component."""
+    normalized_children = [child for child in children if child is not None]
+    return _Column(*normalized_children, style=resolve_style(style), **props)
 
 
 ================================================================================
@@ -11715,8 +12304,21 @@ __all__ = ["Header"]
 FILE: pylage/UI/layout/menu.py
 ================================================================================
 
-from .factories import Menu
-__all__ = ["Menu"]
+from typing import Any
+
+from pylage.ENGINE.components.basic import Menu as _Menu
+from pylage.ENGINE.core.component import Component
+
+
+def menu(*children: Any, **props: Any) -> Component:
+    return _Menu(*children, **props)
+
+
+# Backward-compatible CamelCase alias.
+Menu = menu
+
+
+__all__ = ["menu", "Menu"]
 
 
 ================================================================================
@@ -11724,12 +12326,13 @@ FILE: pylage/UI/layout/navbar.py
 ================================================================================
 
 from typing import Any
-from pylage.ENGINE.components.basic import Navigation
+
+from pylage.ENGINE.components.basic import Navigation as _Navigation
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.styling.style import Style
 
 
-def Navbar(*children: Any, style: Style | None = None, **props: Any) -> Component:
+def navbar(*children: Any, style: Style | None = None, **props: Any) -> Component:
     base_style = Style(
         display="flex",
         align_items="center",
@@ -11737,18 +12340,35 @@ def Navbar(*children: Any, style: Style | None = None, **props: Any) -> Componen
         width="100%",
         padding="1rem 1.5rem",
     )
-    return Navigation(*children, style=style or base_style, **props)
+    return _Navigation(*children, style=style or base_style, **props)
 
 
-__all__ = ["Navbar"]
+# Backward-compatible CamelCase alias.
+Navbar = navbar
+
+
+__all__ = ["navbar", "Navbar"]
 
 
 ================================================================================
 FILE: pylage/UI/layout/navigation.py
 ================================================================================
 
-from .factories import Navigation
-__all__ = ["Navigation"]
+from typing import Any
+
+from pylage.ENGINE.components.basic import Navigation as _Navigation
+from pylage.ENGINE.core.component import Component
+
+
+def navigation(*children: Any, **props: Any) -> Component:
+    return _Navigation(*children, **props)
+
+
+# Backward-compatible CamelCase alias.
+Navigation = navigation
+
+
+__all__ = ["navigation", "Navigation"]
 
 
 ================================================================================
@@ -11756,12 +12376,13 @@ FILE: pylage/UI/layout/navigation_controls.py
 ================================================================================
 
 from typing import Any
+
 from pylage.ENGINE.components.basic import Row, Button
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.styling.style import Style
 
 
-def NavigationControls(
+def navigation_controls(
     on_prev: Any = None,
     on_next: Any = None,
     style: Style | None = None,
@@ -11773,15 +12394,51 @@ def NavigationControls(
     return Row(prev_btn, next_btn, style=style or base_style, **props)
 
 
-__all__ = ["NavigationControls"]
+# Backward-compatible CamelCase alias.
+NavigationControls = navigation_controls
+
+
+__all__ = ["navigation_controls", "NavigationControls"]
 
 
 ================================================================================
 FILE: pylage/UI/layout/pagination.py
 ================================================================================
 
-from .factories import Pagination
-__all__ = ["Pagination"]
+from typing import Any
+
+from pylage.ENGINE.components.basic import Pagination as _Pagination
+from pylage.ENGINE.core.component import Component
+
+
+def pagination(*children: Any, **props: Any) -> Component:
+    return _Pagination(*children, **props)
+
+
+# Backward-compatible CamelCase alias.
+Pagination = pagination
+
+
+__all__ = ["pagination", "Pagination"]
+
+
+================================================================================
+FILE: pylage/UI/layout/row.py
+================================================================================
+
+from typing import Any
+from pylage.ENGINE.components.basic import Row as _Row
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.styling.style import Style
+from pylage.ENGINE.styling.responsive import ResponsiveStyle
+from ._common import resolve_style
+
+__all__ = ["row"]
+
+def row(*children: Any, style: Style | ResponsiveStyle | None = None, **props: Any) -> Component:
+    """Create a UI Kit row using the existing PyLage Row component."""
+    normalized_children = [child for child in children if child is not None]
+    return _Row(*normalized_children, style=resolve_style(style), **props)
 
 
 ================================================================================
@@ -11796,8 +12453,34 @@ __all__ = ["Section"]
 FILE: pylage/UI/layout/sidebar.py
 ================================================================================
 
-from .factories import SidebarLayout
-__all__ = ["SidebarLayout"]
+from typing import Any
+
+from pylage.ENGINE.components.basic import Row
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.styling.responsive import ResponsiveStyle
+from pylage.ENGINE.styling.style import Style
+from ._common import resolve_style
+
+
+def sidebar_layout(
+    sidebar: Any = None,
+    content: Any = None,
+    style: Style | ResponsiveStyle | None = None,
+    **props: Any,
+) -> Component:
+    children = []
+    if sidebar is not None:
+        children.append(sidebar)
+    if content is not None:
+        children.append(content)
+    return Row(*children, style=resolve_style(style), **props)
+
+
+# Backward-compatible CamelCase alias.
+SidebarLayout = sidebar_layout
+
+
+__all__ = ["sidebar_layout", "SidebarLayout"]
 
 
 ================================================================================
@@ -11821,8 +12504,20 @@ FILE: pylage/UI/layout/tabs.py
 ================================================================================
 
 from typing import Any
-from pylage.ENGINE.components.basic import Tabs
-__all__ = ["Tabs"]
+
+from pylage.ENGINE.components.basic import Tabs as _Tabs
+from pylage.ENGINE.core.component import Component
+
+
+def tabs(*children: Any, **props: Any) -> Component:
+    return _Tabs(*children, **props)
+
+
+# Backward-compatible CamelCase alias.
+Tabs = tabs
+
+
+__all__ = ["tabs", "Tabs"]
 
 
 ================================================================================
@@ -11880,6 +12575,7 @@ from .badge import *
 from .button import *
 from .card import *
 from .dashboard import *
+from .dialog import *
 from .dashboard_card import *
 from .dashboard_grid import *
 from .dashboard_header import *
@@ -11891,6 +12587,7 @@ from .empty_state import *
 from .error_state import *
 from .heading import *
 from .loading_state import *
+from .loading_overlay import *
 from .metric import *
 from .metric_grid import *
 from .stat_group import *
@@ -11916,6 +12613,7 @@ __all__ = [
     "button",
     "card",
     "dashboard",
+    "dialog",
     "dashboard_card",
     "dashboard_grid",
     "dashboard_header",
@@ -11927,6 +12625,7 @@ __all__ = [
     "error_state",
     "heading",
     "loading_state",
+    "loading_overlay",
     "metric",
     "metric_grid",
     "stat_group",
@@ -11934,6 +12633,7 @@ __all__ = [
     "text",
     "trend",
     "toast",
+    "navigation_item",
     "input",
     "select",
     "checkbox",
@@ -12983,6 +13683,53 @@ __all__ = ["datepicker"]
 
 
 ================================================================================
+FILE: pylage/UI/components/dialog.py
+================================================================================
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Dialog as _Dialog
+from pylage.ENGINE import Style
+from pylage.ENGINE.core.component import Component
+from pylage.UI.tokens import COLORS, RADIUS, SPACING
+
+
+__all__ = ["dialog"]
+
+
+_BASE_STYLE = Style(
+    padding=SPACING["lg"],
+    background_color=COLORS["background"],
+    color=COLORS["text"],
+    border=f"1px solid {COLORS['border']}",
+    border_radius=RADIUS["xl"],
+)
+
+
+def dialog(
+    *children: Any,
+    style: Style | None = None,
+    **props: Any,
+):
+    """Create a semantic UI Kit dialog using the existing PyLage Dialog."""
+
+    normalized_children = [
+        child for child in children
+        if child is not None
+    ]
+
+    final_style = _BASE_STYLE.merge(style)
+
+    return _Dialog(
+        *normalized_children,
+        style=final_style,
+        **props,
+    )
+
+
+================================================================================
 FILE: pylage/UI/components/divider.py
 ================================================================================
 
@@ -13329,6 +14076,94 @@ __all__ = ["input"]
 
 
 ================================================================================
+FILE: pylage/UI/components/loading_overlay.py
+================================================================================
+
+"""Reusable UI Kit loading overlay recipe."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Spinner as _Spinner
+from pylage.ENGINE import Style
+from pylage.ENGINE import Text as _Text
+from pylage.UI.components.dialog import dialog
+from pylage.UI.layout.column import column
+from pylage.UI.tokens import COLORS, SPACING
+
+__all__ = ["loading_overlay"]
+
+_OVERLAY_STYLE = Style(
+    position="fixed",
+    top=0,
+    right=0,
+    bottom=0,
+    left=0,
+    width="100vw",
+    height="100vh",
+    max_width="none",
+    max_height="none",
+    margin=0,
+    padding=0,
+    box_sizing="border-box",
+    background_color="rgba(0, 0, 0, 0.45)",
+    border="none",
+    border_radius=0,
+    z_index=1100,
+    color=COLORS["text"],
+)
+
+_CONTENT_STYLE = Style(
+    width="100vw",
+    height="100vh",
+    box_sizing="border-box",
+    display="flex",
+    flex_direction="column",
+    align_items="center",
+    justify_content="center",
+    gap=SPACING["sm"],
+    padding=SPACING["lg"],
+    text_align="center",
+)
+
+_TEXT_STYLE = Style(
+    font_size="1rem",
+    font_weight="500",
+    color=COLORS["text"],
+    margin="0",
+)
+
+
+def loading_overlay(
+    text: Any = "Loading...",
+    *,
+    open: Any = False,
+    spinner: bool = True,
+    style: Style | None = None,
+    **props: Any,
+):
+    """Create a blocking, full-viewport loading overlay using the existing Dialog."""
+    items: list[Any] = []
+
+    if spinner:
+        items.append(_Spinner())
+
+    if text is not None:
+        items.append(_Text(text, style=_TEXT_STYLE))
+
+    content = column(*items, style=_CONTENT_STYLE)
+    final_style = _OVERLAY_STYLE.merge(style)
+
+    return dialog(
+        content,
+        open=open,
+        style=final_style,
+        **props,
+    )
+
+
+================================================================================
 FILE: pylage/UI/components/loading_state.py
 ================================================================================
 
@@ -13532,6 +14367,125 @@ def metric_grid(
         style=style,
         **props,
     )
+
+
+================================================================================
+FILE: pylage/UI/components/navigation_item.py
+================================================================================
+
+from __future__ import annotations
+
+from typing import Any
+
+from pylage.ENGINE import Button as _Button
+from pylage.ENGINE import State
+from pylage.ENGINE import Style
+from pylage.UI.tokens import COLORS
+
+
+_BASE_STYLE = Style(
+    background_color="transparent",
+    color=COLORS["text"],
+    border="1px solid transparent",
+    border_radius="0.375rem",
+    padding="0.5rem 0.75rem",
+    cursor="pointer",
+)
+
+
+_ACTIVE_STYLE = Style(
+    background_color=COLORS["primary"],
+    color=COLORS["primary_contrast"],
+    border=f"1px solid {COLORS["primary"]}",
+)
+
+
+def _resolve_style(active: bool, style: Style | None) -> Style:
+    default_style = _BASE_STYLE.merge(_ACTIVE_STYLE if active else None)
+    return default_style.merge(style)
+
+
+def _resolve_reactive_style(
+    active: State,
+    style: Style | None,
+) -> tuple[Style, callable]:
+    custom = style or Style()
+
+    background = State(
+        COLORS["primary"] if bool(active.value) else "transparent"
+    )
+    color = State(
+        COLORS["primary_contrast"] if bool(active.value) else COLORS["text"]
+    )
+    border = State(
+        f"1px solid {COLORS["primary"]}"
+        if bool(active.value)
+        else "1px solid transparent"
+    )
+
+    default_style = Style(
+        background_color=background,
+        color=color,
+        border=border,
+        border_radius="0.375rem",
+        padding="0.5rem 0.75rem",
+        cursor="pointer",
+    )
+
+    final_style = default_style.merge(custom)
+
+    def update_active(_old: Any, new: Any) -> None:
+        if custom.background_color is None:
+            background.set(
+                COLORS["primary"] if bool(new) else "transparent"
+            )
+        if custom.color is None:
+            color.set(
+                COLORS["primary_contrast"] if bool(new) else COLORS["text"]
+            )
+        if custom.border is None:
+            border.set(
+                f"1px solid {COLORS["primary"]}"
+                if bool(new)
+                else "1px solid transparent"
+            )
+
+    return final_style, update_active
+
+
+def navigation_item(
+    text: Any,
+    *,
+    active: bool | State = False,
+    style: Style | None = None,
+    **props: Any,
+) -> Any:
+    """Create a semantic navigation item using the existing PyLage Button.
+
+    active may be a boolean for static usage or a State for
+    controlled reactive navigation.
+    """
+    if isinstance(active, State):
+        final_style, update_active = _resolve_reactive_style(active, style)
+        component = _Button(
+            text,
+            style=final_style,
+            **props,
+        )
+        active.subscribe(update_active)
+        return component
+
+    if not isinstance(active, bool):
+        raise TypeError("active must be a bool or State")
+
+    return _Button(
+        text,
+        style=_resolve_style(active, style),
+        **props,
+    )
+
+
+__all__ = ["navigation_item"]
 
 
 ================================================================================
@@ -15249,7 +16203,7 @@ def get_app() -> Component:
                 Toast(
                     "Notification: State update broadcast successfully!",
                     visible=toast_visible,
-                    on_close=close_toast
+                    on_click=close_toast
                 ),
                 Button("Dismiss / Toggle Toast State", on_click=close_toast, style=Style(margin_top="8px"))
             )
@@ -19234,6 +20188,132 @@ def get_app():
 
 
 ================================================================================
+FILE: app/ui_kit_column_manual.py
+================================================================================
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pylage as ps
+from pylage.ENGINE import Heading, State, Style, Text
+from pylage.UI import button, card, row
+from pylage.UI.layout import column
+
+
+def get_app():
+    gap = State("1rem")
+    column_color = State("#dbeafe")
+    status = State("Column wrapper is working.")
+
+    def toggle_gap(e=None):
+        print("CLICK RECEIVED", e)
+        print("GAP BEFORE", gap.value)
+        next_gap = "2rem" if gap.value == "1rem" else "1rem"
+        next_color = "#dcfce7" if column_color.value == "#dbeafe" else "#dbeafe"
+        gap.set(next_gap)
+        column_color.set(next_color)
+        status.set(f"Reactive gap changed to {next_gap}.")
+        print("GAP AFTER", gap.value)
+        print("COLOR AFTER", column_color.value)
+        print("STATUS AFTER", status.value)
+
+    content = column(
+        Heading("Column Wrapper", level=2),
+        Text("This content is rendered through the UI Kit column() wrapper."),
+        row(
+            Text("Status: ", style=Style(font_weight="bold")),
+            Text(status, style=Style(font_weight="bold")),
+            style=Style(display="flex", align_items="center", gap="0.5rem"),
+        ),
+        button("Change Gap Reactively", on_click=toggle_gap, variant="primary"),
+        style=Style(display="flex", flex_direction="column", gap=gap, padding="1.5rem", min_height="300px", background_color=column_color, border="3px solid #2563eb"),
+        class_name="pylage-ui-kit-column-test",
+    )
+
+    app = column(
+        Heading("UI Kit Column — Manual Test", level=1),
+        Text("Testing wrapper reuse, child composition, props, and reactive styles."),
+        card(content, style=Style(padding="1rem", margin_top="1rem")),
+        style=Style(padding="2rem", gap="1.5rem", font_family="system-ui, sans-serif"),
+    )
+
+    return app
+
+
+if __name__ == "__main__":
+    app = get_app()
+    ps.run(app, title="PyLage UI Kit Column Manual", serve=True, host="0.0.0.0", port=3000)
+
+
+================================================================================
+FILE: app/ui_kit_confirmation_dialog_manual.py
+================================================================================
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pylage as ps
+from pylage.ENGINE import Column, State, Style, Heading, Text
+from pylage.UI import button, card, confirmation_dialog, row
+
+
+def get_app():
+    dialog_open = State(False)
+    action_log = State("No confirmation action taken yet.")
+
+    def open_dialog(e=None):
+        dialog_open.set(True)
+        action_log.set("Confirmation dialog opened.")
+
+    def confirm_action(e=None):
+        dialog_open.set(False)
+        action_log.set("Action confirmed and dialog closed.")
+
+    def cancel_action(e=None):
+        dialog_open.set(False)
+        action_log.set("Action cancelled and dialog closed.")
+
+    confirmation = confirmation_dialog(
+        Text("Are you sure you want to deploy the updated PyLage components to production?"),
+        title=Heading("Confirm System Deployment", level=3),
+        open=dialog_open,
+        on_confirm=confirm_action,
+        on_cancel=cancel_action,
+        confirm_text="Confirm & Deploy",
+        cancel_text="Cancel",
+        confirm_variant="danger",
+        class_name="pylage-confirmation-dialog",
+    )
+
+    app = Column(
+        Heading("Confirmation Dialog — UI Kit Manual Test", level=1),
+        Text("Test reactive open state, cancel/confirm callbacks, action buttons, and danger variant."),
+        card(
+            row(
+                Text("Status: ", style=Style(font_weight="bold")),
+                Text(action_log, style=Style(font_weight="bold")),
+                style=Style(display="flex", align_items="center", gap="0.5rem"),
+            ),
+            style=Style(padding="1rem", margin_bottom="1.5rem"),
+        ),
+        button("Open Confirmation Dialog", on_click=open_dialog, variant="primary"),
+        confirmation,
+        style=Style(padding="2rem", gap="1.5rem", font_family="system-ui, sans-serif"),
+    )
+
+    return app
+
+
+if __name__ == "__main__":
+    app = get_app()
+    ps.run(app, title="PyLage UI Kit Confirmation Dialog Manual", serve=True, host="0.0.0.0", port=3000)
+
+
+================================================================================
 FILE: app/ui_kit_dashboard_card_manual.py
 ================================================================================
 
@@ -19694,6 +20774,216 @@ def get_app():
         gap="1rem",
         style=Style(max_width="600px", margin="0 auto", padding="2rem")
     )
+
+================================================================================
+FILE: app/ui_kit_drawer_manual.py
+================================================================================
+
+import pylage as ps
+
+from pylage.ENGINE import Button, Column, Heading, Style, Text
+
+
+def get_app():
+
+    drawer_open = ps.State(False)
+    navigation_open = ps.State(False)
+    mobile_open = ps.State(False)
+
+    status = ps.State("Select a Drawer API to test.")
+
+    def open_drawer(state, name):
+
+        def handler(e=None):
+            drawer_open.set(False)
+            navigation_open.set(False)
+            mobile_open.set(False)
+
+            state.set(True)
+            status.set(f"{name} is OPEN.")
+
+        return handler
+
+    def close_drawer(state, name):
+
+        def handler(e=None):
+            state.set(False)
+            status.set(f"{name} is CLOSED.")
+
+        return handler
+
+    # ============================================================
+    # GENERIC DRAWER
+    # ============================================================
+
+    drawer_content = Column(
+        Heading("drawer", level=2),
+        Text("Generic UI Kit Drawer"),
+        Text("Rendered through ps.drawer()."),
+        Button(
+            "Close",
+            on_click=close_drawer(drawer_open, "drawer"),
+        ),
+        style=Style(
+            padding="1.5rem",
+            gap="0.75rem",
+            width="320px",
+            height="100vh",
+            background="#ffffff",
+        ),
+    )
+
+    # ============================================================
+    # NAVIGATION DRAWER
+    # ============================================================
+
+    navigation_content = Column(
+        Heading("navigation_drawer", level=2),
+        Text("Navigation Drawer"),
+        Text("Rendered through ps.navigation_drawer()."),
+        Button(
+            "Dashboard",
+            on_click=close_drawer(
+                navigation_open,
+                "navigation_drawer",
+            ),
+        ),
+        Button(
+            "Users",
+            on_click=close_drawer(
+                navigation_open,
+                "navigation_drawer",
+            ),
+        ),
+        Button(
+            "Settings",
+            on_click=close_drawer(
+                navigation_open,
+                "navigation_drawer",
+            ),
+        ),
+        Button(
+            "Close",
+            on_click=close_drawer(
+                navigation_open,
+                "navigation_drawer",
+            ),
+            variant="secondary",
+        ),
+        style=Style(
+            padding="1.5rem",
+            gap="0.75rem",
+            width="320px",
+            height="100vh",
+            background="#ffffff",
+        ),
+    )
+
+    # ============================================================
+    # MOBILE SIDEBAR
+    # ============================================================
+
+    mobile_content = Column(
+        Heading("mobile_sidebar", level=2),
+        Text("Mobile Sidebar"),
+        Text("Rendered through ps.mobile_sidebar()."),
+        Button(
+            "Close",
+            on_click=close_drawer(
+                mobile_open,
+                "mobile_sidebar",
+            ),
+        ),
+        style=Style(
+            padding="1.5rem",
+            gap="0.75rem",
+            width="320px",
+            height="100vh",
+            background="#ffffff",
+        ),
+    )
+
+    # ============================================================
+    # APP
+    # ============================================================
+
+    return Column(
+        Heading(
+            "UI Kit Drawer — Manual Verification",
+            level=1,
+        ),
+
+        Text(
+            status,
+            style=Style(
+                font_size="1.1rem",
+                font_weight="bold",
+            ),
+        ),
+
+        Button(
+            "Open drawer()",
+            on_click=open_drawer(
+                drawer_open,
+                "drawer",
+            ),
+        ),
+
+        Button(
+            "Open navigation_drawer()",
+            on_click=open_drawer(
+                navigation_open,
+                "navigation_drawer",
+            ),
+        ),
+
+        Button(
+            "Open mobile_sidebar()",
+            on_click=open_drawer(
+                mobile_open,
+                "mobile_sidebar",
+            ),
+        ),
+
+        getattr(ps, "drawer")(
+            drawer_content,
+            open=drawer_open,
+            title="drawer",
+            class_name="manual-drawer",
+        ),
+
+        getattr(ps, "navigation_drawer")(
+            navigation_content,
+            open=navigation_open,
+            title="navigation_drawer",
+            class_name="manual-navigation-drawer",
+        ),
+
+        getattr(ps, "mobile_sidebar")(
+            mobile_content,
+            open=mobile_open,
+            title="mobile_sidebar",
+            class_name="manual-mobile-sidebar",
+        ),
+
+        style=Style(
+            padding="2rem",
+            gap="1rem",
+            min_height="100vh",
+            background="#F9FAFB",
+        ),
+    )
+
+
+if __name__ == "__main__":
+    ps.run(
+        get_app(),
+        title="PyLage UI Kit Drawer Manual",
+        serve=True,
+        host="0.0.0.0",
+        port=3000,
+    )
+
 
 ================================================================================
 FILE: app/ui_kit_empty_state_manual.py
@@ -20263,6 +21553,84 @@ if __name__ == "__main__":
 
 
 ================================================================================
+FILE: app/ui_kit_loading_overlay_manual.py
+================================================================================
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pylage as ps
+from pylage.ENGINE import Heading, State, Style, Text
+from pylage.UI import button, card, loading_overlay
+from pylage.UI.layout import column
+
+
+def get_app():
+    loading = State(False)
+    status = State("Overlay is hidden.")
+
+    def toggle_loading(e=None):
+        print("CLICK RECEIVED:", e)
+        print("LOADING BEFORE:", loading.value)
+        next_value = not loading.value
+        loading.set(next_value)
+        status.set("Loading overlay is visible." if next_value else "Overlay is hidden.")
+        print("LOADING AFTER:", loading.value)
+        print("STATUS AFTER:", status.value)
+
+    content = column(
+        Heading("Loading Overlay Manual Test", level=2),
+        Text("This page verifies the UI Kit loading_overlay() recipe."),
+        Text(status, style=Style(font_weight="bold")),
+        button(
+            "Start / Stop Loading",
+            on_click=toggle_loading,
+            variant="primary",
+        ),
+        Text("Click the button to show the full-viewport loading overlay. Click again to hide it."),
+        style=Style(
+            display="flex",
+            flex_direction="column",
+            gap="1rem",
+            padding="2rem",
+            min_height="400px",
+        ),
+    )
+
+    overlay = loading_overlay(
+        "Please wait...",
+        open=loading,
+        spinner=True,
+        title="Loading overlay",
+    )
+
+    app = column(
+        content,
+        card(
+            Text("Underlying page content remains mounted while the overlay is toggled."),
+            style=Style(padding="1.5rem", margin_top="1rem"),
+        ),
+        overlay,
+        style=Style(
+            display="flex",
+            flex_direction="column",
+            gap="1.5rem",
+            padding="2rem",
+            font_family="system-ui, sans-serif",
+        ),
+    )
+
+    return app
+
+
+if __name__ == "__main__":
+    app = get_app()
+    ps.run(app, title="PyLage UI Kit Loading Overlay Manual", serve=True, host="0.0.0.0", port=3000)
+
+
+================================================================================
 FILE: app/ui_kit_loading_state_manual.py
 ================================================================================
 
@@ -20467,6 +21835,214 @@ def get_app():
             gap="1.5rem"
         ),
     )
+
+================================================================================
+FILE: app/ui_kit_modal_manual.py
+================================================================================
+
+import pylage as ps
+from pylage.ENGINE import Column, Heading, State, Style, Text, Button, Row
+from pylage.UI.recipes import modal
+
+
+def get_app():
+    modal_open = State(False)
+    action_log = State("No modal action taken yet.")
+
+    def open_modal(e=None):
+        modal_open.set(True)
+        action_log.set("Modal opened by user.")
+
+    def confirm_action(e=None):
+        modal_open.set(False)
+        action_log.set("Modal confirmed & closed.")
+
+    def cancel_action(e=None):
+        modal_open.set(False)
+        action_log.set("Modal cancelled & closed.")
+
+    modal_content = Column(
+        Text("Are you sure you want to deploy the updated PyLage components to production?"),
+        Row(
+            Button("Cancel", on_click=cancel_action, variant="secondary"),
+            Button("Confirm & Deploy", on_click=confirm_action, variant="primary"),
+            style=Style(
+                display="flex",
+                justify_content="flex-end",
+                gap="0.75rem",
+                margin_top="1.5rem",
+            ),
+        ),
+        gap="0.75rem",
+    )
+
+    deployment_modal = modal(
+        modal_content,
+        open=modal_open,
+        title="Confirm System Deployment",
+        class_name="pylage-ui-kit-modal",
+    )
+
+    return Column(
+        Heading("PyLage UI Kit — Modal", level=2),
+        Text("Reusable Modal recipe composed from the existing UI Kit Dialog and Card components."),
+        Column(
+            Text("Modal Status:", style=Style(font_weight="bold")),
+            Text(action_log, style=Style(font_weight="bold")),
+            gap="0.5rem",
+            style=Style(
+                padding="1rem",
+                background_color="#f8fafc",
+                border_radius="8px",
+            ),
+        ),
+        Button("Open Modal", on_click=open_modal, variant="primary"),
+        deployment_modal,
+        gap="1.5rem",
+        style=Style(
+            max_width="1200px",
+            margin="0 auto",
+            padding="2rem",
+        ),
+    )
+
+
+if __name__ == "__main__":
+    ps.run(
+        get_app(),
+        title="PyLage Modal Manual",
+        serve=True,
+        host="0.0.0.0",
+        port=3000,
+    )
+
+
+================================================================================
+FILE: app/ui_kit_navigation_item_manual.py
+================================================================================
+
+import pylage as pl
+
+
+def get_app():
+    status = pl.State("Selected: Home")
+
+    home_active = pl.State(True)
+    products_active = pl.State(False)
+    settings_active = pl.State(False)
+    profile_active = pl.State(False)
+
+    def select_item(name, selected_state, other_states):
+        def handler(e=None):
+            selected_state.set(True)
+            for state in other_states:
+                state.set(False)
+            status.set(f"Selected: {name}")
+        return handler
+
+    home = pl.navigation_item(
+        "Home",
+        active=home_active,
+        on_click=select_item(
+            "Home",
+            home_active,
+            [products_active, settings_active, profile_active],
+        ),
+    )
+
+    products = pl.navigation_item(
+        "Products",
+        active=products_active,
+        on_click=select_item(
+            "Products",
+            products_active,
+            [home_active, settings_active, profile_active],
+        ),
+    )
+
+    settings = pl.navigation_item(
+        "Settings",
+        active=settings_active,
+        on_click=select_item(
+            "Settings",
+            settings_active,
+            [home_active, products_active, profile_active],
+        ),
+    )
+
+    profile = pl.navigation_item(
+        "Profile",
+        active=profile_active,
+        on_click=select_item(
+            "Profile",
+            profile_active,
+            [home_active, products_active, settings_active],
+        ),
+    )
+
+    return pl.column(
+        pl.heading("UI Kit Navigation Item — Manual Verification"),
+        pl.text("Click an item. The selected item should become active and blue."),
+        pl.text(status),
+        pl.row(home, products, settings, profile),
+    )
+
+
+if __name__ == "__main__":
+    pl.run(
+        get_app(),
+        title="PyLage UI Kit Navigation Item Manual",
+        serve=True,
+        host="0.0.0.0",
+        port=3000,
+    )
+
+
+================================================================================
+FILE: app/ui_kit_popover_manual.py
+================================================================================
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pylage as ps
+from pylage.ENGINE import Column, Heading, Text, Button, Card
+from pylage.UI.recipes import popover
+
+
+def get_app():
+    return Column(
+        Heading("PyLage UI Kit — Popover", level=1),
+        Text("UI Kit Popover wrapper using the existing PyLage Popover component."),
+        Heading("1. Basic Popover", level=3),
+        popover(
+            Text("This is popover content."),
+            title="Additional information",
+            class_name="ui-kit-popover",
+        ),
+        Heading("2. Popover with Multiple Children", level=3),
+        popover(
+            Card(
+                Text("Popover details"),
+                Button("Close"),
+            ),
+            title="Quick information",
+        ),
+        Heading("3. Props + Children", level=3),
+        popover(
+            Text("Props and children are preserved by the UI Kit wrapper."),
+            class_name="ui-kit-popover-demo",
+            title="UI Kit Popover",
+        ),
+    )
+
+
+if __name__ == "__main__":
+    app = get_app()
+    ps.run(app, title="PyLage UI Kit - Popover Manual Test", serve=True, host="0.0.0.0", port=3000)
+
 
 ================================================================================
 FILE: app/ui_kit_radio_manual.py
@@ -21318,9 +22894,46 @@ if __name__ == "__main__":
         get_app(),
         title="PyLage Toast Manual",
         serve=True,
-        host="0.0.0.0",
-        port=3000,
+        host="127.0.0.1",
+        port=8071,
     )
+
+
+================================================================================
+FILE: app/ui_kit_tooltip_manual.py
+================================================================================
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pylage as ps
+from pylage.ENGINE import Column, Heading, Text, Button
+from pylage.UI.recipes import tooltip
+
+
+def get_app():
+    return Column(
+        Heading("PyLage UI Kit — Tooltip", level=1),
+        Text("UI Kit Tooltip wrapper using the existing PyLage Tooltip component."),
+        Heading("1. Button Tooltip", level=3),
+        tooltip(
+            Button("Hover target"),
+            title="Helpful information",
+            class_name="ui-kit-tooltip",
+        ),
+        Heading("2. Text Tooltip", level=3),
+        tooltip(
+            Text("Hover over this information target"),
+            title="This is a second tooltip",
+        ),
+    )
+
+
+if __name__ == "__main__":
+    app = get_app()
+    ps.run(app, title="PyLage UI Kit - Tooltip Manual Test", serve=True, host="0.0.0.0", port=3000)
 
 
 ================================================================================
@@ -21979,6 +23592,8 @@ def test_layout_public_api_exists():
         "ThreeColumn",
         "topheader",
         "Topbar",
+            "row",
+            "column",
     }
 
     assert set(layouts.__all__) == expected
@@ -22608,6 +24223,7 @@ RECIPE_MODULES = [
     "profile",
     "settings",
     "documentation",
+    "drawer",
 ]
 
 PUBLIC_RECIPES = [
@@ -22616,6 +24232,12 @@ PUBLIC_RECIPES = [
     "AdminPanel",
     "Authentication",
     "ProfilePage",
+    "drawer",
+    "navigation_drawer",
+    "mobile_sidebar",
+    "tooltip",
+    "popover",
+    "confirmation_dialog",
 ]
 
 
@@ -22664,7 +24286,10 @@ def test_recipes_return_pylage_components():
 
     for name in PUBLIC_RECIPES:
         recipe = getattr(recipes, name)
-        component = recipe()
+        if name == "confirmation_dialog":
+            component = recipe("Confirm action")
+        else:
+            component = recipe()
 
         assert component is not None, (
             f"{name} returned None"
@@ -23086,75 +24711,6 @@ def test_token_validation_remains_available():
     result = tokens.validate_tokens()
 
     assert result is None or result is True
-
-
-================================================================================
-FILE: test/test_7E_Navigation Responsiveness.py
-================================================================================
-
-from pylage.UI.layout.navbar import Navbar
-from pylage.UI.layout.topbar import Topbar
-from pylage.UI.layout.header import Header
-from pylage.UI.layout.footer import Footer
-from pylage.UI.layout.drawer import NavigationDrawer, MobileSidebar
-from pylage.ENGINE import ResponsiveStyle, Style
-
-
-def test_phase_7e_responsive_assertion():
-    responsive = ResponsiveStyle(
-        base=Style(width="100%", flex_direction="column"),
-        md=Style(flex_direction="row"),
-        lg=Style(gap="2rem"),
-    )
-
-    components = [
-        ("Navbar", Navbar),
-        ("Topbar", Topbar),
-        ("Header", Header),
-        ("Footer", Footer),
-        ("NavigationDrawer", NavigationDrawer),
-        ("MobileSidebar", MobileSidebar),
-    ]
-
-    print("=" * 70)
-    print("7E — FINAL RESPONSIVE ASSERTION CHECK")
-    print("=" * 70)
-
-    for name, factory in components:
-        print(f"\n--- {name} ---")
-
-        c = factory(style=responsive)
-
-        assert c.props.get("style") is responsive, (
-            f"{name}: style was not passed through"
-        )
-
-        assert c.props["style"].base.width == "100%", (
-            f"{name}: base width failed"
-        )
-
-        assert c.props["style"].base.flex_direction == "column", (
-            f"{name}: base flex_direction failed"
-        )
-
-        assert c.props["style"].md.flex_direction == "row", (
-            f"{name}: md flex_direction failed"
-        )
-
-        assert c.props["style"].lg.gap == "2rem", (
-            f"{name}: lg gap failed"
-        )
-
-        print("type :", c.type)
-        print("PASS : style + base + md + lg")
-
-    print("\n" + "=" * 70)
-    print("7E FINAL RESULT: PASS")
-    print("=" * 70)
-
-
-if __name__ == "__main__":
-    test_phase_7e_responsive_assertion()
 
 
 ================================================================================
@@ -25032,50 +26588,6 @@ def test_batching_benchmark_report():
     assert unbatched["updates"] == count
     assert batched["final_value"] == count
     assert unbatched["final_value"] == count
-
-
-================================================================================
-FILE: test/test_breadcrumbs_component.py
-================================================================================
-
-from pylage.ENGINE import Breadcrumbs, Text, Button
-from pylage.ENGINE.core.renderer import render
-
-
-def test_breadcrumbs_renders_as_nav():
-    breadcrumbs = Breadcrumbs(
-        Text("Home"),
-        Text("Products"),
-        Text("Details"),
-    )
-
-    html = render(breadcrumbs)
-
-    assert "<nav" in html
-
-
-def test_breadcrumbs_supports_props():
-    breadcrumbs = Breadcrumbs(
-        class_name="breadcrumbs",
-        title="Page navigation",
-    )
-
-    html = render(breadcrumbs)
-
-    assert 'class="breadcrumbs"' in html
-    assert 'title="Page navigation"' in html
-
-
-def test_breadcrumbs_renders_children():
-    breadcrumbs = Breadcrumbs(
-        Text("Home"),
-        Button(text="Products"),
-    )
-
-    html = render(breadcrumbs)
-
-    assert "Home" in html
-    assert "Products" in html
 
 
 ================================================================================
@@ -27598,6 +29110,24 @@ def test_clear_removes_all_dirty_nodes():
     assert not dirty.contains(component2)
 
 
+def test_dirty_nodes_track_changed_props_per_component():
+    from pylage.ENGINE import Text
+
+    component = Text("Test")
+    dirty = DirtyNodes()
+
+    dirty.mark(component, "text")
+    dirty.mark(component, "class_name")
+    dirty.mark(component, "text")
+
+    assert dirty.contains(component)
+    assert dirty.changed_props(component) == {"text", "class_name"}
+
+    dirty.clear()
+
+    assert dirty.changed_props(component) is None
+
+
 ================================================================================
 FILE: test/test_divider_component.py
 ================================================================================
@@ -27631,71 +29161,6 @@ def test_divider_supports_props():
 
     assert 'class="section-divider"' in html
     assert 'title="Section divider"' in html
-
-
-================================================================================
-FILE: test/test_drawer_component.py
-================================================================================
-
-from pylage.ENGINE import Drawer, Text, Button, State
-from pylage.ENGINE.core.renderer import render
-
-
-def test_drawer_renders_as_aside():
-    drawer = Drawer(
-        Text("Navigation"),
-        Button(text="Home"),
-    )
-
-    html = render(drawer)
-
-    assert "<aside" in html
-
-
-def test_drawer_supports_props():
-    drawer = Drawer(
-        class_name="sidebar",
-        title="Navigation drawer",
-    )
-
-    html = render(drawer)
-
-    assert 'class="sidebar"' in html
-    assert 'title="Navigation drawer"' in html
-
-
-def test_drawer_renders_children():
-    drawer = Drawer(
-        Text("Dashboard"),
-        Button(text="Settings"),
-    )
-
-    html = render(drawer)
-
-    assert "Dashboard" in html
-    assert "Settings" in html
-
-
-def test_drawer_supports_open_boolean():
-    closed_drawer = Drawer(open=False)
-    open_drawer = Drawer(open=True)
-
-    closed_html = render(closed_drawer)
-    open_html = render(open_drawer)
-
-    assert " open" not in closed_html
-    assert " open" in open_html
-
-
-def test_drawer_supports_reactive_open_state():
-    import pylage as ps
-    open_state = State(False)
-    drawer = Drawer(open=open_state)
-
-    assert " open" not in render(drawer)
-
-    open_state.set(True)
-    assert " open" in render(drawer)
 
 
 ================================================================================
@@ -30357,135 +31822,6 @@ except KeyboardInterrupt:
 finally:
     runtime.stop()
     print("Runtime stopped.")
-
-
-================================================================================
-FILE: test/test_menu_component.py
-================================================================================
-
-from pylage.ENGINE import Menu, Text, Button
-from pylage.ENGINE.core.renderer import render
-
-
-def test_menu_renders_as_menu():
-    menu = Menu(
-        Text("Home"),
-        Text("Settings"),
-        Text("Logout"),
-    )
-
-    html = render(menu)
-
-    assert "<menu" in html
-
-
-def test_menu_supports_props():
-    menu = Menu(
-        class_name="main-menu",
-        title="Main menu",
-    )
-
-    html = render(menu)
-
-    assert 'class="main-menu"' in html
-    assert 'title="Main menu"' in html
-
-
-def test_menu_renders_children():
-    menu = Menu(
-        Button(text="Home"),
-        Text("Settings"),
-        Button(text="Logout"),
-    )
-
-    html = render(menu)
-
-    assert "Home" in html
-    assert "Settings" in html
-    assert "Logout" in html
-
-
-================================================================================
-FILE: test/test_navigation_component.py
-================================================================================
-
-from pylage.ENGINE import Navigation, Text, Button
-from pylage.ENGINE.core.renderer import render
-
-
-def test_navigation_renders():
-    nav = Navigation(
-        Text("Home"),
-        Button("Login"),
-    )
-
-    html = render(nav)
-
-    assert "<nav" in html
-    assert "Home" in html
-    assert "Login" in html
-
-
-def test_navigation_supports_props():
-    nav = Navigation(
-        class_name="main-nav",
-        title="Main Navigation",
-    )
-
-    html = render(nav)
-
-    assert 'class="main-nav"' in html
-    assert 'title="Main Navigation"' in html
-
-
-def test_navigation_is_exported():
-    assert callable(Navigation)
-
-
-================================================================================
-FILE: test/test_pagination_component.py
-================================================================================
-
-from pylage.ENGINE import Pagination, Text, Button
-from pylage.ENGINE.core.renderer import render
-
-
-def test_pagination_renders_as_nav():
-    pagination = Pagination(
-        Text("1"),
-        Text("2"),
-        Text("3"),
-    )
-
-    html = render(pagination)
-
-    assert "<nav" in html
-
-
-def test_pagination_supports_props():
-    pagination = Pagination(
-        class_name="pagination",
-        title="Page navigation",
-    )
-
-    html = render(pagination)
-
-    assert 'class="pagination"' in html
-    assert 'title="Page navigation"' in html
-
-
-def test_pagination_renders_children():
-    pagination = Pagination(
-        Button(text="Previous"),
-        Text("2"),
-        Button(text="Next"),
-    )
-
-    html = render(pagination)
-
-    assert "Previous" in html
-    assert "2" in html
-    assert "Next" in html
 
 
 ================================================================================
@@ -34395,6 +35731,52 @@ print("=== RUNTIME API PASS ===")
 
 
 ================================================================================
+FILE: test/test_runtime_websocket_url.py
+================================================================================
+
+import re
+
+from pylage.ENGINE import Column, Text
+from pylage.ENGINE.runtime.runtime import Runtime
+from pylage.ENGINE import Column, Text
+
+
+def test_runtime_rewrites_wildcard_websocket_host_for_browser():
+    app = Column(
+        Text("WebSocket URL test"),
+    )
+
+    runtime = Runtime(
+        app,
+        host="0.0.0.0",
+        port=0,
+    )
+
+    try:
+        runtime.start()
+
+        html = runtime.output.read_text(encoding="utf-8")
+
+        assert "window.PyLage.websocketUrl" in html
+
+        match = re.search(
+            r'window\.PyLage\.websocketUrl\s*=\s*["\']([^"\']+)["\']',
+            html,
+        )
+
+        assert match is not None
+
+        websocket_url = match.group(1)
+
+        assert websocket_url.startswith("ws://")
+        assert "0.0.0.0" not in websocket_url
+        assert websocket_url.endswith(f":{runtime._websocket.port}/")
+
+    finally:
+        runtime.stop()
+
+
+================================================================================
 FILE: test/test_scheduler.py
 ================================================================================
 
@@ -35303,12 +36685,14 @@ from pylage.ENGINE import Spinner
 from pylage.ENGINE.core.renderer import render
 
 
-def test_spinner_renders_as_div():
+def test_spinner_renders_as_visual_element():
     spinner = Spinner()
 
     html = render(spinner)
 
-    assert "<div" in html
+    assert '<span' in html
+    assert 'class="pylage-spinner"' in html
+    assert 'animation: pylage-spinner-spin' in html
 
 
 def test_spinner_supports_props():
@@ -35319,8 +36703,16 @@ def test_spinner_supports_props():
 
     html = render(spinner)
 
-    assert 'class="loading-spinner"' in html
+    assert 'class="pylage-spinner loading-spinner"' in html
     assert 'title="Loading"' in html
+
+
+def test_spinner_supports_size():
+    spinner = Spinner(size="large")
+
+    html = render(spinner)
+
+    assert 'size="large"' in html
 
 
 def test_spinner_supports_text():
@@ -35390,6 +36782,23 @@ def test_state_binding_builds_dependency_graph():
     )
 
     assert (heading, "text") in graph.get_dependents(state)
+
+def test_state_binding_builds_dependency_graph_for_state_inside_style():
+    from pylage.ENGINE import Style
+
+    gap = State("1rem")
+    column = Column(style=Style(gap=gap))
+    app = Column(column)
+
+    graph = DependencyGraph()
+
+    StateBinding(
+        app,
+        lambda component, props: None,
+        graph=graph,
+    )
+
+    assert (column, "style") in graph.get_dependents(gap)
 
 
 ================================================================================
@@ -36238,54 +37647,6 @@ def test_table_escapes_cell_html():
 
 
 ================================================================================
-FILE: test/test_tabs_component.py
-================================================================================
-
-from pylage.ENGINE import Tabs, Text, Button, State
-from pylage.ENGINE.core.renderer import render
-
-
-def test_tabs_renders():
-    tabs = Tabs(
-        Text("Home"),
-        Button("Profile"),
-    )
-
-    html = render(tabs)
-
-    assert "<div" in html
-    assert "Home" in html
-    assert "Profile" in html
-
-
-def test_tabs_supports_props():
-    tabs = Tabs(
-        class_name="main-tabs",
-        title="Sections",
-    )
-
-    html = render(tabs)
-
-    assert 'class="main-tabs"' in html
-    assert 'title="Sections"' in html
-
-
-def test_tabs_supports_value_and_reactivity():
-    import pylage as ps
-    tab_state = State("profile")
-    tabs = Tabs(value=tab_state)
-
-    assert 'value="profile"' in render(tabs)
-
-    tab_state.set("settings")
-    assert 'value="settings"' in render(tabs)
-
-
-def test_tabs_is_exported():
-    assert callable(Tabs)
-
-
-================================================================================
 FILE: test/test_text_component.py
 ================================================================================
 
@@ -36899,6 +38260,25 @@ def test_toast_supports_text():
     html = render(toast)
 
     assert "Saved successfully" in html
+
+def test_toast_visible_false_renders_hidden_attribute():
+    toast = Toast(visible=False)
+    html = render(toast)
+    opening_tag = html.split('<div', 1)[1].split('>', 1)[0]
+    assert ' hidden' in opening_tag
+
+
+def test_toast_visible_true_does_not_render_hidden_attribute():
+    toast = Toast(visible=True)
+    html = render(toast)
+    opening_tag = html.split('<div', 1)[1].split('>', 1)[0]
+    assert ' hidden' not in opening_tag
+
+
+def test_render_includes_hidden_semantic_css():
+    html = render(Toast(visible=False))
+    assert '[hidden]' in html
+    assert 'display: none ' + chr(33) + 'important' in html
 
 
 ================================================================================
@@ -39444,6 +40824,50 @@ def test_badge_rejects_unknown_variant():
 
 
 ================================================================================
+FILE: test/test_ui_kit_breadcrumbs.py
+================================================================================
+
+from pylage.ENGINE import Breadcrumbs, Text, Button
+from pylage.ENGINE.core.renderer import render
+
+
+def test_breadcrumbs_renders_as_nav():
+    breadcrumbs = Breadcrumbs(
+        Text("Home"),
+        Text("Products"),
+        Text("Details"),
+    )
+
+    html = render(breadcrumbs)
+
+    assert "<nav" in html
+
+
+def test_breadcrumbs_supports_props():
+    breadcrumbs = Breadcrumbs(
+        class_name="breadcrumbs",
+        title="Page navigation",
+    )
+
+    html = render(breadcrumbs)
+
+    assert 'class="breadcrumbs"' in html
+    assert 'title="Page navigation"' in html
+
+
+def test_breadcrumbs_renders_children():
+    breadcrumbs = Breadcrumbs(
+        Text("Home"),
+        Button(text="Products"),
+    )
+
+    html = render(breadcrumbs)
+
+    assert "Home" in html
+    assert "Products" in html
+
+
+================================================================================
 FILE: test/test_ui_kit_button.py
 ================================================================================
 
@@ -39745,6 +41169,168 @@ def test_card_rejects_unknown_variant():
         assert "Unknown card variant" in str(exc)
     else:
         raise AssertionError("Expected ValueError")
+
+
+================================================================================
+FILE: test/test_ui_kit_column.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.layout import column
+
+
+def test_ui_kit_column_wraps_existing_engine_column():
+    component = column(Text("Hello"))
+    assert isinstance(component, Component)
+    assert component.type == "Column"
+
+
+def test_ui_kit_column_renders_as_div():
+    html = render(column(Text("Hello Column")))
+    assert "<div" in html
+    assert "Hello Column" in html
+
+
+def test_ui_kit_column_forwards_props():
+    html = render(column(Text("Content"), class_name="custom-column", title="Column title"))
+    assert 'class="custom-column"' in html
+    assert 'title="Column title"' in html
+
+
+def test_ui_kit_column_supports_style():
+    component = column(Text("Styled"), style=Style(padding="20px"))
+    assert component.props["style"].padding == "20px"
+
+
+def test_ui_kit_column_resolves_default_style():
+    component = column(Text("Default"))
+    assert component.props["style"] is not None
+
+
+def test_ui_kit_column_supports_reactive_style_values():
+    gap = State("12px")
+    html = render(column(Text("Reactive"), style=Style(gap=gap)))
+    assert "gap:12px" in html
+
+
+def test_ui_kit_column_preserves_component_children():
+    child = Component("Text", children=["Child"])
+    component = column(child)
+    assert component.children == [child]
+
+
+def test_ui_kit_column_filters_none_children():
+    component = column(None, Text("A"), None, Text("B"))
+    assert len(component.children) == 2
+
+
+def test_ui_kit_column_is_publicly_exported():
+    from pylage.UI.layout import column as exported_column
+    assert exported_column is column
+
+
+================================================================================
+FILE: test/test_ui_kit_confirmation_dialog.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import confirmation_dialog
+
+
+def test_confirmation_dialog_wraps_existing_dialog():
+    component = confirmation_dialog(Text("Are you sure?"))
+    assert isinstance(component, Component)
+    assert component.type == "Dialog"
+
+
+def test_confirmation_dialog_renders_message_and_actions():
+    component = confirmation_dialog(
+        Text("Delete this item?"),
+        confirm_text="Delete",
+        cancel_text="Keep",
+    )
+    html = render(component)
+
+    assert "<dialog" in html
+    assert "Delete this item?" in html
+    assert "Delete" in html
+    assert "Keep" in html
+
+
+def test_confirmation_dialog_supports_title():
+    component = confirmation_dialog(
+        Text("This action cannot be undone."),
+        title=Text("Delete Item"),
+    )
+    html = render(component)
+
+    assert "Delete Item" in html
+    assert "This action cannot be undone." in html
+
+
+def test_confirmation_dialog_supports_reactive_open_state():
+    state = State(False)
+    component = confirmation_dialog(Text("Confirm"), open=state)
+
+    assert " open" not in render(component)
+
+    state.set(True)
+
+    assert " open" in render(component)
+
+
+def test_confirmation_dialog_forwards_callbacks():
+    confirmed = []
+    cancelled = []
+
+    def on_confirm(event=None):
+        confirmed.append(True)
+
+    def on_cancel(event=None):
+        cancelled.append(True)
+
+    component = confirmation_dialog(
+        Text("Confirm action"),
+        on_confirm=on_confirm,
+        on_cancel=on_cancel,
+    )
+
+    actions = component.children[-1]
+    cancel_button = actions.children[0]
+    confirm_button = actions.children[1]
+
+    assert cancel_button.events["click"] is on_cancel
+    assert confirm_button.events["click"] is on_confirm
+
+
+def test_confirmation_dialog_supports_confirm_variant():
+    component = confirmation_dialog(
+        Text("Delete item?"),
+        confirm_variant="danger",
+    )
+    confirm_button = component.children[-1].children[1]
+
+    style = confirm_button.props["style"]
+    assert style.background_color is not None
+
+
+def test_confirmation_dialog_supports_custom_style():
+    component = confirmation_dialog(
+        Text("Confirm"),
+        style=Style(padding="32px"),
+    )
+
+    assert component.props["style"].padding == "32px"
+
+
+def test_confirmation_dialog_is_publicly_exported():
+    from pylage.UI.recipes import confirmation_dialog as exported
+
+    assert exported is confirmation_dialog
 
 
 ================================================================================
@@ -40245,6 +41831,83 @@ def test_ui_kit_dataframe_outer_border_remains_when_cell_borders_are_disabled():
 
 
 ================================================================================
+FILE: test/test_ui_kit_dialog.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import dialog
+
+
+def test_dialog_wraps_existing_engine_dialog():
+    component = dialog("Hello")
+
+    assert isinstance(component, Component)
+    assert component.type == "Dialog"
+
+
+def test_dialog_renders_text():
+    html = render(dialog(Text("Hello Dialog")))
+
+    assert "<dialog" in html
+    assert "Hello Dialog" in html
+    assert "</dialog>" in html
+
+
+def test_dialog_supports_open_boolean():
+    closed = dialog(Text("Closed"), open=False)
+    opened = dialog(Text("Open"), open=True)
+
+    assert " open" not in render(closed)
+    assert " open" in render(opened)
+
+
+def test_dialog_supports_reactive_open_state():
+    state = State(False)
+    component = dialog(Text("Reactive"), open=state)
+
+    assert " open" not in render(component)
+
+    state.set(True)
+
+    assert " open" in render(component)
+
+
+def test_dialog_forwards_engine_props():
+    component = dialog(
+        Text("Message"),
+        title="Confirmation",
+        class_name="custom-dialog",
+    )
+
+    assert component.props["title"] == "Confirmation"
+    assert component.props["class_name"] == "custom-dialog"
+
+
+def test_dialog_supports_custom_style_override():
+    component = dialog(
+        Text("Message"),
+        style=Style(padding="32px"),
+    )
+
+    assert component.props["style"].padding == "32px"
+
+
+def test_dialog_preserves_component_children():
+    child = Component("Text", children=["Child"])
+    component = dialog(child)
+
+    assert component.children == [child]
+
+
+def test_dialog_is_publicly_exported():
+    from pylage.UI.components import dialog as component_dialog
+
+    assert component_dialog is dialog
+
+
+================================================================================
 FILE: test/test_ui_kit_divider.py
 ================================================================================
 
@@ -40319,6 +41982,279 @@ def test_divider_forwards_events():
 
     assert "click" in divider.events
     assert 'data-pylage-events="click"' in render(divider)
+
+
+================================================================================
+FILE: test/test_ui_kit_drawer.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.recipes.drawer import drawer
+
+
+def test_drawer_returns_component():
+    component = drawer(Text("Navigation"))
+    assert isinstance(component, Component)
+    assert component.type == "Drawer"
+
+
+def test_drawer_renders_aside():
+    html = render(drawer(Text("Navigation")))
+    assert "<aside" in html
+    assert "Navigation" in html
+
+
+def test_drawer_supports_open_boolean():
+    closed_html = render(drawer(open=False))
+    open_html = render(drawer(open=True))
+
+    assert " open" not in closed_html
+    assert " open" in open_html
+
+
+def test_drawer_supports_reactive_open_state():
+    state = State(False)
+    component = drawer(open=state)
+
+    assert " open" not in render(component)
+
+    state.set(True)
+
+    assert " open" in render(component)
+
+
+def test_drawer_forwards_props():
+    component = drawer(
+        Text("Navigation"),
+        class_name="custom-drawer",
+        title="Navigation drawer",
+    )
+
+    html = render(component)
+
+    assert 'class="pylage-drawer custom-drawer"' in html
+    assert 'title="Navigation drawer"' in html
+
+
+def test_drawer_supports_style():
+    component = drawer(
+        Text("Navigation"),
+        style=Style(width="280px"),
+    )
+
+    assert component.props["style"].width == "280px"
+
+
+def test_drawer_is_publicly_exported():
+    from pylage.UI.recipes import drawer as exported_drawer
+
+    assert exported_drawer is drawer
+
+
+def test_drawer_is_available_from_pylage():
+    import pylage as pl
+
+    assert hasattr(pl, "drawer")
+    assert pl.drawer is drawer
+
+
+def test_navigation_drawer_is_publicly_exported():
+    from pylage.UI.recipes import navigation_drawer
+
+    assert callable(navigation_drawer)
+
+
+def test_mobile_sidebar_is_publicly_exported():
+    from pylage.UI.recipes import mobile_sidebar
+
+    assert callable(mobile_sidebar)
+
+
+def test_navigation_drawer_reuses_existing_drawer():
+    from pylage.UI.layout.drawer import NavigationDrawer
+    from pylage.UI.recipes import navigation_drawer
+
+    assert navigation_drawer(Text("Navigation")).type == "Drawer"
+    assert NavigationDrawer(Text("Navigation")).type == "Drawer"
+
+
+def test_mobile_sidebar_reuses_existing_drawer():
+    from pylage.UI.layout.drawer import MobileSidebar
+    from pylage.UI.recipes import mobile_sidebar
+
+    assert mobile_sidebar(Text("Mobile")).type == "Drawer"
+    assert MobileSidebar(Text("Mobile")).type == "Drawer"
+
+
+def test_navigation_and_mobile_are_available_from_pylage():
+    import pylage as pl
+
+    assert hasattr(pl, "navigation_drawer")
+    assert hasattr(pl, "mobile_sidebar")
+
+
+================================================================================
+FILE: test/test_ui_kit_drawer_component.py
+================================================================================
+
+from pylage.ENGINE import Drawer, Text, Button, State
+from pylage.ENGINE.core.renderer import render
+
+
+def test_drawer_renders_as_aside():
+    drawer = Drawer(
+        Text("Navigation"),
+        Button(text="Home"),
+    )
+
+    html = render(drawer)
+
+    assert "<aside" in html
+
+
+def test_drawer_supports_props():
+    drawer = Drawer(
+        class_name="sidebar",
+        title="Navigation drawer",
+    )
+
+    html = render(drawer)
+
+    assert 'class="pylage-drawer sidebar"' in html
+    assert 'title="Navigation drawer"' in html
+
+
+def test_drawer_renders_children():
+    drawer = Drawer(
+        Text("Dashboard"),
+        Button(text="Settings"),
+    )
+
+    html = render(drawer)
+
+    assert "Dashboard" in html
+    assert "Settings" in html
+
+
+def test_drawer_supports_open_boolean():
+    closed_drawer = Drawer(open=False)
+    open_drawer = Drawer(open=True)
+
+    closed_html = render(closed_drawer)
+    open_html = render(open_drawer)
+
+    assert " open" not in closed_html
+    assert " open" in open_html
+
+
+def test_drawer_supports_reactive_open_state():
+    import pylage as ps
+    open_state = State(False)
+    drawer = Drawer(open=open_state)
+
+    assert " open" not in render(drawer)
+
+    open_state.set(True)
+    assert " open" in render(drawer)
+
+def test_drawer_is_hidden_when_closed():
+    drawer = Drawer(open=False)
+    html = render(drawer)
+
+    assert 'class="pylage-drawer"' in html
+    assert "transform: translateX(-100%)" in html
+    assert "visibility: hidden" in html
+
+
+def test_drawer_is_visible_when_open():
+    drawer = Drawer(open=True)
+    html = render(drawer)
+
+    assert 'class="pylage-drawer"' in html
+    assert 'open' in html
+    assert "transform: translateX(0)" in html
+
+
+def test_drawer_has_fixed_off_canvas_positioning():
+    drawer = Drawer()
+    html = render(drawer)
+
+    assert "position: fixed" in html
+    assert "top: 0" in html
+    assert "left: 0" in html
+    assert "height: 100vh" in html
+    assert "z-index: 1000" in html
+
+
+def test_drawer_preserves_custom_class_and_title():
+    drawer = Drawer(
+        class_name="my-drawer",
+        title="Navigation",
+    )
+    html = render(drawer)
+
+    assert 'class="pylage-drawer my-drawer"' in html
+    assert 'title="Navigation"' in html
+
+
+================================================================================
+FILE: test/test_ui_kit_drawer_reactive_close.py
+================================================================================
+
+import asyncio
+import json
+
+from pylage.ENGINE import Drawer, State
+from pylage.ENGINE.runtime.websocket import WebSocketServer
+
+
+def test_drawer_reactive_open_close_sends_remove_props():
+    async def scenario():
+        open_state = State(False)
+
+        drawer = Drawer(
+            open=open_state,
+            title="Test Drawer",
+        )
+
+        server = WebSocketServer(drawer)
+        server.start()
+
+        try:
+            import websockets
+
+            async with websockets.connect(server.url) as ws:
+                # Open drawer.
+                open_state.set(True)
+
+                message = json.loads(
+                    await asyncio.wait_for(ws.recv(), timeout=2)
+                )
+
+                assert message["type"] == "update"
+                assert message["id"] == drawer.id
+                assert message["props"]["open"] is True
+                assert "title" not in message["props"]
+                assert "class_name" not in message["props"]
+                assert message.get("remove_props", []) == []
+
+                # Close drawer.
+                open_state.set(False)
+
+                message = json.loads(
+                    await asyncio.wait_for(ws.recv(), timeout=2)
+                )
+
+                assert message["type"] == "update"
+                assert message["id"] == drawer.id
+
+                # Regression contract:\n                # boolean False is a changed boolean value, not a removed prop.\n                assert message["props"]["open"] is False\n                assert "title" not in message["props"]\n                assert "class_name" not in message["props"]\n                assert message.get("remove_props", []) == []\n
+        finally:
+            server.stop()
+
+    asyncio.run(scenario())
 
 
 ================================================================================
@@ -40573,6 +42509,142 @@ def test_heading_forwards_event_handler():
 
 
 ================================================================================
+FILE: test/test_ui_kit_loading_overlay.py
+================================================================================
+
+from pylage.ENGINE import State, Style
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI import loading_overlay
+
+
+def test_loading_overlay_wraps_existing_dialog():
+    component = loading_overlay()
+
+    assert isinstance(component, Component)
+    assert component.type == "Dialog"
+
+
+def test_loading_overlay_is_closed_by_default():
+    html = render(loading_overlay())
+
+    assert "<dialog" in html
+    assert " open" not in html
+
+
+def test_loading_overlay_supports_open_boolean():
+    closed = loading_overlay(open=False)
+    opened = loading_overlay(open=True)
+
+    assert " open" not in render(closed)
+    assert " open" in render(opened)
+
+
+def test_loading_overlay_supports_reactive_open_state():
+    state = State(False)
+    component = loading_overlay(open=state)
+
+    assert " open" not in render(component)
+
+    state.set(True)
+
+    assert " open" in render(component)
+
+    state.set(False)
+
+    assert " open" not in render(component)
+
+
+def test_loading_overlay_renders_spinner_and_text():
+    html = render(loading_overlay("Please wait...", open=True))
+
+    assert "Please wait..." in html
+    assert 'class="pylage-spinner"' in html
+    assert "pylage-spinner-spin" in html
+
+
+def test_loading_overlay_can_disable_spinner():
+    component = loading_overlay("Loading", spinner=False)
+
+    assert len(component.children) == 1
+    content = component.children[0]
+    assert content.type == "Column"
+    assert len(content.children) == 1
+
+
+def test_loading_overlay_has_full_viewport_style():
+    component = loading_overlay(open=True)
+    style = component.props["style"]
+
+    assert style.position == "fixed"
+    assert style.top == 0
+    assert style.right == 0
+    assert style.bottom == 0
+    assert style.left == 0
+    assert style.width == "100vw"
+    assert style.height == "100vh"
+    assert style.display is None
+    assert style.border_radius == 0
+
+    content = component.children[0]
+    content_style = content.props["style"]
+    assert content_style.width == "100vw"
+    assert content_style.height == "100vh"
+    assert content_style.display == "flex"
+    assert content_style.align_items == "center"
+    assert content_style.justify_content == "center"
+
+
+def test_loading_overlay_supports_custom_style_override():
+    component = loading_overlay(
+        style=Style(z_index=2000, background_color="rgba(0, 0, 0, 0.7)")
+    )
+
+    style = component.props["style"]
+
+    assert style.z_index == 2000
+    assert style.background_color == "rgba(0, 0, 0, 0.7)"
+    assert style.position == "fixed"
+
+
+def test_loading_overlay_forwards_engine_props():
+    component = loading_overlay(
+        open=True,
+        title="Loading overlay",
+        class_name="custom-loading-overlay",
+    )
+
+    assert component.props["title"] == "Loading overlay"
+    assert component.props["class_name"] == "custom-loading-overlay"
+
+
+def test_loading_overlay_preserves_existing_column_content():
+    component = loading_overlay("Working...")
+
+    content = component.children[0]
+
+    assert isinstance(content, Component)
+    assert content.type == "Column"
+    assert len(content.children) == 2
+
+
+def test_loading_overlay_renders_dialog_content():
+    html = render(loading_overlay("Working...", open=True))
+
+    assert "<dialog" in html
+    assert "Working..." in html
+    assert "position:fixed" in html
+    assert "width:100vw" in html
+    assert "height:100vh" in html
+
+
+def test_loading_overlay_is_publicly_exported():
+    from pylage.UI.components import loading_overlay as component_loading_overlay
+
+    assert component_loading_overlay is loading_overlay
+
+
+================================================================================
 FILE: test/test_ui_kit_loading_state.py
 ================================================================================
 
@@ -40626,6 +42698,52 @@ def test_loading_state_forwards_engine_props():
     html = render(ls)
     assert 'id="loader-1"' in html
     assert "custom-loading-class" in html
+
+
+================================================================================
+FILE: test/test_ui_kit_menu.py
+================================================================================
+
+from pylage.ENGINE import Menu, Text, Button
+from pylage.ENGINE.core.renderer import render
+
+
+def test_menu_renders_as_menu():
+    menu = Menu(
+        Text("Home"),
+        Text("Settings"),
+        Text("Logout"),
+    )
+
+    html = render(menu)
+
+    assert "<menu" in html
+
+
+def test_menu_supports_props():
+    menu = Menu(
+        class_name="main-menu",
+        title="Main menu",
+    )
+
+    html = render(menu)
+
+    assert 'class="main-menu"' in html
+    assert 'title="Main menu"' in html
+
+
+def test_menu_renders_children():
+    menu = Menu(
+        Button(text="Home"),
+        Text("Settings"),
+        Button(text="Logout"),
+    )
+
+    html = render(menu)
+
+    assert "Home" in html
+    assert "Settings" in html
+    assert "Logout" in html
 
 
 ================================================================================
@@ -40770,6 +42888,434 @@ def test_metric_grid_with_items_and_columns():
 
 
 ================================================================================
+FILE: test/test_ui_kit_modal.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.recipes.modal import modal
+
+
+def test_modal_composes_dialog_and_card():
+    component = modal(Text("Hello"))
+
+    assert isinstance(component, Component)
+    assert component.type == "Dialog"
+    assert component.children[0].type == "Card"
+
+
+def test_modal_renders_content():
+    html = render(modal(Text("Hello Modal"), open=True))
+
+    assert "<dialog" in html
+    assert "<div" in html
+    assert "Hello Modal" in html
+    assert " open" in html
+
+
+def test_modal_supports_reactive_open_state():
+    state = State(False)
+    component = modal(Text("Reactive Modal"), open=state)
+
+    assert " open" not in render(component)
+
+    state.set(True)
+
+    assert " open" in render(component)
+
+
+def test_modal_supports_title():
+    component = modal(Text("Message"), title=Text("Confirm"))
+    html = render(component)
+
+    assert "Confirm" in html
+    assert "Message" in html
+
+
+def test_modal_forwards_dialog_props():
+    component = modal(
+        Text("Message"),
+        class_name="custom-modal",
+    )
+
+    assert component.props["class_name"] == "custom-modal"
+
+
+def test_modal_supports_custom_style():
+    component = modal(
+        Text("Message"),
+        style=Style(padding="32px"),
+    )
+
+    card_component = component.children[0]
+    assert card_component.props["style"].padding == "32px"
+
+
+def test_modal_preserves_component_content():
+    content = Component("Text", children=["Child"])
+    component = modal(content)
+
+    card_component = component.children[0]
+    assert card_component.children == [content]
+
+
+def test_modal_is_publicly_exported():
+    from pylage.UI.recipes import modal as exported_modal
+
+    assert exported_modal is modal
+
+
+================================================================================
+FILE: test/test_ui_kit_navigation.py
+================================================================================
+
+from pylage.ENGINE import Navigation, Text, Button
+from pylage.ENGINE.core.renderer import render
+
+
+def test_navigation_renders():
+    nav = Navigation(
+        Text("Home"),
+        Button("Login"),
+    )
+
+    html = render(nav)
+
+    assert "<nav" in html
+    assert "Home" in html
+    assert "Login" in html
+
+
+def test_navigation_supports_props():
+    nav = Navigation(
+        class_name="main-nav",
+        title="Main Navigation",
+    )
+
+    html = render(nav)
+
+    assert 'class="main-nav"' in html
+    assert 'title="Main Navigation"' in html
+
+
+def test_navigation_is_exported():
+    assert callable(Navigation)
+
+
+================================================================================
+FILE: test/test_ui_kit_navigation_item.py
+================================================================================
+
+from pylage.ENGINE import State, Style
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+import pylage as pl
+
+
+def test_navigation_item_returns_existing_component():
+    item = pl.navigation_item("Home")
+
+    assert isinstance(item, Component)
+    assert item.type == "Button"
+    assert item.props["text"] == "Home"
+
+
+def test_navigation_item_default_contract():
+    item = pl.navigation_item("Home")
+    style = item.props["style"]
+
+    assert style.background_color == "transparent"
+    assert style.color == "#0f172a"
+    assert style.border == "1px solid transparent"
+    assert style.border_radius == "0.375rem"
+    assert style.padding == "0.5rem 0.75rem"
+    assert style.cursor == "pointer"
+
+
+def test_navigation_item_active_style():
+    item = pl.navigation_item("Home", active=True)
+    style = item.props["style"]
+
+    assert style.background_color == "#3b82f6"
+    assert style.color == "#ffffff"
+    assert style.border == "1px solid #3b82f6"
+
+
+def test_navigation_item_custom_style_overrides_defaults():
+    item = pl.navigation_item("Home", style=Style(color="#123456", padding="1rem", border_radius="999px"))
+    style = item.props["style"]
+
+    assert style.color == "#123456"
+    assert style.padding == "1rem"
+    assert style.border_radius == "999px"
+    assert style.cursor == "pointer"
+
+
+def test_navigation_item_forwards_event_handler():
+    called = []
+
+    def clicked():
+        called.append(True)
+
+    item = pl.navigation_item("Home", on_click=clicked)
+
+    assert item.events["click"] is clicked
+
+    html = render(item)
+    assert 'data-pylage-events="click"' in html
+    assert "clicked" not in html
+
+
+def test_navigation_item_does_not_leak_active_prop_to_engine():
+    item = pl.navigation_item("Home", active=True)
+
+    assert "active" not in item.props
+
+
+
+def test_navigation_item_reactive_active_state():
+    active = State(False)
+    item = pl.navigation_item("Products", active=active)
+
+    assert item.props["style"].background_color == "transparent"
+    assert item.props["style"].color == "#0f172a"
+
+    active.set(True)
+
+    assert item.props["style"].background_color == "#3b82f6"
+    assert item.props["style"].color == "#ffffff"
+    assert item.props["style"].border == "1px solid #3b82f6"
+
+    active.set(False)
+
+    assert item.props["style"].background_color == "transparent"
+    assert item.props["style"].color == "#0f172a"
+
+
+def test_navigation_item_reactive_active_state_does_not_leak_prop():
+    active = State(False)
+    item = pl.navigation_item("Products", active=active)
+
+    assert "active" not in item.props
+
+    active.set(True)
+
+    assert "active" not in item.props
+
+
+================================================================================
+FILE: test/test_ui_kit_navigation_responsiveness.py
+================================================================================
+
+from pylage.UI.layout.navbar import Navbar
+from pylage.UI.layout.topbar import Topbar
+from pylage.UI.layout.header import Header
+from pylage.UI.layout.footer import Footer
+from pylage.UI.layout.drawer import NavigationDrawer, MobileSidebar
+from pylage.ENGINE import ResponsiveStyle, Style
+
+
+def test_phase_7e_responsive_assertion():
+    responsive = ResponsiveStyle(
+        base=Style(width="100%", flex_direction="column"),
+        md=Style(flex_direction="row"),
+        lg=Style(gap="2rem"),
+    )
+
+    components = [
+        ("Navbar", Navbar),
+        ("Topbar", Topbar),
+        ("Header", Header),
+        ("Footer", Footer),
+        ("NavigationDrawer", NavigationDrawer),
+        ("MobileSidebar", MobileSidebar),
+    ]
+
+    print("=" * 70)
+    print("7E — FINAL RESPONSIVE ASSERTION CHECK")
+    print("=" * 70)
+
+    for name, factory in components:
+        print(f"\n--- {name} ---")
+
+        c = factory(style=responsive)
+
+        assert c.props.get("style") is responsive, (
+            f"{name}: style was not passed through"
+        )
+
+        assert c.props["style"].base.width == "100%", (
+            f"{name}: base width failed"
+        )
+
+        assert c.props["style"].base.flex_direction == "column", (
+            f"{name}: base flex_direction failed"
+        )
+
+        assert c.props["style"].md.flex_direction == "row", (
+            f"{name}: md flex_direction failed"
+        )
+
+        assert c.props["style"].lg.gap == "2rem", (
+            f"{name}: lg gap failed"
+        )
+
+        print("type :", c.type)
+        print("PASS : style + base + md + lg")
+
+    print("\n" + "=" * 70)
+    print("7E FINAL RESULT: PASS")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    test_phase_7e_responsive_assertion()
+
+
+================================================================================
+FILE: test/test_ui_kit_pagination.py
+================================================================================
+
+from pylage.ENGINE import Pagination, Text, Button
+from pylage.ENGINE.core.renderer import render
+
+
+def test_pagination_renders_as_nav():
+    pagination = Pagination(
+        Text("1"),
+        Text("2"),
+        Text("3"),
+    )
+
+    html = render(pagination)
+
+    assert "<nav" in html
+
+
+def test_pagination_supports_props():
+    pagination = Pagination(
+        class_name="pagination",
+        title="Page navigation",
+    )
+
+    html = render(pagination)
+
+    assert 'class="pagination"' in html
+    assert 'title="Page navigation"' in html
+
+
+def test_pagination_renders_children():
+    pagination = Pagination(
+        Button(text="Previous"),
+        Text("2"),
+        Button(text="Next"),
+    )
+
+    html = render(pagination)
+
+    assert "Previous" in html
+    assert "2" in html
+    assert "Next" in html
+
+
+================================================================================
+FILE: test/test_ui_kit_popover.py
+================================================================================
+
+from pylage.ENGINE import Text, Button
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.recipes import popover
+
+
+def test_ui_kit_popover_wraps_existing_popover():
+    component = popover(
+        Text("Popover content"),
+        title="Additional information",
+    )
+    html = render(component)
+
+    assert "<div" in html
+    assert 'title="Additional information"' in html
+    assert "Popover content" in html
+
+
+def test_ui_kit_popover_preserves_children_and_props():
+    component = popover(
+        Text("Details"),
+        Button(text="Close"),
+        class_name="popover",
+        title="Quick information",
+    )
+    html = render(component)
+
+    assert 'class="popover"' in html
+    assert 'title="Quick information"' in html
+    assert "Details" in html
+    assert "Close" in html
+
+
+================================================================================
+FILE: test/test_ui_kit_row.py
+================================================================================
+
+from pylage.ENGINE import State, Style, Text
+from pylage.ENGINE.core.component import Component
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.layout import row
+
+
+def test_ui_kit_row_wraps_existing_engine_row():
+    component = row(Text("Hello"))
+    assert isinstance(component, Component)
+    assert component.type == "Row"
+
+
+def test_ui_kit_row_renders_as_div():
+    html = render(row(Text("Hello Row")))
+    assert "<div" in html
+    assert "Hello Row" in html
+
+
+def test_ui_kit_row_forwards_props():
+    html = render(row(Text("Content"), class_name="custom-row", title="Row title"))
+    assert 'class="custom-row"' in html
+    assert 'title="Row title"' in html
+
+
+def test_ui_kit_row_supports_style():
+    component = row(Text("Styled"), style=Style(padding="20px"))
+    assert component.props["style"].padding == "20px"
+
+
+def test_ui_kit_row_resolves_default_style():
+    component = row(Text("Default"))
+    assert component.props["style"] is not None
+
+
+def test_ui_kit_row_supports_reactive_style_values():
+    gap = State("12px")
+    html = render(row(Text("Reactive"), style=Style(gap=gap)))
+    assert "gap:12px" in html
+
+
+def test_ui_kit_row_preserves_component_children():
+    child = Component("Text", children=["Child"])
+    component = row(child)
+    assert component.children == [child]
+
+
+def test_ui_kit_row_filters_none_children():
+    component = row(None, Text("A"), None, Text("B"))
+    assert len(component.children) == 2
+
+
+def test_ui_kit_row_is_publicly_exported():
+    from pylage.UI.layout import row as exported_row
+    assert exported_row is row
+
+
+================================================================================
 FILE: test/test_ui_kit_stat_group.py
 ================================================================================
 
@@ -40898,6 +43444,54 @@ def test_ui_kit_table_passes_props_through():
     ))
     assert 'title="Users"' in html
     assert 'class="users-table"' in html
+
+
+================================================================================
+FILE: test/test_ui_kit_tabs.py
+================================================================================
+
+from pylage.ENGINE import Tabs, Text, Button, State
+from pylage.ENGINE.core.renderer import render
+
+
+def test_tabs_renders():
+    tabs = Tabs(
+        Text("Home"),
+        Button("Profile"),
+    )
+
+    html = render(tabs)
+
+    assert "<div" in html
+    assert "Home" in html
+    assert "Profile" in html
+
+
+def test_tabs_supports_props():
+    tabs = Tabs(
+        class_name="main-tabs",
+        title="Sections",
+    )
+
+    html = render(tabs)
+
+    assert 'class="main-tabs"' in html
+    assert 'title="Sections"' in html
+
+
+def test_tabs_supports_value_and_reactivity():
+    import pylage as ps
+    tab_state = State("profile")
+    tabs = Tabs(value=tab_state)
+
+    assert 'value="profile"' in render(tabs)
+
+    tab_state.set("settings")
+    assert 'value="settings"' in render(tabs)
+
+
+def test_tabs_is_exported():
+    assert callable(Tabs)
 
 
 ================================================================================
@@ -41050,6 +43644,18 @@ def test_toast_preserves_engine_props():
     assert callable(component.events["close"])
 
 
+def test_toast_preserves_click_event():
+    def close_toast():
+        pass
+
+    component = toast(
+        "Saved",
+        on_click=close_toast,
+    )
+
+    assert component.events["click"] is close_toast
+
+
 def test_toast_merges_custom_style():
     component = toast(
         "Saved",
@@ -41067,6 +43673,42 @@ def test_toast_merges_custom_style():
 def test_toast_renders_message():
     html = render(toast("Notification saved successfully."))
     assert "Notification saved successfully." in html
+
+
+================================================================================
+FILE: test/test_ui_kit_tooltip.py
+================================================================================
+
+from pylage.ENGINE import Text, Button
+from pylage.ENGINE.core.renderer import render
+from pylage.UI.recipes import tooltip
+
+
+def test_ui_kit_tooltip_wraps_existing_tooltip():
+    component = tooltip(
+        Text("Info"),
+        title="Helpful information",
+    )
+    html = render(component)
+
+    assert "<span" in html
+    assert "title=\"Helpful information\"" in html
+    assert "Info" in html
+
+
+def test_ui_kit_tooltip_preserves_children_and_props():
+    component = tooltip(
+        Text("Info"),
+        Button(text="Action"),
+        class_name="tooltip",
+        title="Quick help",
+    )
+    html = render(component)
+
+    assert "class=\"tooltip\"" in html
+    assert "title=\"Quick help\"" in html
+    assert "Info" in html
+    assert "Action" in html
 
 
 ================================================================================

@@ -1,10 +1,11 @@
 from typing import Any
-from pylage.ENGINE.components.basic import Navigation
+
+from pylage.ENGINE.components.basic import Navigation as _Navigation
 from pylage.ENGINE.core.component import Component
 from pylage.ENGINE.styling.style import Style
 
 
-def Navbar(*children: Any, style: Style | None = None, **props: Any) -> Component:
+def navbar(*children: Any, style: Style | None = None, **props: Any) -> Component:
     base_style = Style(
         display="flex",
         align_items="center",
@@ -12,7 +13,11 @@ def Navbar(*children: Any, style: Style | None = None, **props: Any) -> Componen
         width="100%",
         padding="1rem 1.5rem",
     )
-    return Navigation(*children, style=style or base_style, **props)
+    return _Navigation(*children, style=style or base_style, **props)
 
 
-__all__ = ["Navbar"]
+# Backward-compatible CamelCase alias.
+Navbar = navbar
+
+
+__all__ = ["navbar", "Navbar"]

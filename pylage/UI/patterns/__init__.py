@@ -18,4 +18,8 @@ from .testimonial import Testimonial
 
 __all__ = [
     "Hero",
+    "breadcrumb_trail",
 ]
+
+# Lowercase public UI API alias.
+breadcrumb_trail = BreadcrumbTrail
