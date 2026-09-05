@@ -94,6 +94,10 @@ class HTMLRenderer:
     def render(self, component: Component) -> str:
         html = self._render_component(component)
 
+        built_in_css = self._built_in_css()
+        if built_in_css:
+            html = html + f"<style>{built_in_css}</style>"
+
         if self._theme is not None:
             theme_css = self._theme.to_css()
 
@@ -104,6 +108,10 @@ class HTMLRenderer:
                 )
 
         return html
+
+    def _built_in_css(self) -> str:
+        """Return framework-level CSS for native HTML semantics."""
+        return "[hidden] { display: none " + chr(33) + "important; }"
 
     def _event_attributes(self, component: Component) -> str:
         if not component.events:

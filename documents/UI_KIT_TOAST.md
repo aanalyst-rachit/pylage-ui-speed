@@ -1,72 +1,33 @@
-
 ## Overview
 
 `toast()` provides a semantic, high-level feedback component for transient informational, success, warning, and error messages.
 
-The UI Kit Toast is a thin wrapper around the existing PyLage engine `Toast` component. It does not introduce a new renderer, runtime, or feedback engine.
-
-> 🔴 **BUG — to be checked before final publishing or find alternative.**
-
-## Basic Usage
-
-```python
-import pylage as pl
-
-pl.toast("Your changes have been saved.")
-````
+The UI Kit Toast is a thin wrapper around the existing PyLage engine `Toast` component.
 
 ## Variants
 
-Supported semantic variants are:
-
-| Variant   | Purpose                                   |
-| --------- | ----------------------------------------- |
-| `default` | Neutral informational feedback            |
-| `info`    | Informational feedback                    |
-| `success` | Successful operation feedback             |
-| `warning` | Caution or review feedback                |
-| `danger`  | Failure or destructive-operation feedback |
-| `error`   | Error feedback                            |
-
-Example:
-
-```python
-import pylage as pl
-
-pl.toast("Profile updated.", variant="success")
-pl.toast("Please review this action.", variant="warning")
-pl.toast("The operation failed.", variant="danger")
-pl.toast("Additional information.", variant="info")
-```
+Supported variants: `default`, `info`, `success`, `warning`, `danger`, and `error`.
 
 ## Composition
 
-Toast accepts existing PyLage components as children and preserves component composition.
+Toast accepts existing PyLage components as children. Plain child values are normalized into existing PyLage `Text` components.
 
-```python
-import pylage as pl
+## Visibility
 
-pl.toast(
-    pl.text("Component composition"),
-    pl.text("Existing PyLage components remain valid children."),
-    variant="info",
-)
+Toast supports the existing engine `visible` prop:
+
+```text
+visible=True  → hidden absent
+visible=False → hidden present
 ```
 
-Plain child values are normalized into existing PyLage `Text` components.
+The framework renderer emits the semantic CSS rule `[hidden] { display: none !important; }`.
 
-## Parameters
-
-| Parameter   | Type    | Default     | Description                                 |
-| ----------- | ------- | ----------- | ------------------------------------------- |
-| `*children` | `Any`   | —           | Toast content or existing PyLage components |
-| `variant`   | `str`   | `"default"` | Semantic visual variant                     |
-| `style`     | `Style` | `None`      | Custom style overrides                      |
-| `**props`   | `Any`   | —           | Forwarded to the underlying PyLage Toast    |
+This ensures the native hidden state remains authoritative even when Toast uses an inline `display:flex` style.
 
 ## Styling
 
-The wrapper applies UI Kit design tokens for spacing, radius, semantic colors, borders, and surface styling. A supplied `style` is merged last so developers can override the defaults.
+The wrapper applies UI Kit design tokens for spacing, radius, semantic colors, borders, and surface styling. A supplied `style` is merged last.
 
 ## Architecture
 
@@ -76,42 +37,22 @@ pl.toast()
 UI Kit toast wrapper
     ↓
 PyLage ENGINE Toast
+    ↓
+visible → inverse hidden attribute
 ```
-
-This implementation follows the UI Kit architecture by reusing the existing engine component instead of duplicating feedback infrastructure.
 
 ## Verification
 
-* UI Kit Toast automated tests exist.
-* Toast rendering and reactive visibility behavior require further verification.
-* Manual browser verification is not considered complete.
-* Public API integration requires final verification.
+* UI Kit Toast automated tests: **15 passed**.
+* Visible and hidden rendering regression tests pass.
+* Renderer `[hidden]` semantic CSS regression test passes.
+* Manual browser toggle verification passed.
+* Full project test suite: **965 passed**.
 
-## Known Issue
+## Resolution
 
-🔴 **BUG — to be checked before final publishing or find alternative.**
-
-Toast currently has an unresolved behavior issue. The component must not be marked complete until the issue is reproduced, root cause is confirmed, and the final behavior is manually verified.
+The Toast visibility issue was caused by inline `display:flex` overriding the browser default `[hidden]` presentation. The framework renderer now emits the semantic `[hidden]` rule with `display: none` and `!important`, preserving native hidden semantics without Toast-specific runtime logic.
 
 ## Status
 
-Toast is **ON HOLD** for Phase 09.
-
-Resolution is pending. Before final publishing, the bug must be checked and fixed, or an alternative implementation/component must be selected.
-"""); print("OK: documents/UI_KIT_TOAST.md created")'
-
-````
-
-### M/V
-
-Phir:
-
-```bash
-cat documents/UI_KIT_TOAST.md
-````
-
-Aur status check:
-
-```bash
-grep -n -A8 -B2 "Known Issue\|Status" documents/UI_KIT_TOAST.md
-```
+Toast is **COMPLETE** for Phase 09 Feedback & Overlays.

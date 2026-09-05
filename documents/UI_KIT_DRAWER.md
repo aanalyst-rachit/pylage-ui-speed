@@ -168,7 +168,7 @@ Drawer is complete, but Phase 09 remains incomplete.
 
 Remaining Phase 09 items:
 
-- Toast — unresolved/on hold unless explicitly requested.
+- Toast — complete.
 - Tooltip
 - Popover
 - Confirmation dialog

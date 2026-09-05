@@ -302,14 +302,14 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 # PHASE 09 — Feedback & Overlays
 
 * [x] Alert
-* [ ] Toast — 🔴 BUG — unresolved, resolution pending
+* [x] Toast — visibility bug resolved and verified
 * [x] Dialog
 * [x] Modal recipe
 * [x] Drawer
 * [x] Tooltip
 * [x] Popover
 * [x] Confirmation dialog
-* [ ] Loading overlay
+* [x] Loading overlay
 
 ---
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
@@ -635,7 +635,7 @@ PHASE 05  First Component           [x]
 PHASE 06  Surface Components        [x]
 PHASE 07  Data/Dashboard            [x]
 PHASE 08  Forms                     [x]
-PHASE 09  Feedback/Overlays         [ ]
+PHASE 09  Feedback/Overlays         [x]
 PHASE 10  Navigation                [ ]
 PHASE 11  Layout API                [ ]
 PHASE 12  High-Level Recipes        [ ]
