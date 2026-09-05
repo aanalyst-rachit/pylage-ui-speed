@@ -66,6 +66,9 @@ class HTMLRenderer:
 
             "Input": lambda renderer, component:
                 renderer._render_input(component),
+
+            "Spinner": lambda renderer, component:
+                renderer._render_spinner(component),
         }
 
         for component_type, renderer_callback in builtins.items():
@@ -293,6 +296,79 @@ class HTMLRenderer:
             return ""
 
         return " " + " ".join(attributes)
+
+    def _spinner_css(self) -> str:
+        """Return built-in CSS for the Spinner component."""
+        return """
+.pylage-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    box-sizing: border-box;
+    border: 0.2rem solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: pylage-spinner-spin 0.75s linear infinite;
+}
+
+.pylage-spinner[data-size="small"] {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15rem;
+}
+
+.pylage-spinner[data-size="large"] {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.25rem;
+}
+
+@keyframes pylage-spinner-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+"""
+
+    def _render_spinner(self, component: Component) -> str:
+        common = self._render_common_attributes(component)
+        class_name = self._value(component.props.get("class_name"))
+        title = self._value(component.props.get("title"))
+        size = self._value(component.props.get("size"))
+        text = self._value(component.props.get("text"))
+        children = self._render_children(component)
+
+        classes = ["pylage-spinner"]
+        if class_name:
+            custom_class = str(class_name)
+            if custom_class != "pylage-spinner":
+                classes.append(custom_class)
+
+        attributes = (
+            common
+            + ' class="'
+            + escape(" ".join(classes), quote=True)
+            + '"'
+        )
+
+        if title is not None:
+            attributes += f' title="{escape(str(title), quote=True)}"'
+
+        if size is not None:
+            attributes += f' data-size="{escape(str(size), quote=True)}"'
+
+        attributes += self._render_prop_attributes(
+            component,
+            excluded={"children", "class_name", "title", "size", "text"},
+        )
+
+        content = "" if text is None else escape(str(text))
+        spinner_css = self._spinner_css()
+
+        return (
+            f"<style>{spinner_css}</style>"
+            f"<span {attributes}>{content}{children}</span>"
+        )
 
     def _drawer_css(self) -> str:
         """Return built-in CSS for the Drawer component."""

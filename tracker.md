@@ -333,7 +333,39 @@ rules - PYTHON TERMINAL RULE + MD FILE RULE
 
 ---
 
-# PHASE 12 — High-Level Recipes
+# PHASE 11 — Layout API
+
+Do NOT rebuild `pylage_layout`.
+
+* [ ] Determine direct re-exports
+* [x] Determine simplified wrappers
+  - Row wrapper added around the existing PyLage Row component.
+  - Column wrapper added around the existing PyLage Column component.
+  - Both use the existing UI Kit responsive style resolution.
+  - Both are publicly exported through pylage.UI.layout and pylage.UI.
+  - Neither duplicates the layout engine.
+* [ ] Responsive shorthand
+* [ ] Spacing shorthand
+* [ ] Dashboard layout helpers
+* [ ] Verify no duplicate layout engine
+
+Potential API:
+
+```python
+ps.container(...)
+ps.stack(...)
+ps.row(...)
+ps.grid(...)
+ps.columns(...)
+ps.sidebar(...)
+```
+
+work flow - reuse/create/------>manual create-------> manual verify---->documentation-----> tracker update---git checkpoint
+rules - PYTHON TERMINAL RULE + MD FILE RULE
+
+---
+
+# PHASE 12 — High-Level Recipes (skip in v.1.0.0 will upgrde in future in paid version)
 
 * [ ] Login page
 * [ ] Signup page
@@ -416,6 +448,7 @@ ps.card(
 * [ ] Semantic colors
 * [ ] Custom tokens
 * [ ] Component-level overrides
+* [ ] set Global theme system
 * [ ] Global overrides
 work flow - reuse/create/------>manual create-------> manual verify---->documentation----->tracker update---git checkpoint
 rules - PYTHON TERMINAL RULE + MD FILE RULE
@@ -630,6 +663,14 @@ Responsive System          [EXISTING]
 Reactive Engine            [EXISTING]
 
 pylage-ui-kit              [PHASE 08 COMPLETE — Forms, validation presentation, error state, help text, disabled state COMPLETE]
+
+Latest Spinner checkpoint:
+- Spinner rendering fixed in the existing PyLage renderer.
+- Spinner  prop is registered and rendered as an HTML attribute.
+- Spinner text rendering is supported and escaped.
+- Dedicated Spinner regression tests pass.
+- Full test suite: 962 passed.
+- Spinner manual and documentation updated.
 ```
 
 # Development Rule
@@ -670,32 +711,3 @@ Jab `.md` file create/update karni ho:
 6. `>`, `$`, backticks, quotes aur special characters safely preserve hone chahiye.
 7. Command directly copy-paste karke `.md` file create/update ho sake.
 8. File create/update ke baad `git diff --check` se verify karna.
-# PHASE 11 — Layout API
-
-Do NOT rebuild `pylage_layout`.
-
-* [ ] Determine direct re-exports
-* [x] Determine simplified wrappers
-  - Row wrapper added around the existing PyLage Row component.
-  - Column wrapper added around the existing PyLage Column component.
-  - Both use the existing UI Kit responsive style resolution.
-  - Both are publicly exported through pylage.UI.layout and pylage.UI.
-  - Neither duplicates the layout engine.
-* [ ] Responsive shorthand
-* [ ] Spacing shorthand
-* [ ] Dashboard layout helpers
-* [ ] Verify no duplicate layout engine
-
-Potential API:
-
-```python
-ps.container(...)
-ps.stack(...)
-ps.row(...)
-ps.grid(...)
-ps.columns(...)
-ps.sidebar(...)
-```
-
-work flow - reuse/create/------>manual create-------> manual verify---->documentation-----> tracker update---git checkpoint
-rules - PYTHON TERMINAL RULE + MD FILE RULE

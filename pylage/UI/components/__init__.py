@@ -21,6 +21,7 @@ from .empty_state import *
 from .error_state import *
 from .heading import *
 from .loading_state import *
+from .loading_overlay import *
 from .metric import *
 from .metric_grid import *
 from .stat_group import *
@@ -58,6 +59,7 @@ __all__ = [
     "error_state",
     "heading",
     "loading_state",
+    "loading_overlay",
     "metric",
     "metric_grid",
     "stat_group",

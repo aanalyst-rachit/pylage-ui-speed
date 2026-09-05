@@ -198,6 +198,10 @@ registry.register(
             "text",
             kind="text",
         ),
+        "size": PropDefinition(
+            "size",
+            kind="attribute",
+        ),
     },
 )
 
@@ -345,6 +349,10 @@ registry.register(
         "text": PropDefinition(
             "text",
             kind="text",
+        ),
+        "size": PropDefinition(
+            "size",
+            kind="attribute",
         ),
     },
 )

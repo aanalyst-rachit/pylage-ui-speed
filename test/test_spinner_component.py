@@ -2,12 +2,14 @@ from pylage.ENGINE import Spinner
 from pylage.ENGINE.core.renderer import render
 
 
-def test_spinner_renders_as_div():
+def test_spinner_renders_as_visual_element():
     spinner = Spinner()
 
     html = render(spinner)
 
-    assert "<div" in html
+    assert '<span' in html
+    assert 'class="pylage-spinner"' in html
+    assert 'animation: pylage-spinner-spin' in html
 
 
 def test_spinner_supports_props():
@@ -18,8 +20,16 @@ def test_spinner_supports_props():
 
     html = render(spinner)
 
-    assert 'class="loading-spinner"' in html
+    assert 'class="pylage-spinner loading-spinner"' in html
     assert 'title="Loading"' in html
+
+
+def test_spinner_supports_size():
+    spinner = Spinner(size="large")
+
+    html = render(spinner)
+
+    assert 'size="large"' in html
 
 
 def test_spinner_supports_text():
